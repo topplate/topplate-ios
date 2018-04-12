@@ -31,7 +31,7 @@
         <!--Plates View Controller-->
         <scene sceneID="Lhk-bv-Qqi">
             <objects>
-                <viewController storyboardIdentifier="ForgotPasswordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cUn-a1-SDl" customClass="PlatesViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlatesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cUn-a1-SDl" customClass="PlatesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HJ4-dj-fDp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,7 +40,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlatesTableViewCell" rowHeight="315" id="lDh-SV-4oH" customClass="PlatesTableViewCell" customModule="TopPlate" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlatesTableViewCell" rowHeight="315" id="lDh-SV-4oH" customClass="PlatesTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="315"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lDh-SV-4oH" id="RAt-ap-Ytd">
@@ -55,17 +55,17 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="315"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@PATRICKBROWN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDt-KJ-xOH">
-                                                            <rect key="frame" x="8" y="295" width="88" height="12"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GRILLED FISH WITH LEMON AND GARLIC SAUCE" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZJ-5N-qkU">
                                                             <rect key="frame" x="8" y="235" width="253" height="52"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@PATRICKBROWN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDt-KJ-xOH">
+                                                            <rect key="frame" x="8" y="295" width="88" height="12"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -102,13 +102,13 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="plateAuthor" destination="kDt-KJ-xOH" id="AP5-rL-Y7E"/>
-                                            <outlet property="plateImage" destination="0W1-Pk-I0A" id="zb3-rW-Fml"/>
-                                            <outlet property="plateLikeButton" destination="qjo-Iy-V03" id="PDz-o4-sdg"/>
-                                            <outlet property="plateLikesNumber" destination="hVu-1y-DcS" id="8zP-Zy-Emz"/>
-                                            <outlet property="plateLocation" destination="2yL-4h-IOi" id="NxN-k6-4b4"/>
-                                            <outlet property="plateName" destination="vZJ-5N-qkU" id="imG-ae-gRa"/>
-                                            <outlet property="plateReceiptImage" destination="qBa-kR-MMq" id="Mc7-1P-EtS"/>
+                                            <outlet property="plateAuthorName" destination="kDt-KJ-xOH" id="3Yh-4n-hdu"/>
+                                            <outlet property="plateImage" destination="0W1-Pk-I0A" id="eS0-iN-Kau"/>
+                                            <outlet property="plateLikeButton" destination="qjo-Iy-V03" id="xPy-fG-s3E"/>
+                                            <outlet property="plateLikes" destination="hVu-1y-DcS" id="BGi-wp-r6H"/>
+                                            <outlet property="plateLocation" destination="2yL-4h-IOi" id="yeK-9q-3hc"/>
+                                            <outlet property="plateName" destination="vZJ-5N-qkU" id="2I0-Wq-RJR"/>
+                                            <outlet property="plateReceiptImage" destination="qBa-kR-MMq" id="d01-Yz-dxx"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -125,7 +125,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Cvq-ga-Ch1"/>
                     <connections>
-                        <outlet property="tableView" destination="Xn0-sK-KUZ" id="ElQ-ku-1vh"/>
+                        <outlet property="tableView" destination="Xn0-sK-KUZ" id="3fl-hb-ISJ"/>
                         <segue destination="LOh-LC-XlA" kind="show" id="EmW-7W-nK0"/>
                     </connections>
                 </viewController>
@@ -146,7 +146,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlateImageTableViewCell" rowHeight="315" id="VMI-Sq-XPI" customClass="PlateImageTableViewCell" customModule="TopPlate" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlateImageTableViewCell" rowHeight="315" id="VMI-Sq-XPI" customClass="PlateImageTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="315"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VMI-Sq-XPI" id="PgF-ua-M8I">
@@ -182,7 +182,7 @@
                                             <outlet property="plateReceiptImage" destination="GSq-1A-bRE" id="W4j-Hj-OxG"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlateNameTableViewCell" rowHeight="55" id="JIU-6y-s4T" customClass="PlateNameTableViewCell" customModule="TopPlate" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlateNameTableViewCell" rowHeight="55" id="JIU-6y-s4T" customClass="PlateNameTableViewCell">
                                         <rect key="frame" x="0.0" y="343" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JIU-6y-s4T" id="zwf-FH-mO5">
@@ -208,7 +208,7 @@
                                             <outlet property="plateName" destination="92o-QB-4EM" id="ygf-Ou-xc7"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlateAuthorInfoTableViewCell" rowHeight="46" id="PS3-TX-xjM" customClass="PlateAuthorInfoTableViewCell" customModule="TopPlate" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlateAuthorInfoTableViewCell" rowHeight="46" id="PS3-TX-xjM" customClass="PlateAuthorInfoTableViewCell">
                                         <rect key="frame" x="0.0" y="398" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PS3-TX-xjM" id="QlU-Bz-exi">
@@ -253,7 +253,7 @@
                                             <outlet property="plateLocation" destination="P4a-lv-9Gx" id="q6f-5Q-CA6"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlateIngredientTableViewCell" rowHeight="21" id="KrM-aF-7dG" customClass="PlateIngredientTableViewCell" customModule="TopPlate" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlateIngredientTableViewCell" rowHeight="21" id="KrM-aF-7dG" customClass="PlateIngredientTableViewCell">
                                         <rect key="frame" x="0.0" y="444" width="375" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KrM-aF-7dG" id="vNA-xG-dI5">
@@ -279,7 +279,7 @@
                                             <outlet property="plateIndgredient" destination="r5S-yY-Jun" id="6we-CG-IQG"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlateSocialShareTableViewCell" rowHeight="99" id="K7R-3j-AI1" customClass="PlateSocialShareTableViewCell" customModule="TopPlate" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlateSocialShareTableViewCell" rowHeight="99" id="K7R-3j-AI1" customClass="PlateSocialShareTableViewCell">
                                         <rect key="frame" x="0.0" y="465" width="375" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K7R-3j-AI1" id="iNT-VY-ZpY">
@@ -344,7 +344,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlateOtherRecipesTableViewCell" rowHeight="139" id="XzD-fF-uS3" customClass="PlateOtherRecipesTableViewCell" customModule="TopPlate" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlateOtherReceiptsTableViewCell" rowHeight="139" id="XzD-fF-uS3" customClass="PlateOtherReceiptsTableViewCell">
                                         <rect key="frame" x="0.0" y="564" width="375" height="139"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XzD-fF-uS3" id="65l-st-6Lz">
@@ -413,9 +413,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dish1" width="16" height="16"/>
-        <image name="likeIcon" width="16" height="16"/>
-        <image name="locationIcon" width="16" height="16"/>
-        <image name="receipt" width="16" height="16"/>
+        <image name="dish1" width="375" height="316"/>
+        <image name="likeIcon" width="52" height="52"/>
+        <image name="locationIcon" width="10" height="14"/>
+        <image name="receipt" width="45" height="74"/>
     </resources>
 </document>

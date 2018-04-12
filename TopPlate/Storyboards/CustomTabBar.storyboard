@@ -52,35 +52,35 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="49"/>
                                                 <state key="normal" image="restaurant"/>
                                                 <connections>
-                                                    <action selector="platesSelected:" destination="Xwj-CK-lmN" eventType="touchUpInside" id="dGx-XM-exk"/>
+                                                    <action selector="platesSelected:" destination="Xwj-CK-lmN" eventType="touchUpInside" id="Gyp-Ar-pss"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBW-T4-LxU">
                                                 <rect key="frame" x="75" y="0.0" width="75" height="49"/>
                                                 <state key="normal" image="search"/>
                                                 <connections>
-                                                    <action selector="searchSelected:" destination="Xwj-CK-lmN" eventType="touchUpInside" id="d15-mT-NGO"/>
+                                                    <action selector="searchSelected:" destination="Xwj-CK-lmN" eventType="touchUpInside" id="ogm-zj-QCy"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coB-9F-47q">
                                                 <rect key="frame" x="150" y="0.0" width="75" height="49"/>
                                                 <state key="normal" image="submit photo"/>
                                                 <connections>
-                                                    <action selector="submitSelected:" destination="Xwj-CK-lmN" eventType="touchUpInside" id="ei0-ZW-gPE"/>
+                                                    <action selector="uploadPlateSelected:" destination="Xwj-CK-lmN" eventType="touchUpInside" id="Ao4-AB-YzG"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Xg-4y-8uR">
                                                 <rect key="frame" x="225" y="0.0" width="75" height="49"/>
                                                 <state key="normal" image="winners"/>
                                                 <connections>
-                                                    <action selector="winnersSelected:" destination="Xwj-CK-lmN" eventType="touchUpInside" id="pyh-fg-Bno"/>
+                                                    <action selector="winnersSelected:" destination="Xwj-CK-lmN" eventType="touchUpInside" id="Ubh-1g-Jfg"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKc-Cv-xAy">
                                                 <rect key="frame" x="300" y="0.0" width="75" height="49"/>
                                                 <state key="normal" image="profile"/>
                                                 <connections>
-                                                    <action selector="profileSelected:" destination="Xwj-CK-lmN" eventType="touchUpInside" id="vm0-P1-pFq"/>
+                                                    <action selector="profileSelected:" destination="Xwj-CK-lmN" eventType="touchUpInside" id="Wch-vQ-NBv"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -110,7 +110,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="V2E-JY-ZSg"/>
                     <connections>
-                        <outlet property="contentView" destination="9Dt-4m-ihg" id="Ktu-Ez-JLZ"/>
+                        <outlet property="contentView" destination="9Dt-4m-ihg" id="910-vR-g02"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7Z-a3-jER" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -119,11 +119,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="profile" width="16" height="16"/>
-        <image name="restaurant" width="16" height="16"/>
-        <image name="search" width="16" height="16"/>
-        <image name="submit photo" width="16" height="16"/>
-        <image name="tabBarBackground" width="16" height="16"/>
-        <image name="winners" width="16" height="16"/>
+        <image name="profile" width="18" height="21"/>
+        <image name="restaurant" width="21" height="21"/>
+        <image name="search" width="20" height="21"/>
+        <image name="submit photo" width="21" height="21"/>
+        <image name="tabBarBackground" width="370" height="45"/>
+        <image name="winners" width="21" height="21"/>
     </resources>
 </document>

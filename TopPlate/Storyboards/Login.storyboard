@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bDg-27-JuG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -49,7 +49,7 @@
                                 </segments>
                                 <color key="tintColor" white="1" alpha="0.3505859375" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="segmentValueChange:" destination="Rtb-9V-5q3" eventType="valueChanged" id="PrE-dS-daP"/>
+                                    <action selector="segmentValueChange:" destination="Rtb-9V-5q3" eventType="valueChanged" id="wt8-Rq-6TZ"/>
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFH-rr-Si9">
@@ -62,7 +62,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="connectWithGoogle:" destination="Rtb-9V-5q3" eventType="touchUpInside" id="C8O-ea-0mF"/>
+                                    <action selector="connectWithGoogle:" destination="Rtb-9V-5q3" eventType="touchUpInside" id="iLb-6i-3Pz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eql-qI-aLo">
@@ -75,7 +75,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="connectWithFacebook:" destination="Rtb-9V-5q3" eventType="touchUpInside" id="CzD-Je-pU1"/>
+                                    <action selector="connectWithFacebook:" destination="Rtb-9V-5q3" eventType="touchUpInside" id="oRl-HH-YVq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHv-vi-cCg">
@@ -88,7 +88,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="connectWithEmail:" destination="Rtb-9V-5q3" eventType="touchUpInside" id="dRh-pT-3vh"/>
+                                    <action selector="connectWithEmail:" destination="Rtb-9V-5q3" eventType="touchUpInside" id="IDK-mq-c2i"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rx7-ry-uUC">
@@ -115,7 +115,7 @@ Privacy Policy and Terms of Service</string>
                                     <color key="titleColor" white="1" alpha="0.35050223209999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="skipAction:" destination="Rtb-9V-5q3" eventType="touchUpInside" id="KEB-9L-tTo"/>
+                                    <action selector="skipToPlates:" destination="Rtb-9V-5q3" eventType="touchUpInside" id="4CY-Fd-mV7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ZF-GA-AsL">
@@ -131,6 +131,7 @@ Privacy Policy and Terms of Service</string>
                     </view>
                     <navigationItem key="navigationItem" id="Dnz-IB-whS"/>
                     <connections>
+                        <outlet property="segmentControl" destination="y8S-Hd-k7d" id="UWc-RR-wJe"/>
                         <segue destination="0XT-eU-Te7" kind="show" id="M9d-Si-24I"/>
                     </connections>
                 </viewController>

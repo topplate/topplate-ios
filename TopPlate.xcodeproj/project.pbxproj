@@ -37,6 +37,14 @@
 		338A5793207F36D5000FA8BD /* CustomTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 338A5792207F36D5000FA8BD /* CustomTabBar.storyboard */; };
 		338A5796207F3746000FA8BD /* CustomTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A5795207F3746000FA8BD /* CustomTabBarViewController.m */; };
 		338A5798207F37E7000FA8BD /* UploadPlate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 338A5797207F37E7000FA8BD /* UploadPlate.storyboard */; };
+		338A579B207F55C6000FA8BD /* PlatesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A579A207F55C6000FA8BD /* PlatesTableViewCell.m */; };
+		338A57A3207F5677000FA8BD /* PlateImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A57A2207F5677000FA8BD /* PlateImageTableViewCell.m */; };
+		338A57A6207F569D000FA8BD /* PlateNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A57A5207F569D000FA8BD /* PlateNameTableViewCell.m */; };
+		338A57A9207F56A9000FA8BD /* PlateAuthorInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A57A8207F56A9000FA8BD /* PlateAuthorInfoTableViewCell.m */; };
+		338A57AC207F5EF2000FA8BD /* PlateIngredientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A57AB207F5EF2000FA8BD /* PlateIngredientTableViewCell.m */; };
+		338A57AF207F5F02000FA8BD /* PlateSocialShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A57AE207F5F02000FA8BD /* PlateSocialShareTableViewCell.m */; };
+		338A57B2207F5F11000FA8BD /* PlateOtherReceiptsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A57B1207F5F11000FA8BD /* PlateOtherReceiptsTableViewCell.m */; };
+		338A57B5207F6432000FA8BD /* UIViewController+BackgroundImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A57B4207F6432000FA8BD /* UIViewController+BackgroundImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +119,22 @@
 		338A5794207F3746000FA8BD /* CustomTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomTabBarViewController.h; sourceTree = "<group>"; };
 		338A5795207F3746000FA8BD /* CustomTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarViewController.m; sourceTree = "<group>"; };
 		338A5797207F37E7000FA8BD /* UploadPlate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UploadPlate.storyboard; sourceTree = "<group>"; };
+		338A5799207F55C6000FA8BD /* PlatesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlatesTableViewCell.h; sourceTree = "<group>"; };
+		338A579A207F55C6000FA8BD /* PlatesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatesTableViewCell.m; sourceTree = "<group>"; };
+		338A57A1207F5677000FA8BD /* PlateImageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateImageTableViewCell.h; sourceTree = "<group>"; };
+		338A57A2207F5677000FA8BD /* PlateImageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlateImageTableViewCell.m; sourceTree = "<group>"; };
+		338A57A4207F569D000FA8BD /* PlateNameTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateNameTableViewCell.h; sourceTree = "<group>"; };
+		338A57A5207F569D000FA8BD /* PlateNameTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlateNameTableViewCell.m; sourceTree = "<group>"; };
+		338A57A7207F56A9000FA8BD /* PlateAuthorInfoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateAuthorInfoTableViewCell.h; sourceTree = "<group>"; };
+		338A57A8207F56A9000FA8BD /* PlateAuthorInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlateAuthorInfoTableViewCell.m; sourceTree = "<group>"; };
+		338A57AA207F5EF2000FA8BD /* PlateIngredientTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateIngredientTableViewCell.h; sourceTree = "<group>"; };
+		338A57AB207F5EF2000FA8BD /* PlateIngredientTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlateIngredientTableViewCell.m; sourceTree = "<group>"; };
+		338A57AD207F5F02000FA8BD /* PlateSocialShareTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateSocialShareTableViewCell.h; sourceTree = "<group>"; };
+		338A57AE207F5F02000FA8BD /* PlateSocialShareTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlateSocialShareTableViewCell.m; sourceTree = "<group>"; };
+		338A57B0207F5F11000FA8BD /* PlateOtherReceiptsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateOtherReceiptsTableViewCell.h; sourceTree = "<group>"; };
+		338A57B1207F5F11000FA8BD /* PlateOtherReceiptsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlateOtherReceiptsTableViewCell.m; sourceTree = "<group>"; };
+		338A57B3207F6432000FA8BD /* UIViewController+BackgroundImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackgroundImage.h"; sourceTree = "<group>"; };
+		338A57B4207F6432000FA8BD /* UIViewController+BackgroundImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackgroundImage.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +187,7 @@
 			children = (
 				338A5719207F30CF000FA8BD /* AppDelegate.h */,
 				338A571A207F30CF000FA8BD /* AppDelegate.m */,
+				338A57B6207F6439000FA8BD /* Categories */,
 				338A578B207F3673000FA8BD /* ModelHelpers */,
 				338A5781207F3635000FA8BD /* Models */,
 				338A574E207F3487000FA8BD /* ViewControllers */,
@@ -229,8 +254,10 @@
 			children = (
 				338A5759207F34FF000FA8BD /* PlatesViewController.h */,
 				338A575A207F34FF000FA8BD /* PlatesViewController.m */,
+				338A579F207F55E1000FA8BD /* PlatesTableViewCell */,
 				338A575D207F3517000FA8BD /* PlateInfoViewController.h */,
 				338A575E207F3517000FA8BD /* PlateInfoViewController.m */,
+				338A57A0207F55ED000FA8BD /* PlatesInfoTableViewCell */,
 				338A5760207F3520000FA8BD /* UploadPlateViewController.h */,
 				338A5761207F3520000FA8BD /* UploadPlateViewController.m */,
 			);
@@ -284,6 +311,43 @@
 				338A5790207F3693000FA8BD /* PlateModelHelper.m */,
 			);
 			path = ModelHelpers;
+			sourceTree = "<group>";
+		};
+		338A579F207F55E1000FA8BD /* PlatesTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				338A5799207F55C6000FA8BD /* PlatesTableViewCell.h */,
+				338A579A207F55C6000FA8BD /* PlatesTableViewCell.m */,
+			);
+			path = PlatesTableViewCell;
+			sourceTree = "<group>";
+		};
+		338A57A0207F55ED000FA8BD /* PlatesInfoTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				338A57A1207F5677000FA8BD /* PlateImageTableViewCell.h */,
+				338A57A2207F5677000FA8BD /* PlateImageTableViewCell.m */,
+				338A57A4207F569D000FA8BD /* PlateNameTableViewCell.h */,
+				338A57A5207F569D000FA8BD /* PlateNameTableViewCell.m */,
+				338A57A7207F56A9000FA8BD /* PlateAuthorInfoTableViewCell.h */,
+				338A57A8207F56A9000FA8BD /* PlateAuthorInfoTableViewCell.m */,
+				338A57AA207F5EF2000FA8BD /* PlateIngredientTableViewCell.h */,
+				338A57AB207F5EF2000FA8BD /* PlateIngredientTableViewCell.m */,
+				338A57AD207F5F02000FA8BD /* PlateSocialShareTableViewCell.h */,
+				338A57AE207F5F02000FA8BD /* PlateSocialShareTableViewCell.m */,
+				338A57B0207F5F11000FA8BD /* PlateOtherReceiptsTableViewCell.h */,
+				338A57B1207F5F11000FA8BD /* PlateOtherReceiptsTableViewCell.m */,
+			);
+			path = PlatesInfoTableViewCell;
+			sourceTree = "<group>";
+		};
+		338A57B6207F6439000FA8BD /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				338A57B3207F6432000FA8BD /* UIViewController+BackgroundImage.h */,
+				338A57B4207F6432000FA8BD /* UIViewController+BackgroundImage.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,24 +487,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				338A5768207F353E000FA8BD /* WinnersViewController.m in Sources */,
+				338A57A6207F569D000FA8BD /* PlateNameTableViewCell.m in Sources */,
 				338A5780207F3630000FA8BD /* LoginModel.m in Sources */,
+				338A57AC207F5EF2000FA8BD /* PlateIngredientTableViewCell.m in Sources */,
 				338A5784207F364A000FA8BD /* PlateModel.m in Sources */,
 				338A5787207F3660000FA8BD /* SocialLoginModel.m in Sources */,
 				338A578E207F3687000FA8BD /* SocialLoginModelHelper.m in Sources */,
+				338A57A3207F5677000FA8BD /* PlateImageTableViewCell.m in Sources */,
 				338A575B207F34FF000FA8BD /* PlatesViewController.m in Sources */,
 				338A5791207F3693000FA8BD /* PlateModelHelper.m in Sources */,
 				338A5758207F34D8000FA8BD /* ForgotPasswordViewController.m in Sources */,
+				338A57B5207F6432000FA8BD /* UIViewController+BackgroundImage.m in Sources */,
 				338A5765207F3530000FA8BD /* SearchViewController.m in Sources */,
 				338A578A207F3670000FA8BD /* LoginModelHelper.m in Sources */,
 				338A5752207F34C4000FA8BD /* SignInViewController.m in Sources */,
 				338A5796207F3746000FA8BD /* CustomTabBarViewController.m in Sources */,
+				338A579B207F55C6000FA8BD /* PlatesTableViewCell.m in Sources */,
+				338A57B2207F5F11000FA8BD /* PlateOtherReceiptsTableViewCell.m in Sources */,
 				338A5755207F34CE000FA8BD /* SignUpViewController.m in Sources */,
 				338A5729207F30D0000FA8BD /* main.m in Sources */,
 				338A5762207F3520000FA8BD /* UploadPlateViewController.m in Sources */,
 				338A575F207F3517000FA8BD /* PlateInfoViewController.m in Sources */,
 				338A571B207F30CF000FA8BD /* AppDelegate.m in Sources */,
 				338A576B207F356F000FA8BD /* ProfileViewController.m in Sources */,
+				338A57A9207F56A9000FA8BD /* PlateAuthorInfoTableViewCell.m in Sources */,
 				338A574D207F3480000FA8BD /* WelcomeViewController.m in Sources */,
+				338A57AF207F5F02000FA8BD /* PlateSocialShareTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,8 +7,10 @@
 //
 
 #import "WelcomeViewController.h"
+#import "PlatesViewController.h"
 
 @interface WelcomeViewController ()
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 
 @end
 
@@ -16,6 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     // Do any additional setup after loading the view.
 }
 
@@ -33,5 +37,33 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Actions -
+
+- (IBAction)segmentValueChange:(UISegmentedControl *)sender {
+    
+}
+
+- (IBAction)connectWithGoogle:(id)sender {
+    
+}
+
+- (IBAction)connectWithFacebook:(id)sender {
+    
+}
+
+- (IBAction)connectWithEmail:(id)sender {
+    
+}
+
+- (IBAction)skipToPlates:(id)sender {
+    
+    UIStoryboard *storyboard =  [UIStoryboard storyboardWithName:@"Plates" bundle:nil];
+    PlatesViewController *platesViewController = [storyboard instantiateViewControllerWithIdentifier:@"PlatesViewController"];
+    
+    UIWindow *window = UIApplication.sharedApplication.keyWindow;
+    window.rootViewController = platesViewController;
+    [window makeKeyAndVisible];
+}
 
 @end
