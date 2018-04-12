@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="iQP-AG-zet">
+            <objects>
+                <navigationController storyboardIdentifier="customTabBarNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BUU-WB-5zC" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bey-g2-eDc">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Xwj-CK-lmN" kind="relationship" relationship="rootViewController" id="GMH-sC-Xno"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bIZ-S8-acd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-938" y="139"/>
+        </scene>
+        <!--Custom Tab Bar View Controller-->
+        <scene sceneID="Buc-eb-vFT">
+            <objects>
+                <viewController storyboardIdentifier="CustomTabBarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Xwj-CK-lmN" customClass="CustomTabBarViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tlG-U6-pKU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Dt-4m-ihg">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAq-a8-gPf">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tabBarBackground" translatesAutoresizingMaskIntoConstraints="NO" id="HVz-8b-PbB">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="R61-RO-ypO">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lnB-lu-HmF">
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="49"/>
+                                                <state key="normal" image="restaurant"/>
+                                                <connections>
+                                                    <action selector="platesSelected:" destination="Xwj-CK-lmN" eventType="touchUpInside" id="dGx-XM-exk"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBW-T4-LxU">
+                                                <rect key="frame" x="75" y="0.0" width="75" height="49"/>
+                                                <state key="normal" image="search"/>
+                                                <connections>
+                                                    <action selector="searchSelected:" destination="Xwj-CK-lmN" eventType="touchUpInside" id="d15-mT-NGO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coB-9F-47q">
+                                                <rect key="frame" x="150" y="0.0" width="75" height="49"/>
+                                                <state key="normal" image="submit photo"/>
+                                                <connections>
+                                                    <action selector="submitSelected:" destination="Xwj-CK-lmN" eventType="touchUpInside" id="ei0-ZW-gPE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Xg-4y-8uR">
+                                                <rect key="frame" x="225" y="0.0" width="75" height="49"/>
+                                                <state key="normal" image="winners"/>
+                                                <connections>
+                                                    <action selector="winnersSelected:" destination="Xwj-CK-lmN" eventType="touchUpInside" id="pyh-fg-Bno"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKc-Cv-xAy">
+                                                <rect key="frame" x="300" y="0.0" width="75" height="49"/>
+                                                <state key="normal" image="profile"/>
+                                                <connections>
+                                                    <action selector="profileSelected:" destination="Xwj-CK-lmN" eventType="touchUpInside" id="vm0-P1-pFq"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="R61-RO-ypO" secondAttribute="bottom" id="3CL-bj-3hb"/>
+                                    <constraint firstItem="R61-RO-ypO" firstAttribute="top" secondItem="dAq-a8-gPf" secondAttribute="top" id="5I1-zy-v7v"/>
+                                    <constraint firstAttribute="height" constant="49" id="8wJ-fN-yzS"/>
+                                    <constraint firstItem="R61-RO-ypO" firstAttribute="leading" secondItem="dAq-a8-gPf" secondAttribute="leading" id="pul-Py-LGy"/>
+                                    <constraint firstAttribute="trailing" secondItem="R61-RO-ypO" secondAttribute="trailing" id="xP2-JD-G5U"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dAq-a8-gPf" firstAttribute="trailing" secondItem="WZt-48-WNe" secondAttribute="trailing" id="2O3-EW-LoM"/>
+                            <constraint firstItem="dAq-a8-gPf" firstAttribute="bottom" secondItem="WZt-48-WNe" secondAttribute="bottom" id="IoD-70-7p3"/>
+                            <constraint firstItem="9Dt-4m-ihg" firstAttribute="leading" secondItem="WZt-48-WNe" secondAttribute="leading" id="MpV-7g-bwx"/>
+                            <constraint firstItem="dAq-a8-gPf" firstAttribute="leading" secondItem="WZt-48-WNe" secondAttribute="leading" id="Qdb-9L-X5U"/>
+                            <constraint firstItem="9Dt-4m-ihg" firstAttribute="top" secondItem="WZt-48-WNe" secondAttribute="top" id="j2W-Hv-0XO"/>
+                            <constraint firstItem="9Dt-4m-ihg" firstAttribute="trailing" secondItem="WZt-48-WNe" secondAttribute="trailing" id="qU1-Kz-jQ2"/>
+                            <constraint firstItem="9Dt-4m-ihg" firstAttribute="bottom" secondItem="WZt-48-WNe" secondAttribute="bottom" id="xol-U9-F2q"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WZt-48-WNe"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="V2E-JY-ZSg"/>
+                    <connections>
+                        <outlet property="contentView" destination="9Dt-4m-ihg" id="Ktu-Ez-JLZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h7Z-a3-jER" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2.3999999999999999" y="138.98050974512745"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="profile" width="16" height="16"/>
+        <image name="restaurant" width="16" height="16"/>
+        <image name="search" width="16" height="16"/>
+        <image name="submit photo" width="16" height="16"/>
+        <image name="tabBarBackground" width="16" height="16"/>
+        <image name="winners" width="16" height="16"/>
+    </resources>
+</document>
