@@ -1,0 +1,37 @@
+//
+//  TopPlateHeaderPrefix.pch
+//  TopPlate
+//
+//  Created by Viacheslav Pryimachenko on 4/12/18.
+//  Copyright © 2018 Enke. All rights reserved.
+//
+
+#ifndef TopPlateHeaderPrefix_pch
+#define TopPlateHeaderPrefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <AFNetworking.h>
+#import <MBProgressHUD.h>
+#import "Mantle.h"
+#import "MTLModel.h"
+#import "MTLJSONAdapter.h"
+
+#import "PlateModel.h"
+#import "AuthorModel.h"
+#import "ModelsManager.h"
+#import "PlateModelHelper.h"
+
+#import "UIViewController+BackgroundImage.h"
+#import "UIView+Helper.h"
+#import <UIImageView+WebCache.h>
+#import "APILinks.h"
+#import "NSString+Helper.h"
+#import "NetworkManager.h"
+#import "UserDefaultsManager.h"
+#import "ChooseEnvironmentViewController.h"
+#import "MacrosHelper.h"
+#import "Helper.h"
+
+#endif /* TopPlateHeaderPrefix_pch */

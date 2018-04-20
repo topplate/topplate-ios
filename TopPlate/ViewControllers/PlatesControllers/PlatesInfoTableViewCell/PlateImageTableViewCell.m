@@ -7,6 +7,7 @@
 //
 
 #import "PlateImageTableViewCell.h"
+#import "NSString+Helper.h"
 
 @implementation PlateImageTableViewCell
 
@@ -19,6 +20,17 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (IBAction)likeSelected:(UIButton *)sender {
+    
+}
+
+-(void)setupCellWithModel:(PlateModel *)model {
+    
+    [self.plateImageView sd_setImageWithURL:[model.plateImages.firstObject withBaseUrl]];
+    [self.plateReceiptAvaliable setHidden:(model.plateReceipt.length > 0 || model.plateIngredients.count > 0) ? NO : YES];
+    self.plateNumberOfLikes.text = [NSString stringWithFormat:@"%ld", (long)model.plateLikes];
 }
 
 @end

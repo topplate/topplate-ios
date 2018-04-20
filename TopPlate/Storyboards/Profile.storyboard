@@ -29,7 +29,7 @@
         <!--Profile View Controller-->
         <scene sceneID="Hks-5C-ZNh">
             <objects>
-                <viewController storyboardIdentifier="WinnersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cZZ-C1-ET5" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cZZ-C1-ET5" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8EF-S1-vpa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

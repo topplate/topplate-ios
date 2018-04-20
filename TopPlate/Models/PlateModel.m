@@ -7,7 +7,44 @@
 //
 
 #import "PlateModel.h"
+#import "AuthorModel.h"
+#import "NetworkManager.h"
 
 @implementation PlateModel
+
++ (NSDictionary *) JSONKeyPathsByPropertyKey {
+    return @{@"plateId" : @"_id",
+             @"plateName" : @"name",
+             @"plateImages" : @"images",
+             @"plateAuthor" : @"author",
+             @"plateAuthorLocation" : @"address",
+             @"plateLikes" : @"likes",
+             @"plateIngredients" : @"ingredients",
+             @"plateReceipt" : @"recipe",
+             @"plateHasReceipt" : @"hasRecipe",
+             @"relatedPlates" : @"relatedPlates"
+             };
+}
+
++ (NSValueTransformer *)plateIngredientsJSONTransformer {
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id str, BOOL *success, NSError *__autoreleasing *error) {
+        
+        if ([str isKindOfClass:[NSNumber class]]) {
+            return @[];
+        }
+        
+#warning ToDo
+    
+        return nil;
+    }];
+}
+
++ (NSValueTransformer*)relatedPlatesJSONTransformer{
+    return [MTLJSONAdapter arrayTransformerWithModelClass:[PlateModel class]];
+}
+
++ (NSValueTransformer*)plateAuthorPlatesJSONTransformer{
+    return [MTLJSONAdapter dictionaryTransformerWithModelClass:[AuthorModel class]];
+}
 
 @end

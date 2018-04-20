@@ -22,4 +22,9 @@
     [self.view insertSubview:backgroundImageView atIndex:0];
 }
 
+-(void)setNavigationTitleViewImage {
+    
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TopPlateLogo"]];
+}
+
 @end

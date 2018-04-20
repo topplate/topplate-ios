@@ -10,4 +10,12 @@
 
 @interface PlateImageTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *plateImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *plateReceiptAvaliable;
+@property (weak, nonatomic) IBOutlet UIButton *plateLikeButton;
+@property (weak, nonatomic) IBOutlet UILabel *plateNumberOfLikes;
+
+-(void)setupCellWithModel:(PlateModel *)model;
+
 @end
+

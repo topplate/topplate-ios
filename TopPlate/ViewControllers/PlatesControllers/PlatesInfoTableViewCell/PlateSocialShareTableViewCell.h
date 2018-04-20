@@ -10,4 +10,10 @@
 
 @interface PlateSocialShareTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIButton *plateFacebookShare;
+@property (weak, nonatomic) IBOutlet UIButton *plateInstagramShare;
+@property (weak, nonatomic) IBOutlet UIButton *plateTwitterShare;
+@property (weak, nonatomic) IBOutlet UIButton *plateGooglePlusShare;
+@property (weak, nonatomic) IBOutlet UIButton *platePinterestShare;
+
 @end

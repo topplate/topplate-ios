@@ -21,4 +21,13 @@
     // Configure the view for the selected state
 }
 
+-(void)setupCellNameWithModel:(PlateModel *)model {
+    self.plateNameLabel.text = [model.plateName uppercaseString];
+}
+
+-(void)setupCellReceiptWithModel:(PlateModel *)model {
+    self.plateNameLabel.text = [model.plateReceipt uppercaseString];
+}
+
+
 @end

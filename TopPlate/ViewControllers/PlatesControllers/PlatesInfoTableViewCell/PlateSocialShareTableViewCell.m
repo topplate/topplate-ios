@@ -21,4 +21,24 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)plateFacebookShareSelected:(UIButton *)sender {
+    
+}
+
+- (IBAction)plateInstagramShareSelected:(UIButton *)sender {
+    
+}
+
+- (IBAction)plateTwitterShareSelected:(UIButton *)sender {
+    
+}
+
+- (IBAction)plateGooglePlusShareSelected:(UIButton *)sender {
+    
+}
+
+- (IBAction)platePinterestShareSelected:(UIButton *)sender {
+    
+}
+
 @end

@@ -10,4 +10,6 @@
 
 @interface PlateInfoViewController : UIViewController
 
+@property (nonatomic, strong) PlateModel *selectedPlate;
+
 @end

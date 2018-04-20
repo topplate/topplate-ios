@@ -10,4 +10,8 @@
 
 @interface PlateIngredientTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *plateIngredient;
+
+-(void)setupCellWithIngredient:(NSString *)ingredient;
+
 @end

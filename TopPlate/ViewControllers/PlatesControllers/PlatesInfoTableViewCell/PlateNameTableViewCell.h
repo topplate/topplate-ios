@@ -10,4 +10,10 @@
 
 @interface PlateNameTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *plateNameLabel;
+
+-(void)setupCellNameWithModel:(PlateModel *)model;
+
+-(void)setupCellReceiptWithModel:(PlateModel *)model;
+
 @end

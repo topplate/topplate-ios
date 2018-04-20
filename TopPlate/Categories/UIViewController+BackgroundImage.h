@@ -10,4 +10,8 @@
 
 @interface UIViewController (BackgroundImage)
 
+-(void)setLoginBackgroundImage;
+
+-(void)setNavigationTitleViewImage;
+
 @end

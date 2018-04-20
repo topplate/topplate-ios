@@ -14,9 +14,10 @@
         <scene sceneID="iQP-AG-zet">
             <objects>
                 <navigationController storyboardIdentifier="customTabBarNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BUU-WB-5zC" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bey-g2-eDc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="bey-g2-eDc">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.031372549020000001" green="0.078431372550000003" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="Xwj-CK-lmN" kind="relationship" relationship="rootViewController" id="GMH-sC-Xno"/>
@@ -31,19 +32,18 @@
             <objects>
                 <viewController storyboardIdentifier="CustomTabBarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Xwj-CK-lmN" customClass="CustomTabBarViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tlG-U6-pKU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Dt-4m-ihg">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAq-a8-gPf">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <rect key="frame" x="0.0" y="554" width="375" height="49"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tabBarBackground" translatesAutoresizingMaskIntoConstraints="NO" id="HVz-8b-PbB">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabBarBackground" translatesAutoresizingMaskIntoConstraints="NO" id="HVz-8b-PbB">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="R61-RO-ypO">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -86,12 +86,15 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="HVz-8b-PbB" firstAttribute="top" secondItem="dAq-a8-gPf" secondAttribute="top" id="33K-eU-YCv"/>
                                     <constraint firstAttribute="bottom" secondItem="R61-RO-ypO" secondAttribute="bottom" id="3CL-bj-3hb"/>
                                     <constraint firstItem="R61-RO-ypO" firstAttribute="top" secondItem="dAq-a8-gPf" secondAttribute="top" id="5I1-zy-v7v"/>
                                     <constraint firstAttribute="height" constant="49" id="8wJ-fN-yzS"/>
+                                    <constraint firstAttribute="trailing" secondItem="HVz-8b-PbB" secondAttribute="trailing" id="Jgj-et-uC0"/>
+                                    <constraint firstAttribute="bottom" secondItem="HVz-8b-PbB" secondAttribute="bottom" id="bJP-Ft-vSG"/>
                                     <constraint firstItem="R61-RO-ypO" firstAttribute="leading" secondItem="dAq-a8-gPf" secondAttribute="leading" id="pul-Py-LGy"/>
+                                    <constraint firstItem="HVz-8b-PbB" firstAttribute="leading" secondItem="dAq-a8-gPf" secondAttribute="leading" id="wSi-QP-kiM"/>
                                     <constraint firstAttribute="trailing" secondItem="R61-RO-ypO" secondAttribute="trailing" id="xP2-JD-G5U"/>
                                 </constraints>
                             </view>

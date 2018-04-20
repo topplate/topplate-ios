@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setNavigationTitleViewImage];
     [self platesSelected:nil];
     // Do any additional setup after loading the view.
 }
@@ -42,12 +43,8 @@
 }
 */
 
-
-
-
-
 - (IBAction)platesSelected:(id)sender {
-    [self removeChildViewControllers];
+//    [self removeChildViewControllers];
     
     UIStoryboard *platesStoryboard = [UIStoryboard storyboardWithName:@"Plates" bundle:nil];
     PlatesViewController *platesViewController = [platesStoryboard instantiateViewControllerWithIdentifier:@"PlatesViewController"];
@@ -55,7 +52,7 @@
 }
 
 - (IBAction)searchSelected:(id)sender {
-    [self removeChildViewControllers];
+//    [self removeChildViewControllers];
     
     UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
     SearchViewController *searchViewController = [searchStoryboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
@@ -63,7 +60,7 @@
 }
 
 - (IBAction)uploadPlateSelected:(id)sender {
-    [self removeChildViewControllers];
+//    [self removeChildViewControllers];
     
     UIStoryboard *uploadPlatesStoryboard = [UIStoryboard storyboardWithName:@"UploadPlate" bundle:nil];
     UploadPlateViewController *uploadViewController = [uploadPlatesStoryboard instantiateViewControllerWithIdentifier:@"UploadPlateViewController"];
@@ -71,7 +68,7 @@
 }
 
 - (IBAction)winnersSelected:(id)sender {
-    [self removeChildViewControllers];
+//    [self removeChildViewControllers];
     
     UIStoryboard *winnersStoryboard = [UIStoryboard storyboardWithName:@"Winners" bundle:nil];
     WinnersViewController *winnersViewController = [winnersStoryboard instantiateViewControllerWithIdentifier:@"WinnersViewController"];
@@ -79,7 +76,7 @@
 }
 
 - (IBAction)profileSelected:(id)sender {
-    [self removeChildViewControllers];
+//    [self removeChildViewControllers];
     
     UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
     ProfileViewController *profileViewController = [profileStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
@@ -101,8 +98,8 @@
 
 -(void)removeChildViewControllers {
     
-    if (self.parentViewController.childViewControllers.count > 0) {
-        UIViewController *currentViewController = self.parentViewController.childViewControllers.firstObject;
+    if (self.childViewControllers.count > 0) {
+        UIViewController *currentViewController = self.parentViewController.childViewControllers.lastObject;
         
         [currentViewController willMoveToParentViewController:nil];
         [currentViewController.view removeFromSuperview];

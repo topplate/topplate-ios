@@ -21,4 +21,10 @@
     // Configure the view for the selected state
 }
 
+-(void)setupCellWithModel:(PlateModel *)model {
+    
+    self.plateAuthorName.text = [model.plateAuthor.authorName uppercaseString];
+    self.plateLocation.text = [model.plateAuthorLocation uppercaseString];
+}
+
 @end

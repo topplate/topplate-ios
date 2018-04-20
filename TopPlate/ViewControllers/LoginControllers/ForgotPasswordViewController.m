@@ -9,6 +9,8 @@
 #import "ForgotPasswordViewController.h"
 
 @interface ForgotPasswordViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *resetPasswordTextField;
+@property (weak, nonatomic) IBOutlet UIButton *resetButton;
 
 @end
 
@@ -16,12 +18,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setLoginBackgroundImage];
+    [self.resetButton roundCorners];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)resetPasswordSelected:(id)sender {
+    
+}
+
+- (IBAction)goBackSelected:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

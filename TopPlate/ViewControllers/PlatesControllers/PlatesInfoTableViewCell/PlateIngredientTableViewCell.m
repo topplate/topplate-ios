@@ -21,4 +21,8 @@
     // Configure the view for the selected state
 }
 
+-(void)setupCellWithIngredient:(NSString *)ingredient {
+    self.plateIngredient.text = [ingredient uppercaseString];
+}
+
 @end

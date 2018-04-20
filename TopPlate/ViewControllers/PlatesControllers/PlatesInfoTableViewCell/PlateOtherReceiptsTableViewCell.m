@@ -7,11 +7,21 @@
 //
 
 #import "PlateOtherReceiptsTableViewCell.h"
+#import "OtherReceipsCollectionViewCell.h"
+
+@interface PlateOtherReceiptsTableViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
+
+@end
 
 @implementation PlateOtherReceiptsTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.otherPlatesCollectionView.delegate = self;
+    self.otherPlatesCollectionView.dataSource = self;
+    
+    
     // Initialization code
 }
 
@@ -19,6 +29,18 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return 20;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    OtherReceipsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"OtherReceipsCollectionViewCell" forIndexPath:indexPath];
+    
+    return cell;
 }
 
 @end

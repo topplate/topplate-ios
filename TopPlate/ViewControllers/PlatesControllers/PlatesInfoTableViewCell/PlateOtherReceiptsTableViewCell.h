@@ -10,4 +10,9 @@
 
 @interface PlateOtherReceiptsTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *plateAuthorName;
+@property (weak, nonatomic) IBOutlet UICollectionView *otherPlatesCollectionView;
+
+@property (nonatomic, strong) PlateModel *model;
+
 @end

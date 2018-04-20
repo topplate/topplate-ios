@@ -7,8 +7,14 @@
 //
 
 #import "SignInViewController.h"
+#import "SignUpViewController.h"
+#import "ForgotPasswordViewController.h"
 
 @interface SignInViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UIButton *signInButton;
+@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
 
 @end
 
@@ -16,12 +22,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setLoginBackgroundImage];
+    
+    [self.signInButton roundCorners];
+    [self.signUpButton roundCorners];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)loginSelected:(id)sender {
+    
+}
+
+- (IBAction)forgotPasswordSelected:(id)sender {
+    
+    UIStoryboard *storyboard =  [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    ForgotPasswordViewController *forgotPasswordViewController = [storyboard instantiateViewControllerWithIdentifier:@"ForgotPasswordViewController"];
+    [self.navigationController pushViewController:forgotPasswordViewController animated:YES];
+}
+
+- (IBAction)signUpSelected:(id)sender {
+    
+    UIStoryboard *storyboard =  [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    SignUpViewController *signUpViewController = [storyboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
+    [self.navigationController pushViewController:signUpViewController animated:YES];
+}
+
+
+
+- (IBAction)goBackSelected:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

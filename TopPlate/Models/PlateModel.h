@@ -7,7 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AuthorModel.h"
 
-@interface PlateModel : NSObject
+@interface PlateModel : MTLModel <MTLJSONSerializing>
+
+@property (nonatomic, strong) NSString *plateId;
+@property (nonatomic, strong) NSString *plateName;
+@property (nonatomic, strong) NSArray<NSString *> *plateImages;
+@property (nonatomic, strong) AuthorModel *plateAuthor;
+@property (nonatomic, strong) NSString *plateAuthorLocation;
+@property (nonatomic) NSInteger plateLikes;
+@property (nonatomic, strong) NSArray<NSString *> *plateIngredients;
+@property (nonatomic, strong) NSString *plateReceipt;
+@property (nonatomic) BOOL plateHasReceipt;
+@property (nonatomic, strong) NSArray<PlateModel *> *relatedPlates; //used for detail plates
 
 @end
