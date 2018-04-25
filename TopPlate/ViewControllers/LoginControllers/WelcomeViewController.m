@@ -74,28 +74,7 @@
 
 - (IBAction)skipToPlates:(id)sender {
     
-    PlateModelHelper *helper = [modelsManager getModel:HelperTypePlates];
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [helper getPlatesForEnvironments:self.environment completionBlock:^(NSArray *plates, NSString *errorString) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        if (!errorString) {
-            
-            UIStoryboard *story = [UIStoryboard storyboardWithName:@"Plates" bundle:nil];
-            
-            
-            ChooseEnvironmentViewController *test = [story instantiateViewControllerWithIdentifier:@"ChooseEnvironmentViewController"];
-            
-            
-            
-//            UIStoryboard *storyboard =  [UIStoryboard storyboardWithName:@"CustomTabBar" bundle:nil];
-//            UINavigationController *customTabBarNavigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"customTabBarNavigationController"];
-//
-            UIWindow *window = UIApplication.sharedApplication.keyWindow;
-            window.rootViewController = test;
-            [window makeKeyAndVisible];
-        }
-    }];
+    [Helper showPlatesScreen];
 }
 
 @end

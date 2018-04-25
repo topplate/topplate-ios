@@ -130,9 +130,6 @@ typedef NS_ENUM(NSUInteger, SectionType)
             break;
     }
     
-    
-    
-    
     return baseCell;
 }
 
@@ -178,11 +175,16 @@ typedef NS_ENUM(NSUInteger, SectionType)
             cellHeight = UITableViewAutomaticDimension;
             break;
             
-        case SectionTypeOtherReceipes:
+        case SectionTypeOtherReceipes: {
             
 //            float roundedup = ceil(otherfloat);
 
-            cellHeight = ceil(self.selectedPlate.relatedPlates.count / 3) * 150;
+            CGFloat width = ([UIScreen mainScreen].bounds.size.width / self.selectedPlate.relatedPlates.count) - 15;
+            
+            cellHeight = width;
+            
+//            ceil(self.selectedPlate.relatedPlates.count / 3) * 150;
+        }
             break;
             
         default:

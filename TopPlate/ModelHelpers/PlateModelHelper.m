@@ -11,10 +11,15 @@
 
 @implementation PlateModelHelper
 
--(void)getPlatesForEnvironments:(NSString *)environment
-                completionBlock:(PlateCompletionBlock)completion {
-    
-    [[NetworkManager sharedManager] getPlates:@{@"environment" : environment ?: @""} andCompletion:^(id response, NSError *error) {
+-(void)getPlatesForEnvironment:(NSString *)environment
+                     withLimit:(NSNumber *)limit
+                      withSkip:(NSNumber *)skip
+               completionBlock:(PlateCompletionBlock)completion {
+
+    [[NetworkManager sharedManager] getPlates:@{@"environment" : environment ?: @"",
+                                                @"lim" : limit ?: 0,
+                                                @"skip" : skip ?: 0}
+                                andCompletion:^(id response, NSError *error) {
         
         if (error) {
             completion(nil, error.localizedDescription);
@@ -24,7 +29,20 @@
                 NSError *error;
                 NSMutableArray *plates = [[MTLJSONAdapter modelsOfClass:[PlateModel class] fromJSONArray:response error:&error] mutableCopy];
                 
-                self.plates = plates;
+                if (limit) {
+                    
+                    if (self.plates) {
+                        [self.plates addObjectsFromArray:plates];
+                    } else {
+                        self.plates = [[NSArray arrayWithArray:plates] mutableCopy];
+                    }
+                } else {
+                    self.plates = plates;   
+                }
+                
+                if ([self.delegate respondsToSelector:@selector(modelIsUpdated)]) {
+                    [self.delegate modelIsUpdated];
+                }
                 
                 completion(plates, nil);
             }

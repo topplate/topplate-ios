@@ -92,16 +92,7 @@
     
     [UserDefaultsManager saveCustomObject:button.environment forKey:Default_SelectedEnvironment];
     
-    PlateModelHelper *plateHelper = [modelsManager getModel:HelperTypePlates];
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [plateHelper getPlatesForEnvironments:button.environment completionBlock:^(NSArray *plates, NSString *errorString) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
-        if (!errorString) {
-            [Helper showPlatesScreen];
-        }
-    }];
+    [Helper showPlatesScreen];
 }
 
 -(void)showSplashScreen {

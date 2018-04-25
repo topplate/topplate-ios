@@ -15,6 +15,7 @@
 
 @interface CustomTabBarViewController ()
 @property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *bottomButtonsViews;
 
 @end
 
@@ -49,6 +50,7 @@
     UIStoryboard *platesStoryboard = [UIStoryboard storyboardWithName:@"Plates" bundle:nil];
     PlatesViewController *platesViewController = [platesStoryboard instantiateViewControllerWithIdentifier:@"PlatesViewController"];
     [self addChildViewController:platesViewController];
+    [self highLightButton:sender];
 }
 
 - (IBAction)searchSelected:(id)sender {
@@ -57,6 +59,7 @@
     UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
     SearchViewController *searchViewController = [searchStoryboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
     [self addChildViewController:searchViewController];
+    [self highLightButton:sender];
 }
 
 - (IBAction)uploadPlateSelected:(id)sender {
@@ -65,6 +68,7 @@
     UIStoryboard *uploadPlatesStoryboard = [UIStoryboard storyboardWithName:@"UploadPlate" bundle:nil];
     UploadPlateViewController *uploadViewController = [uploadPlatesStoryboard instantiateViewControllerWithIdentifier:@"UploadPlateViewController"];
     [self addChildViewController:uploadViewController];
+    [self highLightButton:sender];
 }
 
 - (IBAction)winnersSelected:(id)sender {
@@ -73,6 +77,7 @@
     UIStoryboard *winnersStoryboard = [UIStoryboard storyboardWithName:@"Winners" bundle:nil];
     WinnersViewController *winnersViewController = [winnersStoryboard instantiateViewControllerWithIdentifier:@"WinnersViewController"];
     [self addChildViewController:winnersViewController];
+    [self highLightButton:sender];
 }
 
 - (IBAction)profileSelected:(id)sender {
@@ -81,6 +86,7 @@
     UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
     ProfileViewController *profileViewController = [profileStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
     [self addChildViewController:profileViewController];
+    [self highLightButton:sender];
 }
 
 
@@ -105,6 +111,16 @@
         [currentViewController.view removeFromSuperview];
         [currentViewController removeFromParentViewController];
     }
+}
+
+-(void)highLightButton:(UIButton *)button {
+    
+    for (UIView *view in self.bottomButtonsViews) {
+        [view setBackgroundColor:[UIColor clearColor]];
+    }
+    
+    UIView *selectedView = self.bottomButtonsViews[button.tag - (button ? 101 : 0)];
+    [selectedView setBackgroundColor:[UIColor yellowColor]];
 }
 
 

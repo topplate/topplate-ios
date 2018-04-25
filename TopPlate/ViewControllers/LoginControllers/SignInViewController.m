@@ -37,6 +37,7 @@
 
 - (IBAction)loginSelected:(id)sender {
     
+    [Helper showPlatesScreen];
 }
 
 - (IBAction)forgotPasswordSelected:(id)sender {

@@ -11,11 +11,17 @@
 #import "PlateInfoViewController.h"
 #import "PlateModelHelper.h"
 #import <UIImageView+WebCache.h>
+#import "CharityTableViewCell.h"
 
-@interface PlatesViewController () <UITableViewDelegate, UITableViewDataSource>
+static int kDefaultLoadLimit = 10;
+
+@interface PlatesViewController () <UITableViewDelegate, UITableViewDataSource, PlatesModelHelperDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) PlateModelHelper *platesHelper;
+
+@property (nonatomic) NSInteger limit;
+@property (nonatomic) NSInteger skip;
 
 @end
 
@@ -29,8 +35,16 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.tableFooterView.frame = CGRectZero;
     
-    self.platesHelper = [[ModelsManager sharedManager] getModel:HelperTypePlates];
+    self.tableView.estimatedRowHeight = 315;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    self.limit = kDefaultLoadLimit;
+    self.skip = 0;
+    
+    self.platesHelper = [modelsManager getModel:HelperTypePlates];
+    self.platesHelper.delegate = self;
     
     [self loadPlates];
     
@@ -40,12 +54,17 @@
 -(void)loadPlates {
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self.platesHelper getPlatesForEnvironments:@"restaurant" completionBlock:^(NSArray *plates, NSString *errorString) {
+    [self.platesHelper getPlatesForEnvironment:[UserDefaultsManager loadCustomObjectForKey:Default_SelectedEnvironment]
+                                     withLimit:@(self.limit)
+                                      withSkip:@(self.skip)
+                               completionBlock:^(NSArray *plates, NSString *errorString) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        if (plates.count > 0 && !errorString) {
-            [self.tableView reloadData];
+        if (!errorString && plates.count < kDefaultLoadLimit) {
+            self.limit = -1;
+            self.skip = -1;
         }
         NSLog(@"");
+
     }];
 }
 
@@ -75,6 +94,16 @@
     return self.platesHelper.plates.count;
 }
 
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    CharityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CharityTableViewCell"];
+    return  cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    return 50;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     PlatesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlatesTableViewCell" forIndexPath:indexPath];
@@ -89,7 +118,17 @@
     [cell.plateReceiptImage setHidden:!plate.plateHasReceipt];
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == self.platesHelper.plates.count - 1 && self.limit != -1 && self.skip != -1) {
+        //        self.limit += kDefaultLoadLimit;
+        self.skip += kDefaultLoadLimit;
+        [self loadPlates];
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -112,5 +151,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - PlatesModelHelperDelegate -
+
+-(void)modelIsUpdated {
+    
+    [self.tableView reloadData];
+}
 
 @end

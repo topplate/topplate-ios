@@ -21,8 +21,8 @@
 
 +(void)showPlatesScreen {
     
-    UIStoryboard *platesS = [UIStoryboard storyboardWithName:@"Plates" bundle:nil];
-    UINavigationController *platesNav = (UINavigationController *)[platesS instantiateViewControllerWithIdentifier:@"platesNavigationController"];
+    UIStoryboard *platesS = [UIStoryboard storyboardWithName:@"CustomTabBar" bundle:nil];
+    UINavigationController *platesNav = (UINavigationController *)[platesS instantiateViewControllerWithIdentifier:@"customTabBarNavigationController"];
     UIWindow *window = UIApplication.sharedApplication.keyWindow;
     window.rootViewController = platesNav;
     [window makeKeyAndVisible];
