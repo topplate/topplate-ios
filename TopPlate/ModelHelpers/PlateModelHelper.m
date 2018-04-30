@@ -64,4 +64,16 @@
     }];
 }
 
+-(void)uploadPlateWithModel:(PlateModel *)model
+                 completion:(void(^)(BOOL result, NSString *errorString))completion {
+    
+    [[NetworkManager sharedManager] uploadPlateWithModel:model andCompletion:^(id response, NSError *error) {
+        if (error) {
+            completion(nil, error.localizedDescription);
+        } else {
+            NSLog(@"");
+        }
+    }];
+}
+
 @end

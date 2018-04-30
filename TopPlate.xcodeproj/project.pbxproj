@@ -75,6 +75,10 @@
 		338A57F1207FB700000FA8BD /* MTLReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A57DD207FB700000FA8BD /* MTLReflection.m */; };
 		338A57F2207FB700000FA8BD /* NSDictionary+MTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A57E1207FB700000FA8BD /* NSDictionary+MTLManipulationAdditions.m */; };
 		338A57F6207FBD8E000FA8BD /* ModelsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A57F5207FBD8E000FA8BD /* ModelsManager.m */; };
+		33A7AC182096459700C397AB /* IngredientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A7AC172096459700C397AB /* IngredientTableViewCell.m */; };
+		33A7AC1C20964C6000C397AB /* TPTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A7AC1B20964C6000C397AB /* TPTextField.m */; };
+		33A7AC1F2096649A00C397AB /* TPTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A7AC1E2096649A00C397AB /* TPTextView.m */; };
+		33A7AC2320970AEA00C397AB /* JSImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A7AC2220970AEA00C397AB /* JSImagePickerViewController.m */; };
 		33D6E08E207FE4BA0097DAC4 /* UIView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D6E08D207FE4BA0097DAC4 /* UIView+Helper.m */; };
 		46ECE700EBB0B139F7BED2E1 /* libPods-TopPlateUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6022C681FDB19AAE2806250 /* libPods-TopPlateUITests.a */; };
 		87B856CEBC75E9E82BD40066 /* libPods-TopPlate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B787FD32EBF82D4951E13FB /* libPods-TopPlate.a */; };
@@ -233,6 +237,14 @@
 		338A57E1207FB700000FA8BD /* NSDictionary+MTLManipulationAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MTLManipulationAdditions.m"; sourceTree = "<group>"; };
 		338A57F4207FBD8E000FA8BD /* ModelsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelsManager.h; sourceTree = "<group>"; };
 		338A57F5207FBD8E000FA8BD /* ModelsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelsManager.m; sourceTree = "<group>"; };
+		33A7AC162096459700C397AB /* IngredientTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IngredientTableViewCell.h; sourceTree = "<group>"; };
+		33A7AC172096459700C397AB /* IngredientTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IngredientTableViewCell.m; sourceTree = "<group>"; };
+		33A7AC1A20964C6000C397AB /* TPTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPTextField.h; sourceTree = "<group>"; };
+		33A7AC1B20964C6000C397AB /* TPTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPTextField.m; sourceTree = "<group>"; };
+		33A7AC1D2096649A00C397AB /* TPTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPTextView.h; sourceTree = "<group>"; };
+		33A7AC1E2096649A00C397AB /* TPTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPTextView.m; sourceTree = "<group>"; };
+		33A7AC2120970AEA00C397AB /* JSImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSImagePickerViewController.h; sourceTree = "<group>"; };
+		33A7AC2220970AEA00C397AB /* JSImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSImagePickerViewController.m; sourceTree = "<group>"; };
 		33D6E08C207FE4BA0097DAC4 /* UIView+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Helper.h"; sourceTree = "<group>"; };
 		33D6E08D207FE4BA0097DAC4 /* UIView+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helper.m"; sourceTree = "<group>"; };
 		3424ED214A665742F032A388 /* Pods-TopPlate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopPlate.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopPlate/Pods-TopPlate.release.xcconfig"; sourceTree = "<group>"; };
@@ -278,6 +290,10 @@
 			children = (
 				3366C17B20862D6300D710A9 /* EnvironmentButton.h */,
 				3366C17C20862D6300D710A9 /* EnvironmentButton.m */,
+				33A7AC1A20964C6000C397AB /* TPTextField.h */,
+				33A7AC1B20964C6000C397AB /* TPTextField.m */,
+				33A7AC1D2096649A00C397AB /* TPTextView.h */,
+				33A7AC1E2096649A00C397AB /* TPTextView.m */,
 			);
 			path = "Custom elements";
 			sourceTree = "<group>";
@@ -390,6 +406,7 @@
 				338A57A0207F55ED000FA8BD /* PlatesInfoTableViewCell */,
 				338A5760207F3520000FA8BD /* UploadPlateViewController.h */,
 				338A5761207F3520000FA8BD /* UploadPlateViewController.m */,
+				33A7AC192096459D00C397AB /* UploadPlateCells */,
 			);
 			path = PlatesControllers;
 			sourceTree = "<group>";
@@ -563,9 +580,28 @@
 		338A57F3207FB70D000FA8BD /* ThirdPartyLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				33A7AC2020970AEA00C397AB /* JSImagePickerController */,
 				338A57BC207FB700000FA8BD /* Mantle */,
 			);
 			path = ThirdPartyLibraries;
+			sourceTree = "<group>";
+		};
+		33A7AC192096459D00C397AB /* UploadPlateCells */ = {
+			isa = PBXGroup;
+			children = (
+				33A7AC162096459700C397AB /* IngredientTableViewCell.h */,
+				33A7AC172096459700C397AB /* IngredientTableViewCell.m */,
+			);
+			path = UploadPlateCells;
+			sourceTree = "<group>";
+		};
+		33A7AC2020970AEA00C397AB /* JSImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				33A7AC2120970AEA00C397AB /* JSImagePickerViewController.h */,
+				33A7AC2220970AEA00C397AB /* JSImagePickerViewController.m */,
+			);
+			path = JSImagePickerController;
 			sourceTree = "<group>";
 		};
 		4C1BBAAA603063397C8F7AEF /* Frameworks */ = {
@@ -815,6 +851,7 @@
 				338A57E2207FB700000FA8BD /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
 				338A57EB207FB700000FA8BD /* MTLValueTransformer.m in Sources */,
 				338A5768207F353E000FA8BD /* WinnersViewController.m in Sources */,
+				33A7AC1C20964C6000C397AB /* TPTextField.m in Sources */,
 				338A57F6207FBD8E000FA8BD /* ModelsManager.m in Sources */,
 				33D6E08E207FE4BA0097DAC4 /* UIView+Helper.m in Sources */,
 				338A57A6207F569D000FA8BD /* PlateNameTableViewCell.m in Sources */,
@@ -822,6 +859,7 @@
 				338A57F2207FB700000FA8BD /* NSDictionary+MTLManipulationAdditions.m in Sources */,
 				3366C18F208B719900D710A9 /* CharityTableViewCell.m in Sources */,
 				338A57E4207FB700000FA8BD /* EXTScope.m in Sources */,
+				33A7AC182096459700C397AB /* IngredientTableViewCell.m in Sources */,
 				338A57AC207F5EF2000FA8BD /* PlateIngredientTableViewCell.m in Sources */,
 				3366C17D20862D6300D710A9 /* EnvironmentButton.m in Sources */,
 				3366C1712083E8A200D710A9 /* OtherReceipsCollectionViewCell.m in Sources */,
@@ -847,6 +885,7 @@
 				338A5796207F3746000FA8BD /* CustomTabBarViewController.m in Sources */,
 				3366C1742084B7F500D710A9 /* ChooseEnvironmentViewController.m in Sources */,
 				338A57F1207FB700000FA8BD /* MTLReflection.m in Sources */,
+				33A7AC2320970AEA00C397AB /* JSImagePickerViewController.m in Sources */,
 				338A579B207F55C6000FA8BD /* PlatesTableViewCell.m in Sources */,
 				338A57E7207FB700000FA8BD /* MTLModel+NSCoding.m in Sources */,
 				3366C18C20889C1800D710A9 /* AuthorModel.m in Sources */,
@@ -863,6 +902,7 @@
 				338A575F207F3517000FA8BD /* PlateInfoViewController.m in Sources */,
 				338A571B207F30CF000FA8BD /* AppDelegate.m in Sources */,
 				338A576B207F356F000FA8BD /* ProfileViewController.m in Sources */,
+				33A7AC1F2096649A00C397AB /* TPTextView.m in Sources */,
 				338A57A9207F56A9000FA8BD /* PlateAuthorInfoTableViewCell.m in Sources */,
 				338A57EA207FB700000FA8BD /* NSDictionary+MTLMappingAdditions.m in Sources */,
 				338A574D207F3480000FA8BD /* WelcomeViewController.m in Sources */,

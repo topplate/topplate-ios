@@ -17,9 +17,16 @@
 @property (nonatomic, strong) AuthorModel *plateAuthor;
 @property (nonatomic, strong) NSString *plateAuthorLocation;
 @property (nonatomic) NSInteger plateLikes;
-@property (nonatomic, strong) NSArray<NSString *> *plateIngredients;
+@property (nonatomic, strong) NSMutableArray<NSString *> *plateIngredients;
 @property (nonatomic, strong) NSString *plateReceipt;
 @property (nonatomic) BOOL plateHasReceipt;
 @property (nonatomic, strong) NSArray<PlateModel *> *relatedPlates; //used for detail plates
+
+// used for uploading plate
+@property (nonatomic, strong) UIImage *plateImage;
+@property (nonatomic, strong) NSString *plateEnvironment;
+@property (nonatomic, strong) NSString *plateRestaurantName;
+
+-(NSMutableDictionary *)uploadPlateDictionaryRepresentation;
 
 @end

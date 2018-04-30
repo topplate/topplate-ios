@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface OtherReceipsCollectionViewCell : UICollectionViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *otherPlateImageView;
 
 @end

@@ -12,6 +12,15 @@
 
 @implementation PlateModel
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.plateIngredients = [NSMutableArray new];
+    }
+    return self;
+}
+
 + (NSDictionary *) JSONKeyPathsByPropertyKey {
     return @{@"plateId" : @"_id",
              @"plateName" : @"name",
@@ -33,6 +42,10 @@
             return @[];
         }
         
+        if ([str isKindOfClass:[NSString class]]) {
+            return @[str];
+        }
+        
 #warning ToDo
     
         return nil;
@@ -45,6 +58,26 @@
 
 + (NSValueTransformer*)plateAuthorPlatesJSONTransformer{
     return [MTLJSONAdapter dictionaryTransformerWithModelClass:[AuthorModel class]];
+}
+
+-(NSMutableDictionary *)uploadPlateDictionaryRepresentation {
+    
+    NSMutableDictionary *uploadDict = [NSMutableDictionary new];
+    
+    [uploadDict setObject:self.plateName forKey:@"name"];
+    [uploadDict setObject:self.plateEnvironment forKey:@"environment"];
+    
+    if ([self.plateEnvironment isEqualToString:@"restaurant"]) {
+        [uploadDict setObject:self.plateAuthorLocation forKey:@"address"];
+        [uploadDict setObject:self.plateRestaurantName forKey:@"restaurantName"];
+    } else {
+        [uploadDict setObject:self.plateReceipt forKey:@"recipe"];
+        [uploadDict setObject:self.plateIngredients forKey:@"ingredients"];
+    }
+    
+    [uploadDict setObject:self.plateAuthor.authorId forKey:@"author"];
+    
+    return uploadDict;
 }
 
 @end

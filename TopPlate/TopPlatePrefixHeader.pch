@@ -33,5 +33,7 @@
 #import "ChooseEnvironmentViewController.h"
 #import "MacrosHelper.h"
 #import "Helper.h"
+#import "TPTextView.h"
+#import "TPTextField.h"
 
 #endif /* TopPlateHeaderPrefix_pch */

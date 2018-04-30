@@ -45,5 +45,9 @@
 	<array>
 		<string>Oswald-Light.ttf</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Grant access to load pictures from your library.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Grant access to make pictures from your camera.</string>
 </dict>
 </plist>

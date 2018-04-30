@@ -23,5 +23,8 @@
 - (void)getPlateWithId:(NSString *)plateId
          andCompletion:(void (^)(id response, NSError *error))completionBlock;
 
+- (void)uploadPlateWithModel:(PlateModel *)platemodel
+               andCompletion:(void (^)(id response, NSError *error))completionBlock;
+
 
 @end

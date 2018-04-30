@@ -90,5 +90,21 @@
                     }];
 }
 
+- (void)uploadPlateWithModel:(PlateModel *)platemodel andCompletion:(void (^)(id response, NSError *error))completionBlock {
+    
+    [self.sessionManager POST:@"add_plate" parameters:[platemodel uploadPlateDictionaryRepresentation] constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFileData:UIImagePNGRepresentation(platemodel.plateImage)
+                                    name:@"image"
+                                fileName:@"plateImage.png"
+                                mimeType:@"image/png"];
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionBlock(responseObject, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completionBlock(nil, error);
+    }];
+}
+
 
 @end
