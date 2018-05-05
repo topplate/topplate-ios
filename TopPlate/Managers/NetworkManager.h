@@ -8,12 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking.h>
+#import "SocialLoginModel.h"
 
 @interface NetworkManager : NSObject
 
 + (NetworkManager *) sharedManager;
 
 -(void)getEnvironmentsWithCompletion:(void (^)(id response, NSError *error))completionBlock;
+
+
+-(void)signInWithGoogle:(SocialLoginModel *)userInfo
+         withCompletion:(void(^)(id response, NSError *error))completion;
+
+-(void)signInWithFacebook:(SocialLoginModel *)userInfo
+           withCompletion:(void(^)(id response, NSError *error))completionBlock;
 
 //plates
 

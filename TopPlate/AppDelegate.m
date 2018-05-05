@@ -18,7 +18,30 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    SocialLoginModelHelper *helper = [modelsManager getModel:HelperTypeSocialLogin];
+    [helper processLogin];
+    
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
+    
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<NSString *, id> *)options {
+    
+    BOOL google = [[GIDSignIn sharedInstance] handleURL:url
+                                      sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                             annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+    
+    BOOL facebook = [[FBSDKApplicationDelegate sharedInstance] application:app
+                                                                   openURL:url
+                                                         sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                                                annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+    
+    
+    return google || facebook;
 }
 
 
@@ -47,6 +70,5 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
 
 @end

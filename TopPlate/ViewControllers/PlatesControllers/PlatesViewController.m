@@ -54,7 +54,7 @@ static int kDefaultLoadLimit = 10;
 -(void)loadPlates {
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self.platesHelper getPlatesForEnvironment:[UserDefaultsManager loadCustomObjectForKey:Default_SelectedEnvironment]
+    [self.platesHelper getPlatesForEnvironment:getCurrentEnvironment
                                      withLimit:@(self.limit)
                                       withSkip:@(self.skip)
                                completionBlock:^(NSArray *plates, NSString *errorString) {

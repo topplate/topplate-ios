@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 
 extern NSString * const Default_SelectedEnvironment;
+extern NSString * const Default_LoginType;
+extern NSString * const Default_CurrentUser;
+extern NSString * const Default_CurrentAccessToken;
+extern NSString * const Default_SocialAccessTokenExpDate;
+extern NSString * const Default_SocialAccessToken;
 
 @interface UserDefaultsManager : NSUserDefaults
 

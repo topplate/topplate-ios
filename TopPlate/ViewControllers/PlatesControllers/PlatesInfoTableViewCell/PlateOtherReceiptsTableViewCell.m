@@ -21,9 +21,16 @@
     self.otherPlatesCollectionView.delegate = self;
     self.otherPlatesCollectionView.dataSource = self;
     
+    
     [self.otherPlatesCollectionView setCollectionViewLayout:[self setSubCategoriesCollectionViewLayout]];
 
     // Initialization code
+}
+
+-(void)setModel:(PlateModel *)model {
+    _model = model;
+    
+    self.plateAuthorName.text = [NSString stringWithFormat:@"MORE RECIPES FROM @%@", self.model.plateAuthor.authorName];
 }
 
 - (UICollectionViewFlowLayout *) setSubCategoriesCollectionViewLayout {
@@ -50,7 +57,9 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     OtherReceipsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"OtherReceipsCollectionViewCell" forIndexPath:indexPath];
-    [cell.otherPlateImageView sd_setImageWithURL:[self.model.plateImages.firstObject withBaseUrl]];
+    
+    PlateModel *plate = self.model.relatedPlates[indexPath.row];
+    [cell.otherPlateImageView sd_setImageWithURL:[plate.plateImages.firstObject withBaseUrl]];
     
     return cell;
 }
@@ -59,9 +68,7 @@
     
     CGSize tempSize;
     
-    
     CGFloat width = ([UIScreen mainScreen].bounds.size.width / self.model.relatedPlates.count) - 15;
-//    CGFloat height = ([UIScreen mainScreen].bounds.size.height / 3) - 10 - self.navigationController.navigationBar.frame.size.height - self.tabBarController.tabBar.frame.size.height;
     
     tempSize = CGSizeMake(width, width);
     

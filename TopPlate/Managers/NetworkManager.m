@@ -51,9 +51,40 @@
     return _sessionManager;
 }
 
+
+-(void)signInWithGoogle:(SocialLoginModel *)userInfo
+         withCompletion:(void(^)(id response, NSError *error))completionBlock {
+    
+    [self.sessionManager POST:@"login_google"
+                   parameters:[userInfo dictionaryRepresentation]
+                     progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionBlock(responseObject, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completionBlock(nil, error);
+    }];
+}
+
+-(void)signInWithFacebook:(SocialLoginModel *)userInfo
+         withCompletion:(void(^)(id response, NSError *error))completionBlock {
+    
+    [self.sessionManager POST:@"login_facebook"
+                   parameters:[userInfo dictionaryRepresentation]
+                     progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionBlock(responseObject, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completionBlock(nil, error);
+    }];
+}
+
 -(void)getEnvironmentsWithCompletion:(void (^)(id response, NSError *error))completionBlock {
     
-    [self.sessionManager GET:@"get_environments" parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [self.sessionManager GET:@"get_environments"
+                  parameters:nil
+                    progress:^(NSProgress * _Nonnull downloadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionBlock(responseObject, nil);
@@ -90,9 +121,12 @@
                     }];
 }
 
-- (void)uploadPlateWithModel:(PlateModel *)platemodel andCompletion:(void (^)(id response, NSError *error))completionBlock {
+- (void)uploadPlateWithModel:(PlateModel *)platemodel
+               andCompletion:(void (^)(id response, NSError *error))completionBlock {
     
-    [self.sessionManager POST:@"add_plate" parameters:[platemodel uploadPlateDictionaryRepresentation] constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [self.sessionManager POST:@"add_plate"
+                   parameters:[platemodel uploadPlateDictionaryRepresentation]
+    constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFileData:UIImagePNGRepresentation(platemodel.plateImage)
                                     name:@"image"
                                 fileName:@"plateImage.png"
@@ -105,6 +139,5 @@
         completionBlock(nil, error);
     }];
 }
-
 
 @end

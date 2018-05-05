@@ -35,17 +35,17 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)platesSelected:(id)sender {
-//    [self removeChildViewControllers];
+    [self removeChildViewControllers];
     
     UIStoryboard *platesStoryboard = [UIStoryboard storyboardWithName:@"Plates" bundle:nil];
     PlatesViewController *platesViewController = [platesStoryboard instantiateViewControllerWithIdentifier:@"PlatesViewController"];
@@ -54,7 +54,7 @@
 }
 
 - (IBAction)searchSelected:(id)sender {
-//    [self removeChildViewControllers];
+    [self removeChildViewControllers];
     
     UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
     SearchViewController *searchViewController = [searchStoryboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
@@ -63,16 +63,20 @@
 }
 
 - (IBAction)uploadPlateSelected:(id)sender {
-//    [self removeChildViewControllers];
+    [self removeChildViewControllers];
     
-    UIStoryboard *uploadPlatesStoryboard = [UIStoryboard storyboardWithName:@"UploadPlate" bundle:nil];
-    UploadPlateViewController *uploadViewController = [uploadPlatesStoryboard instantiateViewControllerWithIdentifier:@"UploadPlateViewController"];
-    [self addChildViewController:uploadViewController];
-    [self highLightButton:sender];
+    if (getCurrentUser) {
+        UIStoryboard *uploadPlatesStoryboard = [UIStoryboard storyboardWithName:@"UploadPlate" bundle:nil];
+        UploadPlateViewController *uploadViewController = [uploadPlatesStoryboard instantiateViewControllerWithIdentifier:@"UploadPlateViewController"];
+        [self addChildViewController:uploadViewController];
+        [self highLightButton:sender];
+    } else {
+        [Helper showWelcomeScreen];
+    }
 }
 
 - (IBAction)winnersSelected:(id)sender {
-//    [self removeChildViewControllers];
+    [self removeChildViewControllers];
     
     UIStoryboard *winnersStoryboard = [UIStoryboard storyboardWithName:@"Winners" bundle:nil];
     WinnersViewController *winnersViewController = [winnersStoryboard instantiateViewControllerWithIdentifier:@"WinnersViewController"];
@@ -81,12 +85,15 @@
 }
 
 - (IBAction)profileSelected:(id)sender {
-//    [self removeChildViewControllers];
-    
-    UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
-    ProfileViewController *profileViewController = [profileStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
-    [self addChildViewController:profileViewController];
-    [self highLightButton:sender];
+    [self removeChildViewControllers];
+    if (getCurrentUser) {
+        UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
+        ProfileViewController *profileViewController = [profileStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+        [self addChildViewController:profileViewController];
+        [self highLightButton:sender];
+    } else {
+        [Helper showWelcomeScreen];
+    }
 }
 
 
@@ -105,7 +112,7 @@
 -(void)removeChildViewControllers {
     
     if (self.childViewControllers.count > 0) {
-        UIViewController *currentViewController = self.parentViewController.childViewControllers.lastObject;
+        UIViewController *currentViewController = self.childViewControllers.lastObject;
         
         [currentViewController willMoveToParentViewController:nil];
         [currentViewController.view removeFromSuperview];

@@ -26,8 +26,6 @@
             return [str withBaseUrl];
         }
         
-#warning ToDo Check
-        
         return nil;
     }];
 }

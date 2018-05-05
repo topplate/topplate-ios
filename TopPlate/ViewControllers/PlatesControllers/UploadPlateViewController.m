@@ -11,6 +11,9 @@
 #import "JSImagePickerViewController.h"
 #import <Photos/Photos.h>
 
+static NSString *plateNamePlaceholderText = @"Plate name";
+static NSString *plateRecipePlaceholderText = @"Plate recipe";
+
 @interface UploadPlateViewController () <UITableViewDelegate, UITableViewDataSource, IngredientTableViewCellDelegate, JSImagePickerViewControllerDelegate>
 
 @property (nonatomic, strong) PlateModel *uploadedPlate;
@@ -52,7 +55,7 @@
     self.ingredientsTableView.estimatedRowHeight = 2.0;
     self.ingredientsTableView.rowHeight = UITableViewAutomaticDimension;
     
-    self.uploadedPlate.plateEnvironment = [UserDefaultsManager loadCustomObjectForKey:Default_SelectedEnvironment];
+    self.uploadedPlate.plateEnvironment = getCurrentEnvironment;
     
     [self setLoginBackgroundImage];
     
@@ -66,19 +69,18 @@
     self.plateNameTextView.placeholderText = @"Plate name";
     self.plateRecipeTextView.placeholderText = @"Plate recipe";
     
-    
-//    if ([[UserDefaultsManager loadCustomObjectForKey:Default_SelectedEnvironment] isEqualToString:@"homemade"]) {
+    if (isHomeMadeEnv) {
         self.offsetToHomemadeView.priority = 1000;
         self.offsetToRestaurantView.priority = 250;
         [self.plateRestaurantView setHidden:YES];
-//    } else {
-//        self.offsetToRestaurantView.priority = 1000;
-//        self.offsetToHomemadeView.priority = 250;
-//        [self.plateHomeMadeView setHidden:YES];
-//        [self.plateRestaurantName roundFrame];
-//        [self.plateRestaurantLocation roundFrame];
-//    }
-    
+    } else {
+        self.offsetToRestaurantView.priority = 1000;
+        self.offsetToHomemadeView.priority = 250;
+        [self.plateHomeMadeView setHidden:YES];
+        [self.plateRestaurantName roundFrame];
+        [self.plateRestaurantLocation roundFrame];
+    }
+
     
     UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showImageSelection)];
     imageTap.numberOfTapsRequired = 1;
@@ -86,7 +88,6 @@
     [self.plateImageView setUserInteractionEnabled:YES];
     [self.addIngredientButton roundCorners];
     [self.submitButton roundFrame];
-    
 }
 
 -(void)showImageSelection {
@@ -100,6 +101,7 @@
     
     if (images.count > 0) {
         self.plateImageView.image = images.firstObject;
+        self.uploadedPlate.plateImage = images.firstObject;
     }
     
     NSLog(@"");
@@ -133,7 +135,10 @@
 
 - (IBAction)submitAction:(id)sender {
     
+    [self fillModelsWithData];
+    
     if ([self validateTextFields]) {
+        
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self.modelHelper uploadPlateWithModel:self.uploadedPlate completion:^(BOOL result, NSString *errorString) {
             [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -141,6 +146,17 @@
             NSLog(@"");
         }];
     }
+}
+
+-(void)fillModelsWithData {
+    
+    self.uploadedPlate.plateUser = getCurrentUser;
+    self.uploadedPlate.plateName = self.plateNameTextView.text;
+    self.uploadedPlate.plateReceipt = self.plateRecipeTextView.text;
+    
+    self.uploadedPlate.plateRestaurantName = self.plateRestaurantName.text;
+    self.uploadedPlate.plateAuthorLocation = self.plateRestaurantLocation.text;
+    self.uploadedPlate.plateEnvironment = getCurrentEnvironment;
 }
 
 - (IBAction)addIngredientAction:(id)sender {
@@ -194,7 +210,7 @@
     
     NSMutableString *errorMesage = [NSMutableString new];
     
-    if (self.uploadedPlate.plateName.length <= 0) {
+    if ([self.uploadedPlate.plateName isEqualToString:plateNamePlaceholderText] || self.uploadedPlate.plateName.length <= 0) {
         [errorMesage appendString:@"Plate name cannot be empty\n"];
         validatationPassed = NO;
     }
@@ -204,9 +220,21 @@
         validatationPassed = NO;
     }
     
-    if (self.uploadedPlate.plateReceipt.length <= 0) {
-        [errorMesage appendString:@"Plate recipe could not be empty"];
-        validatationPassed = NO;
+    if (isHomeMadeEnv) {
+        if ([self.uploadedPlate.plateReceipt isEqualToString:plateRecipePlaceholderText] || self.uploadedPlate.plateReceipt.length <= 0 ) {
+            [errorMesage appendString:@"Plate recipe could not be empty"];
+            validatationPassed = NO;
+        }
+    } else {
+        if (self.uploadedPlate.plateRestaurantName.length <= 0 ) {
+            [errorMesage appendString:@"Restaurant name can not be empty"];
+            validatationPassed = NO;
+        }
+        
+        if (self.uploadedPlate.plateAuthorLocation.length <= 0 ) {
+            [errorMesage appendString:@"Restaurant location can not be empty"];
+            validatationPassed = NO;
+        }
     }
     
     if (!validatationPassed) {

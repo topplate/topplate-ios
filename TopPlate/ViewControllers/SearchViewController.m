@@ -18,6 +18,7 @@
     [super viewDidLoad];
     
     [self setLoginBackgroundImage];
+    
     // Do any additional setup after loading the view.
 }
 

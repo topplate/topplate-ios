@@ -11,11 +11,17 @@
 #import "PlatesViewController.h"
 #import "CustomTabBarViewController.h"
 #import "ChooseEnvironmentViewController.h"
+#import "SocialLoginModelHelper.h"
 
-@interface WelcomeViewController ()
+@import GoogleSignIn;
+
+@interface WelcomeViewController () <GIDSignInUIDelegate>
+
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 
 @property (nonatomic, strong) NSString *environment;
+
+@property (nonatomic, strong) SocialLoginModelHelper *modelHelper;
 
 @end
 
@@ -26,7 +32,10 @@
     
     [self setLoginBackgroundImage];
     
-    self.environment = @"restaurant";
+    self.modelHelper = [modelsManager getModel:HelperTypeSocialLogin];
+    
+    [self.segmentControl setSelectedSegmentIndex:[self getSelectedEnvironmentIndex]];
+    [self segmentValueChange:self.segmentControl];
     
     // Do any additional setup after loading the view.
 }
@@ -51,21 +60,27 @@
 - (IBAction)segmentValueChange:(UISegmentedControl *)sender {
     
     if (sender.selectedSegmentIndex == 0) {
-        self.environment = @"restaurant";
+        [[UserDefaultsManager standardUserDefaults] setObject:@"restaurant" forKey:Default_SelectedEnvironment];
     } else {
-        self.environment = @"homemade";
+        [[UserDefaultsManager standardUserDefaults] setObject:@"homemade" forKey:Default_SelectedEnvironment];
     }
 }
 
 - (IBAction)connectWithGoogle:(id)sender {
     
+    [self.modelHelper loginWithGoogle:self];
+    [self setEnvironment];
 }
 
 - (IBAction)connectWithFacebook:(id)sender {
     
+    [self.modelHelper loginWithFacebook:self];
+    [self setEnvironment];
 }
 
 - (IBAction)connectWithEmail:(id)sender {
+    
+    [self setEnvironment];
     
     UIStoryboard *storyboard =  [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     SignInViewController *signInViewController = [storyboard instantiateViewControllerWithIdentifier:@"SignInViewController"];
@@ -75,6 +90,23 @@
 - (IBAction)skipToPlates:(id)sender {
     
     [Helper showPlatesScreen];
+}
+
+-(void)setEnvironment {
+    
+    if (self.segmentControl.selectedSegmentIndex == 0) {
+        [[UserDefaultsManager standardUserDefaults] setObject:@"restaurant" forKey:Default_SelectedEnvironment];
+    } else {
+        [[UserDefaultsManager standardUserDefaults] setObject:@"homemade" forKey:Default_SelectedEnvironment];
+    }
+}
+
+-(NSInteger)getSelectedEnvironmentIndex {
+    if (isHomeMadeEnv) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
 @end

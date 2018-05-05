@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AuthorModel.h"
+#import "User.h"
 
 @interface PlateModel : MTLModel <MTLJSONSerializing>
 
@@ -26,6 +27,7 @@
 @property (nonatomic, strong) UIImage *plateImage;
 @property (nonatomic, strong) NSString *plateEnvironment;
 @property (nonatomic, strong) NSString *plateRestaurantName;
+@property (nonatomic, strong) User *plateUser;
 
 -(NSMutableDictionary *)uploadPlateDictionaryRepresentation;
 

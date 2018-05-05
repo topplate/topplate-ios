@@ -7,3 +7,5 @@
 //
 
 #define baseAPIUrl [NSURL URLWithString:@"https://top-plate.herokuapp.com/"]
+
+#define googleClientId [NSString stringWithFormat:@"363481561570-gggao274kguhm50le5hvd80t8jc968f0.apps.googleusercontent.com"]

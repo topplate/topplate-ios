@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, LoginType)
+{
+    LoginTypeEmail = 1,
+    LoginTypeFacebook = 2,
+    LoginTypeGooglePlus = 3
+};
+
 #if (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
 
 #pragma mark - Environment
@@ -21,25 +28,20 @@
 #define IS_RETINA_3X (SCREEN_SCALE >= 3 ? YES : NO)
 
 #define IS_IPAD   (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-#define IS_IPAD_1 (IS_IPAD && ![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
 
 #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 #define IS_IPHONE_X (SCREEN_HEIGHT == 812.0)
 #define IS_IPHONE_6 (SCREEN_HEIGHT == 667.0)
 #define IS_IPHONE_6P (SCREEN_HEIGHT == 736.0)
 #define IS_IPHONE_5 (SCREEN_HEIGHT == 568)
-#define IS_IPHONE_4 (SCREEN_HEIGHT == 480)
 
 #pragma mark - System Version
-#define VERSION_GREATER_THAN(v1, v2)               ([v1 compare:v2 options:NSNumericSearch] == NSOrderedDescending)
 #define SYSTEM_VERSION_EQUAL_TO(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)             ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN(v)                ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
-#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)    ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 #define IS_OS_9_OR_LATER     (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0"))
-#define IS_OS_8_OR_LATER     (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
 
 #endif
 
@@ -85,59 +87,6 @@
 #define kWarning [NSString stringWithFormat:@"Warning"]
 #define kSuccess [NSString stringWithFormat:@"Success"]
 #define kError [NSString stringWithFormat:@"Error"]
-
-
-#pragma mark - User API data keys -
-
-#define kUserName [NSString stringWithFormat:@"username"]
-#define kUserId [NSString stringWithFormat:@"id"]
-#define kCompany [NSString stringWithFormat:@"company"]
-#define kEmail [NSString stringWithFormat:@"email"]
-#define kPassword [NSString stringWithFormat:@"password"]
-#define kUserCity [NSString stringWithFormat:@"city"]
-#define kCountry [NSString stringWithFormat:@"country"]
-#define kAddress [NSString stringWithFormat:@"address"]
-#define kZip [NSString stringWithFormat:@"zip"]
-#define kBusiness [NSString stringWithFormat:@"business"]
-#define kPhone [NSString stringWithFormat:@"phone"]
-#define kVat [NSString stringWithFormat:@"vat"]
-#define kUserToken [NSString stringWithFormat:@"access-token"]
-#define kUserRole [NSString stringWithFormat:@"role"]
-#define kLimit [NSString stringWithFormat:@"limit"]
-#define kDefaultLimitQuantity [NSString stringWithFormat:@"1000"]
-
-
-
-#pragma mark - User local data keys -
-
-#define kUserRememberMe [NSString stringWithFormat:@"rememberMe"]
-
-
-#define kStoryboardNameLogin [NSString stringWithFormat:@"Login"]
-#define kStoryboardNameMainLogics [NSString stringWithFormat:@"MainLogics"]
-#define kRememberState [NSString stringWithFormat:@"RememberUserState"]
-
-#pragma mark - Placeholders -
-
-#define kUserNamePlaceholder [NSString stringWithFormat:@"Username"]
-#define kCompanyPlaceholder [NSString stringWithFormat:@"Company name"]
-#define kEmailPlaceholder [NSString stringWithFormat:@"E-mail"]
-#define kPasswordPlacholder [NSString stringWithFormat:@"Password"]
-#define kCountryPlaceholder [NSString stringWithFormat:@"Country"]
-#define kAddressPlaceholder [NSString stringWithFormat:@"Address"]
-#define kZipPlaceholder [NSString stringWithFormat:@"Zip code"]
-#define kBusinessPlacehplder [NSString stringWithFormat:@"Business"]
-#define kPhonePlaceholder [NSString stringWithFormat:@"Phone number"]
-#define kVatPlaceholder [NSString stringWithFormat:@"Vat code"]
-#define kCityPlaceholder [NSString stringWithFormat:@"City"]
-
-
-#pragma mark - Model constants
-
-#pragma mark Product
-
-
-#pragma mark - Wish list -
 
 #define kWishlistAttentionText [NSString stringWithFormat:@"Don’t forget we are wholesalers! We need to sell a variety of items, so we cannot make orders with only one or two different items. Please try to select a wide range of articles.The minimum order quantity is one pallet box, which can contain about 16 plastic bags or 400 kg of goods."]
 #define kWishlistAttention [NSString stringWithFormat:@"Attention"]

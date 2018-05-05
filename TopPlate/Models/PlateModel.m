@@ -17,6 +17,9 @@
     self = [super init];
     if (self) {
         self.plateIngredients = [NSMutableArray new];
+        self.plateUser = [[User alloc] init];
+        self.plateReceipt = @"";
+        self.plateName = @"";
     }
     return self;
 }
@@ -67,7 +70,7 @@
     [uploadDict setObject:self.plateName forKey:@"name"];
     [uploadDict setObject:self.plateEnvironment forKey:@"environment"];
     
-    if ([self.plateEnvironment isEqualToString:@"restaurant"]) {
+    if (isRestaurantEnv) {
         [uploadDict setObject:self.plateAuthorLocation forKey:@"address"];
         [uploadDict setObject:self.plateRestaurantName forKey:@"restaurantName"];
     } else {
@@ -75,8 +78,8 @@
         [uploadDict setObject:self.plateIngredients forKey:@"ingredients"];
     }
     
-    [uploadDict setObject:self.plateAuthor.authorId forKey:@"author"];
-    
+    [uploadDict setObject:self.plateUser.userId forKey:@"author"];
+
     return uploadDict;
 }
 

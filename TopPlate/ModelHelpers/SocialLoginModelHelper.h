@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GoogleSignIn/GoogleSignIn.h>
+
+typedef void(^SocialCompletionBlock)(id resut, NSError *error);
 
 @interface SocialLoginModelHelper : NSObject
+
+-(void)loginWithGoogle:(id<GIDSignInUIDelegate>)viewController;
+
+-(void)loginWithFacebook:(UIViewController *)viewController;
+
+-(void)processLogin;
+
 
 @end

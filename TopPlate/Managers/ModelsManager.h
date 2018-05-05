@@ -10,9 +10,9 @@
 
 #define modelsManager [ModelsManager sharedManager]
 
-typedef NS_ENUM(NSUInteger, HelperType)
-{
+typedef NS_ENUM(NSUInteger, HelperType) {
     HelperTypeLogin,
+    HelperTypeSocialLogin,
     HelperTypePlates
 };
 

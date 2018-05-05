@@ -68,7 +68,6 @@
     EnvironmentButton *backgroundButton = [[EnvironmentButton alloc] init];
     backgroundButton.environment = model.environmentName;
     [backgroundButton addTarget:self action:@selector(environmentSelected:) forControlEvents:UIControlEventTouchUpInside];
-    [backgroundButton setTitle:[model.environmentName uppercaseString] forState:UIControlStateNormal];
     [backgroundButton sd_setImageWithURL:[model.environmentImage withBaseUrl] forState:UIControlStateNormal];
     [backgroundButton.imageView setContentMode:UIViewContentModeScaleAspectFill];
     
@@ -90,8 +89,8 @@
 
 -(void)environmentSelected:(EnvironmentButton *)button {
     
-    [UserDefaultsManager saveCustomObject:button.environment forKey:Default_SelectedEnvironment];
-    
+    [[UserDefaultsManager standardUserDefaults] setObject:button.environment forKey:Default_SelectedEnvironment];
+         
     [Helper showPlatesScreen];
 }
 

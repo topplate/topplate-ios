@@ -8,6 +8,7 @@
 
 #import "ModelsManager.h"
 #import "PlateModelHelper.h"
+#import "SocialLoginModelHelper.h"
 
 @interface ModelsManager()
 
@@ -37,8 +38,8 @@
     return self;
 }
 
-- (id)getModel:(HelperType)type
-{
+- (id)getModel:(HelperType)type {
+    
     id model = [self.storage objectForKey:@(type)];
     
     if (model)
@@ -47,6 +48,10 @@
     switch (type) {
         case HelperTypeLogin:
 //            model = [LoginModel new];
+            break;
+            
+        case HelperTypeSocialLogin:
+            model = [SocialLoginModelHelper new];
             break;
             
         case HelperTypePlates:
@@ -62,11 +67,9 @@
     return [self.storage objectForKey:@(type)];
 }
 
-- (void)cleanData
-{
-    //    HomeModel *homeModel = [self getModel:ModelTypeHome];
+- (void)cleanData {
+    
     self.storage = [NSMutableDictionary new];
-    //    self.storage[@(ModelTypeHome)] = homeModel;
 }
 
 @end

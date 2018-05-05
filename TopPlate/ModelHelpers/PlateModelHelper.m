@@ -15,10 +15,13 @@
                      withLimit:(NSNumber *)limit
                       withSkip:(NSNumber *)skip
                completionBlock:(PlateCompletionBlock)completion {
+    
+    
+    NSDictionary *paramsDict = @{@"environment" : environment ?: @"",
+                                 @"lim" : limit ?: 0,
+                                 @"skip" : skip ?: 0};
 
-    [[NetworkManager sharedManager] getPlates:@{@"environment" : environment ?: @"",
-                                                @"lim" : limit ?: 0,
-                                                @"skip" : skip ?: 0}
+    [[NetworkManager sharedManager] getPlates:paramsDict
                                 andCompletion:^(id response, NSError *error) {
         
         if (error) {

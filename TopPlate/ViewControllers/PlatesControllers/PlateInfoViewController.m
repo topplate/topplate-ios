@@ -181,7 +181,7 @@ typedef NS_ENUM(NSUInteger, SectionType)
 
             CGFloat width = ([UIScreen mainScreen].bounds.size.width / self.selectedPlate.relatedPlates.count) - 15;
             
-            cellHeight = width;
+            cellHeight = width + 40;
             
 //            ceil(self.selectedPlate.relatedPlates.count / 3) * 150;
         }

@@ -9,6 +9,12 @@
 #import "UserDefaultsManager.h"
 
 NSString * const Default_SelectedEnvironment = @"Default_SelectedEnvironment";
+NSString * const Default_LoginType = @"Default_LoginType";
+NSString * const Default_CurrentUser = @"Default_CurrentUser";
+NSString * const Default_CurrentAccessToken = @"Default_CurrentAccessToken";
+NSString * const Default_SocialAccessTokenExpDate = @"Default_SocialAccessTokenExpDate";
+NSString * const Default_SocialAccessToken = @"Default_SocialAccessToken";
+
 
 @implementation UserDefaultsManager
 

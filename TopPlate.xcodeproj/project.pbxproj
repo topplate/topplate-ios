@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		332D4E632099024700F535E2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 332D4E622099024700F535E2 /* User.m */; };
 		3366C16E2083CA2400D710A9 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366C16D2083CA2400D710A9 /* NSString+Helper.m */; };
 		3366C1712083E8A200D710A9 /* OtherReceipsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366C1702083E8A200D710A9 /* OtherReceipsCollectionViewCell.m */; };
 		3366C1742084B7F500D710A9 /* ChooseEnvironmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366C1732084B7F500D710A9 /* ChooseEnvironmentViewController.m */; };
@@ -104,6 +105,8 @@
 
 /* Begin PBXFileReference section */
 		1A4609747087FCA603B59DD9 /* Pods-TopPlateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopPlateTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopPlateTests/Pods-TopPlateTests.release.xcconfig"; sourceTree = "<group>"; };
+		332D4E612099024700F535E2 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		332D4E622099024700F535E2 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		3366C1682083C1F900D710A9 /* APILinks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APILinks.h; sourceTree = "<group>"; };
 		3366C16C2083CA2400D710A9 /* NSString+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
 		3366C16D2083CA2400D710A9 /* NSString+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
@@ -441,6 +444,8 @@
 				3366C1762085EFD700D710A9 /* EnvironmentsModel.m */,
 				338A577E207F3630000FA8BD /* LoginModel.h */,
 				338A577F207F3630000FA8BD /* LoginModel.m */,
+				332D4E612099024700F535E2 /* User.h */,
+				332D4E622099024700F535E2 /* User.m */,
 				338A5782207F364A000FA8BD /* PlateModel.h */,
 				338A5783207F364A000FA8BD /* PlateModel.m */,
 				3366C18A20889C1800D710A9 /* AuthorModel.h */,
@@ -890,6 +895,7 @@
 				338A57E7207FB700000FA8BD /* MTLModel+NSCoding.m in Sources */,
 				3366C18C20889C1800D710A9 /* AuthorModel.m in Sources */,
 				338A57B2207F5F11000FA8BD /* PlateOtherReceiptsTableViewCell.m in Sources */,
+				332D4E632099024700F535E2 /* User.m in Sources */,
 				338A57E5207FB700000FA8BD /* EXTRuntimeExtensions.m in Sources */,
 				3366C1772085EFD700D710A9 /* EnvironmentsModel.m in Sources */,
 				338A5755207F34CE000FA8BD /* SignUpViewController.m in Sources */,
