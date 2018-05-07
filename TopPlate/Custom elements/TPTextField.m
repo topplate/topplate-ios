@@ -48,6 +48,7 @@
     self.rightViewMode = UITextFieldViewModeAlways;
     self.borderStyle = UITextBorderStyleRoundedRect;
     self.type = TextFieldTypeOrdinary;
+    self.delegate = self;
 }
 
 -(void)setType:(TextFieldType)type {
@@ -128,6 +129,39 @@
     [[self placeholder] drawInRect:rect withAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
                                                          NSParagraphStyleAttributeName : alignmentSetting
                                                          }];
+}
+
+- (void)setPlaceHolderText:(NSString *)placeHolderText {
+    self.text = placeHolderText;
+    _placeHolderText = placeHolderText;
+    
+    [self defaultValues];
+}
+
+-(void)defaultValues {
+    self.textColor = [UIColor whiteColor];
+    self.textAlignment = NSTextAlignmentCenter;
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    if ([textField.text isEqualToString:self.placeHolderText]) {
+        self.text = @"";
+        self.textAlignment = NSTextAlignmentLeft;
+    } else if (textField.text.length == 0) {
+        self.text = self.placeHolderText;
+        self.textAlignment = NSTextAlignmentCenter;
+    }
+    
+    return YES;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    if ([textField.text isEqualToString:@""] || [textField.text isEqualToString:self.placeHolderText]) {
+        self.text = self.placeHolderText;
+        self.textAlignment = NSTextAlignmentCenter;
+    }
 }
 
 @end

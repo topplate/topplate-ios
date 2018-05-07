@@ -13,7 +13,8 @@
 -(void)roundCorners {
     
     self.layer.cornerRadius = 5.f;
-    self.layer.masksToBounds = true;
+    self.layer.masksToBounds = YES;
+    self.clipsToBounds = YES;
 }
 
 -(void)roundFrame {
@@ -21,6 +22,12 @@
     
     self.layer.borderWidth = 1.f;
     self.layer.borderColor = [UIColor colorWithWhite:1.f alpha:.3f].CGColor;
+}
+
+-(void)circleView {
+    
+    self.layer.cornerRadius = self.width / 2;
+    self.layer.masksToBounds = true;
 }
 
 - (CGFloat)height

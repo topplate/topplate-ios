@@ -53,76 +53,78 @@
 
 
 -(void)signInWithGoogle:(SocialLoginModel *)userInfo
-         withCompletion:(void(^)(id response, NSError *error))completionBlock {
+         withCompletion:(NetworkCompletionBlock)completion {
     
     [self.sessionManager POST:@"login_google"
                    parameters:[userInfo dictionaryRepresentation]
                      progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        completionBlock(responseObject, nil);
+        completion(responseObject, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completionBlock(nil, error);
+        completion(nil, error);
     }];
 }
 
 -(void)signInWithFacebook:(SocialLoginModel *)userInfo
-         withCompletion:(void(^)(id response, NSError *error))completionBlock {
-    
+           withCompletion:(NetworkCompletionBlock)completion {
+
     [self.sessionManager POST:@"login_facebook"
                    parameters:[userInfo dictionaryRepresentation]
                      progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        completionBlock(responseObject, nil);
+        completion(responseObject, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completionBlock(nil, error);
+        completion(nil, error);
     }];
 }
 
--(void)getEnvironmentsWithCompletion:(void (^)(id response, NSError *error))completionBlock {
-    
+-(void)getEnvironmentsWithCompletion:(NetworkCompletionBlock)completion {
+
     [self.sessionManager GET:@"get_environments"
                   parameters:nil
                     progress:^(NSProgress * _Nonnull downloadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        completionBlock(responseObject, nil);
+        completion(responseObject, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completionBlock(nil, error);
+        completion(nil, error);
     }];
 }
 
 #pragma mark - Plates -
 
-- (void)getPlates:(NSDictionary*)params andCompletion:(void (^)(id response, NSError *error))completionBlock {
+- (void)getPlates:(NSDictionary*)params
+   withCompletion:(NetworkCompletionBlock)completion {
     
     [self.sessionManager GET:@"get_plates"
                   parameters:params
                     progress:^(NSProgress * _Nonnull downloadProgress) {
         //
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        completionBlock(responseObject, nil);
+        completion(responseObject, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completionBlock(nil, error);
+        completion(nil, error);
     }];
 }
 
-- (void)getPlateWithId:(NSString *)plateId andCompletion:(void (^)(id response, NSError *error))completionBlock {
+- (void)getPlateWithId:(NSString *)plateId
+        withCompletion:(NetworkCompletionBlock)completion {
     
     [self.sessionManager GET:@"get_plate"
                   parameters:@{@"id" : plateId}
                     progress:^(NSProgress * _Nonnull downloadProgress) {
                         //
                     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                        completionBlock(responseObject, nil);
+                        completion(responseObject, nil);
                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                        completionBlock(nil, error);
+                        completion(nil, error);
                     }];
 }
 
 - (void)uploadPlateWithModel:(PlateModel *)platemodel
-               andCompletion:(void (^)(id response, NSError *error))completionBlock {
+               withCompletion:(NetworkCompletionBlock)completion {
     
     [self.sessionManager POST:@"add_plate"
                    parameters:[platemodel uploadPlateDictionaryRepresentation]
@@ -134,9 +136,39 @@
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         //
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        completionBlock(responseObject, nil);
+        completion(responseObject, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completionBlock(nil, error);
+        completion(nil, error);
+    }];
+}
+
+//user profile
+
+-(void)getUserProfileWithUserId:(NSString *)userId
+                 withCompletion:(NetworkCompletionBlock)completion {
+    
+    [self.sessionManager GET:@"get-user-profile"
+                  parameters:@{@"id" : userId}
+                    progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completion(responseObject, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
+
+-(void)getPlatesForUser:(NSDictionary *)params
+         withCompletion:(NetworkCompletionBlock)completion {
+    
+    [self.sessionManager GET:@"get_plates_by_author"
+                  parameters:params
+                    progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completion(responseObject, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
     }];
 }
 

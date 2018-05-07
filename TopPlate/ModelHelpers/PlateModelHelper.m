@@ -20,57 +20,57 @@
     NSDictionary *paramsDict = @{@"environment" : environment ?: @"",
                                  @"lim" : limit ?: 0,
                                  @"skip" : skip ?: 0};
-
+    
     [[NetworkManager sharedManager] getPlates:paramsDict
-                                andCompletion:^(id response, NSError *error) {
-        
-        if (error) {
-            completion(nil, error.localizedDescription);
-        } else {
-            if ([response isKindOfClass:[NSArray class]] && ![response isKindOfClass:[NSNull class]]) {
-                
-                NSError *error;
-                NSMutableArray *plates = [[MTLJSONAdapter modelsOfClass:[PlateModel class] fromJSONArray:response error:&error] mutableCopy];
-                
-                if (limit) {
-                    
-                    if (self.plates) {
-                        [self.plates addObjectsFromArray:plates];
-                    } else {
-                        self.plates = [[NSArray arrayWithArray:plates] mutableCopy];
-                    }
-                } else {
-                    self.plates = plates;   
-                }
-                
-                if ([self.delegate respondsToSelector:@selector(modelIsUpdated)]) {
-                    [self.delegate modelIsUpdated];
-                }
-                
-                completion(plates, nil);
-            }
-        }
-    }];
+                               withCompletion:^(id response, NSError *error) {
+                                   if (error) {
+                                       completion(nil, error.localizedDescription);
+                                   } else {
+                                       if ([response isKindOfClass:[NSArray class]] && ![response isKindOfClass:[NSNull class]]) {
+                                           
+                                           NSError *error;
+                                           NSMutableArray *plates = [[MTLJSONAdapter modelsOfClass:[PlateModel class] fromJSONArray:response error:&error] mutableCopy];
+                                           
+                                           if (limit) {
+                                               
+                                               if (self.plates) {
+                                                   [self.plates addObjectsFromArray:plates];
+                                               } else {
+                                                   self.plates = [[NSArray arrayWithArray:plates] mutableCopy];
+                                               }
+                                           } else {
+                                               self.plates = plates;   
+                                           }
+                                           
+                                           if ([self.delegate respondsToSelector:@selector(modelIsUpdated)]) {
+                                               [self.delegate modelIsUpdated];
+                                           }
+                                           
+                                           completion(plates, nil);
+                                       }
+                                   }
+                               }];
 }
 
 -(void)getPlateWithId:(NSString *)plateId
       completionBlock:(void(^)(PlateModel *plate, NSString *errorString))completion {
     
-    [[NetworkManager sharedManager] getPlateWithId:plateId andCompletion:^(id response, NSError *error) {
-        if (error) {
-            completion(nil, error.localizedDescription);
-        } else {
-            NSError *error;
-            PlateModel *model = [MTLJSONAdapter modelOfClass:[PlateModel class] fromJSONDictionary:response error:&error];
-            completion(model, nil);
-        }
-    }];
+    [[NetworkManager sharedManager] getPlateWithId:plateId
+                                    withCompletion:^(id response, NSError *error) {
+                                        if (error) {
+                                            completion(nil, error.localizedDescription);
+                                        } else {
+                                            NSError *error;
+                                            PlateModel *model = [MTLJSONAdapter modelOfClass:[PlateModel class] fromJSONDictionary:response error:&error];
+                                            completion(model, nil);
+                                        }
+                                    }];
 }
 
 -(void)uploadPlateWithModel:(PlateModel *)model
                  completion:(void(^)(BOOL result, NSString *errorString))completion {
     
-    [[NetworkManager sharedManager] uploadPlateWithModel:model andCompletion:^(id response, NSError *error) {
+    [[NetworkManager sharedManager] uploadPlateWithModel:model withCompletion:^(id response, NSError *error) {
         if (error) {
             completion(nil, error.localizedDescription);
         } else {

@@ -15,11 +15,13 @@ typedef NS_ENUM(NSInteger, TextFieldType) {
     TextFieldTypeRightViewImage
 };
 
-@interface TPTextField : UITextField
+@interface TPTextField : UITextField <UITextFieldDelegate>
 
 @property (nonatomic, assign) TextFieldType type;
 
 @property (nonatomic, strong) UIColor *underlineColor;
+
+@property (nonatomic, strong) NSString *placeHolderText;
 
 
 @end

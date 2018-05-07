@@ -68,7 +68,7 @@
         self.text = @"";
         self.textAlignment = NSTextAlignmentLeft;
         self.textColor = [UIColor whiteColor];
-    } else {
+    } else if (textView.text.length == 0) {
         self.textColor = [UIColor whiteColor];
         self.text = self.placeholderText;
         self.textAlignment = NSTextAlignmentCenter;
@@ -89,6 +89,15 @@
         self.textColor = [UIColor whiteColor];
         self.text = textView.text;
         self.textAlignment = NSTextAlignmentLeft;
+    }
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView {
+    
+    if ([textView.text isEqualToString:@""] || [textView.text isEqualToString:self.placeholderText]) {
+        self.textColor = [UIColor whiteColor];
+        self.text = self.placeholderText;
+        self.textAlignment = NSTextAlignmentCenter;
     }
 }
 

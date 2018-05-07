@@ -13,7 +13,8 @@
 typedef NS_ENUM(NSUInteger, HelperType) {
     HelperTypeLogin,
     HelperTypeSocialLogin,
-    HelperTypePlates
+    HelperTypePlates,
+    HelperTypeAuthor
 };
 
 @interface ModelsManager : NSObject

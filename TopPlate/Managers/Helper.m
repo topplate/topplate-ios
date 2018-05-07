@@ -37,7 +37,8 @@
     UIStoryboard *loginS = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     UINavigationController *platesNav = (UINavigationController *)[loginS instantiateViewControllerWithIdentifier:@"loginNavigationController"];
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    window.rootViewController = platesNav;
+    [window.rootViewController presentViewController:platesNav animated:YES completion:nil];
+//    window.rootViewController = platesNav;
     [window makeKeyAndVisible];
 }
 
@@ -90,11 +91,40 @@
 
 +(UIViewController *)rootViewController {
     
-    UIViewController *keyWindow = [UIApplication sharedApplication].keyWindow.rootViewController;
-    
     UIViewController *delegateWindow = [UIApplication sharedApplication].delegate.window.rootViewController;
     
-    return keyWindow ?: delegateWindow;
+    return delegateWindow;
+}
+
++(void)showSuccessMessage:(NSString *)message forViewController:(UIViewController *)viewController {
+    
+    [self showMessage:message title:@"Success" forViewController:viewController];
+}
+
++(void)showWarningMessage:(NSString *)message forViewController:(UIViewController *)viewController {
+
+    [self showMessage:message title:@"Warning" forViewController:viewController];
+}
+
++(void)showErrorMessage:(NSString *)message forViewController:(UIViewController *)viewController {
+    
+    [self showMessage:message title:@"Error" forViewController:viewController];
+}
+                                          
++(void)showMessage:(NSString *)message
+             title:(NSString *)title
+ forViewController:(UIViewController *)viewController {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+    
+    [alertController addAction:alertAction];
+    
+    if (viewController) {
+        [viewController presentViewController:alertController animated:YES completion:nil];
+    } else {
+        [[self rootViewController] presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 @end

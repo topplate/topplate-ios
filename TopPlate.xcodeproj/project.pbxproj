@@ -80,6 +80,10 @@
 		33A7AC1C20964C6000C397AB /* TPTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A7AC1B20964C6000C397AB /* TPTextField.m */; };
 		33A7AC1F2096649A00C397AB /* TPTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A7AC1E2096649A00C397AB /* TPTextView.m */; };
 		33A7AC2320970AEA00C397AB /* JSImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A7AC2220970AEA00C397AB /* JSImagePickerViewController.m */; };
+		33B615F5209EFDD10096F8C5 /* AuthorModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B615F4209EFDD10096F8C5 /* AuthorModelHelper.m */; };
+		33B615F8209F6F600096F8C5 /* UserInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B615F7209F6F600096F8C5 /* UserInfoCollectionViewCell.m */; };
+		33B615FC209F71780096F8C5 /* PlateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B615FA209F71780096F8C5 /* PlateCollectionViewCell.m */; };
+		33B615FD209F71780096F8C5 /* PlateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33B615FB209F71780096F8C5 /* PlateCollectionViewCell.xib */; };
 		33D6E08E207FE4BA0097DAC4 /* UIView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D6E08D207FE4BA0097DAC4 /* UIView+Helper.m */; };
 		46ECE700EBB0B139F7BED2E1 /* libPods-TopPlateUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6022C681FDB19AAE2806250 /* libPods-TopPlateUITests.a */; };
 		87B856CEBC75E9E82BD40066 /* libPods-TopPlate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B787FD32EBF82D4951E13FB /* libPods-TopPlate.a */; };
@@ -248,6 +252,13 @@
 		33A7AC1E2096649A00C397AB /* TPTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPTextView.m; sourceTree = "<group>"; };
 		33A7AC2120970AEA00C397AB /* JSImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSImagePickerViewController.h; sourceTree = "<group>"; };
 		33A7AC2220970AEA00C397AB /* JSImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSImagePickerViewController.m; sourceTree = "<group>"; };
+		33B615F3209EFDD10096F8C5 /* AuthorModelHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthorModelHelper.h; sourceTree = "<group>"; };
+		33B615F4209EFDD10096F8C5 /* AuthorModelHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthorModelHelper.m; sourceTree = "<group>"; };
+		33B615F6209F6F600096F8C5 /* UserInfoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoCollectionViewCell.h; sourceTree = "<group>"; };
+		33B615F7209F6F600096F8C5 /* UserInfoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoCollectionViewCell.m; sourceTree = "<group>"; };
+		33B615F9209F71780096F8C5 /* PlateCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateCollectionViewCell.h; sourceTree = "<group>"; };
+		33B615FA209F71780096F8C5 /* PlateCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlateCollectionViewCell.m; sourceTree = "<group>"; };
+		33B615FB209F71780096F8C5 /* PlateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlateCollectionViewCell.xib; sourceTree = "<group>"; };
 		33D6E08C207FE4BA0097DAC4 /* UIView+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Helper.h"; sourceTree = "<group>"; };
 		33D6E08D207FE4BA0097DAC4 /* UIView+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helper.m"; sourceTree = "<group>"; };
 		3424ED214A665742F032A388 /* Pods-TopPlate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopPlate.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopPlate/Pods-TopPlate.release.xcconfig"; sourceTree = "<group>"; };
@@ -419,6 +430,11 @@
 			children = (
 				338A5769207F356F000FA8BD /* ProfileViewController.h */,
 				338A576A207F356F000FA8BD /* ProfileViewController.m */,
+				33B615F6209F6F600096F8C5 /* UserInfoCollectionViewCell.h */,
+				33B615F7209F6F600096F8C5 /* UserInfoCollectionViewCell.m */,
+				33B615F9209F71780096F8C5 /* PlateCollectionViewCell.h */,
+				33B615FA209F71780096F8C5 /* PlateCollectionViewCell.m */,
+				33B615FB209F71780096F8C5 /* PlateCollectionViewCell.xib */,
 			);
 			path = ProfileControllers;
 			sourceTree = "<group>";
@@ -465,6 +481,8 @@
 				338A578D207F3687000FA8BD /* SocialLoginModelHelper.m */,
 				338A578F207F3693000FA8BD /* PlateModelHelper.h */,
 				338A5790207F3693000FA8BD /* PlateModelHelper.m */,
+				33B615F3209EFDD10096F8C5 /* AuthorModelHelper.h */,
+				33B615F4209EFDD10096F8C5 /* AuthorModelHelper.m */,
 			);
 			path = ModelHelpers;
 			sourceTree = "<group>";
@@ -744,6 +762,7 @@
 				338A5771207F35BB000FA8BD /* Plates.storyboard in Resources */,
 				338A5726207F30D0000FA8BD /* LaunchScreen.storyboard in Resources */,
 				338A5778207F35EE000FA8BD /* Winners.storyboard in Resources */,
+				33B615FD209F71780096F8C5 /* PlateCollectionViewCell.xib in Resources */,
 				338A5723207F30D0000FA8BD /* Assets.xcassets in Resources */,
 				338A5793207F36D5000FA8BD /* CustomTabBar.storyboard in Resources */,
 				338A577A207F35F5000FA8BD /* Profile.storyboard in Resources */,
@@ -870,6 +889,7 @@
 				3366C1712083E8A200D710A9 /* OtherReceipsCollectionViewCell.m in Sources */,
 				338A5784207F364A000FA8BD /* PlateModel.m in Sources */,
 				338A57EC207FB700000FA8BD /* NSObject+MTLComparisonAdditions.m in Sources */,
+				33B615FC209F71780096F8C5 /* PlateCollectionViewCell.m in Sources */,
 				338A5787207F3660000FA8BD /* SocialLoginModel.m in Sources */,
 				338A57E3207FB700000FA8BD /* NSError+MTLModelException.m in Sources */,
 				338A578E207F3687000FA8BD /* SocialLoginModelHelper.m in Sources */,
@@ -877,6 +897,7 @@
 				338A57E9207FB700000FA8BD /* MTLModel.m in Sources */,
 				338A57BA207FB042000FA8BD /* NetworkManager.m in Sources */,
 				338A575B207F34FF000FA8BD /* PlatesViewController.m in Sources */,
+				33B615F8209F6F600096F8C5 /* UserInfoCollectionViewCell.m in Sources */,
 				3366C1892086829200D710A9 /* MacrosHelper.m in Sources */,
 				338A5791207F3693000FA8BD /* PlateModelHelper.m in Sources */,
 				338A5758207F34D8000FA8BD /* ForgotPasswordViewController.m in Sources */,
@@ -901,6 +922,7 @@
 				338A5755207F34CE000FA8BD /* SignUpViewController.m in Sources */,
 				338A57E8207FB700000FA8BD /* NSArray+MTLManipulationAdditions.m in Sources */,
 				338A5729207F30D0000FA8BD /* main.m in Sources */,
+				33B615F5209EFDD10096F8C5 /* AuthorModelHelper.m in Sources */,
 				338A57ED207FB700000FA8BD /* NSDictionary+MTLJSONKeyPath.m in Sources */,
 				3366C18620867B0400D710A9 /* Helper.m in Sources */,
 				338A57EF207FB700000FA8BD /* MTLTransformerErrorHandling.m in Sources */,

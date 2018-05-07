@@ -20,7 +20,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/PlatesControllers/PlateInfoViewController.m"
-            timestampString = "547252133.3477629"
+            timestampString = "547322549.9945641"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
@@ -36,7 +36,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/PlatesControllers/PlateInfoViewController.m"
-            timestampString = "547252133.348042"
+            timestampString = "547322549.995054"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
@@ -52,7 +52,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/Models/PlateModel.m"
-            timestampString = "547252133.3480951"
+            timestampString = "547322549.995142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -84,7 +84,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/Models/PlateModel.m"
-            timestampString = "547252133.348346"
+            timestampString = "547322549.995608"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
@@ -100,7 +100,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/Models/PlateModel.m"
-            timestampString = "547252133.3484091"
+            timestampString = "547322549.995687"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ModelHelpers/PlateModelHelper.m"
-            timestampString = "547252133.348465"
+            timestampString = "547322549.995751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "-getPlatesForEnvironment:withLimit:withSkip:completionBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -132,7 +132,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ModelHelpers/PlateModelHelper.m"
-            timestampString = "547252133.348662"
+            timestampString = "547322549.9960051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
@@ -144,11 +144,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/Custom elements/TPTextView.m"
-            timestampString = "546885692.046912"
+            timestampString = "547419276.41626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -160,11 +160,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/Custom elements/TPTextView.m"
-            timestampString = "546885692.04696"
+            timestampString = "547419276.416334"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -176,31 +176,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TopPlate/Custom elements/TPTextView.m"
-            timestampString = "546885692.0470279"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "-textView:shouldChangeTextInRange:replacementText:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/PlatesControllers/UploadPlateViewController.m"
-            timestampString = "547252133.348804"
+            timestampString = "547419276.416389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "-imagePickerDidCancel"
             landmarkType = "7">
          </BreakpointContent>
@@ -228,7 +212,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ModelHelpers/PlateModelHelper.m"
-            timestampString = "547252133.349034"
+            timestampString = "547322549.996525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
@@ -244,11 +228,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/PlatesControllers/UploadPlateViewController.m"
-            timestampString = "547252133.349097"
+            timestampString = "547419276.416481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "-submitAction:"
             landmarkType = "7">
          </BreakpointContent>
@@ -260,7 +244,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/AppDelegate.m"
-            timestampString = "547252133.349344"
+            timestampString = "547322549.996673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -276,7 +260,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/AppDelegate.m"
-            timestampString = "547252133.34939"
+            timestampString = "547322549.9968849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -292,7 +276,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/AppDelegate.m"
-            timestampString = "547252133.349435"
+            timestampString = "547322549.996953"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -308,12 +292,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/Managers/NetworkManager.m"
-            timestampString = "547252133.34948"
+            timestampString = "547322549.997008"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "-uploadPlateWithModel:andCompletion:"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "-uploadPlateWithModel:withCompletion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -324,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/PlatesControllers/UploadPlateViewController.m"
-            timestampString = "547252133.349673"
+            timestampString = "547419276.416607"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "-submitAction:"
             landmarkType = "7">
          </BreakpointContent>
@@ -340,11 +324,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/Managers/Helper.m"
-            timestampString = "547252133.349739"
+            timestampString = "547419276.416658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "+currentEnviroment"
             landmarkType = "7">
          </BreakpointContent>
@@ -356,11 +340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/Managers/Helper.m"
-            timestampString = "547252133.3499579"
+            timestampString = "547419276.416718"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "+currentUser"
             landmarkType = "7">
          </BreakpointContent>
@@ -371,24 +355,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TopPlate/ModelHelpers/PlateModelHelper.m"
-            timestampString = "547252133.350032"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "-getPlatesForEnvironment:withLimit:withSkip:completionBlock:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-            timestampString = "547252133.350089"
+            timestampString = "547322549.997623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
@@ -397,14 +365,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[SocialLoginModelHelper loginWithGoogle:]"
                   moduleName = "TopPlate"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stiffmeister/Work/iOS/Work%20projects/TopPlateObjC/TopPlate/TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-                  timestampString = "547252133.5346971"
+                  timestampString = "547299072.609826"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "49"
@@ -412,14 +380,14 @@
                   offsetFromSymbolStart = "83">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__42-[SocialLoginModelHelper loginWithGoogle:]_block_invoke"
                   moduleName = "TopPlate"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stiffmeister/Work/iOS/Work%20projects/TopPlateObjC/TopPlate/TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-                  timestampString = "547252133.536402"
+                  timestampString = "547299072.612657"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
@@ -427,14 +395,14 @@
                   offsetFromSymbolStart = "75">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__destroy_helper_block_"
                   moduleName = "TopPlate"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stiffmeister/Work/iOS/Work%20projects/TopPlateObjC/TopPlate/TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-                  timestampString = "547252133.538084"
+                  timestampString = "547299072.615384"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "49"
@@ -447,48 +415,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TopPlate/ViewControllers/PlatesControllers/ChooseEnvironmentViewController.m"
-            timestampString = "547252133.350297"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-environmentSelected:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/PlatesControllers/PlatesViewController.m"
-            timestampString = "547252133.350481"
+            timestampString = "547322549.998067"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "-loadPlates"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TopPlate/ViewControllers/LoginControllers/WelcomeViewController.m"
-            timestampString = "547252133.3506629"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "-segmentValueChange:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -499,7 +435,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-            timestampString = "547252133.350841"
+            timestampString = "547322549.998269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "291"
@@ -515,7 +451,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-            timestampString = "547252133.350906"
+            timestampString = "547322549.998343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
@@ -531,7 +467,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-            timestampString = "547252133.350965"
+            timestampString = "547322549.9984111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
@@ -547,7 +483,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-            timestampString = "547252133.351024"
+            timestampString = "547322549.998477"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "286"
@@ -563,7 +499,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-            timestampString = "547252133.351082"
+            timestampString = "547322549.998541"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
@@ -575,11 +511,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-            timestampString = "547252133.351144"
+            timestampString = "547322549.9986089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -594,24 +530,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TopPlate/ViewControllers/PlatesControllers/UploadPlateViewController.m"
-            timestampString = "547252133.351202"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "-fillModelsWithData"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TopPlate/Models/PlateModel.m"
-            timestampString = "547252133.351257"
+            timestampString = "547322549.9986759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
@@ -623,43 +543,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TopPlate/ViewControllers/PlatesControllers/UploadPlateViewController.m"
-            timestampString = "547252133.3513041"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "-setupViews"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-            timestampString = "547252133.351348"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
-            landmarkName = "-processLogin"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-            timestampString = "547252133.351396"
+            timestampString = "547322549.998777"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "102"
@@ -675,7 +563,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-            timestampString = "547252133.351441"
+            timestampString = "547322549.998831"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "225"
@@ -687,11 +575,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/Managers/Helper.m"
-            timestampString = "547252133.351487"
+            timestampString = "547419276.417013"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -707,7 +595,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-            timestampString = "547252133.351535"
+            timestampString = "547322549.9989409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "263"
@@ -723,11 +611,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/CustomTabBarViewController.m"
-            timestampString = "547252133.3515821"
+            timestampString = "547419276.417084"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "-removeChildViewControllers"
             landmarkType = "7">
          </BreakpointContent>
@@ -739,12 +627,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/Managers/NetworkManager.m"
-            timestampString = "547252133.351759"
+            timestampString = "547322549.999191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "-uploadPlateWithModel:andCompletion:"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "-uploadPlateWithModel:withCompletion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -755,28 +643,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/Managers/NetworkManager.m"
-            timestampString = "547252133.351807"
+            timestampString = "547322549.999256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "-uploadPlateWithModel:andCompletion:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TopPlate/ModelHelpers/PlateModelHelper.m"
-            timestampString = "547252133.35185"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-uploadPlateWithModel:completion:"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-uploadPlateWithModel:withCompletion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -787,12 +659,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/PlatesControllers/PlatesInfoTableViewCell/PlateOtherReceiptsTableViewCell.m"
-            timestampString = "547252133.351896"
+            timestampString = "547322549.99932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
             endingLineNumber = "54"
             landmarkName = "-collectionView:numberOfItemsInSection:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TopPlate/ViewControllers/ProfileControllers/ProfileViewController.m"
+            timestampString = "547419276.4171931"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-collectionView:cellForItemAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TopPlate/ViewControllers/ProfileControllers/ProfileViewController.m"
+            timestampString = "547419276.417241"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TopPlate/Custom elements/TPTextField.m"
+            timestampString = "547419276.417287"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-textFieldShouldBeginEditing:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TopPlate/Custom elements/TPTextField.m"
+            timestampString = "547419276.417617"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "-textFieldDidEndEditing:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TopPlate/Custom elements/TPTextView.m"
+            timestampString = "547419276.417848"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-textViewDidEndEditing:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

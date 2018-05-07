@@ -46,7 +46,9 @@ static int kDefaultLoadLimit = 10;
     self.platesHelper = [modelsManager getModel:HelperTypePlates];
     self.platesHelper.delegate = self;
     
-    [self loadPlates];
+    if (self.platesHelper.plates.count <= 0) {
+        [self loadPlates];
+    }
     
     // Do any additional setup after loading the view.
 }

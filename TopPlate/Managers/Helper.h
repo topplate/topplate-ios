@@ -42,5 +42,13 @@
 
 +(NSDate *)currentDateInUTC;
 
+//alert messages
+
++(void)showSuccessMessage:(NSString *)message forViewController:(UIViewController *)viewController;
+
++(void)showWarningMessage:(NSString *)message forViewController:(UIViewController *)viewController;
+
++(void)showErrorMessage:(NSString *)message forViewController:(UIViewController *)viewController;
+
 
 @end

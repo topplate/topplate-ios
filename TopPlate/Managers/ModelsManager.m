@@ -57,6 +57,11 @@
         case HelperTypePlates:
             model = [PlateModelHelper new];
             break;
+            
+        case HelperTypeAuthor: {
+            model = [AuthorModelHelper new];
+            break;
+        }
                         
         default:
             break;

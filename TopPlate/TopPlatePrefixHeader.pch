@@ -26,6 +26,7 @@
 
 #import "PlateModelHelper.h"
 #import "SocialLoginModelHelper.h"
+#import "AuthorModelHelper.h"
 
 #import "ModelsManager.h"
 #import "NetworkManager.h"

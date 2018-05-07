@@ -56,10 +56,12 @@
 - (IBAction)searchSelected:(id)sender {
     [self removeChildViewControllers];
     
-    UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
-    SearchViewController *searchViewController = [searchStoryboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
-    [self addChildViewController:searchViewController];
-    [self highLightButton:sender];
+//    UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
+//    SearchViewController *searchViewController = [searchStoryboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
+//    [self addChildViewController:searchViewController];
+//    [self highLightButton:sender];
+    
+    [Helper showWelcomeScreen];
 }
 
 - (IBAction)uploadPlateSelected:(id)sender {

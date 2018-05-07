@@ -19,4 +19,6 @@
 
 -(void)roundFrame;
 
+-(void)circleView;
+
 @end

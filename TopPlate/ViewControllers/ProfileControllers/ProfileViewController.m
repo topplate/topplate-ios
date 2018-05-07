@@ -6,9 +6,24 @@
 //  Copyright © 2018 Enke. All rights reserved.
 //
 
-#import "ProfileViewController.h"
+typedef NS_ENUM(NSInteger, SectionType) {
+    SectionTypeProfile = 0,
+    SectionTypePlates
+};
 
-@interface ProfileViewController ()
+static int kDefaultLoadLimit = 10;
+
+#import "ProfileViewController.h"
+#import "UserInfoCollectionViewCell.h"
+#import "PlateCollectionViewCell.h"
+
+@interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (nonatomic, strong) AuthorModelHelper *authHelper;
+@property (nonatomic) NSInteger limit;
+@property (nonatomic) NSInteger skip;
 
 @end
 
@@ -17,9 +32,48 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    [self.collectionView setCollectionViewLayout:[self setSubCategoriesCollectionViewLayout]];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"PlateCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"PlateCollectionViewCell"];
+    
+    self.limit = kDefaultLoadLimit;
+    self.skip = 0;
+    
     [self setLoginBackgroundImage];
+    
+    self.authHelper = [modelsManager getModel:HelperTypeAuthor];
+    
+    if (self.authHelper.currentUserPlates.count <= 0) {
+        [self loadUserInfo];
+    }
 
     // Do any additional setup after loading the view.
+}
+
+-(void)loadUserInfo {
+    
+    [self.authHelper getAuthorProfileInfoWithId:getCurrentUser.userId completionBlock:^(User *currentUserProfile, NSString *errorString) {
+        
+        if (errorString) {
+            [Helper showErrorMessage:errorString forViewController:self];
+        } else {
+            [self.collectionView reloadData];
+        }
+        
+        NSLog(@"");
+    }];
+    
+    [self.authHelper getPlatesForAuthor:getCurrentUser.userId environment:getCurrentEnvironment withLimit:@(self.limit) withSkip:@(self.skip) completionBlock:^(NSArray *plates, NSString *errorString) {
+        
+        if (errorString) {
+            [Helper showErrorMessage:errorString forViewController:self];
+        } else {
+            [self.collectionView reloadData];
+        }
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,14 +81,93 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    
+    return 2;
 }
-*/
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    if (section == SectionTypeProfile) {
+        return self.authHelper.currentUserInfo ? 1 : 0;
+    }
+    
+    if (section == SectionTypePlates) {
+        return self.authHelper.currentUserPlates.count;
+    }
+    
+    return 0;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                 cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UICollectionViewCell *baseCell = [UICollectionViewCell new];
+    
+    if (indexPath.section == SectionTypeProfile) {
+        UserInfoCollectionViewCell *userInfoCollectionViewCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UserInfoCollectionViewCell" forIndexPath:indexPath];
+        [userInfoCollectionViewCell.userProfileImage sd_setImageWithURL:self.authHelper.currentUserInfo.userInfo.authorImageUrl];
+        userInfoCollectionViewCell.userNameLabel.text = self.authHelper.currentUserInfo.userInfo.authorName;
+        userInfoCollectionViewCell.userBioLabel.text = @"Some bio text";
+        baseCell = userInfoCollectionViewCell;
+    } else {
+        
+        PlateModel *plate = self.authHelper.currentUserPlates[indexPath.row];
+        PlateCollectionViewCell *plateCollectionViewCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlateCollectionViewCell" forIndexPath:indexPath];
+        [plateCollectionViewCell.plateImage sd_setImageWithURL:[plate.plateImages.firstObject withBaseUrl]];
+        baseCell = plateCollectionViewCell;
+    }
+    
+    return baseCell;
+}
+
+- (UICollectionViewFlowLayout *)setSubCategoriesCollectionViewLayout {
+    
+    UICollectionViewFlowLayout *collectionLayout = [[UICollectionViewFlowLayout alloc]init];
+    [collectionLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    [collectionLayout setMinimumInteritemSpacing:0.0f];
+    [collectionLayout setMinimumLineSpacing:0.0f];
+//    collectionLayout.estimatedItemSize = CGSizeMake(1, 1);
+    collectionLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize;
+    
+    return collectionLayout;
+}
+
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//
+//    CGSize defaultSize = CGSizeZero;
+//
+//
+//    if (indexPath.section == SectionTypeProfile) {
+//
+//        CGSize tempSize;
+//
+//        CGFloat width = [UIScreen mainScreen].bounds.size.width;
+//
+//        tempSize = CGSizeMake(width, 200);
+//
+//        return tempSize;
+//    }
+//
+//    if (indexPath.section == SectionTypePlates) {
+//
+//        CGSize tempSize;
+//
+//        CGFloat width = ([UIScreen mainScreen].bounds.size.width / 3) - 10;
+//
+//        tempSize = CGSizeMake(width, width);
+//
+//        return tempSize;
+//    }
+//
+//    return defaultSize;
+//}
+//
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+
+    UIEdgeInsets tempInsets = UIEdgeInsetsZero;
+    return tempInsets;
+}
+
 
 @end

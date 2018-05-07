@@ -78,7 +78,7 @@
         [uploadDict setObject:self.plateIngredients forKey:@"ingredients"];
     }
     
-    [uploadDict setObject:self.plateUser.userId forKey:@"author"];
+    [uploadDict setObject:self.plateUser.userId forKey:@"id"];
 
     return uploadDict;
 }

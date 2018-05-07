@@ -10,29 +10,39 @@
 #import <AFNetworking.h>
 #import "SocialLoginModel.h"
 
+typedef void (^NetworkCompletionBlock)(id response, NSError *error);
+
 @interface NetworkManager : NSObject
 
 + (NetworkManager *) sharedManager;
 
--(void)getEnvironmentsWithCompletion:(void (^)(id response, NSError *error))completionBlock;
+-(void)getEnvironmentsWithCompletion:(NetworkCompletionBlock)completion;
 
+//sing in
 
 -(void)signInWithGoogle:(SocialLoginModel *)userInfo
-         withCompletion:(void(^)(id response, NSError *error))completion;
+         withCompletion:(NetworkCompletionBlock)completion;
 
 -(void)signInWithFacebook:(SocialLoginModel *)userInfo
-           withCompletion:(void(^)(id response, NSError *error))completionBlock;
+           withCompletion:(NetworkCompletionBlock)completion;
 
 //plates
 
 - (void)getPlates:(NSDictionary*)params
-    andCompletion:(void (^)(id response, NSError *error))completionBlock;
+   withCompletion:(NetworkCompletionBlock)completion;
 
 - (void)getPlateWithId:(NSString *)plateId
-         andCompletion:(void (^)(id response, NSError *error))completionBlock;
+        withCompletion:(NetworkCompletionBlock)completion;
 
 - (void)uploadPlateWithModel:(PlateModel *)platemodel
-               andCompletion:(void (^)(id response, NSError *error))completionBlock;
+              withCompletion:(NetworkCompletionBlock)completion;
 
+//user profile
+
+-(void)getUserProfileWithUserId:(NSString *)userId
+                 withCompletion:(NetworkCompletionBlock)completion;
+
+-(void)getPlatesForUser:(NSDictionary *)params
+         withCompletion:(NetworkCompletionBlock)completion;
 
 @end

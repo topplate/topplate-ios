@@ -11,8 +11,11 @@
 #import "JSImagePickerViewController.h"
 #import <Photos/Photos.h>
 
-static NSString *plateNamePlaceholderText = @"Plate name";
-static NSString *plateRecipePlaceholderText = @"Plate recipe";
+static NSString *kPlateNamePlaceholderText = @"Plate name";
+static NSString *kPlateRecipePlaceholderText = @"Plate recipe";
+static NSString *kPlateRestaurantNamePlaceholderText = @"Restaurant name";
+static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location";
+
 
 @interface UploadPlateViewController () <UITableViewDelegate, UITableViewDataSource, IngredientTableViewCellDelegate, JSImagePickerViewControllerDelegate>
 
@@ -66,8 +69,10 @@ static NSString *plateRecipePlaceholderText = @"Plate recipe";
 
 -(void)setupViews {
     
-    self.plateNameTextView.placeholderText = @"Plate name";
-    self.plateRecipeTextView.placeholderText = @"Plate recipe";
+    self.plateNameTextView.placeholderText = kPlateNamePlaceholderText;
+    self.plateRecipeTextView.placeholderText = kPlateRecipePlaceholderText;
+    self.plateRestaurantName.placeHolderText = kPlateRestaurantNamePlaceholderText;
+    self.plateRestaurantLocation.placeHolderText = kPlateRestaurantLocationPlaceholderText;
     
     if (isHomeMadeEnv) {
         self.offsetToHomemadeView.priority = 1000;
@@ -210,7 +215,7 @@ static NSString *plateRecipePlaceholderText = @"Plate recipe";
     
     NSMutableString *errorMesage = [NSMutableString new];
     
-    if ([self.uploadedPlate.plateName isEqualToString:plateNamePlaceholderText] || self.uploadedPlate.plateName.length <= 0) {
+    if ([self.uploadedPlate.plateName isEqualToString:kPlateNamePlaceholderText] || self.uploadedPlate.plateName.length <= 0) {
         [errorMesage appendString:@"Plate name cannot be empty\n"];
         validatationPassed = NO;
     }
@@ -221,28 +226,24 @@ static NSString *plateRecipePlaceholderText = @"Plate recipe";
     }
     
     if (isHomeMadeEnv) {
-        if ([self.uploadedPlate.plateReceipt isEqualToString:plateRecipePlaceholderText] || self.uploadedPlate.plateReceipt.length <= 0 ) {
+        if ([self.uploadedPlate.plateReceipt isEqualToString:kPlateRecipePlaceholderText] || self.uploadedPlate.plateReceipt.length <= 0 ) {
             [errorMesage appendString:@"Plate recipe could not be empty"];
             validatationPassed = NO;
         }
     } else {
-        if (self.uploadedPlate.plateRestaurantName.length <= 0 ) {
-            [errorMesage appendString:@"Restaurant name can not be empty"];
+        if ([self.uploadedPlate.plateRestaurantName isEqualToString:kPlateRestaurantNamePlaceholderText] ||  self.uploadedPlate.plateRestaurantName.length <= 0 ) {
+            [errorMesage appendString:@"Restaurant name can not be empty\n"];
             validatationPassed = NO;
         }
         
-        if (self.uploadedPlate.plateAuthorLocation.length <= 0 ) {
+        if ([self.uploadedPlate.plateAuthorLocation isEqualToString:kPlateRestaurantLocationPlaceholderText] ||  self.uploadedPlate.plateAuthorLocation.length <= 0 ) {
             [errorMesage appendString:@"Restaurant location can not be empty"];
             validatationPassed = NO;
         }
     }
     
     if (!validatationPassed) {
-        
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Warning" message:errorMesage preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
-        [alertController addAction:okAction];
-        [self presentViewController:alertController animated:YES completion:nil];
+        [Helper showWarningMessage:errorMesage forViewController:self];
     }
     
     return validatationPassed;

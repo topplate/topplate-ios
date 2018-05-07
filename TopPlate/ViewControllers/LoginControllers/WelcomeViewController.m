@@ -88,8 +88,8 @@
 }
 
 - (IBAction)skipToPlates:(id)sender {
-    
-    [Helper showPlatesScreen];
+    [self dismissViewControllerAnimated:YES completion:nil];
+//    [Helper showPlatesScreen];
 }
 
 -(void)setEnvironment {

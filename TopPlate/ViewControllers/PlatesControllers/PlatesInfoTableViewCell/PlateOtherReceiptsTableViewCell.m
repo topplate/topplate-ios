@@ -66,6 +66,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    
     CGSize tempSize;
     
     CGFloat width = ([UIScreen mainScreen].bounds.size.width / self.model.relatedPlates.count) - 15;
