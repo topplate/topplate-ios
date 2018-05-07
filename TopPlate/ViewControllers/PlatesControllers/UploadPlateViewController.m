@@ -217,28 +217,28 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     NSMutableString *errorMesage = [NSMutableString new];
     
     if ([self.uploadedPlate.plateName isEqualToString:kPlateNamePlaceholderText] || self.uploadedPlate.plateName.length < 5) {
-        [errorMesage appendString:@"Plate name cannot be less then 5 symbols\n"];
+        [errorMesage appendString:@"Plate name cannot be less then 5 letters\n"];
         validatationPassed = NO;
     }
     
     if (!self.uploadedPlate.plateImage) {
-        [errorMesage appendString:@"Plate should have image\n"];
+        [errorMesage appendString:@"Plate should have an image\n"];
         validatationPassed = NO;
     }
     
     if (isHomeMadeEnv) {
         if ([self.uploadedPlate.plateReceipt isEqualToString:kPlateRecipePlaceholderText] || self.uploadedPlate.plateReceipt.length < 10 ) {
-            [errorMesage appendString:@"Plate recipe could not be less then 10 symbols"];
+            [errorMesage appendString:@"Plate recipe cannot be less then 10 symbols"];
             validatationPassed = NO;
         }
     } else {
         if ([self.uploadedPlate.plateRestaurantName isEqualToString:kPlateRestaurantNamePlaceholderText] ||  self.uploadedPlate.plateRestaurantName.length < 5) {
-            [errorMesage appendString:@"Restaurant name can not be less then 5 symbols\n"];
+            [errorMesage appendString:@"Restaurant name cannot be less then 5 symbols\n"];
             validatationPassed = NO;
         }
         
         if ([self.uploadedPlate.plateAuthorLocation isEqualToString:kPlateRestaurantLocationPlaceholderText] ||  self.uploadedPlate.plateAuthorLocation.length <= 0 ) {
-            [errorMesage appendString:@"Restaurant location can not be empty"];
+            [errorMesage appendString:@"Restaurant location cannot be empty"];
             validatationPassed = NO;
         }
     }
