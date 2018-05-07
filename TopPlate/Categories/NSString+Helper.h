@@ -14,4 +14,8 @@
 
 -(BOOL)containsString:(NSString *)str;
 
+-(BOOL)isOnlyWhiteSpaces;
+
+-(NSString *)trimWhiteSpaces;
+
 @end

@@ -37,8 +37,7 @@
     UIStoryboard *loginS = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     UINavigationController *platesNav = (UINavigationController *)[loginS instantiateViewControllerWithIdentifier:@"loginNavigationController"];
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    [window.rootViewController presentViewController:platesNav animated:YES completion:nil];
-//    window.rootViewController = platesNav;
+    window.rootViewController = platesNav;
     [window makeKeyAndVisible];
 }
 
@@ -91,9 +90,11 @@
 
 +(UIViewController *)rootViewController {
     
+    UIViewController *keyWindow = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
     UIViewController *delegateWindow = [UIApplication sharedApplication].delegate.window.rootViewController;
     
-    return delegateWindow;
+    return keyWindow ?: delegateWindow;
 }
 
 +(void)showSuccessMessage:(NSString *)message forViewController:(UIViewController *)viewController {

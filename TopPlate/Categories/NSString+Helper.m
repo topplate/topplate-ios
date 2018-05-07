@@ -12,7 +12,7 @@
 
 -(NSURL *)withBaseUrl {
     
-   return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", baseAPIUrl, self]];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", baseAPIUrl, self]];
 }
 
 -(BOOL)containsString:(NSString *)str {
@@ -21,4 +21,18 @@
     return contains;
 }
 
+-(BOOL)isOnlyWhiteSpaces {
+    
+    NSString *pattern = @"^\\s*$";
+    NSRegularExpression *expression = [[NSRegularExpression alloc] initWithPattern:pattern options:0 error:nil];
+    NSArray *matches = [expression matchesInString:self options:0 range:NSMakeRange(0, self.length)];
+    BOOL isOnlyWhitespace = matches.count;
+    
+    return isOnlyWhitespace;
+}
+
+-(NSString *)trimWhiteSpaces {
+    
+   return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
 @end

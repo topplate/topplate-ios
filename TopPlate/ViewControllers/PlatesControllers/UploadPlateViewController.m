@@ -156,6 +156,7 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 -(void)fillModelsWithData {
     
     self.uploadedPlate.plateUser = getCurrentUser;
+    
     self.uploadedPlate.plateName = self.plateNameTextView.text;
     self.uploadedPlate.plateReceipt = self.plateRecipeTextView.text;
     
@@ -215,8 +216,8 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     
     NSMutableString *errorMesage = [NSMutableString new];
     
-    if ([self.uploadedPlate.plateName isEqualToString:kPlateNamePlaceholderText] || self.uploadedPlate.plateName.length <= 0) {
-        [errorMesage appendString:@"Plate name cannot be empty\n"];
+    if ([self.uploadedPlate.plateName isEqualToString:kPlateNamePlaceholderText] || self.uploadedPlate.plateName.length < 5) {
+        [errorMesage appendString:@"Plate name cannot be less then 5 symbols\n"];
         validatationPassed = NO;
     }
     
@@ -226,13 +227,13 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     }
     
     if (isHomeMadeEnv) {
-        if ([self.uploadedPlate.plateReceipt isEqualToString:kPlateRecipePlaceholderText] || self.uploadedPlate.plateReceipt.length <= 0 ) {
-            [errorMesage appendString:@"Plate recipe could not be empty"];
+        if ([self.uploadedPlate.plateReceipt isEqualToString:kPlateRecipePlaceholderText] || self.uploadedPlate.plateReceipt.length < 10 ) {
+            [errorMesage appendString:@"Plate recipe could not be less then 10 symbols"];
             validatationPassed = NO;
         }
     } else {
-        if ([self.uploadedPlate.plateRestaurantName isEqualToString:kPlateRestaurantNamePlaceholderText] ||  self.uploadedPlate.plateRestaurantName.length <= 0 ) {
-            [errorMesage appendString:@"Restaurant name can not be empty\n"];
+        if ([self.uploadedPlate.plateRestaurantName isEqualToString:kPlateRestaurantNamePlaceholderText] ||  self.uploadedPlate.plateRestaurantName.length < 5) {
+            [errorMesage appendString:@"Restaurant name can not be less then 5 symbols\n"];
             validatationPassed = NO;
         }
         

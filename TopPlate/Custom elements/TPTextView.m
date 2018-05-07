@@ -94,6 +94,8 @@
 
 -(void)textViewDidEndEditing:(UITextView *)textView {
     
+   textView.text = [textView.text trimWhiteSpaces];
+    
     if ([textView.text isEqualToString:@""] || [textView.text isEqualToString:self.placeholderText]) {
         self.textColor = [UIColor whiteColor];
         self.text = self.placeholderText;

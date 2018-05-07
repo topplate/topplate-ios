@@ -158,6 +158,8 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
     
+   textField.text = [textField.text trimWhiteSpaces];
+    
     if ([textField.text isEqualToString:@""] || [textField.text isEqualToString:self.placeHolderText]) {
         self.text = self.placeHolderText;
         self.textAlignment = NSTextAlignmentCenter;
