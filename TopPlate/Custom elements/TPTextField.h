@@ -15,6 +15,8 @@ typedef NS_ENUM(NSInteger, TextFieldType) {
     TextFieldTypeRightViewImage
 };
 
+typedef void (^TextFieldValueChange)(NSString *text);
+
 @interface TPTextField : UITextField <UITextFieldDelegate>
 
 @property (nonatomic, assign) TextFieldType type;
@@ -23,5 +25,6 @@ typedef NS_ENUM(NSInteger, TextFieldType) {
 
 @property (nonatomic, strong) NSString *placeHolderText;
 
+@property (nonatomic, copy) TextFieldValueChange textFieldValueChange;
 
 @end

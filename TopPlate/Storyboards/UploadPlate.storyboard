@@ -57,7 +57,7 @@
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plateUploadImagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="99k-P9-OhM">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plateUploadImagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="99k-P9-OhM">
                                                 <rect key="frame" x="50" y="78" width="275" height="230"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="99k-P9-OhM" secondAttribute="height" multiplier="55:46" id="B9Q-41-5wz"/>
@@ -253,11 +253,13 @@
                         <outlet property="offsetToRestaurantView" destination="UHr-db-nng" id="puj-9s-3uP"/>
                         <outlet property="plateHomeMadeView" destination="TBr-gc-gtC" id="lfR-e2-Dda"/>
                         <outlet property="plateImageView" destination="99k-P9-OhM" id="MNd-Kr-aZ5"/>
+                        <outlet property="plateImageViewAspectC" destination="B9Q-41-5wz" id="aTw-gp-fCM"/>
                         <outlet property="plateNameTextView" destination="HmN-dr-z3r" id="JZn-qW-4Ac"/>
                         <outlet property="plateRecipeTextView" destination="kCU-YR-dwG" id="eCY-tJ-m84"/>
                         <outlet property="plateRestaurantLocation" destination="yT4-Oq-xAh" id="dwG-vA-Xlc"/>
                         <outlet property="plateRestaurantName" destination="ogD-Iq-vPY" id="N1c-JP-L0c"/>
                         <outlet property="plateRestaurantView" destination="2uR-pb-mxj" id="YBh-Ci-XJ7"/>
+                        <outlet property="scrollView" destination="XtW-yv-am5" id="unW-T8-pHS"/>
                         <outlet property="submitButton" destination="0J6-Eb-DKh" id="D1y-O5-GfS"/>
                     </connections>
                 </viewController>

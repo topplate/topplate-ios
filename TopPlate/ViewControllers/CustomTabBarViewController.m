@@ -45,61 +45,91 @@
  */
 
 - (IBAction)platesSelected:(id)sender {
-    [self removeChildViewControllers];
     
     UIStoryboard *platesStoryboard = [UIStoryboard storyboardWithName:@"Plates" bundle:nil];
     PlatesViewController *platesViewController = [platesStoryboard instantiateViewControllerWithIdentifier:@"PlatesViewController"];
-    [self addChildViewController:platesViewController];
-    [self highLightButton:sender];
+    
+    if (![self sameAsCurrentViewController:platesViewController]) {
+        [self removeChildViewControllers];
+        [self addChildViewController:platesViewController];
+        [self highLightButton:sender];
+    }
 }
 
 - (IBAction)searchSelected:(id)sender {
-    [self removeChildViewControllers];
     
     UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
     SearchViewController *searchViewController = [searchStoryboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
-    [self addChildViewController:searchViewController];
-    [self highLightButton:sender];
+    
+    if (![self sameAsCurrentViewController:searchViewController]) {
+        [self removeChildViewControllers];
+        [self addChildViewController:searchViewController];
+        [self highLightButton:sender];
+    }
 }
 
 - (IBAction)uploadPlateSelected:(id)sender {
-    [self removeChildViewControllers];
     
     if (getCurrentUser) {
         UIStoryboard *uploadPlatesStoryboard = [UIStoryboard storyboardWithName:@"UploadPlate" bundle:nil];
         UploadPlateViewController *uploadViewController = [uploadPlatesStoryboard instantiateViewControllerWithIdentifier:@"UploadPlateViewController"];
-        [self addChildViewController:uploadViewController];
-        [self highLightButton:sender];
+        
+        if (![self sameAsCurrentViewController:uploadViewController]) {
+            [self removeChildViewControllers];
+            [self addChildViewController:uploadViewController];
+            [self highLightButton:sender];
+        }
+        
     } else {
         [Helper showWelcomeScreen];
     }
 }
 
 - (IBAction)winnersSelected:(id)sender {
-    [self removeChildViewControllers];
     
     UIStoryboard *winnersStoryboard = [UIStoryboard storyboardWithName:@"Winners" bundle:nil];
     WinnersViewController *winnersViewController = [winnersStoryboard instantiateViewControllerWithIdentifier:@"WinnersViewController"];
-    [self addChildViewController:winnersViewController];
-    [self highLightButton:sender];
+    
+    if (![self sameAsCurrentViewController:winnersViewController]) {
+        [self removeChildViewControllers];
+        [self addChildViewController:winnersViewController];
+        [self highLightButton:sender];
+    }
 }
 
 - (IBAction)profileSelected:(id)sender {
-    [self removeChildViewControllers];
+
     if (getCurrentUser) {
         UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
         ProfileViewController *profileViewController = [profileStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
-        [self addChildViewController:profileViewController];
-        [self highLightButton:sender];
+        
+        if (![self sameAsCurrentViewController:profileViewController]) {
+            [self removeChildViewControllers];
+            [self addChildViewController:profileViewController];
+            [self highLightButton:sender];
+        }
+        
     } else {
         [Helper showWelcomeScreen];
     }
+}
+
+-(BOOL)sameAsCurrentViewController:(UIViewController *)viewController {
+    
+    UIViewController *currentViewController = self.childViewControllers.firstObject;
+    
+    if ([currentViewController.restorationIdentifier isEqualToString:viewController.restorationIdentifier]) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 
 #pragma mark - Container view helpers -
 
 -(void)addChildViewController:(UIViewController *)childController {
+    
     [super addChildViewController:childController];
     
     [self.contentView addSubview:childController.view];

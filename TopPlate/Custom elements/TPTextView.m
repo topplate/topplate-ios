@@ -89,6 +89,9 @@
         self.textColor = [UIColor whiteColor];
         self.text = textView.text;
         self.textAlignment = NSTextAlignmentLeft;
+        if (self.textViewValueChange) {
+            self.textViewValueChange(textView.text);
+        }
     }
 }
 

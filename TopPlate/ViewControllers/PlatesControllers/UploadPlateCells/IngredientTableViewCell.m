@@ -21,7 +21,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.textfield.delegate = self;
     // Initialization code
 }
 
@@ -35,8 +34,9 @@
 }
 
 - (IBAction)valueChangedAction:(id)sender {
-        
-    self.model.plateIngredients[self.index] = self.textfield.text;
+    
+    PlateModelHelper *helper = [modelsManager getModel:HelperTypePlates];
+    helper.currentPlate.plateIngredients[self.index] = self.textfield.text;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -58,6 +58,7 @@
     [textFieldButton addTarget:self action:@selector(removeItem) forControlEvents:UIControlEventTouchUpInside];
     self.textfield.text = plateModel.plateIngredients[index];
     [self.textfield roundFrame];
+    self.textfield.placeHolderText = @"Type in an ingredient";
 }
 
 @end

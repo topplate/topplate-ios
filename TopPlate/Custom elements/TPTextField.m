@@ -163,6 +163,10 @@
     if ([textField.text isEqualToString:@""] || [textField.text isEqualToString:self.placeHolderText]) {
         self.text = self.placeHolderText;
         self.textAlignment = NSTextAlignmentCenter;
+    } else {
+        if (self.textFieldValueChange) {
+            self.textFieldValueChange(textField.text);
+        }
     }
 }
 

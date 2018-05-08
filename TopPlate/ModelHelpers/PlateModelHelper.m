@@ -11,6 +11,15 @@
 
 @implementation PlateModelHelper
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+//        self.currentPlate = [PlateModel new];
+    }
+    return self;
+}
+
 -(void)getPlatesForEnvironment:(NSString *)environment
                      withLimit:(NSNumber *)limit
                       withSkip:(NSNumber *)skip
