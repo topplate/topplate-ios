@@ -24,7 +24,7 @@
 
 +(void)showPlatesScreen;
 
-+(void)showWelcomeScreen;
++(void)showWelcomeScreenAsModal:(BOOL)modal;
 
 +(UIViewController *)rootViewController;
 

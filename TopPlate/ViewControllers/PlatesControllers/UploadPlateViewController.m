@@ -10,6 +10,8 @@
 #import "IngredientTableViewCell.h"
 #import "JSImagePickerViewController.h"
 #import <Photos/Photos.h>
+#import "TPKeyboardAvoidingScrollView.h"
+#import "KeyboardState.h"
 
 static NSString *kPlateNamePlaceholderText = @"Plate name";
 static NSString *kPlateRecipePlaceholderText = @"Plate recipe";
@@ -17,9 +19,10 @@ static NSString *kPlateRestaurantNamePlaceholderText = @"Restaurant name";
 static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location";
 
 
-@interface UploadPlateViewController () <UITableViewDelegate, UITableViewDataSource, IngredientTableViewCellDelegate, JSImagePickerViewControllerDelegate>
+@interface UploadPlateViewController () <UITableViewDelegate, UITableViewDataSource, IngredientTableViewCellDelegate, JSImagePickerViewControllerDelegate, TPTextFieldDelegate, TPTextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *scrollContentView;
 
 @property (nonatomic, strong) PlateModelHelper *modelHelper;
 
@@ -44,6 +47,9 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *offsetToHomemadeView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *offsetToRestaurantView;
 
+@property (nonatomic) CGRect currentResponderFrame;
+@property (nonatomic, strong) KeyboardState *state;
+
 @end
 
 @implementation UploadPlateViewController
@@ -59,7 +65,7 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     self.ingredientsTableView.estimatedRowHeight = 2.0;
     self.ingredientsTableView.rowHeight = UITableViewAutomaticDimension;
     
-    [self setLoginBackgroundImage];
+    [self.view setBackgroundColor:[UIColor clearColor]];
     
     [self setupViews];
     
@@ -70,8 +76,13 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     }
     
     self.modelHelper.currentPlate.plateEnvironment = getCurrentEnvironment;
+    
+    // Do any additional setup after loading the view.
+}
 
-     // Do any additional setup after loading the view.
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [self registerForKeyboardNotifications];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,6 +121,7 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     IngredientTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IngredientTableViewCell" forIndexPath:indexPath];
     
     cell.delegate = self;
+    cell.textfield.customDelegate = self;
     [cell configureCellWithPlate:self.modelHelper.currentPlate andIndex:indexPath.row];
     return cell;
 }
@@ -124,16 +136,16 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 #pragma mark - Actions -
 
 - (IBAction)addIngredientAction:(id)sender {
-    
-    if (self.modelHelper.currentPlate.plateIngredients.count == 0) {
-        [self addIngredient];
-    } else {
-        NSString *lastIngredient = self.modelHelper.currentPlate.plateIngredients.lastObject;
-        
-        if ([lastIngredient trimWhiteSpaces].length > 0) {
-            [self addIngredient];
-        }
-    }
+    //
+    //    if (self.modelHelper.currentPlate.plateIngredients.count == 0) {
+    //        [self addIngredient];
+    //    } else {
+    //        NSString *lastIngredient = self.modelHelper.currentPlate.plateIngredients.lastObject;
+    //
+    //        if ([lastIngredient trimWhiteSpaces].length > 0) {
+    [self addIngredient];
+    //        }
+    //    }
 }
 
 -(void)addIngredient {
@@ -155,14 +167,16 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     
     if ([self validateTextFields]) {
         
-        self.modelHelper.currentPlate = nil;
         
-        //        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        //        [self.modelHelper uploadPlateWithModel:self.uploadedPlate completion:^(BOOL result, NSString *errorString) {
-        //            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        //
-        //            NSLog(@"");
-        //        }];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [self.modelHelper uploadPlateWithModel:self.modelHelper.currentPlate completion:^(BOOL result, NSString *errorString) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            NSLog(@"");
+            
+            //                    self.modelHelper.currentPlate = nil;
+            
+        }];
     }
 }
 
@@ -173,6 +187,73 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     [self.ingredientsTableView reloadData];
     
     [self updateItemsTableViewHeight:YES];
+}
+
+#pragma mark - Keyboard Notification -
+
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)unregisterFromKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
+}
+
+- (void)keyboardWasShown:(NSNotification *)notification {
+    
+    NSDictionary* info = [notification userInfo];
+    
+    self.state = [[KeyboardState alloc] initWithUserInfo:info];
+    
+    CGRect keyboardRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    CGFloat currentResponderFinalPoint = self.currentResponderFrame.origin.y + self.currentResponderFrame.size.height;
+    
+    CGFloat maxValue;
+    
+    if (self.scrollView.contentSize.height > self.scrollView.height) {
+        maxValue = self.scrollView.contentSize.height;
+    } else { maxValue = self.scrollView.height; }
+    
+    
+    CGFloat distToBottom = self.scrollView.height - currentResponderFinalPoint;
+    
+    
+    if(distToBottom < keyboardRect.size.height) {
+        
+        CGFloat diff = currentResponderFinalPoint - keyboardRect.origin.y + 10;
+        
+        [UIView animateWithDuration:.25 animations:^{
+            [self.scrollView setContentOffset:CGPointMake(0, diff)];
+        }];
+    }
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)notification {
+    
+    self.state.isVisible = NO;
+    
+    [self.scrollView setContentOffset:CGPointMake(0, 0)];
+    
+    //    [UIView animateWithDuration:.25 animations:^{
+    //        [self.scrollView scrollRectToVisible:CGRectMake(self.scrollView.contentSize.width - 1, self.scrollView.contentSize.height - 1, 1, 1) animated:NO];
+    //    } completion:nil];
 }
 
 #pragma mark - LayoutHelpers -
@@ -194,6 +275,11 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 }
 
 -(void)setupViews {
+    
+    self.plateRestaurantName.customDelegate = self;
+    self.plateRestaurantLocation.customDelegate = self;
+    self.plateNameTextView.customDelegate = self;
+    self.plateRecipeTextView.customDelegate = self;
     
     self.plateNameTextView.placeholderText = kPlateNamePlaceholderText;
     self.plateRecipeTextView.placeholderText = kPlateRecipePlaceholderText;
@@ -324,23 +410,23 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     
     NSMutableString *errorMesage = [NSMutableString new];
     
-    if ([self.modelHelper.currentPlate.plateName isEqualToString:kPlateNamePlaceholderText] || self.modelHelper.currentPlate.plateName.length < 5) {
+    if ([self.modelHelper.currentPlate.plateName isEqualToString:kPlateNamePlaceholderText] || self.modelHelper.currentPlate.plateName.length < 2) {
         [errorMesage appendString:@"Plate name cannot be less then 5 letters\n"];
         validatationPassed = NO;
     }
     
-    if (self.modelHelper.currentPlate.plateImage) {
+    if (!self.modelHelper.currentPlate.plateImage) {
         [errorMesage appendString:@"Plate should have an image\n"];
         validatationPassed = NO;
     }
     
     if (isHomeMadeEnv) {
-        if ([self.modelHelper.currentPlate.plateReceipt isEqualToString:kPlateRecipePlaceholderText] || self.modelHelper.currentPlate.plateReceipt.length < 10 ) {
+        if ([self.modelHelper.currentPlate.plateReceipt isEqualToString:kPlateRecipePlaceholderText] || self.modelHelper.currentPlate.plateReceipt.length < 2 ) {
             [errorMesage appendString:@"Plate recipe cannot be less then 10 symbols"];
             validatationPassed = NO;
         }
     } else {
-        if ([self.modelHelper.currentPlate.plateRestaurantName isEqualToString:kPlateRestaurantNamePlaceholderText] ||  self.modelHelper.currentPlate.plateRestaurantName.length < 5) {
+        if ([self.modelHelper.currentPlate.plateRestaurantName isEqualToString:kPlateRestaurantNamePlaceholderText] ||  self.modelHelper.currentPlate.plateRestaurantName.length < 2) {
             [errorMesage appendString:@"Restaurant name cannot be less then 5 symbols\n"];
             validatationPassed = NO;
         }
@@ -356,6 +442,100 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     }
     
     return validatationPassed;
+}
+
+#pragma mark - TPTextFieldDelegate -
+
+-(void)textFieldIsCurrentResponder:(UITextField *)textField {
+    
+    if (isRestaurantEnv) {
+        self.currentResponderFrame = [self getRectForTextFieldInView:textField];
+    } else {
+        self.currentResponderFrame = [self getRectForTextFieldInTableView:textField];
+    }
+}
+
+- (void)textFieldReturnPressed:(UITextField *)textField {
+    
+    UITextField *nextResponder = [textField.window viewWithTag:textField.tag + 1];
+    
+    //    if (nextResponder) {
+    //        [nextResponder becomeFirstResponder];
+    //        [self scrollToNextResponder:nextResponder];
+    //    } else {
+    [textField resignFirstResponder];
+    //    }
+}
+
+
+#pragma mark - TPTextViewDelegate -
+
+-(void)textViewFrameChange:(UITextView *)textView {
+    self.currentResponderFrame = [self getRectForTextFieldInView:textView];
+    if ([self.state isVisible]) {
+        [self adoptViewForKeyboard];
+    }
+}
+
+-(void)textViewValueChange:(UITextView *)textView {
+    self.currentResponderFrame = [self getRectForTextFieldInView:textView];
+}
+
+#pragma mark - KeyboardHelpers -
+
+-(void)adoptViewForKeyboard {
+    
+    CGFloat currentResponderFinalPoint = self.currentResponderFrame.origin.y + self.currentResponderFrame.size.height;
+    
+    CGFloat distToBottom = self.scrollView.height - currentResponderFinalPoint;
+    
+    if(distToBottom < self.state.keyboardRect.size.height) {
+        
+        CGFloat diff = currentResponderFinalPoint - self.state.keyboardRect.origin.y + 10;
+        
+        [self.scrollView setContentOffset:CGPointMake(0, diff) animated:NO];
+    }
+}
+
+-(CGRect)getRectForTextFieldInTableView:(UITextField *)textField {
+    
+    IngredientTableViewCell *cell = (IngredientTableViewCell *)[[textField superview] superview];
+    
+    NSIndexPath *indexPath = [self.ingredientsTableView indexPathForCell:cell];
+    CGRect cellRect = [self.ingredientsTableView rectForRowAtIndexPath:indexPath];
+    
+    CGRect cellContentView = [self.ingredientsTableView convertRect:cellRect toView:self.scrollContentView];
+    CGFloat realY = [UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].keyWindow.safeAreaInsets.bottom - self.view.height;
+    
+    cellContentView.origin.y += realY;
+    return cellContentView;
+}
+
+-(CGRect)getRectForTextFieldInView:(UIView *)textField {
+    
+    UIView *textFieldSuperView = [textField superview];
+    
+    CGRect textFieldFrame = [textFieldSuperView convertRect:textField.frame toView:self.scrollContentView];
+    CGFloat realY = [UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].keyWindow.safeAreaInsets.bottom - self.view.height;
+    
+    textFieldFrame.origin.y += realY;
+    
+    return textFieldFrame;
+}
+
+-(void)scrollToNextResponder:(UITextField *)responder {
+    
+    CGRect responderRect;
+    
+    if (isRestaurantEnv) {
+        responderRect = [self getRectForTextFieldInView:responder];
+    } else {
+        responderRect = [self getRectForTextFieldInTableView:responder];
+    }
+    
+    [UIView animateWithDuration:.25 animations:^{
+        [self.scrollView setContentOffset:CGPointMake(0, responderRect.origin.y + responderRect.size.height + 10) animated:NO];
+    }];
 }
 
 @end

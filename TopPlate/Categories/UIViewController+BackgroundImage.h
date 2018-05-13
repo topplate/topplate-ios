@@ -12,6 +12,8 @@
 
 -(void)setLoginBackgroundImage;
 
+-(void)setBackgroundImage;
+
 -(void)setNavigationTitleViewImage;
 
 @end

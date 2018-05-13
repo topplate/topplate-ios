@@ -34,7 +34,9 @@
              @"plateIngredients" : @"ingredients",
              @"plateReceipt" : @"recipe",
              @"plateHasReceipt" : @"hasRecipe",
-             @"relatedPlates" : @"relatedPlates"
+             @"relatedPlates" : @"relatedPlates",
+             @"plateEnvironment" : @"environment",
+             @"plateCanLike" : @"canLike"
              };
 }
 

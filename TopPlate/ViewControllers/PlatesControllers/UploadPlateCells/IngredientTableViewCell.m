@@ -56,9 +56,16 @@
     self.textfield.type = TextFieldTypeRightViewImage;
     self.textfield.rightView = textFieldButton;
     [textFieldButton addTarget:self action:@selector(removeItem) forControlEvents:UIControlEventTouchUpInside];
-    self.textfield.text = plateModel.plateIngredients[index];
+    NSString *ingredient = plateModel.plateIngredients[index];
+    
+    if (ingredient.length > 0) {
+        self.textfield.text = ingredient;
+    } else {
+        self.textfield.placeHolderText = @"Type in an ingredient";
+    }
     [self.textfield roundFrame];
-    self.textfield.placeHolderText = @"Type in an ingredient";
+    
+    self.textfield.tag = index;
 }
 
 @end

@@ -21,8 +21,7 @@
     self.otherPlatesCollectionView.delegate = self;
     self.otherPlatesCollectionView.dataSource = self;
     
-    
-    [self.otherPlatesCollectionView setCollectionViewLayout:[self setSubCategoriesCollectionViewLayout]];
+    [self.otherPlatesCollectionView setCollectionViewLayout:[self setCollectionViewLayout]];
 
     // Initialization code
 }
@@ -31,14 +30,18 @@
     _model = model;
     
     self.plateAuthorName.text = [NSString stringWithFormat:@"MORE RECIPES FROM @%@", self.model.plateAuthor.authorName];
+    
+    CGFloat width = ([UIScreen mainScreen].bounds.size.width / 3);
+    
+    self.collectionViewHightC.constant = width; 
 }
 
-- (UICollectionViewFlowLayout *) setSubCategoriesCollectionViewLayout {
+- (UICollectionViewFlowLayout *)setCollectionViewLayout {
     
     UICollectionViewFlowLayout *collectionLayout = [[UICollectionViewFlowLayout alloc]init];
     [collectionLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    [collectionLayout setMinimumInteritemSpacing:10.0f];
-    [collectionLayout setMinimumLineSpacing:12.0f];
+    [collectionLayout setMinimumInteritemSpacing:0.0f];
+    [collectionLayout setMinimumLineSpacing:0.0f];
     
     return collectionLayout;
 }
@@ -48,6 +51,8 @@
 
     // Configure the view for the selected state
 }
+
+#pragma mark - UICollectionViewDataSource -
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
@@ -69,7 +74,7 @@
     
     CGSize tempSize;
     
-    CGFloat width = ([UIScreen mainScreen].bounds.size.width / self.model.relatedPlates.count) - 15;
+    CGFloat width = ([UIScreen mainScreen].bounds.size.width / 3);
     
     tempSize = CGSizeMake(width, width);
     
@@ -80,6 +85,17 @@
     
     UIEdgeInsets tempInsets = UIEdgeInsetsZero;
     return tempInsets;
+}
+
+#pragma mark - UICollectionViewDelegate -
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    PlateModel *selectedPlate = self.model.relatedPlates[indexPath.row];
+    
+    if ([self.delegate respondsToSelector:@selector(relatedPlateSelected:)]) {
+        [self.delegate relatedPlateSelected:selectedPlate];
+    }
 }
 
 @end

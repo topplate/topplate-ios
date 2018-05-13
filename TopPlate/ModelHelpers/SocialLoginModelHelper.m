@@ -225,7 +225,7 @@
                 if ([self checkToken]) {
                     [self tryAutoLoginForGooglePlus];
                 } else {
-                    [Helper showWelcomeScreen];
+                    [Helper showWelcomeScreenAsModal:NO];
                 }
             }
                 break;
@@ -239,7 +239,7 @@
                         
                     }
                 } else {
-                    [Helper showWelcomeScreen];
+                    [Helper showWelcomeScreenAsModal:NO];
                 }
             }
                 break;

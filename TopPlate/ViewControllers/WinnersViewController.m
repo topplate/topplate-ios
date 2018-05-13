@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setLoginBackgroundImage];
+    [self.view setBackgroundColor:[UIColor clearColor]];
 
     // Do any additional setup after loading the view.
 }

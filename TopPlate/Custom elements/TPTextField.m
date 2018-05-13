@@ -153,6 +153,10 @@
         self.textAlignment = NSTextAlignmentCenter;
     }
     
+    if ([self.customDelegate respondsToSelector:@selector(textFieldIsCurrentResponder:)]) {
+        [self.customDelegate textFieldIsCurrentResponder:self];
+    }
+    
     return YES;
 }
 
@@ -168,6 +172,15 @@
             self.textFieldValueChange(textField.text);
         }
     }
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    if ([self.customDelegate respondsToSelector:@selector(textFieldReturnPressed:)]) {
+        [self.customDelegate textFieldReturnPressed:textField];
+    }
+    
+    return NO;
 }
 
 @end

@@ -30,7 +30,7 @@ static int kDefaultLoadLimit = 10;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setLoginBackgroundImage];
+    [self.view setBackgroundColor:[UIColor clearColor]];
     [self setNavigationTitleViewImage];
     
     self.tableView.delegate = self;
@@ -91,19 +91,11 @@ static int kDefaultLoadLimit = 10;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UITableViewDataSource -
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     return self.platesHelper.plates.count;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    CharityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CharityTableViewCell"];
-    return  cell;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
-    return 50;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -122,6 +114,18 @@ static int kDefaultLoadLimit = 10;
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;
+}
+
+#pragma mark - UITableViewDelegate -
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    CharityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CharityTableViewCell"];
+    return  cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    return 50;
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -143,16 +147,6 @@ static int kDefaultLoadLimit = 10;
     PlateModel *selectedPlate = self.platesHelper.plates[indexPath.row];
     [self loadPlateForId:selectedPlate.plateId];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - PlatesModelHelperDelegate -
 

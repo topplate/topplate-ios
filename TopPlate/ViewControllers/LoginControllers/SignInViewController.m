@@ -37,7 +37,7 @@
 
 - (IBAction)loginSelected:(id)sender {
     
-    [Helper showPlatesScreen];
+    [[Helper rootViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)forgotPasswordSelected:(id)sender {

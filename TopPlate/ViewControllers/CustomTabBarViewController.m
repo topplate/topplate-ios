@@ -14,8 +14,11 @@
 #import "ProfileViewController.h"
 
 @interface CustomTabBarViewController ()
+
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *bottomButtonsViews;
+
+@property (weak, nonatomic) IBOutlet UIButton *platesButton;
 
 @end
 
@@ -26,6 +29,13 @@
     
     [self setNavigationTitleViewImage];
     [self platesSelected:nil];
+    [self setBackgroundImage];
+    
+    if (isRestaurantEnv) {
+        [self.platesButton setImage:[UIImage imageNamed:@"restaurant"] forState:UIControlStateNormal];
+    } else {
+        [self.platesButton setImage:[UIImage imageNamed:@"homemade"] forState:UIControlStateNormal];
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -34,15 +44,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark - Actions -
 
 - (IBAction)platesSelected:(id)sender {
     
@@ -58,30 +60,30 @@
 
 - (IBAction)searchSelected:(id)sender {
     
-    UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
-    SearchViewController *searchViewController = [searchStoryboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
+//    UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
+//    SearchViewController *searchViewController = [searchStoryboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
+//    
+//    if (![self sameAsCurrentViewController:searchViewController]) {
+//        [self removeChildViewControllers];
+//        [self addChildViewController:searchViewController];
+//        [self highLightButton:sender];
+//    }
     
-    if (![self sameAsCurrentViewController:searchViewController]) {
-        [self removeChildViewControllers];
-        [self addChildViewController:searchViewController];
-        [self highLightButton:sender];
-    }
+    [Helper showWelcomeScreenAsModal:YES];
 }
 
 - (IBAction)uploadPlateSelected:(id)sender {
     
-    if (getCurrentUser) {
-        UIStoryboard *uploadPlatesStoryboard = [UIStoryboard storyboardWithName:@"UploadPlate" bundle:nil];
-        UploadPlateViewController *uploadViewController = [uploadPlatesStoryboard instantiateViewControllerWithIdentifier:@"UploadPlateViewController"];
+    UIStoryboard *uploadPlatesStoryboard = [UIStoryboard storyboardWithName:@"UploadPlate" bundle:nil];
+    UploadPlateViewController *uploadViewController = [uploadPlatesStoryboard instantiateViewControllerWithIdentifier:@"UploadPlateViewController"];
+    if (![self sameAsCurrentViewController:uploadViewController]) {
+        [self removeChildViewControllers];
+        [self addChildViewController:uploadViewController];
+        [self highLightButton:sender];
         
-        if (![self sameAsCurrentViewController:uploadViewController]) {
-            [self removeChildViewControllers];
-            [self addChildViewController:uploadViewController];
-            [self highLightButton:sender];
+        if (!getCurrentUser) {
+            [Helper showWelcomeScreenAsModal:YES];
         }
-        
-    } else {
-        [Helper showWelcomeScreen];
     }
 }
 
@@ -98,19 +100,18 @@
 }
 
 - (IBAction)profileSelected:(id)sender {
-
-    if (getCurrentUser) {
-        UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
-        ProfileViewController *profileViewController = [profileStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+    
+    UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
+    ProfileViewController *profileViewController = [profileStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+    
+    if (![self sameAsCurrentViewController:profileViewController]) {
+        [self removeChildViewControllers];
+        [self addChildViewController:profileViewController];
+        [self highLightButton:sender];
         
-        if (![self sameAsCurrentViewController:profileViewController]) {
-            [self removeChildViewControllers];
-            [self addChildViewController:profileViewController];
-            [self highLightButton:sender];
+        if (!getCurrentUser) {
+            [Helper showWelcomeScreenAsModal:YES ];
         }
-        
-    } else {
-        [Helper showWelcomeScreen];
     }
 }
 
@@ -153,11 +154,20 @@
 -(void)highLightButton:(UIButton *)button {
     
     for (UIView *view in self.bottomButtonsViews) {
-        [view setBackgroundColor:[UIColor clearColor]];
+        
+        [UIView animateWithDuration:.15 animations:^{
+            
+            [view setAlpha:0.f];
+            [view setBackgroundColor:[UIColor clearColor]];
+        }];
     }
     
     UIView *selectedView = self.bottomButtonsViews[button.tag - (button ? 101 : 0)];
+    
     [selectedView setBackgroundColor:[UIColor yellowColor]];
+    [UIView animateWithDuration:.15f animations:^{
+        [selectedView setAlpha:1.f];
+    }];
 }
 
 

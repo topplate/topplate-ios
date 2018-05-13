@@ -18,6 +18,9 @@
 @interface WelcomeViewController () <GIDSignInUIDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
+@property (weak, nonatomic) IBOutlet TPButton *googleButton;
+@property (weak, nonatomic) IBOutlet TPButton *facebookButton;
+@property (weak, nonatomic) IBOutlet TPButton *emailButton;
 
 @property (nonatomic, strong) NSString *environment;
 
@@ -36,6 +39,16 @@
     
     [self.segmentControl setSelectedSegmentIndex:[self getSelectedEnvironmentIndex]];
     [self segmentValueChange:self.segmentControl];
+    
+    [self.googleButton setImageWithName:@"googlePlusIcon" backgroundСolor:[UIColor googleButtonBackgroundColor] andTitle:@"Connect with G+"];
+    [self.facebookButton setImageWithName:@"facebookIcon" backgroundСolor:[UIColor facebookButtonBackgroundColor] andTitle:@"Connect with Facebook"];
+    [self.emailButton setImageWithName:@"emailIcon" backgroundСolor:[UIColor emailButtonBackgroundColor] andTitle:@"Connect with Email"];
+    
+    NSDictionary *segmentedSelectedTitleColor = @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName : [UIFont boldSystemFontOfSize:13.f]};
+    [self.segmentControl setTitleTextAttributes:segmentedSelectedTitleColor forState:UIControlStateSelected];
+    
+    NSDictionary *segmentedUnSelectedTitleColor = @{NSForegroundColorAttributeName:[UIColor lightGrayColor]};
+    [self.segmentControl setTitleTextAttributes:segmentedUnSelectedTitleColor forState:UIControlStateNormal];
     
     // Do any additional setup after loading the view.
 }
@@ -88,7 +101,9 @@
 }
 
 - (IBAction)skipToPlates:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [[Helper rootViewController] dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 //    [Helper showPlatesScreen];
 }
 
@@ -102,11 +117,16 @@
 }
 
 -(NSInteger)getSelectedEnvironmentIndex {
-    if (isHomeMadeEnv) {
-        return 1;
+    if (getCurrentEnvironment) {
+        if (isHomeMadeEnv) {
+            return 1;
+        } else {
+            return 0;
+        }
     } else {
         return 0;
     }
+    
 }
 
 @end

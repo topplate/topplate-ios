@@ -68,11 +68,16 @@
         self.text = @"";
         self.textAlignment = NSTextAlignmentLeft;
         self.textColor = [UIColor whiteColor];
+        
     } else if (textView.text.length == 0) {
         self.textColor = [UIColor whiteColor];
         self.text = self.placeholderText;
         self.textAlignment = NSTextAlignmentCenter;
         [self resignFirstResponder];
+    }
+    
+    if ([self.customDelegate respondsToSelector:@selector(textViewValueChange:)]) {
+        [self.customDelegate textViewValueChange:textView];
     }
     
     return YES;
@@ -122,5 +127,11 @@
     return YES;
 }
 
+-(void)layoutSubviews {
+    
+    if ([self.customDelegate respondsToSelector:@selector(textViewFrameChange:)]) {
+        [self.customDelegate textViewFrameChange:self];
+    }
+}
 
 @end

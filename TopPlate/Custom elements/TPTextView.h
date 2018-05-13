@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TPTextViewDelegate <NSObject>
+
+-(void)textViewFrameChange:(UITextView *)textView;
+-(void)textViewValueChange:(UITextView *)textView;
+
+@end
+
 typedef void (^TextViewValueChange)(NSString *text);
 
 @interface TPTextView : UITextView <UITextViewDelegate>
@@ -15,5 +22,7 @@ typedef void (^TextViewValueChange)(NSString *text);
 @property (nonatomic, strong) NSString *placeholderText;
 
 @property (nonatomic, strong) TextViewValueChange textViewValueChange;
+
+@property (nonatomic, weak) id<TPTextViewDelegate>customDelegate;
 
 @end

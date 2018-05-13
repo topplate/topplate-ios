@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -16,7 +15,7 @@
             <objects>
                 <navigationController storyboardIdentifier="uploadPlateNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NQo-eu-lst" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7Kh-9I-DW4">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -32,11 +31,11 @@
             <objects>
                 <viewController storyboardIdentifier="UploadPlateViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Do-Tr-mUA" customClass="UploadPlateViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GaP-kh-Z9P">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtW-yv-am5">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhk-zc-8a4">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="494"/>
@@ -61,6 +60,7 @@
                                                 <rect key="frame" x="50" y="78" width="275" height="230"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="99k-P9-OhM" secondAttribute="height" multiplier="55:46" id="B9Q-41-5wz"/>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="230" id="lgt-gW-Bvr"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2uR-pb-mxj">
@@ -123,15 +123,15 @@
                                                                 <rect key="frame" x="0.0" y="28" width="275" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1C5-hE-ytX" id="MpD-1r-13M">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="275" height="43.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="275" height="43.666666666666664"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EXK-YC-K3y" customClass="TPTextField">
-                                                                            <rect key="frame" x="0.0" y="6" width="275" height="29.5"/>
+                                                                            <rect key="frame" x="0.0" y="6.0000000000000018" width="275" height="29.666666666666671"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
-                                                                            <textInputTraits key="textInputTraits"/>
+                                                                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                                             <connections>
                                                                                 <action selector="valueChangedAction:" destination="1C5-hE-ytX" eventType="editingChanged" id="TMd-vM-8b8"/>
                                                                             </connections>
@@ -234,7 +234,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.031372549020000001" green="0.078431372550000003" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="XtW-yv-am5" firstAttribute="bottom" secondItem="PNa-eA-bOq" secondAttribute="bottom" id="NkP-sI-fJZ"/>
                             <constraint firstItem="XtW-yv-am5" firstAttribute="top" secondItem="PNa-eA-bOq" secondAttribute="top" id="O1E-EA-qth"/>
@@ -259,6 +259,7 @@
                         <outlet property="plateRestaurantLocation" destination="yT4-Oq-xAh" id="dwG-vA-Xlc"/>
                         <outlet property="plateRestaurantName" destination="ogD-Iq-vPY" id="N1c-JP-L0c"/>
                         <outlet property="plateRestaurantView" destination="2uR-pb-mxj" id="YBh-Ci-XJ7"/>
+                        <outlet property="scrollContentView" destination="mhk-zc-8a4" id="5iT-cV-vZe"/>
                         <outlet property="scrollView" destination="XtW-yv-am5" id="unW-T8-pHS"/>
                         <outlet property="submitButton" destination="0J6-Eb-DKh" id="D1y-O5-GfS"/>
                     </connections>

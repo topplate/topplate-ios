@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3300797920A76E0200F4A941 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300797120A76E0000F4A941 /* TPKeyboardAvoidingScrollView.m */; };
+		3300797A20A76E0200F4A941 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300797420A76E0100F4A941 /* TPKeyboardAvoidingTableView.m */; };
+		3300797B20A76E0200F4A941 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300797520A76E0100F4A941 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		3300797C20A76E0200F4A941 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300797620A76E0100F4A941 /* TPKeyboardAvoidingCollectionView.m */; };
+		3300798020A820EE00F4A941 /* KeyboardState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300797F20A820EE00F4A941 /* KeyboardState.m */; };
 		332D4E632099024700F535E2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 332D4E622099024700F535E2 /* User.m */; };
+		33504A2F20A49CD500622F2E /* TPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A2E20A49CD500622F2E /* TPButton.m */; };
+		33504A3520A4B27900622F2E /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A3420A4B27900622F2E /* UIColor+Helper.m */; };
+		33504A3720A4DB7200622F2E /* Milkshake.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33504A3620A4DB6B00622F2E /* Milkshake.otf */; };
 		3366C16E2083CA2400D710A9 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366C16D2083CA2400D710A9 /* NSString+Helper.m */; };
 		3366C1712083E8A200D710A9 /* OtherReceipsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366C1702083E8A200D710A9 /* OtherReceipsCollectionViewCell.m */; };
 		3366C1742084B7F500D710A9 /* ChooseEnvironmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366C1732084B7F500D710A9 /* ChooseEnvironmentViewController.m */; };
@@ -109,8 +117,23 @@
 
 /* Begin PBXFileReference section */
 		1A4609747087FCA603B59DD9 /* Pods-TopPlateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopPlateTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopPlateTests/Pods-TopPlateTests.release.xcconfig"; sourceTree = "<group>"; };
+		3300797120A76E0000F4A941 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		3300797220A76E0100F4A941 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
+		3300797320A76E0100F4A941 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		3300797420A76E0100F4A941 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		3300797520A76E0100F4A941 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		3300797620A76E0100F4A941 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
+		3300797720A76E0200F4A941 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		3300797820A76E0200F4A941 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
+		3300797E20A820EE00F4A941 /* KeyboardState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardState.h; sourceTree = "<group>"; };
+		3300797F20A820EE00F4A941 /* KeyboardState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardState.m; sourceTree = "<group>"; };
 		332D4E612099024700F535E2 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		332D4E622099024700F535E2 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		33504A2D20A49CD500622F2E /* TPButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPButton.h; sourceTree = "<group>"; };
+		33504A2E20A49CD500622F2E /* TPButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPButton.m; sourceTree = "<group>"; };
+		33504A3320A4B27900622F2E /* UIColor+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helper.h"; sourceTree = "<group>"; };
+		33504A3420A4B27900622F2E /* UIColor+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
+		33504A3620A4DB6B00622F2E /* Milkshake.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Milkshake.otf; sourceTree = "<group>"; };
 		3366C1682083C1F900D710A9 /* APILinks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APILinks.h; sourceTree = "<group>"; };
 		3366C16C2083CA2400D710A9 /* NSString+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
 		3366C16D2083CA2400D710A9 /* NSString+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
@@ -304,6 +327,8 @@
 			children = (
 				3366C17B20862D6300D710A9 /* EnvironmentButton.h */,
 				3366C17C20862D6300D710A9 /* EnvironmentButton.m */,
+				33504A2D20A49CD500622F2E /* TPButton.h */,
+				33504A2E20A49CD500622F2E /* TPButton.m */,
 				33A7AC1A20964C6000C397AB /* TPTextField.h */,
 				33A7AC1B20964C6000C397AB /* TPTextField.m */,
 				33A7AC1D2096649A00C397AB /* TPTextView.h */,
@@ -351,6 +376,7 @@
 				338A5722207F30D0000FA8BD /* Assets.xcassets */,
 				338A5724207F30D0000FA8BD /* LaunchScreen.storyboard */,
 				338A5727207F30D0000FA8BD /* Info.plist */,
+				33504A3620A4DB6B00622F2E /* Milkshake.otf */,
 				3366C17F20863CD500D710A9 /* Oswald-Light.ttf */,
 				338A5728207F30D0000FA8BD /* main.m */,
 				338A57F3207FB70D000FA8BD /* ThirdPartyLibraries */,
@@ -456,6 +482,8 @@
 		338A5781207F3635000FA8BD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3300797E20A820EE00F4A941 /* KeyboardState.h */,
+				3300797F20A820EE00F4A941 /* KeyboardState.m */,
 				3366C1752085EFD700D710A9 /* EnvironmentsModel.h */,
 				3366C1762085EFD700D710A9 /* EnvironmentsModel.m */,
 				338A577E207F3630000FA8BD /* LoginModel.h */,
@@ -528,6 +556,8 @@
 				33D6E08D207FE4BA0097DAC4 /* UIView+Helper.m */,
 				3366C16C2083CA2400D710A9 /* NSString+Helper.h */,
 				3366C16D2083CA2400D710A9 /* NSString+Helper.m */,
+				33504A3320A4B27900622F2E /* UIColor+Helper.h */,
+				33504A3420A4B27900622F2E /* UIColor+Helper.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -603,6 +633,14 @@
 		338A57F3207FB70D000FA8BD /* ThirdPartyLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				3300797220A76E0100F4A941 /* TPKeyboardAvoidingCollectionView.h */,
+				3300797620A76E0100F4A941 /* TPKeyboardAvoidingCollectionView.m */,
+				3300797320A76E0100F4A941 /* TPKeyboardAvoidingScrollView.h */,
+				3300797120A76E0000F4A941 /* TPKeyboardAvoidingScrollView.m */,
+				3300797820A76E0200F4A941 /* TPKeyboardAvoidingTableView.h */,
+				3300797420A76E0100F4A941 /* TPKeyboardAvoidingTableView.m */,
+				3300797720A76E0200F4A941 /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				3300797520A76E0100F4A941 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
 				33A7AC2020970AEA00C397AB /* JSImagePickerController */,
 				338A57BC207FB700000FA8BD /* Mantle */,
 			);
@@ -765,6 +803,7 @@
 				33B615FD209F71780096F8C5 /* PlateCollectionViewCell.xib in Resources */,
 				338A5723207F30D0000FA8BD /* Assets.xcassets in Resources */,
 				338A5793207F36D5000FA8BD /* CustomTabBar.storyboard in Resources */,
+				33504A3720A4DB7200622F2E /* Milkshake.otf in Resources */,
 				338A577A207F35F5000FA8BD /* Profile.storyboard in Resources */,
 				3366C18020863CD500D710A9 /* Oswald-Light.ttf in Resources */,
 				338A57F0207FB700000FA8BD /* Info.plist in Resources */,
@@ -875,6 +914,7 @@
 				338A57E2207FB700000FA8BD /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
 				338A57EB207FB700000FA8BD /* MTLValueTransformer.m in Sources */,
 				338A5768207F353E000FA8BD /* WinnersViewController.m in Sources */,
+				33504A2F20A49CD500622F2E /* TPButton.m in Sources */,
 				33A7AC1C20964C6000C397AB /* TPTextField.m in Sources */,
 				338A57F6207FBD8E000FA8BD /* ModelsManager.m in Sources */,
 				33D6E08E207FE4BA0097DAC4 /* UIView+Helper.m in Sources */,
@@ -891,6 +931,7 @@
 				338A57EC207FB700000FA8BD /* NSObject+MTLComparisonAdditions.m in Sources */,
 				33B615FC209F71780096F8C5 /* PlateCollectionViewCell.m in Sources */,
 				338A5787207F3660000FA8BD /* SocialLoginModel.m in Sources */,
+				3300797C20A76E0200F4A941 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				338A57E3207FB700000FA8BD /* NSError+MTLModelException.m in Sources */,
 				338A578E207F3687000FA8BD /* SocialLoginModelHelper.m in Sources */,
 				338A57A3207F5677000FA8BD /* PlateImageTableViewCell.m in Sources */,
@@ -907,6 +948,7 @@
 				338A578A207F3670000FA8BD /* LoginModelHelper.m in Sources */,
 				338A57EE207FB700000FA8BD /* NSValueTransformer+MTLInversionAdditions.m in Sources */,
 				338A5752207F34C4000FA8BD /* SignInViewController.m in Sources */,
+				3300798020A820EE00F4A941 /* KeyboardState.m in Sources */,
 				338A57E6207FB700000FA8BD /* MTLJSONAdapter.m in Sources */,
 				338A5796207F3746000FA8BD /* CustomTabBarViewController.m in Sources */,
 				3366C1742084B7F500D710A9 /* ChooseEnvironmentViewController.m in Sources */,
@@ -921,8 +963,11 @@
 				3366C1772085EFD700D710A9 /* EnvironmentsModel.m in Sources */,
 				338A5755207F34CE000FA8BD /* SignUpViewController.m in Sources */,
 				338A57E8207FB700000FA8BD /* NSArray+MTLManipulationAdditions.m in Sources */,
+				3300797920A76E0200F4A941 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				338A5729207F30D0000FA8BD /* main.m in Sources */,
+				3300797B20A76E0200F4A941 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				33B615F5209EFDD10096F8C5 /* AuthorModelHelper.m in Sources */,
+				3300797A20A76E0200F4A941 /* TPKeyboardAvoidingTableView.m in Sources */,
 				338A57ED207FB700000FA8BD /* NSDictionary+MTLJSONKeyPath.m in Sources */,
 				3366C18620867B0400D710A9 /* Helper.m in Sources */,
 				338A57EF207FB700000FA8BD /* MTLTransformerErrorHandling.m in Sources */,
@@ -930,6 +975,7 @@
 				338A575F207F3517000FA8BD /* PlateInfoViewController.m in Sources */,
 				338A571B207F30CF000FA8BD /* AppDelegate.m in Sources */,
 				338A576B207F356F000FA8BD /* ProfileViewController.m in Sources */,
+				33504A3520A4B27900622F2E /* UIColor+Helper.m in Sources */,
 				33A7AC1F2096649A00C397AB /* TPTextView.m in Sources */,
 				338A57A9207F56A9000FA8BD /* PlateAuthorInfoTableViewCell.m in Sources */,
 				338A57EA207FB700000FA8BD /* NSDictionary+MTLMappingAdditions.m in Sources */,
@@ -1098,16 +1144,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = TCF99X86N5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TopPlate/TopPlatePrefixHeader.pch;
 				INFOPLIST_FILE = TopPlate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.enke.TopPlate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6c0165ff-7356-48e3-9a10-735735cd51f3";
+				PROVISIONING_PROFILE_SPECIFIER = "TopPlate Development PP";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1118,16 +1168,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = TCF99X86N5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TopPlate/TopPlatePrefixHeader.pch;
 				INFOPLIST_FILE = TopPlate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.enke.TopPlate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "fc943386-cabc-4469-ba84-1079c2a05c08";
+				PROVISIONING_PROFILE_SPECIFIER = "TopPlate Ad Hoc Distribution PP";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

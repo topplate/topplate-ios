@@ -26,7 +26,7 @@ typedef NS_ENUM(NSUInteger, SectionType)
     SectionTypeOtherReceipes
 };
 
-@interface PlateInfoViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface PlateInfoViewController () <UITableViewDelegate, UITableViewDataSource, PlateOtherReceiptsTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -43,6 +43,7 @@ typedef NS_ENUM(NSUInteger, SectionType)
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     [self setNavigationTitleViewImage];
+    [self setLoginBackgroundImage];
     
     // Do any additional setup after loading the view.
 }
@@ -52,6 +53,8 @@ typedef NS_ENUM(NSUInteger, SectionType)
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UITableViewDataSource -
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return [self getNumberOfSectionsInTableView];;
@@ -59,11 +62,7 @@ typedef NS_ENUM(NSUInteger, SectionType)
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (section == SectionTypePlateIngredients) {
-        return self.selectedPlate.plateIngredients.count;
-    }
-    
-    return 1;
+    return [self getNumberOfRowsInSection:section];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -122,6 +121,7 @@ typedef NS_ENUM(NSUInteger, SectionType)
             
             PlateOtherReceiptsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlateOtherReceiptsTableViewCell" forIndexPath:indexPath];
             cell.model = self.selectedPlate;
+            cell.delegate = self;
             baseCell = cell;
         }
             break;
@@ -133,10 +133,14 @@ typedef NS_ENUM(NSUInteger, SectionType)
     return baseCell;
 }
 
+#pragma mark - UITableViewDelegate -
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [self getHeightForCellWithIndexPath:indexPath];
+    
+    return UITableViewAutomaticDimension;
 }
 
+#pragma mark - UITableViewHelpers -
 
 -(NSInteger)getNumberOfSectionsInTableView {
     
@@ -145,45 +149,56 @@ typedef NS_ENUM(NSUInteger, SectionType)
     return numberOfSections;
 }
 
-
--(CGFloat)getHeightForCellWithIndexPath:(NSIndexPath *)indexPath {
+-(NSInteger)getNumberOfRowsInSection:(NSInteger)section {
     
-    CGFloat cellHeight = UITableViewAutomaticDimension;
+    NSInteger numberOfCells = 0;
     
-    switch (indexPath.section) {
+    switch (section) {
         case SectionTypePlateImage:
-            cellHeight = 315;
+            //plate image is mandatory
+            numberOfCells = 1;
             break;
             
         case SectionTypePlateName:
-            cellHeight = UITableViewAutomaticDimension;
+            //plate name is mandatory
+            numberOfCells = 1;
             break;
             
-        case SectionTypePlateReceipt:
-            cellHeight = UITableViewAutomaticDimension;
+        case SectionTypePlateReceipt: {
+            if (self.selectedPlate.plateReceipt.length <= 0) {
+                numberOfCells = 0;
+            } else {
+                numberOfCells = 1;
+            }
+        }
             break;
             
         case SectionTypePlateAuthorInfo:
-            cellHeight = UITableViewAutomaticDimension;
+            //plate author info is mandatory
+            numberOfCells = 1;
             break;
             
-        case SectionTypePlateIngredients:
-            cellHeight = UITableViewAutomaticDimension;
+        case SectionTypePlateIngredients: {
+            if (self.selectedPlate.plateIngredients.count <= 0) {
+                numberOfCells = 0;
+            } else {
+                //one cell for "Ingredient" header
+                numberOfCells = 1 + self.selectedPlate.plateIngredients.count;
+            }
+        }
             break;
             
         case SectionTypePlateSocialShare:
-            cellHeight = UITableViewAutomaticDimension;
+            //plate social share is mandatory
+            numberOfCells = 1;
             break;
             
         case SectionTypeOtherReceipes: {
-            
-//            float roundedup = ceil(otherfloat);
-
-            CGFloat width = ([UIScreen mainScreen].bounds.size.width / self.selectedPlate.relatedPlates.count) - 15;
-            
-            cellHeight = width + 40;
-            
-//            ceil(self.selectedPlate.relatedPlates.count / 3) * 150;
+            if (self.selectedPlate.relatedPlates.count <= 0) {
+                numberOfCells = 0;
+            } else {
+                numberOfCells = 1;
+            }
         }
             break;
             
@@ -191,7 +206,26 @@ typedef NS_ENUM(NSUInteger, SectionType)
             break;
     }
     
-    return cellHeight;
+    return numberOfCells;
+}
+
+#pragma mark - PlateOtherReceiptsTableViewCellDelegate -
+
+-(void)relatedPlateSelected:(PlateModel *)plateModel {
+    
+    PlateModelHelper *helper = [modelsManager getModel:HelperTypePlates];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [helper getPlateWithId:plateModel.plateId
+                      completionBlock:^(PlateModel *plate, NSString *errorString) {
+                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                          
+                          if (plate && !errorString) {
+                              PlateInfoViewController *plateVc = [self.storyboard instantiateViewControllerWithIdentifier:@"PlateInfoViewController"];
+                              plateVc.selectedPlate = plate;
+                              [self.navigationController pushViewController:plateVc animated:YES];
+                          }
+                      }];
 }
 
 

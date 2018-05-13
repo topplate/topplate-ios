@@ -20,12 +20,13 @@
 @property (nonatomic) NSInteger plateLikes;
 @property (nonatomic, strong) NSMutableArray<NSString *> *plateIngredients;
 @property (nonatomic, strong) NSString *plateReceipt;
+@property (nonatomic, strong) NSString *plateEnvironment;
 @property (nonatomic) BOOL plateHasReceipt;
+@property (nonatomic) BOOL plateCanLike;
 @property (nonatomic, strong) NSArray<PlateModel *> *relatedPlates; //used for detail plates
 
 // used for uploading plate
 @property (nonatomic, strong) UIImage *plateImage;
-@property (nonatomic, strong) NSString *plateEnvironment;
 @property (nonatomic, strong) NSString *plateRestaurantName;
 @property (nonatomic, strong) User *plateUser;
 

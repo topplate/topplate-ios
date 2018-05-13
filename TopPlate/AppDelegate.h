@@ -10,7 +10,7 @@
 @import GoogleSignIn;
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, GIDSignInDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

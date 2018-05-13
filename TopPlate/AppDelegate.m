@@ -21,6 +21,10 @@
     SocialLoginModelHelper *helper = [modelsManager getModel:HelperTypeSocialLogin];
     [helper processLogin];
     
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setBackgroundColor:[UIColor blackColor]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
+    
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TPTextFieldDelegate <NSObject>
+
+-(void)textFieldIsCurrentResponder:(UITextField *)textField;
+-(void)textFieldReturnPressed:(UITextField *)textField;
+
+@end
+
 typedef NS_ENUM(NSInteger, TextFieldType) {
     TextFieldTypeOrdinary = 0,
     TextFieldTypeUnderLined,
@@ -26,5 +33,7 @@ typedef void (^TextFieldValueChange)(NSString *text);
 @property (nonatomic, strong) NSString *placeHolderText;
 
 @property (nonatomic, copy) TextFieldValueChange textFieldValueChange;
+
+@property (nonatomic, weak) id<TPTextFieldDelegate>customDelegate;
 
 @end

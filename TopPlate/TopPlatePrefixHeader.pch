@@ -36,11 +36,13 @@
 #import "UIView+Helper.h"
 #import "APILinks.h"
 #import "NSString+Helper.h"
+#import "UIColor+Helper.h"
 #import "MacrosHelper.h"
 #import "Helper.h"
 
 #import "TPTextView.h"
 #import "TPTextField.h"
+#import "TPButton.h"
 
 #import "ChooseEnvironmentViewController.h"
 

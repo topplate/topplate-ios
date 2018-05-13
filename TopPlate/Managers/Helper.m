@@ -14,6 +14,17 @@
 
 @implementation Helper
 
+#pragma mark - Navigation helpers -
+
++(UIViewController *)rootViewController {
+    
+    UIViewController *keyWindow = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    UIViewController *delegateWindow = [UIApplication sharedApplication].delegate.window.rootViewController;
+    
+    return keyWindow ?: delegateWindow;
+}
+
 +(void)showEnvironmentsSelection {
     
     UIStoryboard *platesS = [UIStoryboard storyboardWithName:@"Plates" bundle:nil];
@@ -32,14 +43,20 @@
     [window makeKeyAndVisible];
 }
 
-+(void)showWelcomeScreen {
++(void)showWelcomeScreenAsModal:(BOOL)modal {
     
     UIStoryboard *loginS = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     UINavigationController *platesNav = (UINavigationController *)[loginS instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    window.rootViewController = platesNav;
-    [window makeKeyAndVisible];
+    if (modal) {
+        [[Helper rootViewController] presentViewController:platesNav animated:YES completion:nil];
+    } else {
+        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        window.rootViewController = platesNav;
+        [window makeKeyAndVisible];
+    }
 }
+
+#pragma mark - Current data helpers -
 
 +(User *)currentUser {
     
@@ -52,6 +69,8 @@
     NSString *enviroment = [[UserDefaultsManager standardUserDefaults] objectForKey:Default_SelectedEnvironment];
     return enviroment;
 }
+
+#pragma mark - Date helpers -
 
 + (BOOL)compareDate:(NSDate *)date1
     withAnotherDate:(NSDate *)date2 {
@@ -88,14 +107,7 @@
     return utcDate;
 }
 
-+(UIViewController *)rootViewController {
-    
-    UIViewController *keyWindow = [UIApplication sharedApplication].keyWindow.rootViewController;
-    
-    UIViewController *delegateWindow = [UIApplication sharedApplication].delegate.window.rootViewController;
-    
-    return keyWindow ?: delegateWindow;
-}
+#pragma mark - Alert helpers -
 
 +(void)showSuccessMessage:(NSString *)message forViewController:(UIViewController *)viewController {
     

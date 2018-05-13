@@ -32,6 +32,8 @@ static int kDefaultLoadLimit = 10;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.view setBackgroundColor:[UIColor clearColor]];
+    
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView setCollectionViewLayout:[self setSubCategoriesCollectionViewLayout]];
@@ -41,7 +43,7 @@ static int kDefaultLoadLimit = 10;
     self.limit = kDefaultLoadLimit;
     self.skip = 0;
     
-    [self setLoginBackgroundImage];
+    [self setBackgroundImage];
     
     self.authHelper = [modelsManager getModel:HelperTypeAuthor];
     
@@ -127,42 +129,11 @@ static int kDefaultLoadLimit = 10;
     [collectionLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     [collectionLayout setMinimumInteritemSpacing:0.0f];
     [collectionLayout setMinimumLineSpacing:0.0f];
-//    collectionLayout.estimatedItemSize = CGSizeMake(1, 1);
     collectionLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize;
     
     return collectionLayout;
 }
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//
-//    CGSize defaultSize = CGSizeZero;
-//
-//
-//    if (indexPath.section == SectionTypeProfile) {
-//
-//        CGSize tempSize;
-//
-//        CGFloat width = [UIScreen mainScreen].bounds.size.width;
-//
-//        tempSize = CGSizeMake(width, 200);
-//
-//        return tempSize;
-//    }
-//
-//    if (indexPath.section == SectionTypePlates) {
-//
-//        CGSize tempSize;
-//
-//        CGFloat width = ([UIScreen mainScreen].bounds.size.width / 3) - 10;
-//
-//        tempSize = CGSizeMake(width, width);
-//
-//        return tempSize;
-//    }
-//
-//    return defaultSize;
-//}
-//
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
 
     UIEdgeInsets tempInsets = UIEdgeInsetsZero;
