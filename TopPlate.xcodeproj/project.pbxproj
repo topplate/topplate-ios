@@ -12,6 +12,7 @@
 		3300797B20A76E0200F4A941 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300797520A76E0100F4A941 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		3300797C20A76E0200F4A941 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300797620A76E0100F4A941 /* TPKeyboardAvoidingCollectionView.m */; };
 		3300798020A820EE00F4A941 /* KeyboardState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300797F20A820EE00F4A941 /* KeyboardState.m */; };
+		3300798320AA12B800F4A941 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300798220AA12B800F4A941 /* SearchTableViewCell.m */; };
 		332D4E632099024700F535E2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 332D4E622099024700F535E2 /* User.m */; };
 		33504A2F20A49CD500622F2E /* TPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A2E20A49CD500622F2E /* TPButton.m */; };
 		33504A3520A4B27900622F2E /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A3420A4B27900622F2E /* UIColor+Helper.m */; };
@@ -127,6 +128,8 @@
 		3300797820A76E0200F4A941 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
 		3300797E20A820EE00F4A941 /* KeyboardState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardState.h; sourceTree = "<group>"; };
 		3300797F20A820EE00F4A941 /* KeyboardState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardState.m; sourceTree = "<group>"; };
+		3300798120AA12B800F4A941 /* SearchTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
+		3300798220AA12B800F4A941 /* SearchTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 		332D4E612099024700F535E2 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		332D4E622099024700F535E2 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		33504A2D20A49CD500622F2E /* TPButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPButton.h; sourceTree = "<group>"; };
@@ -411,6 +414,8 @@
 				338A575C207F3504000FA8BD /* PlatesControllers */,
 				338A5763207F3530000FA8BD /* SearchViewController.h */,
 				338A5764207F3530000FA8BD /* SearchViewController.m */,
+				3300798120AA12B800F4A941 /* SearchTableViewCell.h */,
+				3300798220AA12B800F4A941 /* SearchTableViewCell.m */,
 				338A5766207F353E000FA8BD /* WinnersViewController.h */,
 				338A5767207F353E000FA8BD /* WinnersViewController.m */,
 				338A576C207F3575000FA8BD /* ProfileControllers */,
@@ -952,6 +957,7 @@
 				338A57E6207FB700000FA8BD /* MTLJSONAdapter.m in Sources */,
 				338A5796207F3746000FA8BD /* CustomTabBarViewController.m in Sources */,
 				3366C1742084B7F500D710A9 /* ChooseEnvironmentViewController.m in Sources */,
+				3300798320AA12B800F4A941 /* SearchTableViewCell.m in Sources */,
 				338A57F1207FB700000FA8BD /* MTLReflection.m in Sources */,
 				33A7AC2320970AEA00C397AB /* JSImagePickerViewController.m in Sources */,
 				338A579B207F55C6000FA8BD /* PlatesTableViewCell.m in Sources */,

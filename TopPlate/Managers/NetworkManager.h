@@ -37,6 +37,9 @@ typedef void (^NetworkCompletionBlock)(id response, NSError *error);
 - (void)uploadPlateWithModel:(PlateModel *)platemodel
               withCompletion:(NetworkCompletionBlock)completion;
 
+- (void)searchPlates:(NSString *)searchString
+      withCompletion:(NetworkCompletionBlock)completion;
+
 //user profile
 
 -(void)getUserProfileWithUserId:(NSString *)userId

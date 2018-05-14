@@ -81,8 +81,8 @@
                 
                 [self finishSetupWithCurrentUser:currentUser
                                        loginType:LoginTypeGooglePlus
-                                       authToken:googleUser.authentication.accessToken
-                                    tokenExpDate:googleUser.authentication.accessTokenExpirationDate];
+                                       authToken:googleUser.authentication.idToken
+                                    tokenExpDate:googleUser.authentication.idTokenExpirationDate];
                 
                 [Helper showPlatesScreen];
             }

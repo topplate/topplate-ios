@@ -20,6 +20,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *platesButton;
 
+@property (nonatomic, strong) UIBarButtonItem *leftBarItem;
+
 @end
 
 @implementation CustomTabBarViewController
@@ -27,7 +29,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationTitleViewImage];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TopPlateLogo"]];
+    imageView.frame = CGRectMake(0, 0, self.view.width / 4, 40);
+    [imageView setContentMode:UIViewContentModeScaleAspectFit];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:imageView];
+    self.navigationItem.leftBarButtonItem = item;
+    
+    UIFont *font = [UIFont boldSystemFontOfSize:13.f];
+    NSDictionary *attributes = @{NSFontAttributeName: font};
+
+    self.leftBarItem = [[UIBarButtonItem alloc] initWithTitle:getCurrentEnvironment style:UIBarButtonItemStylePlain target:self action:@selector(environmentChangeSelected)];
+    [self.leftBarItem setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    [self.leftBarItem setTitleTextAttributes:attributes forState:UIControlStateSelected];
+
+    self.navigationItem.rightBarButtonItem = self.leftBarItem;
+    
+//    [self setNavigationTitleViewImage];
     [self platesSelected:nil];
     [self setBackgroundImage];
     
@@ -37,6 +55,37 @@
         [self.platesButton setImage:[UIImage imageNamed:@"homemade"] forState:UIControlStateNormal];
     }
     // Do any additional setup after loading the view.
+}
+
+-(void)environmentChangeSelected {
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Select environment"
+                                        message:@""
+                                 preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"Restaurant"
+                                              style:UIAlertActionStyleDefault
+                                            handler:^void (UIAlertAction *action) {
+                                                NSLog(@"Clicked Gallery");
+                                                
+                                                self.leftBarItem.title = @"Restaurant";
+                                            }]];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"Homemade"
+                                              style:UIAlertActionStyleDefault
+                                            handler:^void (UIAlertAction *action) {
+                                                NSLog(@"Clicked Camera");
+                                                self.leftBarItem.title = @"Homemade";
+
+                                            }]];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel"
+                                              style:UIAlertActionStyleCancel
+                                            handler:^void (UIAlertAction *action) {
+                                                NSLog(@"Clicked Camera");
+                                            }]];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,16 +109,16 @@
 
 - (IBAction)searchSelected:(id)sender {
     
-//    UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
-//    SearchViewController *searchViewController = [searchStoryboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
-//    
-//    if (![self sameAsCurrentViewController:searchViewController]) {
-//        [self removeChildViewControllers];
-//        [self addChildViewController:searchViewController];
-//        [self highLightButton:sender];
-//    }
+    UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
+    SearchViewController *searchViewController = [searchStoryboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
     
-    [Helper showWelcomeScreenAsModal:YES];
+    if (![self sameAsCurrentViewController:searchViewController]) {
+        [self removeChildViewControllers];
+        [self addChildViewController:searchViewController];
+        [self highLightButton:sender];
+    }
+    
+//    [Helper showWelcomeScreenAsModal:YES];
 }
 
 - (IBAction)uploadPlateSelected:(id)sender {

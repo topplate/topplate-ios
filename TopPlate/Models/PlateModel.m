@@ -79,9 +79,12 @@
         [uploadDict setObject:self.plateReceipt forKey:@"recipe"];
         [uploadDict setObject:self.plateIngredients forKey:@"ingredients"];
     }
-    
-    [uploadDict setObject:self.plateUser.userId forKey:@"id"];
 
+    [uploadDict setObject:@"stiffmeister.ua@gmail.com" forKey:@"email"];
+    
+//    [uploadDict setObject:UIImagePNGRepresentation(self.plateImage) forKey:@"image"];
+    [uploadDict setObject:@"image/png" forKey:@"contentType"];
+    
     return uploadDict;
 }
 

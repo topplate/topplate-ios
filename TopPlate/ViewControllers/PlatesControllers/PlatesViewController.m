@@ -31,12 +31,13 @@ static int kDefaultLoadLimit = 10;
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor clearColor]];
-    [self setNavigationTitleViewImage];
+    
+//    [self setNavigationTitleViewImage];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView.frame = CGRectZero;
-    
+        
     self.tableView.estimatedRowHeight = 315;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     

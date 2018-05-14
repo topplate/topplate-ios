@@ -88,4 +88,20 @@
     }];
 }
 
+-(void)searchPlatesWithSearchString:(NSString *)searchString
+                 completion:(void(^)(NSArray *searchResults, NSString *errorString))completion {
+    
+    [[NetworkManager sharedManager] searchPlates:searchString withCompletion:^(id response, NSError *error) {
+        if (!error) {
+            NSError *parseError;
+            NSArray *searchPlates = [MTLJSONAdapter modelsOfClass:[PlateModel class] fromJSONArray:response error:&parseError];
+            completion(searchPlates, nil);
+        } else {
+            completion(nil, error.localizedDescription);
+        }
+    }];
+}
+
+
+
 @end

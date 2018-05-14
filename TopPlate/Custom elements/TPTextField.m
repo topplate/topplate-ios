@@ -65,7 +65,7 @@
 -(CGRect)leftViewRectForBounds:(CGRect)bounds {
     
     if (_type == TextFieldTypeLeftViewImage) {
-        return CGRectMake(bounds.origin.x + 7, bounds.origin.y, 25, 25);
+        return CGRectMake(self.x, self.height / 2 - 7, self.height / 2, self.height / 2);
     }
     
     return bounds;

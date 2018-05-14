@@ -28,7 +28,7 @@
     googleLocalUser.fullname = googleUser.profile.name;
     googleLocalUser.email = googleUser.profile.email;
     googleLocalUser.imageUrl = [[googleUser.profile imageURLWithDimension:300] absoluteString];
-    googleLocalUser.tokenId = googleUser.authentication.idToken;
+    googleLocalUser.tokenId = googleUser.authentication.accessToken;
     
     return googleLocalUser;
 }

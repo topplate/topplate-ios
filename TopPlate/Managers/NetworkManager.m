@@ -47,6 +47,10 @@
             self.sessionManager = sessionManager;
         }
     }
+    
+    if (getCurrentUser.token) {
+        [_sessionManager.requestSerializer setValue:getCurrentUser.token forHTTPHeaderField:@"Access-token"];
+    }
 
     return _sessionManager;
 }
@@ -134,7 +138,7 @@
                                 fileName:@"plateImage.png"
                                 mimeType:@"image/png"];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
-        //
+        NSLog(@"");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completion(responseObject, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -170,6 +174,21 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         completion(nil, error);
     }];
+}
+
+- (void)searchPlates:(NSString *)searchString
+        withCompletion:(NetworkCompletionBlock)completion {
+    
+    [self.sessionManager GET:@"search_plates"
+                  parameters:@{@"term" : searchString,
+                               @"env" : getCurrentEnvironment}
+                    progress:^(NSProgress * _Nonnull downloadProgress) {
+                        //
+                    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                        completion(responseObject, nil);
+                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                        completion(nil, error);
+                    }];
 }
 
 @end
