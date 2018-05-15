@@ -81,9 +81,9 @@
     
     [[NetworkManager sharedManager] uploadPlateWithModel:model withCompletion:^(id response, NSError *error) {
         if (error) {
-            completion(nil, error.localizedDescription);
+            completion(NO, error.localizedDescription);
         } else {
-            NSLog(@"");
+            completion(YES, nil);
         }
     }];
 }

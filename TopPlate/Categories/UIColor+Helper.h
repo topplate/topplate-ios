@@ -16,4 +16,6 @@
 +(UIColor *)facebookButtonBackgroundColor;
 +(UIColor *)emailButtonBackgroundColor;
 
++(UIColor *)defaultDarkBackgroundColor;
+
 @end

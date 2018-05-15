@@ -8,6 +8,8 @@
 
 #import "MacrosHelper.h"
 
+NSString * const kNotificationEnvironmentChange = @"Environment is changed.";
+
 NSString *appVersion() {
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];

@@ -12,6 +12,7 @@
 #import "PlateModelHelper.h"
 #import <UIImageView+WebCache.h>
 #import "CharityTableViewCell.h"
+#import "CharityViewController.h"
 
 static int kDefaultLoadLimit = 10;
 
@@ -52,6 +53,20 @@ static int kDefaultLoadLimit = 10;
     }
     
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPlates) name:kNotificationEnvironmentChange object:nil];
+}
+
+-(void)reloadPlates {
+    self.limit = kDefaultLoadLimit;
+    self.skip = 0;
+    self.platesHelper.plates = nil;
+    
+    [self loadPlates];
 }
 
 -(void)loadPlates {
@@ -119,16 +134,6 @@ static int kDefaultLoadLimit = 10;
 
 #pragma mark - UITableViewDelegate -
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    CharityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CharityTableViewCell"];
-    return  cell;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
-    return 50;
-}
-
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == self.platesHelper.plates.count - 1 && self.limit != -1 && self.skip != -1) {
@@ -154,6 +159,12 @@ static int kDefaultLoadLimit = 10;
 -(void)modelIsUpdated {
     
     [self.tableView reloadData];
+}
+
+- (IBAction)showCharities:(id)sender {
+    
+    CharityViewController *charity = [self.storyboard instantiateViewControllerWithIdentifier:@"CharityViewController"];
+    [self.navigationController pushViewController:charity animated:YES];
 }
 
 @end

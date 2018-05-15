@@ -166,16 +166,12 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     [self fillModelsWithData];
     
     if ([self validateTextFields]) {
-        
-        
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self.modelHelper uploadPlateWithModel:self.modelHelper.currentPlate completion:^(BOOL result, NSString *errorString) {
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             
-            NSLog(@"");
             
             //                    self.modelHelper.currentPlate = nil;
-            
         }];
     }
 }

@@ -4,9 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,8 +56,8 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rXB-uP-hNq">
                                                             <rect key="frame" x="150" y="20" width="75" height="75"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="rXB-uP-hNq" secondAttribute="height" multiplier="1:1" id="Yi5-e6-BGx"/>
-                                                                <constraint firstAttribute="width" secondItem="rXB-uP-hNq" secondAttribute="height" multiplier="1:1" id="qyV-N7-3YJ"/>
+                                                                <constraint firstAttribute="height" constant="75" id="S7y-lR-pX2"/>
+                                                                <constraint firstAttribute="width" constant="75" id="U9G-dl-ySe"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@Patrick Brown" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkb-cH-co6">
@@ -84,13 +82,12 @@
                                                         <constraint firstItem="SaT-Lx-Sqo" firstAttribute="leading" secondItem="4z0-uQ-bbj" secondAttribute="leading" constant="20" id="Agf-hW-mme"/>
                                                         <constraint firstItem="SaT-Lx-Sqo" firstAttribute="width" secondItem="xkb-cH-co6" secondAttribute="width" id="IyC-xr-m97"/>
                                                         <constraint firstItem="xkb-cH-co6" firstAttribute="leading" secondItem="4z0-uQ-bbj" secondAttribute="leading" constant="20" id="K3Y-Tw-IZW"/>
-                                                        <constraint firstAttribute="trailing" secondItem="rXB-uP-hNq" secondAttribute="trailing" constant="150" id="MrX-SW-ZMY"/>
                                                         <constraint firstAttribute="bottom" secondItem="SaT-Lx-Sqo" secondAttribute="bottom" constant="16" id="Rdd-Xk-2W9"/>
                                                         <constraint firstItem="SaT-Lx-Sqo" firstAttribute="top" secondItem="xkb-cH-co6" secondAttribute="bottom" constant="8" id="UkN-V6-xFs"/>
                                                         <constraint firstItem="rXB-uP-hNq" firstAttribute="top" secondItem="4z0-uQ-bbj" secondAttribute="top" constant="20" id="c37-kp-paw"/>
                                                         <constraint firstAttribute="trailing" secondItem="xkb-cH-co6" secondAttribute="trailing" constant="20" id="fUf-vM-ptU"/>
                                                         <constraint firstAttribute="trailing" secondItem="SaT-Lx-Sqo" secondAttribute="trailing" constant="20" id="j0V-CH-dtZ"/>
-                                                        <constraint firstItem="rXB-uP-hNq" firstAttribute="leading" secondItem="4z0-uQ-bbj" secondAttribute="leading" constant="150" id="z2f-as-Qmy"/>
+                                                        <constraint firstItem="rXB-uP-hNq" firstAttribute="centerX" secondItem="4z0-uQ-bbj" secondAttribute="centerX" id="na8-Q8-eLp"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>

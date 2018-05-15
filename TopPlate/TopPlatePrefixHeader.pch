@@ -23,10 +23,12 @@
 #import "AuthorModel.h"
 #import "User.h"
 #import "SocialLoginModel.h"
+#import "Charity.h"
 
 #import "PlateModelHelper.h"
 #import "SocialLoginModelHelper.h"
 #import "AuthorModelHelper.h"
+#import "CharityModelHelper.h"
 
 #import "ModelsManager.h"
 #import "NetworkManager.h"

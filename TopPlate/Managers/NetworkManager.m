@@ -130,7 +130,7 @@
 - (void)uploadPlateWithModel:(PlateModel *)platemodel
                withCompletion:(NetworkCompletionBlock)completion {
     
-    [self.sessionManager POST:@"add_plate"
+    [self.sessionManager POST:@"add_plate_form"
                    parameters:[platemodel uploadPlateDictionaryRepresentation]
     constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFileData:UIImagePNGRepresentation(platemodel.plateImage)
@@ -182,6 +182,19 @@
     [self.sessionManager GET:@"search_plates"
                   parameters:@{@"term" : searchString,
                                @"env" : getCurrentEnvironment}
+                    progress:^(NSProgress * _Nonnull downloadProgress) {
+                        //
+                    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                        completion(responseObject, nil);
+                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                        completion(nil, error);
+                    }];
+}
+
+- (void)loadCharityChoiseBannersWithCompletion:(NetworkCompletionBlock)completion {
+    
+    [self.sessionManager GET:@"get_charity_choice_banners"
+                  parameters:nil
                     progress:^(NSProgress * _Nonnull downloadProgress) {
                         //
                     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

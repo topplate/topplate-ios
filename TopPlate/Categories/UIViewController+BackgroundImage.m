@@ -40,7 +40,12 @@
 
 -(void)setNavigationTitleViewImage {
     
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TopPlateLogo"]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TopPlateLogo"]];
+    imageView.frame = CGRectMake(0, 0, 100, 40);
+    [imageView setContentMode:UIViewContentModeScaleAspectFit];
+
+    
+    self.navigationItem.titleView = imageView;
 }
 
 @end

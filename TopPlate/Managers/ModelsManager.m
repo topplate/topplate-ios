@@ -62,6 +62,11 @@
             model = [AuthorModelHelper new];
             break;
         }
+        
+        case HelperTypeCharity: {
+            model = [CharityModelHelper new];
+            break;
+        }
                         
         default:
             break;

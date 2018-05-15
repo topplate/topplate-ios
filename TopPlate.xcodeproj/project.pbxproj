@@ -13,6 +13,10 @@
 		3300797C20A76E0200F4A941 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300797620A76E0100F4A941 /* TPKeyboardAvoidingCollectionView.m */; };
 		3300798020A820EE00F4A941 /* KeyboardState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300797F20A820EE00F4A941 /* KeyboardState.m */; };
 		3300798320AA12B800F4A941 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300798220AA12B800F4A941 /* SearchTableViewCell.m */; };
+		3300798620AB0A9B00F4A941 /* CharityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300798520AB0A9B00F4A941 /* CharityViewController.m */; };
+		3300798920AB0AFF00F4A941 /* CharityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300798820AB0AFF00F4A941 /* CharityTableViewCell.m */; };
+		3300798C20AB35E900F4A941 /* Charity.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300798B20AB35E900F4A941 /* Charity.m */; };
+		3300798F20AB45B600F4A941 /* CharityModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300798E20AB45B600F4A941 /* CharityModelHelper.m */; };
 		332D4E632099024700F535E2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 332D4E622099024700F535E2 /* User.m */; };
 		33504A2F20A49CD500622F2E /* TPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A2E20A49CD500622F2E /* TPButton.m */; };
 		33504A3520A4B27900622F2E /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A3420A4B27900622F2E /* UIColor+Helper.m */; };
@@ -27,7 +31,6 @@
 		3366C18620867B0400D710A9 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366C18520867B0400D710A9 /* Helper.m */; };
 		3366C1892086829200D710A9 /* MacrosHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366C1882086829200D710A9 /* MacrosHelper.m */; };
 		3366C18C20889C1800D710A9 /* AuthorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366C18B20889C1800D710A9 /* AuthorModel.m */; };
-		3366C18F208B719900D710A9 /* CharityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366C18E208B719900D710A9 /* CharityTableViewCell.m */; };
 		338A571B207F30CF000FA8BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A571A207F30CF000FA8BD /* AppDelegate.m */; };
 		338A5723207F30D0000FA8BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 338A5722207F30D0000FA8BD /* Assets.xcassets */; };
 		338A5726207F30D0000FA8BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 338A5724207F30D0000FA8BD /* LaunchScreen.storyboard */; };
@@ -130,6 +133,14 @@
 		3300797F20A820EE00F4A941 /* KeyboardState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardState.m; sourceTree = "<group>"; };
 		3300798120AA12B800F4A941 /* SearchTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
 		3300798220AA12B800F4A941 /* SearchTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
+		3300798420AB0A9B00F4A941 /* CharityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharityViewController.h; sourceTree = "<group>"; };
+		3300798520AB0A9B00F4A941 /* CharityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharityViewController.m; sourceTree = "<group>"; };
+		3300798720AB0AFF00F4A941 /* CharityTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharityTableViewCell.h; sourceTree = "<group>"; };
+		3300798820AB0AFF00F4A941 /* CharityTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharityTableViewCell.m; sourceTree = "<group>"; };
+		3300798A20AB35E900F4A941 /* Charity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Charity.h; sourceTree = "<group>"; };
+		3300798B20AB35E900F4A941 /* Charity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Charity.m; sourceTree = "<group>"; };
+		3300798D20AB45B600F4A941 /* CharityModelHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharityModelHelper.h; sourceTree = "<group>"; };
+		3300798E20AB45B600F4A941 /* CharityModelHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharityModelHelper.m; sourceTree = "<group>"; };
 		332D4E612099024700F535E2 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		332D4E622099024700F535E2 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		33504A2D20A49CD500622F2E /* TPButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPButton.h; sourceTree = "<group>"; };
@@ -157,8 +168,6 @@
 		3366C1882086829200D710A9 /* MacrosHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MacrosHelper.m; sourceTree = "<group>"; };
 		3366C18A20889C1800D710A9 /* AuthorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthorModel.h; sourceTree = "<group>"; };
 		3366C18B20889C1800D710A9 /* AuthorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthorModel.m; sourceTree = "<group>"; };
-		3366C18D208B719900D710A9 /* CharityTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharityTableViewCell.h; sourceTree = "<group>"; };
-		3366C18E208B719900D710A9 /* CharityTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharityTableViewCell.m; sourceTree = "<group>"; };
 		338A5716207F30CF000FA8BD /* TopPlate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopPlate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		338A5719207F30CF000FA8BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		338A571A207F30CF000FA8BD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -418,6 +427,10 @@
 				3300798220AA12B800F4A941 /* SearchTableViewCell.m */,
 				338A5766207F353E000FA8BD /* WinnersViewController.h */,
 				338A5767207F353E000FA8BD /* WinnersViewController.m */,
+				3300798420AB0A9B00F4A941 /* CharityViewController.h */,
+				3300798520AB0A9B00F4A941 /* CharityViewController.m */,
+				3300798720AB0AFF00F4A941 /* CharityTableViewCell.h */,
+				3300798820AB0AFF00F4A941 /* CharityTableViewCell.m */,
 				338A576C207F3575000FA8BD /* ProfileControllers */,
 			);
 			path = ViewControllers;
@@ -487,6 +500,8 @@
 		338A5781207F3635000FA8BD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3300798A20AB35E900F4A941 /* Charity.h */,
+				3300798B20AB35E900F4A941 /* Charity.m */,
 				3300797E20A820EE00F4A941 /* KeyboardState.h */,
 				3300797F20A820EE00F4A941 /* KeyboardState.m */,
 				3366C1752085EFD700D710A9 /* EnvironmentsModel.h */,
@@ -516,6 +531,8 @@
 				338A5790207F3693000FA8BD /* PlateModelHelper.m */,
 				33B615F3209EFDD10096F8C5 /* AuthorModelHelper.h */,
 				33B615F4209EFDD10096F8C5 /* AuthorModelHelper.m */,
+				3300798D20AB45B600F4A941 /* CharityModelHelper.h */,
+				3300798E20AB45B600F4A941 /* CharityModelHelper.m */,
 			);
 			path = ModelHelpers;
 			sourceTree = "<group>";
@@ -523,8 +540,6 @@
 		338A579F207F55E1000FA8BD /* PlatesTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				3366C18D208B719900D710A9 /* CharityTableViewCell.h */,
-				3366C18E208B719900D710A9 /* CharityTableViewCell.m */,
 				338A5799207F55C6000FA8BD /* PlatesTableViewCell.h */,
 				338A579A207F55C6000FA8BD /* PlatesTableViewCell.m */,
 			);
@@ -922,11 +937,11 @@
 				33504A2F20A49CD500622F2E /* TPButton.m in Sources */,
 				33A7AC1C20964C6000C397AB /* TPTextField.m in Sources */,
 				338A57F6207FBD8E000FA8BD /* ModelsManager.m in Sources */,
+				3300798C20AB35E900F4A941 /* Charity.m in Sources */,
 				33D6E08E207FE4BA0097DAC4 /* UIView+Helper.m in Sources */,
 				338A57A6207F569D000FA8BD /* PlateNameTableViewCell.m in Sources */,
 				338A5780207F3630000FA8BD /* LoginModel.m in Sources */,
 				338A57F2207FB700000FA8BD /* NSDictionary+MTLManipulationAdditions.m in Sources */,
-				3366C18F208B719900D710A9 /* CharityTableViewCell.m in Sources */,
 				338A57E4207FB700000FA8BD /* EXTScope.m in Sources */,
 				33A7AC182096459700C397AB /* IngredientTableViewCell.m in Sources */,
 				338A57AC207F5EF2000FA8BD /* PlateIngredientTableViewCell.m in Sources */,
@@ -934,8 +949,10 @@
 				3366C1712083E8A200D710A9 /* OtherReceipsCollectionViewCell.m in Sources */,
 				338A5784207F364A000FA8BD /* PlateModel.m in Sources */,
 				338A57EC207FB700000FA8BD /* NSObject+MTLComparisonAdditions.m in Sources */,
+				3300798920AB0AFF00F4A941 /* CharityTableViewCell.m in Sources */,
 				33B615FC209F71780096F8C5 /* PlateCollectionViewCell.m in Sources */,
 				338A5787207F3660000FA8BD /* SocialLoginModel.m in Sources */,
+				3300798F20AB45B600F4A941 /* CharityModelHelper.m in Sources */,
 				3300797C20A76E0200F4A941 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				338A57E3207FB700000FA8BD /* NSError+MTLModelException.m in Sources */,
 				338A578E207F3687000FA8BD /* SocialLoginModelHelper.m in Sources */,
@@ -965,6 +982,7 @@
 				3366C18C20889C1800D710A9 /* AuthorModel.m in Sources */,
 				338A57B2207F5F11000FA8BD /* PlateOtherReceiptsTableViewCell.m in Sources */,
 				332D4E632099024700F535E2 /* User.m in Sources */,
+				3300798620AB0A9B00F4A941 /* CharityViewController.m in Sources */,
 				338A57E5207FB700000FA8BD /* EXTRuntimeExtensions.m in Sources */,
 				3366C1772085EFD700D710A9 /* EnvironmentsModel.m in Sources */,
 				338A5755207F34CE000FA8BD /* SignUpViewController.m in Sources */,

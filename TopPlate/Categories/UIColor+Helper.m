@@ -41,4 +41,11 @@
     return [self colorWithHexString:@"#384346" andAlpha:1.f];
 }
 
++(UIColor *)defaultDarkBackgroundColor {
+    
+    return [self colorWithHexString:@"#081413" andAlpha:1.f];
+}
+
+
+
 @end

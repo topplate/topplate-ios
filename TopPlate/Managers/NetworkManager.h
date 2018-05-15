@@ -48,4 +48,5 @@ typedef void (^NetworkCompletionBlock)(id response, NSError *error);
 -(void)getPlatesForUser:(NSDictionary *)params
          withCompletion:(NetworkCompletionBlock)completion;
 
+- (void)loadCharityChoiseBannersWithCompletion:(NetworkCompletionBlock)completion;
 @end

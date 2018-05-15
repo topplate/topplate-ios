@@ -15,6 +15,11 @@ typedef NS_ENUM(NSUInteger, LoginType)
     LoginTypeGooglePlus = 3
 };
 
+#pragma mark - Notifications -
+
+extern NSString * _Nonnull const kNotificationEnvironmentChange;
+
+
 #if (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
 
 #pragma mark - Environment
