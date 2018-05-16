@@ -26,10 +26,14 @@
 
 -(void)removeItem {
     
-    [self.model.plateIngredients removeObjectAtIndex:self.index];
-    
-    if ([self.delegate respondsToSelector:@selector(shouldReloadTableViewWithIndex:)]) {
-        [self.delegate shouldReloadTableViewWithIndex:self.index];
+    if (self.model.plateIngredients.count <= 1) {
+        self.model.plateIngredients[self.index] = @"";
+    } else {
+        [self.model.plateIngredients removeObjectAtIndex:self.index];
+        
+        if ([self.delegate respondsToSelector:@selector(shouldReloadTableViewWithIndex:)]) {
+            [self.delegate shouldReloadTableViewWithIndex:self.index];
+        }
     }
 }
 
@@ -52,7 +56,6 @@
     
     UIButton *textFieldButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [textFieldButton setImage:[UIImage imageNamed:@"textFieldRemoveIcon"] forState:UIControlStateNormal];
-    [textFieldButton setAlpha:.3];
     self.textfield.type = TextFieldTypeRightViewImage;
     self.textfield.rightView = textFieldButton;
     [textFieldButton addTarget:self action:@selector(removeItem) forControlEvents:UIControlEventTouchUpInside];
@@ -66,6 +69,13 @@
     [self.textfield roundFrame];
     
     self.textfield.tag = index;
+    [self.addIngredientButton roundCorners];
+}
+
+- (IBAction)addNewIngredient:(id)sender {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationAddNewIngredient object:nil];
+    
 }
 
 @end

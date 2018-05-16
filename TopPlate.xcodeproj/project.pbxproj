@@ -17,6 +17,8 @@
 		3300798920AB0AFF00F4A941 /* CharityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300798820AB0AFF00F4A941 /* CharityTableViewCell.m */; };
 		3300798C20AB35E900F4A941 /* Charity.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300798B20AB35E900F4A941 /* Charity.m */; };
 		3300798F20AB45B600F4A941 /* CharityModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300798E20AB45B600F4A941 /* CharityModelHelper.m */; };
+		3300799320ACA7E400F4A941 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300799220ACA7E400F4A941 /* SettingsViewController.m */; };
+		3300799620ACA9BB00F4A941 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300799520ACA9BB00F4A941 /* SettingsTableViewCell.m */; };
 		332D4E632099024700F535E2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 332D4E622099024700F535E2 /* User.m */; };
 		33504A2F20A49CD500622F2E /* TPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A2E20A49CD500622F2E /* TPButton.m */; };
 		33504A3520A4B27900622F2E /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A3420A4B27900622F2E /* UIColor+Helper.m */; };
@@ -141,6 +143,10 @@
 		3300798B20AB35E900F4A941 /* Charity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Charity.m; sourceTree = "<group>"; };
 		3300798D20AB45B600F4A941 /* CharityModelHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharityModelHelper.h; sourceTree = "<group>"; };
 		3300798E20AB45B600F4A941 /* CharityModelHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharityModelHelper.m; sourceTree = "<group>"; };
+		3300799120ACA7E400F4A941 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		3300799220ACA7E400F4A941 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		3300799420ACA9BB00F4A941 /* SettingsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewCell.h; sourceTree = "<group>"; };
+		3300799520ACA9BB00F4A941 /* SettingsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewCell.m; sourceTree = "<group>"; };
 		332D4E612099024700F535E2 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		332D4E622099024700F535E2 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		33504A2D20A49CD500622F2E /* TPButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPButton.h; sourceTree = "<group>"; };
@@ -334,6 +340,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3300799020ACA7CC00F4A941 /* Profile cells */ = {
+			isa = PBXGroup;
+			children = (
+				33B615F6209F6F600096F8C5 /* UserInfoCollectionViewCell.h */,
+				33B615F7209F6F600096F8C5 /* UserInfoCollectionViewCell.m */,
+				33B615F9209F71780096F8C5 /* PlateCollectionViewCell.h */,
+				33B615FA209F71780096F8C5 /* PlateCollectionViewCell.m */,
+				33B615FB209F71780096F8C5 /* PlateCollectionViewCell.xib */,
+			);
+			path = "Profile cells";
+			sourceTree = "<group>";
+		};
 		3366C17E20862D7F00D710A9 /* Custom elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,11 +492,11 @@
 			children = (
 				338A5769207F356F000FA8BD /* ProfileViewController.h */,
 				338A576A207F356F000FA8BD /* ProfileViewController.m */,
-				33B615F6209F6F600096F8C5 /* UserInfoCollectionViewCell.h */,
-				33B615F7209F6F600096F8C5 /* UserInfoCollectionViewCell.m */,
-				33B615F9209F71780096F8C5 /* PlateCollectionViewCell.h */,
-				33B615FA209F71780096F8C5 /* PlateCollectionViewCell.m */,
-				33B615FB209F71780096F8C5 /* PlateCollectionViewCell.xib */,
+				3300799120ACA7E400F4A941 /* SettingsViewController.h */,
+				3300799220ACA7E400F4A941 /* SettingsViewController.m */,
+				3300799420ACA9BB00F4A941 /* SettingsTableViewCell.h */,
+				3300799520ACA9BB00F4A941 /* SettingsTableViewCell.m */,
+				3300799020ACA7CC00F4A941 /* Profile cells */,
 			);
 			path = ProfileControllers;
 			sourceTree = "<group>";
@@ -942,6 +960,7 @@
 				338A57A6207F569D000FA8BD /* PlateNameTableViewCell.m in Sources */,
 				338A5780207F3630000FA8BD /* LoginModel.m in Sources */,
 				338A57F2207FB700000FA8BD /* NSDictionary+MTLManipulationAdditions.m in Sources */,
+				3300799320ACA7E400F4A941 /* SettingsViewController.m in Sources */,
 				338A57E4207FB700000FA8BD /* EXTScope.m in Sources */,
 				33A7AC182096459700C397AB /* IngredientTableViewCell.m in Sources */,
 				338A57AC207F5EF2000FA8BD /* PlateIngredientTableViewCell.m in Sources */,
@@ -953,6 +972,7 @@
 				33B615FC209F71780096F8C5 /* PlateCollectionViewCell.m in Sources */,
 				338A5787207F3660000FA8BD /* SocialLoginModel.m in Sources */,
 				3300798F20AB45B600F4A941 /* CharityModelHelper.m in Sources */,
+				3300799620ACA9BB00F4A941 /* SettingsTableViewCell.m in Sources */,
 				3300797C20A76E0200F4A941 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				338A57E3207FB700000FA8BD /* NSError+MTLModelException.m in Sources */,
 				338A578E207F3687000FA8BD /* SocialLoginModelHelper.m in Sources */,

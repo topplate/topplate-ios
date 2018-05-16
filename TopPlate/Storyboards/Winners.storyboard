@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -33,14 +32,50 @@
                     <view key="view" contentMode="scaleToFill" id="PWG-Eh-wE7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MFj-KT-huC">
+                                <rect key="frame" x="0.0" y="64" width="375" height="80"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aP1-zD-2cl">
+                                        <rect key="frame" x="8" y="3" width="75" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="2Hk-xK-fyM"/>
+                                            <constraint firstAttribute="width" constant="75" id="NnK-Xn-kHi"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWV-AO-aTP">
+                                        <rect key="frame" x="91" y="8" width="276" height="64"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="CcN-9h-2Kv"/>
+                                    <constraint firstItem="SWV-AO-aTP" firstAttribute="top" secondItem="MFj-KT-huC" secondAttribute="top" constant="8" id="Ced-wb-il4"/>
+                                    <constraint firstAttribute="bottom" secondItem="aP1-zD-2cl" secondAttribute="bottom" constant="2" id="DrQ-lo-tMF"/>
+                                    <constraint firstAttribute="trailing" secondItem="SWV-AO-aTP" secondAttribute="trailing" constant="8" id="Lau-7F-NOq"/>
+                                    <constraint firstItem="aP1-zD-2cl" firstAttribute="leading" secondItem="MFj-KT-huC" secondAttribute="leading" constant="8" id="MiV-yZ-s5h"/>
+                                    <constraint firstItem="aP1-zD-2cl" firstAttribute="top" secondItem="MFj-KT-huC" secondAttribute="top" constant="3" id="nX7-ul-goh"/>
+                                    <constraint firstAttribute="bottom" secondItem="SWV-AO-aTP" secondAttribute="bottom" constant="8" id="pwK-SM-N1g"/>
+                                    <constraint firstItem="SWV-AO-aTP" firstAttribute="leading" secondItem="aP1-zD-2cl" secondAttribute="trailing" constant="8" id="tBN-de-L15"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MFj-KT-huC" firstAttribute="trailing" secondItem="NMa-wQ-2v4" secondAttribute="trailing" id="tkn-OC-KIP"/>
+                            <constraint firstItem="MFj-KT-huC" firstAttribute="leading" secondItem="NMa-wQ-2v4" secondAttribute="leading" id="vaS-j2-86I"/>
+                            <constraint firstItem="MFj-KT-huC" firstAttribute="top" secondItem="NMa-wQ-2v4" secondAttribute="top" id="wYp-2o-4vC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="NMa-wQ-2v4"/>
                     </view>
                     <navigationItem key="navigationItem" id="zit-dw-RcV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10p-lk-c9l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="442" y="155"/>
+            <point key="canvasLocation" x="440.80000000000001" y="154.27286356821591"/>
         </scene>
     </scenes>
 </document>

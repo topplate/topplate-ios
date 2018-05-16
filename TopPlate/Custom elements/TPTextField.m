@@ -65,7 +65,7 @@
 -(CGRect)leftViewRectForBounds:(CGRect)bounds {
     
     if (_type == TextFieldTypeLeftViewImage) {
-        return CGRectMake(self.x, self.height / 2 - 7, self.height / 2, self.height / 2);
+        return CGRectMake(bounds.origin.x, bounds.origin.y, self.height, self.height);
     }
     
     return bounds;
@@ -74,7 +74,7 @@
 -(CGRect)rightViewRectForBounds:(CGRect)bounds {
     
     if (_type == TextFieldTypeRightViewImage) {
-        return CGRectMake(self.width - 25, bounds.origin.y + 5, 25, 25);
+        return CGRectMake(self.width - self.height, bounds.origin.y + 5, self.height, self.height);
     }
     
     return bounds;
@@ -83,8 +83,8 @@
 - (CGRect)textRectForBounds:(CGRect)bounds {
     
     if (_type == TextFieldTypeLeftViewImage) {
-        return CGRectMake(self.leftView.frame.size.width + 10, bounds.origin.y,
-                          bounds.size.width - self.rightView.width, bounds.size.height);
+        return CGRectMake(self.leftView.width, bounds.origin.y,
+                          bounds.size.width - self.rightView.width - self.leftView.width - 15, bounds.size.height);
     }
     
     if (_type == TextFieldTypeRightViewImage) {
@@ -120,16 +120,16 @@
     }
 }
 
-- (void) drawPlaceholderInRect:(CGRect)rect {
-    
-    NSTextAlignment alignment = NSTextAlignmentCenter;
-    NSMutableParagraphStyle* alignmentSetting = [[NSMutableParagraphStyle alloc] init];
-    alignmentSetting.alignment = alignment;
-    
-    [[self placeholder] drawInRect:rect withAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
-                                                         NSParagraphStyleAttributeName : alignmentSetting
-                                                         }];
-}
+//- (void) drawPlaceholderInRect:(CGRect)rect {
+//
+//    NSTextAlignment alignment = NSTextAlignmentCenter;
+//    NSMutableParagraphStyle* alignmentSetting = [[NSMutableParagraphStyle alloc] init];
+//    alignmentSetting.alignment = alignment;
+//
+//    [[self placeholder] drawInRect:rect withAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
+//                                                         NSParagraphStyleAttributeName : alignmentSetting
+//                                                         }];
+//}
 
 - (void)setPlaceHolderText:(NSString *)placeHolderText {
     self.text = placeHolderText;

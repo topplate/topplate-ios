@@ -1,14 +1,14 @@
 //
-//  PlateIngredientTableViewCell.m
+//  SettingsTableViewCell.m
 //  TopPlate
 //
-//  Created by Viacheslav Pryimachenko on 4/12/18.
+//  Created by Viacheslav Pryimachenko on 5/16/18.
 //  Copyright © 2018 Enke. All rights reserved.
 //
 
-#import "PlateIngredientTableViewCell.h"
+#import "SettingsTableViewCell.h"
 
-@implementation PlateIngredientTableViewCell
+@implementation SettingsTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -19,11 +19,6 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-}
-
-
--(void)setupCellWithIngredient:(NSString *)ingredient {
-    self.plateIngredient.text = [ingredient uppercaseString];
 }
 
 @end

@@ -33,11 +33,11 @@
     
     self.plateModelHelper = [modelsManager getModel:HelperTypePlates];
     
-    UIImageView *searchTextFieldImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 15, 15)];
-    [searchTextFieldImage setImage:[UIImage imageNamed:@"SearchIcon"]];
-    [searchTextFieldImage setContentMode:UIViewContentModeScaleAspectFit];
+    UIButton *searchTextFieldButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.searchTextField.height, self.searchTextField.height)];
+    [searchTextFieldButton setImage:[UIImage imageNamed:@"SearchIcon"] forState:UIControlStateNormal];
     self.searchTextField.type = TextFieldTypeLeftViewImage;
-    self.searchTextField.leftView = searchTextFieldImage;
+    self.searchTextField.leftView = searchTextFieldButton;
+    [searchTextFieldButton addTarget:self action:@selector(searchPlates) forControlEvents:UIControlEventTouchUpInside];
     
     self.searchTextField.delegate = self;
     
@@ -81,15 +81,15 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     
-    [self searchPlates:textField.text];
+    [self searchPlates];
     
     return NO;
 }
 
--(void)searchPlates:(NSString *)searchString {
+-(void)searchPlates {
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self.plateModelHelper searchPlatesWithSearchString:searchString completion:^(NSArray *searchResults, NSString *errorString) {
+    [self.plateModelHelper searchPlatesWithSearchString:self.searchTextField.text completion:^(NSArray *searchResults, NSString *errorString) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
 
         if (errorString) {

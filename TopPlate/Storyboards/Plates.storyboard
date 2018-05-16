@@ -738,7 +738,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.031372549020000001" green="0.078431372550000003" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="rEN-2t-mVX" firstAttribute="trailing" secondItem="oCa-ml-KTB" secondAttribute="trailing" id="6lt-v1-RLA"/>
                             <constraint firstItem="rEN-2t-mVX" firstAttribute="leading" secondItem="oCa-ml-KTB" secondAttribute="leading" id="F2l-NN-NMH"/>

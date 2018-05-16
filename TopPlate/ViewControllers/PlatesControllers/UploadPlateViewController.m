@@ -40,8 +40,6 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 @property (weak, nonatomic) IBOutlet UITableView *ingredientsTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ingredientsTableViewHeight;
 
-@property (weak, nonatomic) IBOutlet UIButton *addIngredientButton;
-
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *offsetToHomemadeView;
@@ -77,12 +75,25 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     
     self.modelHelper.currentPlate.plateEnvironment = getCurrentEnvironment;
     
+    if (self.modelHelper.currentPlate.plateIngredients.count == 0) {
+        [self addIngredientAnimated:YES];
+    }
+    
+    NSLog(@"");
+    
     // Do any additional setup after loading the view.
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addIngredientAnimated:) name:kNotificationAddNewIngredient object:nil];
     
     [self registerForKeyboardNotifications];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -118,11 +129,21 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     IngredientTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IngredientTableViewCell" forIndexPath:indexPath];
     
     cell.delegate = self;
     cell.textfield.customDelegate = self;
     [cell configureCellWithPlate:self.modelHelper.currentPlate andIndex:indexPath.row];
+    
+    if (indexPath.row == self.modelHelper.currentPlate.plateIngredients.count - 1) {
+        cell.textFieldOffsetToView.constant = 38;
+        [cell.addIngredientButton setHidden:NO];
+    } else {
+        cell.textFieldOffsetToView.constant = 0;
+        [cell.addIngredientButton setHidden:YES];
+    }
+    
     return cell;
 }
 
@@ -143,12 +164,13 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     //        NSString *lastIngredient = self.modelHelper.currentPlate.plateIngredients.lastObject;
     //
     //        if ([lastIngredient trimWhiteSpaces].length > 0) {
-    [self addIngredient];
+//    [self addIngredient];
     //        }
     //    }
 }
 
--(void)addIngredient {
+-(void)addIngredientAnimated:(BOOL)animated {
+    
     [self.modelHelper.currentPlate.plateIngredients addObject:@""];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.modelHelper.currentPlate.plateIngredients.count - 1 inSection:0];
     [self.ingredientsTableView beginUpdates];
@@ -156,9 +178,11 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
      insertRowsAtIndexPaths:@[indexPath]withRowAnimation:UITableViewRowAnimationFade];
     [self.ingredientsTableView endUpdates];
     
-    [self updateItemsTableViewHeight:YES];
+    [self updateItemsTableViewHeight:!animated];
     
     [self.scrollView scrollRectToVisible:CGRectMake(self.scrollView.contentSize.width - 1, self.scrollView.contentSize.height - 1, 1, 1) animated:YES];
+    
+    [self.ingredientsTableView reloadData];
 }
 
 - (IBAction)submitAction:(id)sender {
@@ -298,7 +322,6 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     imageTap.numberOfTapsRequired = 1;
     [self.plateImageView addGestureRecognizer:imageTap];
     [self.plateImageView setUserInteractionEnabled:YES];
-    [self.addIngredientButton roundCorners];
     [self.submitButton roundFrame];
     
     

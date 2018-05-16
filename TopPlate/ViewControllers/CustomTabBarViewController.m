@@ -12,6 +12,7 @@
 #import "UploadPlateViewController.h"
 #import "WinnersViewController.h"
 #import "ProfileViewController.h"
+#import "SettingsViewController.h"
 
 @interface CustomTabBarViewController ()
 
@@ -20,7 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *platesButton;
 
-@property (nonatomic, strong) UIBarButtonItem *leftBarItem;
+@property (nonatomic, strong) UIBarButtonItem *rightBarItem;
 
 @end
 
@@ -56,9 +57,9 @@
     UIFont *font = [UIFont boldSystemFontOfSize:13.f];
     NSDictionary *attributes = @{NSFontAttributeName: font};
     
-    self.leftBarItem = [[UIBarButtonItem alloc] initWithTitle:getCurrentEnvironment style:UIBarButtonItemStylePlain target:self action:@selector(environmentChangeSelected)];
-    [self.leftBarItem setTitleTextAttributes:attributes forState:UIControlStateNormal];
-    [self.leftBarItem setTitleTextAttributes:attributes forState:UIControlStateSelected];
+    self.rightBarItem = [[UIBarButtonItem alloc] initWithTitle:getCurrentEnvironment style:UIBarButtonItemStylePlain target:self action:@selector(environmentChangeSelected)];
+    [self.rightBarItem setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    [self.rightBarItem setTitleTextAttributes:attributes forState:UIControlStateSelected];
     
     if (isRestaurantEnv) {
         [self restaurantEnvironmentSelected];
@@ -66,7 +67,7 @@
         [self homemadeEnvironmentSelected];
     }
     
-    self.navigationItem.rightBarButtonItem = self.leftBarItem;
+    self.navigationItem.rightBarButtonItem = self.rightBarItem;
     self.navigationItem.titleView = nil;
 }
 
@@ -78,17 +79,31 @@
     [self setNavigationTitleViewImage];
 }
 
+-(void)setupNavigationBarForProfileSettingsScreen {
+    
+    self.navigationItem.leftBarButtonItem = nil;
+    [self setNavigationTitleViewImage];
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"moreIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfileSettingsScreen)];
+}
+
+-(void)showProfileSettingsScreen {
+    UIStoryboard *proileStoryboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
+    SettingsViewController *settingsViewController = [proileStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+    [self.navigationController pushViewController:settingsViewController animated:YES];
+}
+
 #pragma mark - Environment change helpers -
 
 -(void)restaurantEnvironmentSelected {
     [self.platesButton setImage:[UIImage imageNamed:@"restaurant"] forState:UIControlStateNormal];
-    self.leftBarItem.title = @"Restaurant";
+    self.rightBarItem.title = @"Restaurant";
     [[UserDefaultsManager standardUserDefaults] setObject:@"restaurant" forKey:Default_SelectedEnvironment];
 }
 
 -(void)homemadeEnvironmentSelected {
     [self.platesButton setImage:[UIImage imageNamed:@"homemade"] forState:UIControlStateNormal];
-    self.leftBarItem.title = @"Homemade";
+    self.rightBarItem.title = @"Homemade";
     [[UserDefaultsManager standardUserDefaults] setObject:@"homemade" forKey:Default_SelectedEnvironment];
 }
 
@@ -206,7 +221,7 @@
 
 - (IBAction)profileSelected:(id)sender {
     
-    [self setupNavigationBarForOtherScreens];
+    [self setupNavigationBarForProfileSettingsScreen];
     
     UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
     ProfileViewController *profileViewController = [profileStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];

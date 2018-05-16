@@ -16,6 +16,9 @@
 @end
 
 @interface IngredientTableViewCell : UITableViewCell <UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *addIngredientButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textFieldOffsetToView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textFieldOffsetToButton;
 
 @property (weak, nonatomic) IBOutlet TPTextField *textfield;
 

@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, LoginType)
 #pragma mark - Notifications -
 
 extern NSString * _Nonnull const kNotificationEnvironmentChange;
-
+extern NSString * _Nonnull const kNotificationAddNewIngredient;
 
 #if (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
 
