@@ -130,8 +130,7 @@
                                                                             <rect key="frame" x="245" y="6" width="30" height="30"/>
                                                                             <color key="backgroundColor" white="1" alpha="0.20268485920000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="30" id="67s-ja-cbe"/>
-                                                                                <constraint firstAttribute="height" constant="30" id="evl-CH-1aJ"/>
+                                                                                <constraint firstAttribute="height" constant="30" id="6WO-YG-MJW"/>
                                                                             </constraints>
                                                                             <state key="normal" image="addIcon">
                                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -217,7 +216,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="mhk-zc-8a4" firstAttribute="top" secondItem="XtW-yv-am5" secondAttribute="top" id="15p-8U-zJU"/>
-                                    <constraint firstAttribute="bottom" secondItem="mhk-zc-8a4" secondAttribute="bottom" id="2lT-3B-FgB"/>
+                                    <constraint firstAttribute="bottom" secondItem="mhk-zc-8a4" secondAttribute="bottom" constant="50" id="2lT-3B-FgB"/>
                                     <constraint firstItem="mhk-zc-8a4" firstAttribute="leading" secondItem="XtW-yv-am5" secondAttribute="leading" id="Fka-kq-v6A"/>
                                     <constraint firstAttribute="trailing" secondItem="mhk-zc-8a4" secondAttribute="trailing" id="daw-R9-hpy"/>
                                     <constraint firstItem="mhk-zc-8a4" firstAttribute="centerX" secondItem="XtW-yv-am5" secondAttribute="centerX" id="qIE-Ft-NOO"/>

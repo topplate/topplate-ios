@@ -31,6 +31,8 @@
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     
+    self.tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     self.plateModelHelper = [modelsManager getModel:HelperTypePlates];
     
     UIButton *searchTextFieldButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.searchTextField.height, self.searchTextField.height)];

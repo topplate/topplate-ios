@@ -46,6 +46,14 @@
     return [self colorWithHexString:@"#081413" andAlpha:1.f];
 }
 
++(UIColor *)settingsLightGreenColor {
+    
+    return [self colorWithHexString:@"#4c6665" andAlpha:1.f];
+}
 
++(UIColor *)settingsDarkGreenColor {
+    
+    return [self colorWithHexString:@"#385553" andAlpha:1.f];
+}
 
 @end

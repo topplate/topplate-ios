@@ -19,5 +19,7 @@ typedef void(^SocialCompletionBlock)(id resut, NSError *error);
 
 -(void)processLogin;
 
+-(void)logout;
+
 
 @end

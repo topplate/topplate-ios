@@ -74,7 +74,7 @@
 -(CGRect)rightViewRectForBounds:(CGRect)bounds {
     
     if (_type == TextFieldTypeRightViewImage) {
-        return CGRectMake(self.width - self.height, bounds.origin.y + 5, self.height, self.height);
+        return CGRectMake(self.width - self.height, bounds.origin.y, self.height, self.height);
     }
     
     return bounds;

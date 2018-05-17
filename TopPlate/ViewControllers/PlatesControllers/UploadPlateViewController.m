@@ -151,7 +151,7 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return 44;
 }
 
 #pragma mark - Actions -

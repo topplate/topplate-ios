@@ -130,6 +130,8 @@ typedef NS_ENUM(NSUInteger, SectionType)
             break;
     }
     
+    [baseCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
     return baseCell;
 }
 

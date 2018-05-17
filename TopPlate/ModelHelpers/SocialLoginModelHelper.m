@@ -297,6 +297,8 @@
     
     [[GIDSignIn sharedInstance] signOut];
     [self.facebookLoginManager logOut];
+    
+    [modelsManager cleanData];
 }
 
 @end

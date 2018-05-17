@@ -19,6 +19,9 @@
 		3300798F20AB45B600F4A941 /* CharityModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300798E20AB45B600F4A941 /* CharityModelHelper.m */; };
 		3300799320ACA7E400F4A941 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300799220ACA7E400F4A941 /* SettingsViewController.m */; };
 		3300799620ACA9BB00F4A941 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300799520ACA9BB00F4A941 /* SettingsTableViewCell.m */; };
+		3300799820ACE00E00F4A941 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3300799720ACE00E00F4A941 /* StoreKit.framework */; };
+		3300799B20ACE40700F4A941 /* ContactUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300799A20ACE40700F4A941 /* ContactUsViewController.m */; };
+		3300799E20ACEA6F00F4A941 /* EditUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300799D20ACEA6F00F4A941 /* EditUserProfileViewController.m */; };
 		332D4E632099024700F535E2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 332D4E622099024700F535E2 /* User.m */; };
 		33504A2F20A49CD500622F2E /* TPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A2E20A49CD500622F2E /* TPButton.m */; };
 		33504A3520A4B27900622F2E /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A3420A4B27900622F2E /* UIColor+Helper.m */; };
@@ -147,6 +150,11 @@
 		3300799220ACA7E400F4A941 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		3300799420ACA9BB00F4A941 /* SettingsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewCell.h; sourceTree = "<group>"; };
 		3300799520ACA9BB00F4A941 /* SettingsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewCell.m; sourceTree = "<group>"; };
+		3300799720ACE00E00F4A941 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3300799920ACE40700F4A941 /* ContactUsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactUsViewController.h; sourceTree = "<group>"; };
+		3300799A20ACE40700F4A941 /* ContactUsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactUsViewController.m; sourceTree = "<group>"; };
+		3300799C20ACEA6F00F4A941 /* EditUserProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditUserProfileViewController.h; sourceTree = "<group>"; };
+		3300799D20ACEA6F00F4A941 /* EditUserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditUserProfileViewController.m; sourceTree = "<group>"; };
 		332D4E612099024700F535E2 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		332D4E622099024700F535E2 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		33504A2D20A49CD500622F2E /* TPButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPButton.h; sourceTree = "<group>"; };
@@ -317,6 +325,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3300799820ACE00E00F4A941 /* StoreKit.framework in Frameworks */,
 				87B856CEBC75E9E82BD40066 /* libPods-TopPlate.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,10 +501,14 @@
 			children = (
 				338A5769207F356F000FA8BD /* ProfileViewController.h */,
 				338A576A207F356F000FA8BD /* ProfileViewController.m */,
+				3300799C20ACEA6F00F4A941 /* EditUserProfileViewController.h */,
+				3300799D20ACEA6F00F4A941 /* EditUserProfileViewController.m */,
 				3300799120ACA7E400F4A941 /* SettingsViewController.h */,
 				3300799220ACA7E400F4A941 /* SettingsViewController.m */,
 				3300799420ACA9BB00F4A941 /* SettingsTableViewCell.h */,
 				3300799520ACA9BB00F4A941 /* SettingsTableViewCell.m */,
+				3300799920ACE40700F4A941 /* ContactUsViewController.h */,
+				3300799A20ACE40700F4A941 /* ContactUsViewController.m */,
 				3300799020ACA7CC00F4A941 /* Profile cells */,
 			);
 			path = ProfileControllers;
@@ -706,6 +719,7 @@
 		4C1BBAAA603063397C8F7AEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3300799720ACE00E00F4A941 /* StoreKit.framework */,
 				5B787FD32EBF82D4951E13FB /* libPods-TopPlate.a */,
 				A82AE3966A28FBD0AB612FA1 /* libPods-TopPlateTests.a */,
 				D6022C681FDB19AAE2806250 /* libPods-TopPlateUITests.a */,
@@ -982,6 +996,7 @@
 				338A575B207F34FF000FA8BD /* PlatesViewController.m in Sources */,
 				33B615F8209F6F600096F8C5 /* UserInfoCollectionViewCell.m in Sources */,
 				3366C1892086829200D710A9 /* MacrosHelper.m in Sources */,
+				3300799B20ACE40700F4A941 /* ContactUsViewController.m in Sources */,
 				338A5791207F3693000FA8BD /* PlateModelHelper.m in Sources */,
 				338A5758207F34D8000FA8BD /* ForgotPasswordViewController.m in Sources */,
 				3366C17A2086224A00D710A9 /* UserDefaultsManager.m in Sources */,
@@ -1014,6 +1029,7 @@
 				3300797A20A76E0200F4A941 /* TPKeyboardAvoidingTableView.m in Sources */,
 				338A57ED207FB700000FA8BD /* NSDictionary+MTLJSONKeyPath.m in Sources */,
 				3366C18620867B0400D710A9 /* Helper.m in Sources */,
+				3300799E20ACEA6F00F4A941 /* EditUserProfileViewController.m in Sources */,
 				338A57EF207FB700000FA8BD /* MTLTransformerErrorHandling.m in Sources */,
 				338A5762207F3520000FA8BD /* UploadPlateViewController.m in Sources */,
 				338A575F207F3517000FA8BD /* PlateInfoViewController.m in Sources */,

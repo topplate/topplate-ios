@@ -18,4 +18,7 @@
 
 +(UIColor *)defaultDarkBackgroundColor;
 
++(UIColor *)settingsLightGreenColor;
++(UIColor *)settingsDarkGreenColor;
+
 @end
