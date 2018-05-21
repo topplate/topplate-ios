@@ -22,6 +22,8 @@
 		3300799820ACE00E00F4A941 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3300799720ACE00E00F4A941 /* StoreKit.framework */; };
 		3300799B20ACE40700F4A941 /* ContactUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300799A20ACE40700F4A941 /* ContactUsViewController.m */; };
 		3300799E20ACEA6F00F4A941 /* EditUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300799D20ACEA6F00F4A941 /* EditUserProfileViewController.m */; };
+		330079A120AE38B600F4A941 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330079A020AE38B600F4A941 /* FeedbackViewController.m */; };
+		330079A320B2FC2500F4A941 /* PlatesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330079A220B2FC2500F4A941 /* PlatesTableViewCell.xib */; };
 		332D4E632099024700F535E2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 332D4E622099024700F535E2 /* User.m */; };
 		33504A2F20A49CD500622F2E /* TPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A2E20A49CD500622F2E /* TPButton.m */; };
 		33504A3520A4B27900622F2E /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A3420A4B27900622F2E /* UIColor+Helper.m */; };
@@ -155,6 +157,9 @@
 		3300799A20ACE40700F4A941 /* ContactUsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactUsViewController.m; sourceTree = "<group>"; };
 		3300799C20ACEA6F00F4A941 /* EditUserProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditUserProfileViewController.h; sourceTree = "<group>"; };
 		3300799D20ACEA6F00F4A941 /* EditUserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditUserProfileViewController.m; sourceTree = "<group>"; };
+		3300799F20AE38B600F4A941 /* FeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		330079A020AE38B600F4A941 /* FeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
+		330079A220B2FC2500F4A941 /* PlatesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlatesTableViewCell.xib; sourceTree = "<group>"; };
 		332D4E612099024700F535E2 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		332D4E622099024700F535E2 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		33504A2D20A49CD500622F2E /* TPButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPButton.h; sourceTree = "<group>"; };
@@ -509,6 +514,8 @@
 				3300799520ACA9BB00F4A941 /* SettingsTableViewCell.m */,
 				3300799920ACE40700F4A941 /* ContactUsViewController.h */,
 				3300799A20ACE40700F4A941 /* ContactUsViewController.m */,
+				3300799F20AE38B600F4A941 /* FeedbackViewController.h */,
+				330079A020AE38B600F4A941 /* FeedbackViewController.m */,
 				3300799020ACA7CC00F4A941 /* Profile cells */,
 			);
 			path = ProfileControllers;
@@ -573,6 +580,7 @@
 			children = (
 				338A5799207F55C6000FA8BD /* PlatesTableViewCell.h */,
 				338A579A207F55C6000FA8BD /* PlatesTableViewCell.m */,
+				330079A220B2FC2500F4A941 /* PlatesTableViewCell.xib */,
 			);
 			path = PlatesTableViewCell;
 			sourceTree = "<group>";
@@ -855,6 +863,7 @@
 				33B615FD209F71780096F8C5 /* PlateCollectionViewCell.xib in Resources */,
 				338A5723207F30D0000FA8BD /* Assets.xcassets in Resources */,
 				338A5793207F36D5000FA8BD /* CustomTabBar.storyboard in Resources */,
+				330079A320B2FC2500F4A941 /* PlatesTableViewCell.xib in Resources */,
 				33504A3720A4DB7200622F2E /* Milkshake.otf in Resources */,
 				338A577A207F35F5000FA8BD /* Profile.storyboard in Resources */,
 				3366C18020863CD500D710A9 /* Oswald-Light.ttf in Resources */,
@@ -970,6 +979,7 @@
 				33A7AC1C20964C6000C397AB /* TPTextField.m in Sources */,
 				338A57F6207FBD8E000FA8BD /* ModelsManager.m in Sources */,
 				3300798C20AB35E900F4A941 /* Charity.m in Sources */,
+				330079A120AE38B600F4A941 /* FeedbackViewController.m in Sources */,
 				33D6E08E207FE4BA0097DAC4 /* UIView+Helper.m in Sources */,
 				338A57A6207F569D000FA8BD /* PlateNameTableViewCell.m in Sources */,
 				338A5780207F3630000FA8BD /* LoginModel.m in Sources */,

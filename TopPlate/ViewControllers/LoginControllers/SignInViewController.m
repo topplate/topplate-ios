@@ -11,8 +11,9 @@
 #import "ForgotPasswordViewController.h"
 
 @interface SignInViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+
+@property (weak, nonatomic) IBOutlet TPTextField *emailTextField;
+@property (weak, nonatomic) IBOutlet TPTextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
 @property (weak, nonatomic) IBOutlet UIButton *signUpButton;
 
@@ -27,12 +28,78 @@
     
     [self.signInButton roundCorners];
     [self.signUpButton roundCorners];
+    
+    [self.emailTextField roundFrame];
+    [self.passwordTextField roundFrame];
+    
+    [self.passwordTextField setType:TextFieldTypeSecured];
+    [self.emailTextField setPlaceHolderText:@"YOUR EMAIL"];
+    [self.passwordTextField setPlaceHolderText:@"YOUR PASSWORD"];
+    
+    [self.emailTextField setType:TextFieldTypePlaceholder];
+    [self.passwordTextField setType:TextFieldTypePlaceholder];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    tapGesture.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:tapGesture];
+
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self registerForKeyboardNotifications];
+}
+
+-(void)hideKeyboard {
+    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Keyboard Notification -
+
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)unregisterFromKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
+}
+
+- (void)keyboardWasShown:(NSNotification *)notification {
+    
+    NSDictionary* info = [notification userInfo];
+    
+    
+    CGRect keyboardRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    
+    
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)notification {
+    
+    
 }
 
 - (IBAction)loginSelected:(id)sender {
@@ -60,14 +127,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

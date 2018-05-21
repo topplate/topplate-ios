@@ -18,7 +18,7 @@ typedef void (^NetworkCompletionBlock)(id response, NSError *error);
 
 -(void)getEnvironmentsWithCompletion:(NetworkCompletionBlock)completion;
 
-//sing in
+#pragma mark - SignIn -
 
 -(void)signInWithGoogle:(SocialLoginModel *)userInfo
          withCompletion:(NetworkCompletionBlock)completion;
@@ -26,7 +26,15 @@ typedef void (^NetworkCompletionBlock)(id response, NSError *error);
 -(void)signInWithFacebook:(SocialLoginModel *)userInfo
            withCompletion:(NetworkCompletionBlock)completion;
 
-//plates
+-(void)signInWithEmail:(LoginModel *)login
+        withCompletion:(NetworkCompletionBlock)completion;
+
+-(void)signUpWithEmail:(LoginModel *)login
+        withCompletion:(NetworkCompletionBlock)completion;
+
+-(void)logoutWithCompletion:(NetworkCompletionBlock)completion;
+
+#pragma mark - Plates -
 
 - (void)getPlates:(NSDictionary*)params
    withCompletion:(NetworkCompletionBlock)completion;
@@ -40,7 +48,9 @@ typedef void (^NetworkCompletionBlock)(id response, NSError *error);
 - (void)searchPlates:(NSString *)searchString
       withCompletion:(NetworkCompletionBlock)completion;
 
-//user profile
+-(void)getWinnersWithCompletion:(NetworkCompletionBlock)completion;
+
+#pragma mark - User profile -
 
 -(void)getUserProfileWithUserId:(NSString *)userId
                  withCompletion:(NetworkCompletionBlock)completion;
@@ -48,5 +58,8 @@ typedef void (^NetworkCompletionBlock)(id response, NSError *error);
 -(void)getPlatesForUser:(NSDictionary *)params
          withCompletion:(NetworkCompletionBlock)completion;
 
+#pragma mark - Charity -
+
 - (void)loadCharityChoiseBannersWithCompletion:(NetworkCompletionBlock)completion;
+
 @end

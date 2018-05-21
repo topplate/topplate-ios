@@ -16,12 +16,14 @@ static int kDefaultLoadLimit = 10;
 #import "ProfileViewController.h"
 #import "UserInfoCollectionViewCell.h"
 #import "PlateCollectionViewCell.h"
+#import "PlateInfoViewController.h"
 
 @interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic, strong) AuthorModelHelper *authHelper;
+@property (nonatomic, strong) PlateModelHelper *plateHelper;
 @property (nonatomic) NSInteger limit;
 @property (nonatomic) NSInteger skip;
 
@@ -46,11 +48,12 @@ static int kDefaultLoadLimit = 10;
     [self setBackgroundImage];
     
     self.authHelper = [modelsManager getModel:HelperTypeAuthor];
+    self.plateHelper = [modelsManager getModel:HelperTypePlates];
     
-    if (self.authHelper.currentUserPlates.count <= 0) {
+    if (self.authHelper.currentUserPlates.count <= 0 && getCurrentUser.userId) {
         [self loadUserInfo];
     }
-
+    
     // Do any additional setup after loading the view.
 }
 
@@ -135,9 +138,31 @@ static int kDefaultLoadLimit = 10;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-
+    
     UIEdgeInsets tempInsets = UIEdgeInsetsZero;
     return tempInsets;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    PlateModel *plate = self.authHelper.currentUserPlates[indexPath.row];
+    [self loadPlateForId:plate.plateId];
+}
+
+-(void)loadPlateForId:(NSString *)plateId {
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.plateHelper getPlateWithId:plateId
+                     completionBlock:^(PlateModel *plate, NSString *errorString) {
+                         [MBProgressHUD hideHUDForView:self.view animated:YES];
+                         
+                         if (plate && !errorString) {
+                             UIStoryboard *plateStoryboard = [UIStoryboard storyboardWithName:@"Plates" bundle:nil];
+                             PlateInfoViewController *plateVc = [plateStoryboard instantiateViewControllerWithIdentifier:@"PlateInfoViewController"];
+                             plateVc.selectedPlate = plate;
+                             [self.navigationController pushViewController:plateVc animated:YES];
+                         }
+                     }];
 }
 
 

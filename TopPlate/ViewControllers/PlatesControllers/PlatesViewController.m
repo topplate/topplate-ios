@@ -33,12 +33,12 @@ static int kDefaultLoadLimit = 10;
     
     [self.view setBackgroundColor:[UIColor clearColor]];
     
-//    [self setNavigationTitleViewImage];
+    [self.tableView registerNib:[UINib nibWithNibName:@"PlatesTableViewCell" bundle:nil] forCellReuseIdentifier:@"PlatesTableViewCell"];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView.frame = CGRectZero;
-        
+    
     self.tableView.estimatedRowHeight = 315;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
@@ -76,14 +76,14 @@ static int kDefaultLoadLimit = 10;
                                      withLimit:@(self.limit)
                                       withSkip:@(self.skip)
                                completionBlock:^(NSArray *plates, NSString *errorString) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        if (!errorString && plates.count < kDefaultLoadLimit) {
-            self.limit = -1;
-            self.skip = -1;
-        }
-        NSLog(@"");
-
-    }];
+                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                   if (!errorString && plates.count < kDefaultLoadLimit) {
+                                       self.limit = -1;
+                                       self.skip = -1;
+                                   }
+                                   NSLog(@"");
+                                   
+                               }];
 }
 
 -(void)loadPlateForId:(NSString *)plateId {
@@ -98,8 +98,7 @@ static int kDefaultLoadLimit = 10;
                               plateVc.selectedPlate = plate;
                               [self.navigationController pushViewController:plateVc animated:YES];
                           }
-    }];
-    
+                      }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -121,7 +120,7 @@ static int kDefaultLoadLimit = 10;
     PlateModel *plate = self.platesHelper.plates[indexPath.row];
     
     cell.plateName.text = [plate.plateName uppercaseString];
-    [cell.plateImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", @"https://top-plate.herokuapp.com/", plate.plateImages.firstObject]]];
+    [cell.plateImage sd_setImageWithURL:[plate.plateImages.firstObject withBaseUrl]];
     cell.plateAuthorName.text = [plate.plateAuthor.authorName uppercaseString];
     cell.plateLocation.text = [plate.plateAuthorLocation uppercaseString];
     cell.plateLikes.text = [NSString stringWithFormat:@"%ld", (long)plate.plateLikes];

@@ -112,8 +112,8 @@
                             <constraint firstItem="GZ7-03-wxl" firstAttribute="leading" secondItem="gIn-48-8g7" secondAttribute="leading" id="DEd-QH-y7F"/>
                             <constraint firstItem="GZ7-03-wxl" firstAttribute="top" secondItem="bP0-xV-uKG" secondAttribute="bottom" id="KvX-4c-wNc"/>
                             <constraint firstItem="bP0-xV-uKG" firstAttribute="top" secondItem="gIn-48-8g7" secondAttribute="top" id="MCr-Gk-RGe"/>
+                            <constraint firstItem="GZ7-03-wxl" firstAttribute="bottom" secondItem="gIn-48-8g7" secondAttribute="bottom" id="brD-0I-Ev2"/>
                             <constraint firstItem="GZ7-03-wxl" firstAttribute="trailing" secondItem="gIn-48-8g7" secondAttribute="trailing" id="gjv-7s-NIe"/>
-                            <constraint firstItem="GZ7-03-wxl" firstAttribute="bottom" secondItem="gIn-48-8g7" secondAttribute="bottom" id="izJ-PN-6zo"/>
                             <constraint firstItem="bP0-xV-uKG" firstAttribute="leading" secondItem="gIn-48-8g7" secondAttribute="leading" id="pzY-wh-4ws"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gIn-48-8g7"/>
@@ -121,7 +121,6 @@
                     <navigationItem key="navigationItem" id="ggA-0t-ntI"/>
                     <connections>
                         <outlet property="searchTextField" destination="inU-9N-Uxv" id="WhB-Ti-IEe"/>
-                        <outlet property="tableViewButtomOffset" destination="izJ-PN-6zo" id="z2K-TI-oSd"/>
                         <outlet property="tableview" destination="GZ7-03-wxl" id="xnI-5e-1f2"/>
                     </connections>
                 </viewController>

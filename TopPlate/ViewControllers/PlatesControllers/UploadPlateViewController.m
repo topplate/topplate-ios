@@ -306,6 +306,9 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     self.plateRestaurantName.placeHolderText = kPlateRestaurantNamePlaceholderText;
     self.plateRestaurantLocation.placeHolderText = kPlateRestaurantLocationPlaceholderText;
     
+    [self.plateRestaurantName setType:TextFieldTypePlaceholder];
+    [self.plateRestaurantLocation setType:TextFieldTypePlaceholder];
+
     if (isHomeMadeEnv) {
         self.offsetToHomemadeView.priority = 1000;
         self.offsetToRestaurantView.priority = 250;

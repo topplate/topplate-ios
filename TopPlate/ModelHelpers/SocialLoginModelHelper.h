@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <GoogleSignIn/GoogleSignIn.h>
 
-typedef void(^SocialCompletionBlock)(id resut, NSError *error);
+typedef void(^SocialCompletionBlock)(id result, NSError *error);
 
 @interface SocialLoginModelHelper : NSObject
 

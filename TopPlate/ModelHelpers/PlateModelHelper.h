@@ -37,5 +37,9 @@ typedef void(^PlateCompletionBlock)(NSArray *plates, NSString *errorString);
 -(void)searchPlatesWithSearchString:(NSString *)searchString
                          completion:(void(^)(NSArray *searchResults, NSString *errorString))completion;
 
+-(void)getWinnersWithCompletion:(PlateCompletionBlock)completion;
+
+-(BOOL)isMyPlate:(PlateModel *)plate;
+
 
 @end

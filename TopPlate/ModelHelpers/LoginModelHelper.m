@@ -7,7 +7,18 @@
 //
 
 #import "LoginModelHelper.h"
+#import "LoginModel.h"
+
+typedef void(^LoginCompletionBlock)(id result, NSError *error);
 
 @implementation LoginModelHelper
+
+-(void)singIn:(LoginModel *)login withCompletion:(LoginCompletionBlock)completion {
+    
+}
+
+-(void)singUp:(LoginModel *)login withCompletion:(LoginCompletionBlock)completion {
+    
+}
 
 @end

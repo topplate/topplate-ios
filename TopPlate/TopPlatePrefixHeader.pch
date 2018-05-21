@@ -24,6 +24,7 @@
 #import "User.h"
 #import "SocialLoginModel.h"
 #import "Charity.h"
+#import "LoginModel.h"
 
 #import "PlateModelHelper.h"
 #import "SocialLoginModelHelper.h"

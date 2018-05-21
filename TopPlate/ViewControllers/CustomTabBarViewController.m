@@ -232,7 +232,7 @@
         [self highLightButton:sender];
         
         if (!getCurrentUser) {
-            [Helper showWelcomeScreenAsModal:YES ];
+            [Helper showWelcomeScreenAsModal:YES];
         }
     }
 }

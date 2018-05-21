@@ -10,6 +10,8 @@
 
 @interface TPButton : UIButton
 
--(void)setImageWithName:(NSString *)imageName backgroundСolor:(UIColor *)imageColor andTitle:(NSString *)title;
+-(void)setImageWithName:(NSString *)imageName
+        backgroundСolor:(UIColor *)imageColor
+                andTitle:(NSString *)title;
 
 @end

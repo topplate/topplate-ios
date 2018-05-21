@@ -6,6 +6,6 @@
 //  Copyright © 2018 Enke. All rights reserved.
 //
 
-#define baseAPIUrl [NSURL URLWithString:@"https://top-plate.herokuapp.com/"]
+#define baseAPIUrl [NSURL URLWithString:@"http://ec2-18-191-31-185.us-east-2.compute.amazonaws.com/"]
 
 #define googleClientId [NSString stringWithFormat:@"363481561570-gggao274kguhm50le5hvd80t8jc968f0.apps.googleusercontent.com"]

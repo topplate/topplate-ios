@@ -57,6 +57,10 @@
     
     if (type == TextFieldTypeUnderLined) {
         self.borderStyle = UITextBorderStyleNone;
+    } else if (type == TextFieldTypePlaceholder) {
+        self.borderStyle = UITextBorderStyleRoundedRect;
+        self.placeholder = @"";
+        self.backgroundColor = [UIColor clearColor];
     } else {
         self.borderStyle = UITextBorderStyleRoundedRect;
     }
@@ -92,7 +96,7 @@
                           bounds.size.width - self.rightView.width, bounds.size.height);
     }
     
-    if (_type == TextFieldTypeOrdinary) {
+    if (_type == TextFieldTypeOrdinary || _type == TextFieldTypeSecured || _type == TextFieldTypePlaceholder) {
         return CGRectMake(bounds.origin.x + 7 , bounds.origin.y,
                           bounds.size.width, bounds.size.height);
     }
@@ -120,17 +124,6 @@
     }
 }
 
-//- (void) drawPlaceholderInRect:(CGRect)rect {
-//
-//    NSTextAlignment alignment = NSTextAlignmentCenter;
-//    NSMutableParagraphStyle* alignmentSetting = [[NSMutableParagraphStyle alloc] init];
-//    alignmentSetting.alignment = alignment;
-//
-//    [[self placeholder] drawInRect:rect withAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
-//                                                         NSParagraphStyleAttributeName : alignmentSetting
-//                                                         }];
-//}
-
 - (void)setPlaceHolderText:(NSString *)placeHolderText {
     self.text = placeHolderText;
     _placeHolderText = placeHolderText;
@@ -148,9 +141,17 @@
     if ([textField.text isEqualToString:self.placeHolderText]) {
         self.text = @"";
         self.textAlignment = NSTextAlignmentLeft;
+        
+        if (self.type == TextFieldTypeSecured) {
+            [self setSecureTextEntry:YES];
+        } else {
+            [self setSecureTextEntry:NO];
+        }
+        
     } else if (textField.text.length == 0) {
         self.text = self.placeHolderText;
         self.textAlignment = NSTextAlignmentCenter;
+        [self setSecureTextEntry:NO];
     }
     
     if ([self.customDelegate respondsToSelector:@selector(textFieldIsCurrentResponder:)]) {
@@ -162,12 +163,21 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
     
-   textField.text = [textField.text trimWhiteSpaces];
+    textField.text = [textField.text trimWhiteSpaces];
     
     if ([textField.text isEqualToString:@""] || [textField.text isEqualToString:self.placeHolderText]) {
         self.text = self.placeHolderText;
         self.textAlignment = NSTextAlignmentCenter;
+        [self setSecureTextEntry:NO];
+        
     } else {
+        
+        if (self.type == TextFieldTypeSecured) {
+            [self setSecureTextEntry:YES];
+        } else {
+            [self setSecureTextEntry:NO];
+        }
+        
         if (self.textFieldValueChange) {
             self.textFieldValueChange(textField.text);
         }

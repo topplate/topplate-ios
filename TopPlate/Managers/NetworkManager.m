@@ -31,7 +31,7 @@
 
     @synchronized(self) {
         if ( ! _sessionManager) {
-            AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://top-plate.herokuapp.com/"]];
+            AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseAPIUrl];
 
             AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
             [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -83,6 +83,49 @@
         completion(nil, error);
     }];
 }
+
+-(void)signInWithEmail:(LoginModel *)login
+           withCompletion:(NetworkCompletionBlock)completion {
+    
+    [self.sessionManager POST:@""
+                   parameters:[login signInRepresentation]
+                     progress:^(NSProgress * _Nonnull uploadProgress) {
+                         
+                     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                         completion(responseObject, nil);
+                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                         completion(nil, error);
+                     }];
+}
+
+-(void)signUpWithEmail:(LoginModel *)login
+        withCompletion:(NetworkCompletionBlock)completion {
+    
+    [self.sessionManager POST:@""
+                   parameters:[login signUpRepresentation]
+                     progress:^(NSProgress * _Nonnull uploadProgress) {
+                         
+                     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                         completion(responseObject, nil);
+                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                         completion(nil, error);
+                     }];
+}
+
+-(void)logoutWithCompletion:(NetworkCompletionBlock)completion {
+    
+    [self.sessionManager POST:@"logout"
+                   parameters:@{@"email" : getCurrentUser.userInfo.authorEmail,
+                                @"token" : getCurrentUser.token}
+                     progress:^(NSProgress * _Nonnull uploadProgress) {
+                         
+                     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                         completion(responseObject, nil);
+                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                         completion(nil, error);
+                     }];
+}
+
 
 -(void)getEnvironmentsWithCompletion:(NetworkCompletionBlock)completion {
 
@@ -146,22 +189,6 @@
     }];
 }
 
-//user profile
-
--(void)getUserProfileWithUserId:(NSString *)userId
-                 withCompletion:(NetworkCompletionBlock)completion {
-    
-    [self.sessionManager GET:@"get-user-profile"
-                  parameters:@{@"id" : userId}
-                    progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        completion(responseObject, nil);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, error);
-    }];
-}
-
 -(void)getPlatesForUser:(NSDictionary *)params
          withCompletion:(NetworkCompletionBlock)completion {
     
@@ -197,6 +224,35 @@
                   parameters:nil
                     progress:^(NSProgress * _Nonnull downloadProgress) {
                         //
+                    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                        completion(responseObject, nil);
+                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                        completion(nil, error);
+                    }];
+}
+
+//user profile
+
+-(void)getUserProfileWithUserId:(NSString *)userId
+                 withCompletion:(NetworkCompletionBlock)completion {
+    
+    [self.sessionManager GET:@"get-user-profile"
+                  parameters:@{@"id" : userId}
+                    progress:^(NSProgress * _Nonnull downloadProgress) {
+                        
+                    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                        completion(responseObject, nil);
+                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                        completion(nil, error);
+                    }];
+}
+
+-(void)getWinnersWithCompletion:(NetworkCompletionBlock)completion {
+    
+    [self.sessionManager GET:@"get_winners"
+                  parameters:@{@"environment" : getCurrentEnvironment}
+                    progress:^(NSProgress * _Nonnull downloadProgress) {
+                        
                     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                         completion(responseObject, nil);
                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

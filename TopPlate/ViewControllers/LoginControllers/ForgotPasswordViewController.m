@@ -9,7 +9,8 @@
 #import "ForgotPasswordViewController.h"
 
 @interface ForgotPasswordViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *resetPasswordTextField;
+
+@property (weak, nonatomic) IBOutlet TPTextField *resetPasswordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *resetButton;
 
 @end
@@ -21,6 +22,12 @@
     
     [self setLoginBackgroundImage];
     [self.resetButton roundCorners];
+    
+    [self.resetPasswordTextField roundFrame];
+    
+    [self.resetPasswordTextField setPlaceHolderText:@"YOUR EMAIL"];
+    [self.resetPasswordTextField setType:TextFieldTypePlaceholder];
+
     // Do any additional setup after loading the view.
 }
 

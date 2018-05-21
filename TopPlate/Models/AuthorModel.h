@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSString *authorId;
 @property (nonatomic, strong) NSURL *authorImageUrl;
 @property (nonatomic, strong) NSString *authorName;
+@property (nonatomic, strong) NSString *authorEmail;
 
 @end

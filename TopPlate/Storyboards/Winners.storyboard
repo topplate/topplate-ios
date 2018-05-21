@@ -62,16 +62,27 @@
                                     <constraint firstItem="SWV-AO-aTP" firstAttribute="leading" secondItem="aP1-zD-2cl" secondAttribute="trailing" constant="8" id="tBN-de-L15"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fpY-fx-nMM">
+                                <rect key="frame" x="0.0" y="144" width="375" height="523"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="fpY-fx-nMM" firstAttribute="trailing" secondItem="NMa-wQ-2v4" secondAttribute="trailing" id="Ne0-hu-o7g"/>
+                            <constraint firstItem="fpY-fx-nMM" firstAttribute="bottom" secondItem="NMa-wQ-2v4" secondAttribute="bottom" id="YxG-l1-bxH"/>
+                            <constraint firstItem="fpY-fx-nMM" firstAttribute="top" secondItem="MFj-KT-huC" secondAttribute="bottom" id="dVv-eL-GK3"/>
                             <constraint firstItem="MFj-KT-huC" firstAttribute="trailing" secondItem="NMa-wQ-2v4" secondAttribute="trailing" id="tkn-OC-KIP"/>
                             <constraint firstItem="MFj-KT-huC" firstAttribute="leading" secondItem="NMa-wQ-2v4" secondAttribute="leading" id="vaS-j2-86I"/>
                             <constraint firstItem="MFj-KT-huC" firstAttribute="top" secondItem="NMa-wQ-2v4" secondAttribute="top" id="wYp-2o-4vC"/>
+                            <constraint firstItem="fpY-fx-nMM" firstAttribute="leading" secondItem="NMa-wQ-2v4" secondAttribute="leading" id="ygJ-sW-B2d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NMa-wQ-2v4"/>
                     </view>
                     <navigationItem key="navigationItem" id="zit-dw-RcV"/>
+                    <connections>
+                        <outlet property="tableView" destination="fpY-fx-nMM" id="bnR-YG-wNO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10p-lk-c9l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

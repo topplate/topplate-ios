@@ -29,6 +29,7 @@ typedef NS_ENUM(NSUInteger, SectionType)
 @interface PlateInfoViewController () <UITableViewDelegate, UITableViewDataSource, PlateOtherReceiptsTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) PlateModelHelper *plateHelper;
 
 @end
 
@@ -45,7 +46,17 @@ typedef NS_ENUM(NSUInteger, SectionType)
     [self setNavigationTitleViewImage];
     [self setLoginBackgroundImage];
     
+    self.plateHelper = [modelsManager getModel:HelperTypePlates];
+    
+    if ([self.plateHelper isMyPlate:self.selectedPlate]) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"editIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(editPlate)];
+    }
+    
     // Do any additional setup after loading the view.
+}
+
+-(void)editPlate {
+    NSLog(@"");
 }
 
 - (void)didReceiveMemoryWarning {

@@ -19,7 +19,9 @@ typedef NS_ENUM(NSInteger, TextFieldType) {
     TextFieldTypeOrdinary = 0,
     TextFieldTypeUnderLined,
     TextFieldTypeLeftViewImage,
-    TextFieldTypeRightViewImage
+    TextFieldTypeRightViewImage,
+    TextFieldTypeSecured,
+    TextFieldTypePlaceholder
 };
 
 typedef void (^TextFieldValueChange)(NSString *text);

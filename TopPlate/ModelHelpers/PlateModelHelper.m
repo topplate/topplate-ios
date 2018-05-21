@@ -25,7 +25,6 @@
                       withSkip:(NSNumber *)skip
                completionBlock:(PlateCompletionBlock)completion {
     
-    
     NSDictionary *paramsDict = @{@"environment" : environment ?: @"",
                                  @"lim" : limit ?: 0,
                                  @"skip" : skip ?: 0};
@@ -102,6 +101,26 @@
     }];
 }
 
+-(void)getWinnersWithCompletion:(PlateCompletionBlock)completion {
+    
+    [[NetworkManager sharedManager] getWinnersWithCompletion:^(id response, NSError *error) {
+        if (!error) {
+            NSError *parseError;
+            NSArray *winnerPlates = [MTLJSONAdapter modelsOfClass:[PlateModel class] fromJSONArray:response error:&parseError];
+            completion(winnerPlates, nil);
+        } else {
+            completion(nil, error.localizedDescription);
+        }
+    }];
+}
 
+-(BOOL)isMyPlate:(PlateModel *)plate {
+    
+    if ([plate.plateAuthor.authorId isEqualToString:getCurrentUser.userId]) {
+        return YES;
+    }
+    
+    return NO;
+}
 
 @end
