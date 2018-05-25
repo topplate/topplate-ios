@@ -22,12 +22,12 @@
 
 -(void)getPlatesForEnvironment:(NSString *)environment
                      withLimit:(NSNumber *)limit
-                      withSkip:(NSNumber *)skip
+                withLastPlateId:(NSString *)lastPlateId
                completionBlock:(PlateCompletionBlock)completion {
-    
+
     NSDictionary *paramsDict = @{@"environment" : environment ?: @"",
                                  @"lim" : limit ?: 0,
-                                 @"skip" : skip ?: 0};
+                                 @"lastId" : lastPlateId ?: @""};
     
     [[NetworkManager sharedManager] getPlates:paramsDict
                                withCompletion:^(id response, NSError *error) {

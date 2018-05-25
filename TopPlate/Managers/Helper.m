@@ -45,13 +45,17 @@
 
 +(void)showWelcomeScreenAsModal:(BOOL)modal {
     
-    UIStoryboard *loginS = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-    UINavigationController *platesNav = (UINavigationController *)[loginS instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+    UIStoryboard *loginStorybord = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    WelcomeViewController *welcomeViewControllerlcome = [loginStorybord instantiateViewControllerWithIdentifier:@"WelcomeViewController"];
+    welcomeViewControllerlcome.presentedModaly = modal;
+    UINavigationController *loginNavigationController = [[UINavigationController alloc] initWithRootViewController:welcomeViewControllerlcome];
+    [loginNavigationController setNavigationBarHidden:YES];
+    
     if (modal) {
-        [[Helper rootViewController] presentViewController:platesNav animated:YES completion:nil];
+        [[Helper rootViewController] presentViewController:loginNavigationController animated:YES completion:nil];
     } else {
         UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-        window.rootViewController = platesNav;
+        window.rootViewController = loginNavigationController;
         [window makeKeyAndVisible];
     }
 }

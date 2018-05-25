@@ -60,6 +60,8 @@ typedef void (^NetworkCompletionBlock)(id response, NSError *error);
 
 #pragma mark - Charity -
 
-- (void)loadCharityChoiseBannersWithCompletion:(NetworkCompletionBlock)completion;
+-(void)loadCharityChoiseBannersWithCompletion:(NetworkCompletionBlock)completion;
+
+-(void)getWinnerBannerWithCompletion:(NetworkCompletionBlock)completion;
 
 @end

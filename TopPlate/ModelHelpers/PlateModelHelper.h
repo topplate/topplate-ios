@@ -19,13 +19,13 @@ typedef void(^PlateCompletionBlock)(NSArray *plates, NSString *errorString);
 
 @interface PlateModelHelper : NSObject
 
-@property (nonatomic, strong) NSMutableArray *plates;
+@property (nonatomic, strong) NSMutableArray<PlateModel *> *plates;
 @property (nonatomic, strong) PlateModel *currentPlate;
 @property (nonatomic, weak) id <PlatesModelHelperDelegate> delegate;
 
 -(void)getPlatesForEnvironment:(NSString *)environment
                      withLimit:(NSNumber *)limit
-                      withSkip:(NSNumber *)skip
+                      withLastPlateId:(NSString *)lastPlateId
                completionBlock:(PlateCompletionBlock)completion;
 
 -(void)getPlateWithId:(NSString *)plateId

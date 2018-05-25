@@ -68,6 +68,9 @@
                                     <constraint firstAttribute="height" constant="52" id="XFE-yA-Gab"/>
                                 </constraints>
                                 <state key="normal" image="likeIcon"/>
+                                <connections>
+                                    <action selector="likePlateAction:" destination="svf-jD-9ll" eventType="touchUpInside" id="JCq-Uq-evk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.25264084510000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -18,4 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *plateReceiptImage;
 @property (weak, nonatomic) IBOutlet UIButton *plateLikeButton;
 
+-(void)setupCellWithModel:(PlateModel *)model;
+
 @end

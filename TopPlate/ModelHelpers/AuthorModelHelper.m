@@ -15,10 +15,8 @@
                 withLimit:(NSNumber *)limit
                  withSkip:(NSNumber *)skip
           completionBlock:(AuthorCompletionBlock)completion {
-    
-#warning To Uncomment
-    
-    NSDictionary *params = @{@"id" : @"5ae9713bf8979e0004fbe9cd",
+        
+    NSDictionary *params = @{@"id" : userId,
                              @"environment" : environment,
                              @"lim" : limit,
                              @"skip" : skip

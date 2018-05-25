@@ -22,7 +22,6 @@ static int kDefaultLoadLimit = 10;
 @property (nonatomic, strong) PlateModelHelper *platesHelper;
 
 @property (nonatomic) NSInteger limit;
-@property (nonatomic) NSInteger skip;
 
 @end
 
@@ -43,7 +42,6 @@ static int kDefaultLoadLimit = 10;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     self.limit = kDefaultLoadLimit;
-    self.skip = 0;
     
     self.platesHelper = [modelsManager getModel:HelperTypePlates];
     self.platesHelper.delegate = self;
@@ -63,7 +61,6 @@ static int kDefaultLoadLimit = 10;
 
 -(void)reloadPlates {
     self.limit = kDefaultLoadLimit;
-    self.skip = 0;
     self.platesHelper.plates = nil;
     
     [self loadPlates];
@@ -74,15 +71,13 @@ static int kDefaultLoadLimit = 10;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.platesHelper getPlatesForEnvironment:getCurrentEnvironment
                                      withLimit:@(self.limit)
-                                      withSkip:@(self.skip)
+                               withLastPlateId:self.platesHelper.plates.count > 0 ? self.platesHelper.plates.lastObject.plateId : @""
                                completionBlock:^(NSArray *plates, NSString *errorString) {
                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
                                    if (!errorString && plates.count < kDefaultLoadLimit) {
                                        self.limit = -1;
-                                       self.skip = -1;
                                    }
                                    NSLog(@"");
-                                   
                                }];
 }
 
@@ -115,19 +110,11 @@ static int kDefaultLoadLimit = 10;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PlatesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlatesTableViewCell" forIndexPath:indexPath];
-    
     PlateModel *plate = self.platesHelper.plates[indexPath.row];
     
-    cell.plateName.text = [plate.plateName uppercaseString];
-    [cell.plateImage sd_setImageWithURL:[plate.plateImages.firstObject withBaseUrl]];
-    cell.plateAuthorName.text = [plate.plateAuthor.authorName uppercaseString];
-    cell.plateLocation.text = [plate.plateAuthorLocation uppercaseString];
-    cell.plateLikes.text = [NSString stringWithFormat:@"%ld", (long)plate.plateLikes];
-    [cell.plateReceiptImage setHidden:!plate.plateHasReceipt];
-    
+    PlatesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlatesTableViewCell" forIndexPath:indexPath];
+    [cell setupCellWithModel:plate];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    
     return cell;
 }
 
@@ -135,9 +122,7 @@ static int kDefaultLoadLimit = 10;
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == self.platesHelper.plates.count - 1 && self.limit != -1 && self.skip != -1) {
-        //        self.limit += kDefaultLoadLimit;
-        self.skip += kDefaultLoadLimit;
+    if (indexPath.row == self.platesHelper.plates.count - 1 && self.limit != -1) {
         [self loadPlates];
     }
 }
@@ -158,6 +143,10 @@ static int kDefaultLoadLimit = 10;
 -(void)modelIsUpdated {
     
     [self.tableView reloadData];
+    
+    if (self.tableView.contentSize.height > self.tableView.height) {
+        [self.tableView setContentSize:CGSizeMake(self.tableView.width, self.tableView.contentSize.height + 50)];
+    }
 }
 
 - (IBAction)showCharities:(id)sender {

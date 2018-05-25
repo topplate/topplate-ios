@@ -66,18 +66,17 @@ static int kDefaultLoadLimit = 10;
         } else {
             [self.collectionView reloadData];
         }
-        
-        NSLog(@"");
     }];
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.authHelper getPlatesForAuthor:getCurrentUser.userId environment:getCurrentEnvironment withLimit:@(self.limit) withSkip:@(self.skip) completionBlock:^(NSArray *plates, NSString *errorString) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if (errorString) {
             [Helper showErrorMessage:errorString forViewController:self];
         } else {
             [self.collectionView reloadData];
         }
-        
     }];
 }
 

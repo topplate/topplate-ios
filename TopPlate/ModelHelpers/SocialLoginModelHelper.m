@@ -42,20 +42,22 @@
     signIn.delegate = self;
 }
 
--(void)loginWithGoogle:(id<GIDSignInUIDelegate>)viewController {
+-(void)loginWithGoogle:(id<GIDSignInUIDelegate>)viewController
+        withCompletion:(SocialCompletionBlock)completion {
     
     [self logout];
     
-    [self requestGooglePlusAccessToken:viewController withCompletion:^(id result, NSError *error) {
+    [self requestGooglePlusAccessToken:viewController withCompletion:^(id result, NSString *error) {
         
         if (!error && result) {
             GIDGoogleUser *googleUser = result;
-            [self loginWithGoogleUser:googleUser];
+            [self loginWithGoogleUser:googleUser withCompletion:completion];
         }
     }];
 }
 
-- (void)requestGooglePlusAccessToken:(id<GIDSignInUIDelegate>)viewController withCompletion:(SocialCompletionBlock)completion {
+- (void)requestGooglePlusAccessToken:(id<GIDSignInUIDelegate>)viewController
+                      withCompletion:(SocialCompletionBlock)completion {
     
     self.completionForGoogle = completion;
     [self configureGooglePlusSignIn];
@@ -63,7 +65,7 @@
     [[GIDSignIn sharedInstance] signIn];
 }
 
--(void)loginWithGoogleUser:(GIDGoogleUser *)googleUser {
+-(void)loginWithGoogleUser:(GIDGoogleUser *)googleUser withCompletion:(SocialCompletionBlock)completion {
     
     if (googleUser) {
         
@@ -83,8 +85,13 @@
                                        loginType:LoginTypeGooglePlus
                                        authToken:googleUser.authentication.idToken
                                     tokenExpDate:googleUser.authentication.idTokenExpirationDate];
-                
-                [Helper showPlatesScreen];
+                if (completion) {
+                    completion(currentUser, nil);
+                }
+            } else {
+                if (completion) {
+                    completion(nil, error.localizedDescription);
+                }
             }
         }];
     } else {
@@ -92,14 +99,14 @@
     }
 }
 
-- (void)tryAutoLoginForGooglePlus {
+- (void)tryAutoLoginForGooglePlusWithCompletion:(SocialCompletionBlock)completion {
     NSLog(@"tryAutoLoginForGooglePlus");
     
     __weak typeof(self) weakSelf = self;
     
-    self.completionForGoogle = ^(id result, NSError *error) {
+    self.completionForGoogle = ^(id result, NSString *error) {
         if (!error) {
-            [weakSelf loginWithGoogleUser:result];
+            [weakSelf loginWithGoogleUser:result withCompletion:completion];
         }
     };
     
@@ -117,7 +124,7 @@
     if(!error) {
         self.completionForGoogle(user, nil);
     } else {
-        self.completionForGoogle(nil, error);
+        self.completionForGoogle(nil, error.localizedDescription);
     }
 }
 
@@ -129,7 +136,8 @@
 
 #pragma mark - Facebook sign -
 
--(void)loginWithFacebook:(UIViewController *)viewController {
+-(void)loginWithFacebook:(UIViewController *)viewController
+          withCompletion:(SocialCompletionBlock)completion {
     
     [self logout];
     
@@ -159,14 +167,14 @@
                                              facebookUser.email = [result valueForKey:@"email"];
                                              facebookUser.fullname = [result valueForKey:@"name"];
                                              facebookUser.imageUrl = [[[result valueForKey:@"picture"] valueForKey:@"data"] valueForKey:@"url"];
-                                             [self loginWithFacebookUser:facebookUser];
+                                             [self loginWithFacebookUser:facebookUser withCompletion:completion];
                                          }
                                      }];
                                 }
                             }];
 }
 
--(void)loginWithFacebookUser:(SocialLoginModel *)facebookUser {
+-(void)loginWithFacebookUser:(SocialLoginModel *)facebookUser withCompletion:(SocialCompletionBlock)completion {
     
     if (facebookUser) {
         [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow.rootViewController.view animated:YES];
@@ -178,7 +186,13 @@
                                                     NSError *parsingError = nil;
                                                     User *currentUser = [MTLJSONAdapter modelOfClass:[User class] fromJSONDictionary:response error:&parsingError];
                                                     [self finishSetupWithCurrentUser:currentUser loginType:LoginTypeFacebook authToken:facebookUser.tokenId tokenExpDate:facebookUser.tokenExpDate];
-                                                    [Helper showPlatesScreen];
+                                                    if (completion) {
+                                                        completion(currentUser, nil);
+                                                    }
+                                                } else {
+                                                    if (completion) {
+                                                        completion(nil, error.localizedDescription);
+                                                    }
                                                 }
                                             }];
     } else {
@@ -186,7 +200,7 @@
     }
 }
 
--(void)tryAutoLoginWithFacebook {
+-(void)tryAutoLoginWithFacebookWithCompletion:(SocialCompletionBlock)completion {
     
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setValue:@"id,name,email, picture" forKey:@"fields"];
@@ -198,7 +212,7 @@
              facebookUser.tokenId = [FBSDKAccessToken currentAccessToken].tokenString;
              facebookUser.tokenExpDate = [FBSDKAccessToken currentAccessToken].expirationDate;
              
-             [self loginWithFacebookUser:facebookUser];
+             [self loginWithFacebookUser:facebookUser withCompletion:completion];
          }
      }];
 }
@@ -223,7 +237,7 @@
             case LoginTypeGooglePlus: {
                 
                 if ([self checkToken]) {
-                    [self tryAutoLoginForGooglePlus];
+                    [self tryAutoLoginForGooglePlusWithCompletion:nil];
                 } else {
                     [Helper showWelcomeScreenAsModal:NO];
                 }
@@ -234,7 +248,7 @@
                 
                 if ([FBSDKAccessToken currentAccessToken]) {
                     if ([self checkToken]) {
-                        [self tryAutoLoginWithFacebook];
+                        [self tryAutoLoginWithFacebookWithCompletion:nil];
                     } else {
                         
                     }

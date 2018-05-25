@@ -18,4 +18,6 @@
 
 -(NSString *)trimWhiteSpaces;
 
+-(NSString *)removeTexts:(NSArray<NSString *> *)texts;
+
 @end

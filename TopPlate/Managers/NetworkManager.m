@@ -87,7 +87,7 @@
 -(void)signInWithEmail:(LoginModel *)login
            withCompletion:(NetworkCompletionBlock)completion {
     
-    [self.sessionManager POST:@""
+    [self.sessionManager POST:@"login_local"
                    parameters:[login signInRepresentation]
                      progress:^(NSProgress * _Nonnull uploadProgress) {
                          
@@ -101,7 +101,7 @@
 -(void)signUpWithEmail:(LoginModel *)login
         withCompletion:(NetworkCompletionBlock)completion {
     
-    [self.sessionManager POST:@""
+    [self.sessionManager POST:@"create_local_user"
                    parameters:[login signUpRepresentation]
                      progress:^(NSProgress * _Nonnull uploadProgress) {
                          
@@ -207,8 +207,8 @@
         withCompletion:(NetworkCompletionBlock)completion {
     
     [self.sessionManager GET:@"search_plates"
-                  parameters:@{@"term" : searchString,
-                               @"env" : getCurrentEnvironment}
+                  parameters:@{@"searchString" : searchString,
+                               @"environment" : getCurrentEnvironment}
                     progress:^(NSProgress * _Nonnull downloadProgress) {
                         //
                     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -251,6 +251,19 @@
     
     [self.sessionManager GET:@"get_winners"
                   parameters:@{@"environment" : getCurrentEnvironment}
+                    progress:^(NSProgress * _Nonnull downloadProgress) {
+                        
+                    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                        completion(responseObject, nil);
+                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                        completion(nil, error);
+                    }];
+}
+
+-(void)getWinnerBannerWithCompletion:(NetworkCompletionBlock)completion {
+    
+    [self.sessionManager GET:@"get_banner"
+                  parameters:nil
                     progress:^(NSProgress * _Nonnull downloadProgress) {
                         
                     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

@@ -15,6 +15,9 @@ typedef void(^LoginCompletionBlock)(id result, NSError *error);
 
 -(void)singIn:(LoginModel *)login withCompletion:(LoginCompletionBlock)completion {
     
+    [[NetworkManager sharedManager] signInWithEmail:login withCompletion:^(id response, NSError *error) {
+        
+    }];
 }
 
 -(void)singUp:(LoginModel *)login withCompletion:(LoginCompletionBlock)completion {

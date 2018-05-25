@@ -35,4 +35,17 @@
     
    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
+
+-(NSString *)removeTexts:(NSArray<NSString *> *)texts{
+    
+    NSString *tempString = [self copy];
+    
+    for (int i = 0; i < texts.count; i++) {
+        NSString *kString = texts[i];
+        tempString = [tempString stringByReplacingOccurrencesOfString:kString withString:@""];
+    }
+    
+    return tempString;
+}
+
 @end

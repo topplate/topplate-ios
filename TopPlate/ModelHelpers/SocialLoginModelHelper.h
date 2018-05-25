@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <GoogleSignIn/GoogleSignIn.h>
 
-typedef void(^SocialCompletionBlock)(id result, NSError *error);
+typedef void(^SocialCompletionBlock)(id result, NSString *errorString);
 
 @interface SocialLoginModelHelper : NSObject
 
--(void)loginWithGoogle:(id<GIDSignInUIDelegate>)viewController;
+-(void)loginWithGoogle:(id<GIDSignInUIDelegate>)viewController
+        withCompletion:(SocialCompletionBlock)completion;
 
--(void)loginWithFacebook:(UIViewController *)viewController;
+-(void)loginWithFacebook:(UIViewController *)viewController
+          withCompletion:(SocialCompletionBlock)completion;
 
 -(void)processLogin;
 

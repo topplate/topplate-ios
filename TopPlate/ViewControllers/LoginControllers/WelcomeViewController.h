@@ -10,4 +10,6 @@
 
 @interface WelcomeViewController : UIViewController
 
+@property (nonatomic) BOOL presentedModaly;
+
 @end

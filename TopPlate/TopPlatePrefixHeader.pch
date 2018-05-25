@@ -48,6 +48,7 @@
 #import "TPButton.h"
 
 #import "ChooseEnvironmentViewController.h"
+#import "WelcomeViewController.h"
 
 
 #endif /* TopPlateHeaderPrefix_pch */

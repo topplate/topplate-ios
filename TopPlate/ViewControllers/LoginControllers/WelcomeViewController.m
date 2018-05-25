@@ -58,16 +58,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 #pragma mark - Actions -
 
 - (IBAction)segmentValueChange:(UISegmentedControl *)sender {
@@ -81,14 +71,35 @@
 
 - (IBAction)connectWithGoogle:(id)sender {
     
-    [self.modelHelper loginWithGoogle:self];
-    [self setEnvironment];
+    [self.modelHelper loginWithGoogle:self withCompletion:^(id result, NSString *errorString) {
+        if (errorString) {
+            [Helper showErrorMessage:errorString forViewController:self];
+        } else {
+            [self setEnvironment];
+            
+            if (self.presentedModaly) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            } else {
+                [Helper showPlatesScreen];
+            }
+        }
+    }];
 }
 
 - (IBAction)connectWithFacebook:(id)sender {
     
-    [self.modelHelper loginWithFacebook:self];
-    [self setEnvironment];
+    [self.modelHelper loginWithFacebook:self withCompletion:^(id result, NSString *errorString) {
+        if (errorString) {
+            [Helper showErrorMessage:errorString forViewController:self];
+        } else {
+            [self setEnvironment];
+            
+            if (self.presentedModaly) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            } else {
+                [Helper showPlatesScreen];
+            }        }
+    }];
 }
 
 - (IBAction)connectWithEmail:(id)sender {
@@ -102,9 +113,8 @@
 
 - (IBAction)skipToPlates:(id)sender {
     
-    [[Helper rootViewController] dismissViewControllerAnimated:YES completion:nil];
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//    [Helper showPlatesScreen];
+    [Helper showPlatesScreen];
+    [self.modelHelper logout];
 }
 
 -(void)setEnvironment {
