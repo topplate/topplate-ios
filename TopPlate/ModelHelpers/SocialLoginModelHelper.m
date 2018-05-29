@@ -105,8 +105,10 @@
     __weak typeof(self) weakSelf = self;
     
     self.completionForGoogle = ^(id result, NSString *error) {
-        if (!error) {
+        if (!error && [result isKindOfClass:[GIDGoogleUser class]]) {
             [weakSelf loginWithGoogleUser:result withCompletion:completion];
+        } else {
+            [Helper showWelcomeScreenAsModal:YES];
         }
     };
     
@@ -236,11 +238,11 @@
                 
             case LoginTypeGooglePlus: {
                 
-                if ([self checkToken]) {
+//                if ([self checkToken]) {
                     [self tryAutoLoginForGooglePlusWithCompletion:nil];
-                } else {
-                    [Helper showWelcomeScreenAsModal:NO];
-                }
+//                } else {
+//                    [Helper showWelcomeScreenAsModal:NO];
+//                }
             }
                 break;
                 
