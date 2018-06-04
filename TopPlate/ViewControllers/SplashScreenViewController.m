@@ -29,8 +29,7 @@
             [Helper showWelcomeScreenAsModal:NO];
         } if (!errorString && !result) {
             //
-        }
-        else {
+        } else {
             [Helper showPlatesScreen];
         }
     }];
