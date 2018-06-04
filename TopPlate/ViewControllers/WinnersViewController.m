@@ -115,6 +115,7 @@
     
     PlatesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlatesTableViewCell" forIndexPath:indexPath];
     [cell setupWinnersCellWithModel:winnerPlate];
+    cell.parentViewController = self;
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;

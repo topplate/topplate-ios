@@ -67,76 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TopPlate/ViewControllers/SplashScreenViewController.m"
-            timestampString = "549837965.634691"
+            filePath = "TopPlate/Managers/NetworkManager.m"
+            timestampString = "549839426.749833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SplashScreenViewController viewDidLoad]"
-                  moduleName = "TopPlate"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stiffmeister/Work/iOS/Work%20projects/TopPlateObjC/TopPlate/TopPlate/ViewControllers/SplashScreenViewController.m"
-                  timestampString = "549837965.758546"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "304">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__41-[SplashScreenViewController viewDidLoad]_block_invoke"
-                  moduleName = "TopPlate"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stiffmeister/Work/iOS/Work%20projects/TopPlateObjC/TopPlate/TopPlate/ViewControllers/SplashScreenViewController.m"
-                  timestampString = "549837965.760677"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_"
-                  moduleName = "TopPlate"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stiffmeister/Work/iOS/Work%20projects/TopPlateObjC/TopPlate/TopPlate/ViewControllers/SplashScreenViewController.m"
-                  timestampString = "549837965.762525"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TopPlate/ViewControllers/SplashScreenViewController.m"
-            timestampString = "549837965.634901"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-getPlates:withCompletion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -146,13 +83,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-            timestampString = "549837965.634955"
+            filePath = "TopPlate/Managers/NetworkManager.m"
+            timestampString = "549839426.750482"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
-            landmarkName = "-processLoginWithCompletion:"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "-getPlates:withCompletion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -162,29 +99,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-            timestampString = "549837965.63515"
+            filePath = "TopPlate/ViewControllers/PlatesControllers/PlatesTableViewCell/PlatesTableViewCell.m"
+            timestampString = "549839426.750626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
-            landmarkName = "-processLoginWithCompletion:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TopPlate/ModelHelpers/SocialLoginModelHelper.m"
-            timestampString = "549837965.635201"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
-            landmarkName = "-processLoginWithCompletion:"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-showUserProfile"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

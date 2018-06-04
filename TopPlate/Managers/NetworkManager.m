@@ -49,7 +49,7 @@
     }
     
     if (getCurrentUser.token) {
-        [_sessionManager.requestSerializer setValue:getCurrentUser.token forHTTPHeaderField:@"Access-token"];
+        [_sessionManager.requestSerializer setValue:getCurrentUser.token forHTTPHeaderField:@"Access-Token"];
     }
 
     return _sessionManager;
