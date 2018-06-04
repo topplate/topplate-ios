@@ -22,9 +22,7 @@
                              @"skip" : skip
                              };
     
-    [MBProgressHUD showHUDAddedTo:[Helper rootViewController].view animated:YES];
     [[NetworkManager sharedManager] getPlatesForUser:params withCompletion:^(id response, NSError *error) {
-        [MBProgressHUD hideHUDForView:[Helper rootViewController].view animated:YES];
         
         if (!error && response) {
             NSError *parsingError;
@@ -32,13 +30,13 @@
             NSMutableArray *plates = [[MTLJSONAdapter modelsOfClass:[PlateModel class] fromJSONArray:response error:&parsingError] mutableCopy];
             
             if (limit) {
-                if (self.currentUserPlates) {
-                    [self.currentUserPlates addObjectsFromArray:plates];
+                if (self.userPlates) {
+                    [self.userPlates addObjectsFromArray:plates];
                 } else {
-                    self.currentUserPlates = [[NSArray arrayWithArray:plates] mutableCopy];
+                    self.userPlates = [[NSArray arrayWithArray:plates] mutableCopy];
                 }
             } else {
-                self.currentUserPlates = plates;
+                self.userPlates = plates;
             }
             
             completion(plates, nil);
@@ -51,14 +49,12 @@
 -(void)getAuthorProfileInfoWithId:(NSString *)userId
                   completionBlock:(void(^)(User *currentUserProfile, NSString *errorString))completion {
     
-    [MBProgressHUD showHUDAddedTo:[Helper rootViewController].view animated:YES];
     [[NetworkManager sharedManager] getUserProfileWithUserId:userId withCompletion:^(id response, NSError *error) {
-        [MBProgressHUD hideHUDForView:[Helper rootViewController].view animated:YES];
         
         if (!error && response) {
             NSError *parsingError;
-            self.currentUserInfo = [MTLJSONAdapter modelOfClass:[User class] fromJSONDictionary:response error:&parsingError];
-            completion(self.currentUserInfo, nil);
+            self.userInfo = [MTLJSONAdapter modelOfClass:[User class] fromJSONDictionary:response error:&parsingError];
+            completion(self.userInfo, nil);
         } else {
             completion(nil, error.localizedDescription);
         }

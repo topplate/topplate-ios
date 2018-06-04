@@ -144,4 +144,42 @@
     }
 }
 
++(void)showSplashScreen {
+    
+    UIImage *fakeImage = [UIImage new];
+    
+    if (IS_IPHONE_5 || IS_IPHONE_6) {
+        fakeImage = [UIImage imageNamed:@"splash4.7"];
+    }
+    
+    if (IS_IPHONE_6P) {
+        fakeImage = [UIImage imageNamed:@"splash5.5"];
+    }
+    
+    if(IS_IPHONE_X) {
+        fakeImage = [UIImage imageNamed:@"splashX"];
+    }
+    
+    UIWindow *window = [UIApplication sharedApplication].delegate.window;
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:window.frame];
+    imageView.tag = 777123;
+    [imageView setImage:fakeImage];
+    [window addSubview:imageView];
+    [UIView animateWithDuration:.55f animations:^{
+        [imageView setAlpha:1.f];
+    } completion:^(BOOL finished) {
+        [imageView setHidden:NO];
+    }];
+}
+
++(void)hideSplashScreen {
+    UIImageView *view = [[UIApplication sharedApplication].delegate.window viewWithTag:777123];
+    
+    [UIView animateWithDuration:.55f animations:^{
+        [view setAlpha:0.f];
+    } completion:^(BOOL finished) {
+        [view removeFromSuperview];
+    }];
+}
+
 @end

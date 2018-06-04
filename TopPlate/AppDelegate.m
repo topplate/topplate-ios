@@ -17,10 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    SocialLoginModelHelper *helper = [modelsManager getModel:HelperTypeSocialLogin];
-    [helper processLogin];
-    
+        
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setBackgroundColor:[UIColor blackColor]];
     [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];

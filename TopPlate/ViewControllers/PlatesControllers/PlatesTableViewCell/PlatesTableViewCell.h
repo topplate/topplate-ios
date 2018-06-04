@@ -10,14 +10,10 @@
 
 @interface PlatesTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *plateImage;
-@property (weak, nonatomic) IBOutlet UILabel *plateName;
-@property (weak, nonatomic) IBOutlet UILabel *plateAuthorName;
-@property (weak, nonatomic) IBOutlet UILabel *plateLocation;
-@property (weak, nonatomic) IBOutlet UILabel *plateLikes;
-@property (weak, nonatomic) IBOutlet UIImageView *plateReceiptImage;
-@property (weak, nonatomic) IBOutlet UIButton *plateLikeButton;
+@property (nonatomic, strong) UIViewController *parentViewController;
 
--(void)setupCellWithModel:(PlateModel *)model;
+-(void)setupLikeCellWithModel:(PlateModel *)model;
+
+-(void)setupWinnersCellWithModel:(PlateModel *)model;
 
 @end

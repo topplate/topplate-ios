@@ -24,6 +24,8 @@
 		3300799E20ACEA6F00F4A941 /* EditUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3300799D20ACEA6F00F4A941 /* EditUserProfileViewController.m */; };
 		330079A120AE38B600F4A941 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330079A020AE38B600F4A941 /* FeedbackViewController.m */; };
 		330079A320B2FC2500F4A941 /* PlatesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330079A220B2FC2500F4A941 /* PlatesTableViewCell.xib */; };
+		330079A720BDCBDD00F4A941 /* RefreshTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 330079A520BDCBDD00F4A941 /* RefreshTableViewCell.m */; };
+		330079A820BDCBDD00F4A941 /* RefreshTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330079A620BDCBDD00F4A941 /* RefreshTableViewCell.xib */; };
 		332D4E632099024700F535E2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 332D4E622099024700F535E2 /* User.m */; };
 		33504A2F20A49CD500622F2E /* TPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A2E20A49CD500622F2E /* TPButton.m */; };
 		33504A3520A4B27900622F2E /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A3420A4B27900622F2E /* UIColor+Helper.m */; };
@@ -95,6 +97,7 @@
 		338A57F1207FB700000FA8BD /* MTLReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A57DD207FB700000FA8BD /* MTLReflection.m */; };
 		338A57F2207FB700000FA8BD /* NSDictionary+MTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A57E1207FB700000FA8BD /* NSDictionary+MTLManipulationAdditions.m */; };
 		338A57F6207FBD8E000FA8BD /* ModelsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A57F5207FBD8E000FA8BD /* ModelsManager.m */; };
+		33A3431620C2AC65009665C3 /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A3431520C2AC65009665C3 /* SplashScreenViewController.m */; };
 		33A7AC182096459700C397AB /* IngredientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A7AC172096459700C397AB /* IngredientTableViewCell.m */; };
 		33A7AC1C20964C6000C397AB /* TPTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A7AC1B20964C6000C397AB /* TPTextField.m */; };
 		33A7AC1F2096649A00C397AB /* TPTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A7AC1E2096649A00C397AB /* TPTextView.m */; };
@@ -160,6 +163,9 @@
 		3300799F20AE38B600F4A941 /* FeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		330079A020AE38B600F4A941 /* FeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		330079A220B2FC2500F4A941 /* PlatesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlatesTableViewCell.xib; sourceTree = "<group>"; };
+		330079A420BDCBDD00F4A941 /* RefreshTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefreshTableViewCell.h; sourceTree = "<group>"; };
+		330079A520BDCBDD00F4A941 /* RefreshTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RefreshTableViewCell.m; sourceTree = "<group>"; };
+		330079A620BDCBDD00F4A941 /* RefreshTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefreshTableViewCell.xib; sourceTree = "<group>"; };
 		332D4E612099024700F535E2 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		332D4E622099024700F535E2 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		33504A2D20A49CD500622F2E /* TPButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPButton.h; sourceTree = "<group>"; };
@@ -298,6 +304,8 @@
 		338A57E1207FB700000FA8BD /* NSDictionary+MTLManipulationAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MTLManipulationAdditions.m"; sourceTree = "<group>"; };
 		338A57F4207FBD8E000FA8BD /* ModelsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelsManager.h; sourceTree = "<group>"; };
 		338A57F5207FBD8E000FA8BD /* ModelsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelsManager.m; sourceTree = "<group>"; };
+		33A3431420C2AC65009665C3 /* SplashScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
+		33A3431520C2AC65009665C3 /* SplashScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
 		33A7AC162096459700C397AB /* IngredientTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IngredientTableViewCell.h; sourceTree = "<group>"; };
 		33A7AC172096459700C397AB /* IngredientTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IngredientTableViewCell.m; sourceTree = "<group>"; };
 		33A7AC1A20964C6000C397AB /* TPTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPTextField.h; sourceTree = "<group>"; };
@@ -377,6 +385,9 @@
 				33A7AC1B20964C6000C397AB /* TPTextField.m */,
 				33A7AC1D2096649A00C397AB /* TPTextView.h */,
 				33A7AC1E2096649A00C397AB /* TPTextView.m */,
+				330079A420BDCBDD00F4A941 /* RefreshTableViewCell.h */,
+				330079A520BDCBDD00F4A941 /* RefreshTableViewCell.m */,
+				330079A620BDCBDD00F4A941 /* RefreshTableViewCell.xib */,
 			);
 			path = "Custom elements";
 			sourceTree = "<group>";
@@ -449,6 +460,8 @@
 		338A574E207F3487000FA8BD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				33A3431420C2AC65009665C3 /* SplashScreenViewController.h */,
+				33A3431520C2AC65009665C3 /* SplashScreenViewController.m */,
 				338A5794207F3746000FA8BD /* CustomTabBarViewController.h */,
 				338A5795207F3746000FA8BD /* CustomTabBarViewController.m */,
 				338A574F207F3498000FA8BD /* LoginControllers */,
@@ -861,6 +874,7 @@
 				338A5726207F30D0000FA8BD /* LaunchScreen.storyboard in Resources */,
 				338A5778207F35EE000FA8BD /* Winners.storyboard in Resources */,
 				33B615FD209F71780096F8C5 /* PlateCollectionViewCell.xib in Resources */,
+				330079A820BDCBDD00F4A941 /* RefreshTableViewCell.xib in Resources */,
 				338A5723207F30D0000FA8BD /* Assets.xcassets in Resources */,
 				338A5793207F36D5000FA8BD /* CustomTabBar.storyboard in Resources */,
 				330079A320B2FC2500F4A941 /* PlatesTableViewCell.xib in Resources */,
@@ -979,6 +993,7 @@
 				33A7AC1C20964C6000C397AB /* TPTextField.m in Sources */,
 				338A57F6207FBD8E000FA8BD /* ModelsManager.m in Sources */,
 				3300798C20AB35E900F4A941 /* Charity.m in Sources */,
+				33A3431620C2AC65009665C3 /* SplashScreenViewController.m in Sources */,
 				330079A120AE38B600F4A941 /* FeedbackViewController.m in Sources */,
 				33D6E08E207FE4BA0097DAC4 /* UIView+Helper.m in Sources */,
 				338A57A6207F569D000FA8BD /* PlateNameTableViewCell.m in Sources */,
@@ -1046,6 +1061,7 @@
 				338A571B207F30CF000FA8BD /* AppDelegate.m in Sources */,
 				338A576B207F356F000FA8BD /* ProfileViewController.m in Sources */,
 				33504A3520A4B27900622F2E /* UIColor+Helper.m in Sources */,
+				330079A720BDCBDD00F4A941 /* RefreshTableViewCell.m in Sources */,
 				33A7AC1F2096649A00C397AB /* TPTextView.m in Sources */,
 				338A57A9207F56A9000FA8BD /* PlateAuthorInfoTableViewCell.m in Sources */,
 				338A57EA207FB700000FA8BD /* NSDictionary+MTLMappingAdditions.m in Sources */,

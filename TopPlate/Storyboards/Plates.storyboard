@@ -294,18 +294,18 @@
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwf-zx-Q1s">
-                                                            <rect key="frame" x="321.33333333333331" y="241.33333333333337" width="52" height="52"/>
+                                                            <rect key="frame" x="362.33333333333331" y="241.33333333333337" width="52" height="52"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="52" id="3WO-Dt-QuD"/>
                                                                 <constraint firstAttribute="height" constant="52" id="oaX-sx-EeT"/>
                                                             </constraints>
-                                                            <state key="normal" image="likeIcon"/>
+                                                            <state key="normal" image="unlike"/>
                                                             <connections>
                                                                 <action selector="likeSelected:" destination="VMI-Sq-XPI" eventType="touchUpInside" id="AZW-qy-fdt"/>
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14.8K" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyl-to-E6X">
-                                                            <rect key="frame" x="270.33333333333331" y="257.33333333333337" width="43" height="21"/>
+                                                            <rect key="frame" x="311.33333333333331" y="257.33333333333337" width="43" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -324,7 +324,7 @@
                                                         <constraint firstAttribute="width" secondItem="eDU-8U-leI" secondAttribute="height" multiplier="375:314" constant="34.222929936305718" id="PFq-7a-G9Q"/>
                                                         <constraint firstItem="Zb6-j3-Dvz" firstAttribute="leading" secondItem="eDU-8U-leI" secondAttribute="leading" id="T9N-Ji-xCY"/>
                                                         <constraint firstItem="rwf-zx-Q1s" firstAttribute="leading" secondItem="eyl-to-E6X" secondAttribute="trailing" constant="8" id="ajA-pH-vaQ"/>
-                                                        <constraint firstAttribute="trailing" secondItem="rwf-zx-Q1s" secondAttribute="trailing" constant="41" id="dgL-F0-gfJ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="rwf-zx-Q1s" secondAttribute="trailing" id="dgL-F0-gfJ"/>
                                                         <constraint firstItem="GSq-1A-bRE" firstAttribute="leading" secondItem="eDU-8U-leI" secondAttribute="leading" id="fXT-Vp-NX7"/>
                                                         <constraint firstAttribute="trailing" secondItem="Zb6-j3-Dvz" secondAttribute="trailing" id="luX-r1-Wjd"/>
                                                         <constraint firstItem="6qa-gA-OKY" firstAttribute="top" secondItem="eDU-8U-leI" secondAttribute="top" id="rlT-rK-1XM"/>
@@ -385,10 +385,17 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XvL-bm-Ngg">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="46"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="@PATRICKBROWN" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrQ-aX-Zlx">
+                                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrQ-aX-Zlx">
                                                             <rect key="frame" x="15" y="9" width="144.66666666666666" height="29"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <attributedString key="attributedText">
+                                                                <fragment content="@PATRICKBROWN">
+                                                                    <attributes>
+                                                                        <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <font key="NSFont" metaFont="system" size="17"/>
+                                                                        <integer key="NSUnderline" value="1"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="California, SanFronsicoa" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4a-lv-9Gx">
@@ -670,10 +677,10 @@
         <image name="facebook" width="37" height="37"/>
         <image name="googlePlus" width="37" height="37"/>
         <image name="instagram" width="37" height="37"/>
-        <image name="likeIcon" width="52" height="52"/>
         <image name="locationIcon" width="10" height="14"/>
         <image name="pinterest" width="37" height="37"/>
         <image name="receipt" width="128" height="42"/>
         <image name="twitter" width="37" height="37"/>
+        <image name="unlike" width="50" height="50"/>
     </resources>
 </document>

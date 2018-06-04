@@ -49,6 +49,7 @@
 
 #import "ChooseEnvironmentViewController.h"
 #import "WelcomeViewController.h"
+#import "ProfileViewController.h"
 
 
 #endif /* TopPlateHeaderPrefix_pch */

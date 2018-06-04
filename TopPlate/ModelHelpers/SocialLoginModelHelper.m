@@ -108,7 +108,7 @@
         if (!error && [result isKindOfClass:[GIDGoogleUser class]]) {
             [weakSelf loginWithGoogleUser:result withCompletion:completion];
         } else {
-            [Helper showWelcomeScreenAsModal:YES];
+            completion(nil, error);
         }
     };
     
@@ -164,7 +164,7 @@
                                     
                                     [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
                                                                        parameters:parameters]
-                                    startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                                     startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                                          if (!error) {
                                              facebookUser.email = [result valueForKey:@"email"];
                                              facebookUser.fullname = [result valueForKey:@"name"];
@@ -215,6 +215,8 @@
              facebookUser.tokenExpDate = [FBSDKAccessToken currentAccessToken].expirationDate;
              
              [self loginWithFacebookUser:facebookUser withCompletion:completion];
+         } else {
+             completion(nil, error.localizedDescription);
          }
      }];
 }
@@ -225,11 +227,12 @@
 
 #pragma mark - Sign in helpers -
 
--(void)processLogin {
+-(void)processLoginWithCompletion:(SocialCompletionBlock)completion {
     
     NSNumber *loginType = [[UserDefaultsManager standardUserDefaults] objectForKey:Default_LoginType];
     User *currentUser = [UserDefaultsManager loadCustomObjectForKey:Default_CurrentUser];
-    if (loginType && currentUser) {//means, that somebody was logged in
+    
+    if (loginType && currentUser) { //somebody is logged in
         switch ([loginType integerValue]) {
             case LoginTypeEmail: {
                 [self getUserProfileData];
@@ -237,25 +240,16 @@
                 break;
                 
             case LoginTypeGooglePlus: {
-                
-//                if ([self checkToken]) {
-                    [self tryAutoLoginForGooglePlusWithCompletion:nil];
-//                } else {
-//                    [Helper showWelcomeScreenAsModal:NO];
-//                }
+                [self tryAutoLoginForGooglePlusWithCompletion:completion];
             }
                 break;
                 
             case LoginTypeFacebook: {
                 
                 if ([FBSDKAccessToken currentAccessToken]) {
-                    if ([self checkToken]) {
-                        [self tryAutoLoginWithFacebookWithCompletion:nil];
-                    } else {
-                        
-                    }
+                    [self tryAutoLoginWithFacebookWithCompletion:completion];
                 } else {
-                    [Helper showWelcomeScreenAsModal:NO];
+                    completion(nil, @"");
                 }
             }
                 break;
@@ -269,6 +263,7 @@
         } else {
             [Helper showEnvironmentsSelection];
         }
+        completion(nil, nil);
     }
 }
 

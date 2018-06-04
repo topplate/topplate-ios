@@ -47,12 +47,10 @@
             return @[];
         }
         
-        if ([str isKindOfClass:[NSString class]]) {
-            return @[str];
+        if ([str isKindOfClass:[NSArray class]]) {
+            return str;
         }
         
-#warning ToDo
-    
         return nil;
     }];
 }

@@ -21,6 +21,8 @@ static int kDefaultLoadLimit = 10;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) PlateModelHelper *platesHelper;
 
+@property (nonatomic, strong) UIRefreshControl *topRefreshControl;
+
 @property (nonatomic) NSInteger limit;
 
 @end
@@ -50,6 +52,15 @@ static int kDefaultLoadLimit = 10;
         [self loadPlates];
     }
     
+    self.topRefreshControl = [[UIRefreshControl alloc] init];
+    self.topRefreshControl.backgroundColor = [UIColor purpleColor];
+    self.topRefreshControl.tintColor = [UIColor whiteColor];
+    [self.topRefreshControl addTarget:self
+                            action:@selector(refreshPlates)
+                  forControlEvents:UIControlEventValueChanged];
+    
+    self.tableView.refreshControl = self.topRefreshControl;
+    
     // Do any additional setup after loading the view.
 }
 
@@ -66,6 +77,12 @@ static int kDefaultLoadLimit = 10;
     [self loadPlates];
 }
 
+-(void)refreshPlates {
+    self.limit = kDefaultLoadLimit;
+
+    [self loadPlates];
+}
+
 -(void)loadPlates {
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -74,10 +91,11 @@ static int kDefaultLoadLimit = 10;
                                withLastPlateId:self.platesHelper.plates.count > 0 ? self.platesHelper.plates.lastObject.plateId : @""
                                completionBlock:^(NSArray *plates, NSString *errorString) {
                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                   
+                                   [self.topRefreshControl endRefreshing];
                                    if (!errorString && plates.count < kDefaultLoadLimit) {
                                        self.limit = -1;
                                    }
-                                   NSLog(@"");
                                }];
 }
 
@@ -113,7 +131,8 @@ static int kDefaultLoadLimit = 10;
     PlateModel *plate = self.platesHelper.plates[indexPath.row];
     
     PlatesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlatesTableViewCell" forIndexPath:indexPath];
-    [cell setupCellWithModel:plate];
+    [cell setupLikeCellWithModel:plate];
+    cell.parentViewController = self;
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }

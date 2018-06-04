@@ -6,11 +6,6 @@
 //  Copyright © 2018 Enke. All rights reserved.
 //
 
-typedef NS_ENUM(NSInteger, SectionType) {
-    SectionTypeProfile = 0,
-    SectionTypePlates
-};
-
 static int kDefaultLoadLimit = 10;
 
 #import "ProfileViewController.h"
@@ -20,12 +15,24 @@ static int kDefaultLoadLimit = 10;
 
 @interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *scrollContentView;
+@property (weak, nonatomic) IBOutlet UIView *profileView;
+@property (weak, nonatomic) IBOutlet UIImageView *userImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userBioLabel;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeight;
 
 @property (nonatomic, strong) AuthorModelHelper *authHelper;
 @property (nonatomic, strong) PlateModelHelper *plateHelper;
 @property (nonatomic) NSInteger limit;
 @property (nonatomic) NSInteger skip;
+
+@property (nonatomic, strong) NSMutableArray *userPlates;
+@property (nonatomic, strong) User *userInfo;
 
 @end
 
@@ -35,6 +42,8 @@ static int kDefaultLoadLimit = 10;
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor clearColor]];
+    
+    [self.scrollView setBounces:NO];
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -47,35 +56,44 @@ static int kDefaultLoadLimit = 10;
     
     [self setBackgroundImage];
     
-    self.authHelper = [modelsManager getModel:HelperTypeAuthor];
-    self.plateHelper = [modelsManager getModel:HelperTypePlates];
+    self.authHelper = [AuthorModelHelper new];
+    self.plateHelper = [PlateModelHelper new];
     
-    if (self.authHelper.currentUserPlates.count <= 0 && getCurrentUser.userId) {
-        [self loadUserInfo];
+    if (self.userId) {
+        [self loadUserInfoForUserId:self.userId];
+    } else {
+        if (getCurrentUser) {
+            [self loadUserInfoForUserId:getCurrentUser.userId];
+
+        }
     }
     
-    // Do any additional setup after loading the view.
+    [self.userImageView circleView];
 }
 
--(void)loadUserInfo {
+-(void)loadUserInfoForUserId:(NSString *)userId {
     
-    [self.authHelper getAuthorProfileInfoWithId:getCurrentUser.userId completionBlock:^(User *currentUserProfile, NSString *errorString) {
-        
+    [MBProgressHUD showHUDAddedTo:self.profileView animated:YES];
+    [self.authHelper getAuthorProfileInfoWithId:userId completionBlock:^(User *currentUserProfile, NSString *errorString) {
+        [MBProgressHUD hideHUDForView:self.profileView animated:YES];
         if (errorString) {
             [Helper showErrorMessage:errorString forViewController:self];
         } else {
-            [self.collectionView reloadData];
+            [self.userImageView sd_setImageWithURL:currentUserProfile.userInfo.authorImageUrl];
+            self.userNameLabel.text = currentUserProfile.userInfo.authorName;
+            self.userBioLabel.text = @"Some bio text";
         }
     }];
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self.authHelper getPlatesForAuthor:getCurrentUser.userId environment:getCurrentEnvironment withLimit:@(self.limit) withSkip:@(self.skip) completionBlock:^(NSArray *plates, NSString *errorString) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
+    [MBProgressHUD showHUDAddedTo:self.collectionView animated:YES];
+    [self.authHelper getPlatesForAuthor:userId environment:getCurrentEnvironment withLimit:@(self.limit) withSkip:@(self.skip) completionBlock:^(NSArray *plates, NSString *errorString) {
+        [MBProgressHUD hideHUDForView:self.collectionView animated:YES];
+
         if (errorString) {
             [Helper showErrorMessage:errorString forViewController:self];
         } else {
             [self.collectionView reloadData];
+            [self recalculateCollectionViewHeight];
         }
     }];
 }
@@ -85,44 +103,19 @@ static int kDefaultLoadLimit = 10;
     // Dispose of any resources that can be recreated.
 }
 
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    
-    return 2;
-}
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    if (section == SectionTypeProfile) {
-        return self.authHelper.currentUserInfo ? 1 : 0;
-    }
-    
-    if (section == SectionTypePlates) {
-        return self.authHelper.currentUserPlates.count;
-    }
-    
-    return 0;
+    return self.authHelper.userPlates.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionViewCell *baseCell = [UICollectionViewCell new];
-    
-    if (indexPath.section == SectionTypeProfile) {
-        UserInfoCollectionViewCell *userInfoCollectionViewCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UserInfoCollectionViewCell" forIndexPath:indexPath];
-        [userInfoCollectionViewCell.userProfileImage sd_setImageWithURL:self.authHelper.currentUserInfo.userInfo.authorImageUrl];
-        userInfoCollectionViewCell.userNameLabel.text = self.authHelper.currentUserInfo.userInfo.authorName;
-        userInfoCollectionViewCell.userBioLabel.text = @"Some bio text";
-        baseCell = userInfoCollectionViewCell;
-    } else {
-        
-        PlateModel *plate = self.authHelper.currentUserPlates[indexPath.row];
-        PlateCollectionViewCell *plateCollectionViewCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlateCollectionViewCell" forIndexPath:indexPath];
-        [plateCollectionViewCell.plateImage sd_setImageWithURL:[plate.plateImages.firstObject withBaseUrl]];
-        baseCell = plateCollectionViewCell;
-    }
-    
-    return baseCell;
+    PlateModel *plate = self.authHelper.userPlates[indexPath.row];
+    PlateCollectionViewCell *plateCollectionViewCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlateCollectionViewCell" forIndexPath:indexPath];
+    [plateCollectionViewCell.plateImage sd_setImageWithURL:[plate.plateImages.firstObject withBaseUrl]];
+    return plateCollectionViewCell;
 }
 
 - (UICollectionViewFlowLayout *)setSubCategoriesCollectionViewLayout {
@@ -143,9 +136,19 @@ static int kDefaultLoadLimit = 10;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    PlateModel *plate = self.authHelper.currentUserPlates[indexPath.row];
+    PlateModel *plate = self.authHelper.userPlates[indexPath.row];
     [self loadPlateForId:plate.plateId];
+}
+
+-(void)recalculateCollectionViewHeight {
+    
+    if (self.authHelper.userPlates.count > 0) {
+        float rows = ceilf(self.authHelper.userPlates.count / 3.);
+        CGFloat cellHeight = [UIScreen mainScreen].bounds.size.width / 3;
+        self.collectionViewHeight.constant = rows * cellHeight;
+    } else {
+        self.collectionViewHeight.constant = 0;
+    }
 }
 
 -(void)loadPlateForId:(NSString *)plateId {

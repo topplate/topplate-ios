@@ -50,5 +50,8 @@
 
 +(void)showErrorMessage:(NSString *)message forViewController:(UIViewController *)viewController;
 
++(void)showSplashScreen;
++(void)hideSplashScreen;
+
 
 @end

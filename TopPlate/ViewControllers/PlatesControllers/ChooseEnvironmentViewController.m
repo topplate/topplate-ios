@@ -26,7 +26,6 @@
     [super viewDidLoad];
     
     [self setLoginBackgroundImage];
-    [self showSplashScreen];
     [self loadEnvironments];
     
     // Do any additional setup after loading the view.
@@ -42,7 +41,6 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[NetworkManager sharedManager] getEnvironmentsWithCompletion:^(id response, NSError *error) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self hideSplashScreen];
         NSError *localError = nil;
         if (!error) {
             NSArray *environments = [MTLJSONAdapter modelsOfClass:[EnvironmentsModel class] fromJSONArray:[response allValues] error:&localError];
@@ -92,40 +90,6 @@
     [[UserDefaultsManager standardUserDefaults] setObject:button.environment forKey:Default_SelectedEnvironment];
          
     [Helper showPlatesScreen];
-}
-
--(void)showSplashScreen {
-    
-    UIImage *fakeImage = [UIImage new];
-    
-    if (IS_IPHONE_5 || IS_IPHONE_6) {
-        fakeImage = [UIImage imageNamed:@"splash4.7"];
-    }
-    
-    if (IS_IPHONE_6P) {
-        fakeImage = [UIImage imageNamed:@"splash5.5"];
-    }
-    
-    if(IS_IPHONE_X) {
-        fakeImage = [UIImage imageNamed:@"splashX"];
-    }
-    
-    [self.fakeSplashImageView setImage:fakeImage];
-    
-    [UIView animateWithDuration:.55f animations:^{
-        [self.fakeSplashImageView setAlpha:1.f];
-    } completion:^(BOOL finished) {
-        [self.fakeSplashImageView setHidden:NO];
-    }];
-}
-
--(void)hideSplashScreen {
-    
-    [UIView animateWithDuration:.55f animations:^{
-        [self.fakeSplashImageView setAlpha:0.f];
-    } completion:^(BOOL finished) {
-        [self.fakeSplashImageView setHidden:YES];
-    }];
 }
 
 @end

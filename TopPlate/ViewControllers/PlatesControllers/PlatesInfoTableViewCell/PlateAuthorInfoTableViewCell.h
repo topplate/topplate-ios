@@ -10,8 +10,7 @@
 
 @interface PlateAuthorInfoTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *plateAuthorName;
-@property (weak, nonatomic) IBOutlet UILabel *plateLocation;
+@property (nonatomic, strong) UIViewController *parentViewController;
 
 -(void)setupCellWithModel:(PlateModel *)model;
 

@@ -114,14 +114,7 @@
     PlateModel *winnerPlate = self.winnersArray[indexPath.row];
     
     PlatesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlatesTableViewCell" forIndexPath:indexPath];
-    
-    cell.plateName.text = [winnerPlate.plateName uppercaseString];
-    [cell.plateImage sd_setImageWithURL:[winnerPlate.plateImages.firstObject withBaseUrl]];
-    cell.plateAuthorName.text = [winnerPlate.plateAuthor.authorName uppercaseString];
-    cell.plateLocation.text = [winnerPlate.plateAuthorLocation uppercaseString];
-    cell.plateLikes.text = [NSString stringWithFormat:@"%ld", (long)winnerPlate.plateLikes];
-    [cell.plateReceiptImage setHidden:!winnerPlate.plateHasReceipt];
-    
+    [cell setupWinnersCellWithModel:winnerPlate];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;

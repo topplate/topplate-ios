@@ -11,6 +11,9 @@
 
 typedef void(^SocialCompletionBlock)(id result, NSString *errorString);
 
+typedef void(^SimpleCompletionBlock)(BOOL result);
+
+
 @interface SocialLoginModelHelper : NSObject
 
 -(void)loginWithGoogle:(id<GIDSignInUIDelegate>)viewController
@@ -19,7 +22,7 @@ typedef void(^SocialCompletionBlock)(id result, NSString *errorString);
 -(void)loginWithFacebook:(UIViewController *)viewController
           withCompletion:(SocialCompletionBlock)completion;
 
--(void)processLogin;
+-(void)processLoginWithCompletion:(SocialCompletionBlock)completion;
 
 -(void)logout;
 

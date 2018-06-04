@@ -188,16 +188,36 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 - (IBAction)submitAction:(id)sender {
     
     [self fillModelsWithData];
-    
+
     if ([self validateTextFields]) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self.modelHelper uploadPlateWithModel:self.modelHelper.currentPlate completion:^(BOOL result, NSString *errorString) {
             [MBProgressHUD hideHUDForView:self.view animated:YES];
-            
-            
-            //                    self.modelHelper.currentPlate = nil;
+
+            if (errorString) {
+                [Helper showErrorMessage:errorString forViewController:self];
+            } else {
+                [self showSuccessAlert];
+                [self clearPlate];
+            }
         }];
     }
+}
+
+-(void)clearPlate {
+    
+    self.modelHelper.currentPlate = nil;
+    
+    [self.plateImageView setImage:[UIImage imageNamed:@"plateUploadImagePlaceholder"]];
+    self.plateNameTextView.placeholderText = kPlateNamePlaceholderText;
+    self.plateRecipeTextView.placeholderText = kPlateRecipePlaceholderText;
+    self.plateRestaurantName.placeHolderText = kPlateRestaurantNamePlaceholderText;
+    self.plateRestaurantLocation.placeHolderText = kPlateRestaurantLocationPlaceholderText;
+    [self.ingredientsTableView reloadData];
+    
+    [self.view endEditing:YES];
+    
+    [self setPlateImgageViewWithRatio:5.0/6.0];
 }
 
 #pragma mark - IngredientTableViewCellDelegate -
@@ -341,6 +361,25 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     };
 }
 
+-(void)setPlateImgageViewWithRatio:(float)ratio {
+    
+    [self.plateImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.plateImageViewAspectC setActive:NO];
+    
+    NSLayoutConstraint *aspectConstraint = [self.plateImageView.heightAnchor constraintEqualToAnchor:self.plateImageView.widthAnchor multiplier:ratio];
+    [aspectConstraint setIdentifier:@"aspectConstraint"];
+    
+    for (NSLayoutConstraint *constraint in self.plateImageView.constraints) {
+        if ([constraint.identifier isEqualToString:@"aspectConstraint"]) {
+            [constraint setActive:NO];
+        }
+    }
+    
+    [aspectConstraint setActive:YES];
+    
+    [self layoutIfNeeded];
+}
+
 -(void)layoutIfNeeded {
     
     [UIView animateWithDuration:0.25 animations:^{
@@ -355,18 +394,13 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     self.plateImageView.image = image;
     self.modelHelper.currentPlate.plateImage = image;
     
-    [NSLayoutConstraint deactivateConstraints:self.plateImageView.constraints];
+    float widthRatio = self.plateImageView.bounds.size.width / self.plateImageView.image.size.width;
+    float heightRatio = self.plateImageView.bounds.size.height / self.plateImageView.image.size.height;
+    float scale = MIN(widthRatio, heightRatio);
+    float imageWidth = scale * self.plateImageView.image.size.width;
+    float imageHeight = scale * self.plateImageView.image.size.height;
     
-    [self.plateImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.plateImageView addConstraint:[NSLayoutConstraint
-                                        constraintWithItem:self.plateImageView
-                                        attribute:NSLayoutAttributeHeight
-                                        relatedBy:NSLayoutRelationEqual
-                                        toItem:self.plateImageView
-                                        attribute:NSLayoutAttributeWidth
-                                        multiplier:(self.plateImageView.image.size.height / self.plateImageView.image.size.width)
-                                        constant:0]];
-    [self layoutIfNeeded];
+    [self setPlateImgageViewWithRatio:imageHeight/imageWidth];
 }
 
 -(void)fillModelsWithData {
@@ -419,6 +453,24 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
         [self.ingredientsTableView reloadData];
         [self updateItemsTableViewHeight:NO];
     }
+}
+
+-(void)showSuccessAlert {
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    // Set the custom view mode to show any view.
+    hud.mode = MBProgressHUDModeCustomView;
+    // Set an image view with a checkmark.
+    UIImage *image = [[UIImage imageNamed:@"confirm"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    hud.customView = [[UIImageView alloc] initWithImage:image];
+    // Looks a bit nicer if we make it square.
+    hud.square = NO;
+    // Optional label text.
+    hud.label.text = @"Success";
+    hud.detailsLabel.text = @"Plate is uploaded!";
+    
+    [hud hideAnimated:YES afterDelay:3.f];
 }
 
 -(void)hideKeyboard {

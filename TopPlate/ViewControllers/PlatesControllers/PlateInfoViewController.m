@@ -109,6 +109,7 @@ typedef NS_ENUM(NSUInteger, SectionType)
             
             PlateAuthorInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlateAuthorInfoTableViewCell" forIndexPath:indexPath];
             [cell setupCellWithModel:self.selectedPlate];
+            cell.parentViewController = self;
             baseCell = cell;
         }
             break;
@@ -116,7 +117,12 @@ typedef NS_ENUM(NSUInteger, SectionType)
         case SectionTypePlateIngredients: {
             
             PlateIngredientTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlateIngredientTableViewCell" forIndexPath:indexPath];
-            [cell setupCellWithIngredient:self.selectedPlate.plateIngredients[indexPath.row]];
+            if (indexPath.row == 0) {
+                [cell setupCellWithIngredient:@"Ingredients:"];
+            } else {
+                [cell setupCellWithIngredient:self.selectedPlate.plateIngredients[indexPath.row - 1]];
+            }
+            
             baseCell = cell;
         }
             break;

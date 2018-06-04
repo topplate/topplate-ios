@@ -57,7 +57,7 @@
 		<string>Oswald-Light.ttf</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
-	<string>Plates</string>
+	<string>Login</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

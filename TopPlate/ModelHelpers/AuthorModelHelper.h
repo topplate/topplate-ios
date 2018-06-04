@@ -12,8 +12,8 @@ typedef void(^AuthorCompletionBlock)(NSArray *plates, NSString *errorString);
 
 @interface AuthorModelHelper : NSObject
 
-@property (nonatomic, strong) NSMutableArray *currentUserPlates;
-@property (nonatomic, strong) User *currentUserInfo;
+@property (nonatomic, strong) NSMutableArray *userPlates;
+@property (nonatomic, strong) User *userInfo;
 
 -(void)getPlatesForAuthor:(NSString *)userId
               environment:(NSString *)environment

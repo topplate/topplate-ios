@@ -59,7 +59,7 @@
     
     self.rightBarItem = [[UIBarButtonItem alloc] initWithTitle:getCurrentEnvironment style:UIBarButtonItemStylePlain target:self action:@selector(environmentChangeSelected)];
     [self.rightBarItem setTitleTextAttributes:attributes forState:UIControlStateNormal];
-    [self.rightBarItem setTitleTextAttributes:attributes forState:UIControlStateSelected];
+    [self.rightBarItem setTitleTextAttributes:attributes forState:UIControlStateHighlighted];
     
     if (isRestaurantEnv) {
         [self restaurantEnvironmentSelected];

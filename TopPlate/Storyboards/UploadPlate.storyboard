@@ -38,33 +38,33 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhk-zc-8a4">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="503"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="502.33333333333331"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HmN-dr-z3r" customClass="TPTextView">
-                                                <rect key="frame" x="50" y="8" width="275" height="33"/>
+                                                <rect key="frame" x="49.666666666666657" y="8" width="275" height="33"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plateUploadImagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="99k-P9-OhM">
-                                                <rect key="frame" x="50" y="49" width="275" height="230"/>
+                                                <rect key="frame" x="49.666666666666657" y="49.000000000000014" width="275" height="229.33333333333337"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="99k-P9-OhM" secondAttribute="height" multiplier="55:46" id="B9Q-41-5wz"/>
+                                                    <constraint firstAttribute="width" secondItem="99k-P9-OhM" secondAttribute="height" multiplier="6:5" id="B9Q-41-5wz"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2uR-pb-mxj">
-                                                <rect key="frame" x="50" y="287" width="275" height="68"/>
+                                                <rect key="frame" x="49.666666666666657" y="286.33333333333331" width="275" height="68"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ogD-Iq-vPY" customClass="TPTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="275" height="30"/>
+                                                        <rect key="frame" x="0.33333333333334281" y="0.33333333333331439" width="275" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yT4-Oq-xAh" customClass="TPTextField">
-                                                        <rect key="frame" x="0.0" y="38" width="275" height="30"/>
+                                                        <rect key="frame" x="0.33333333333334281" y="38.333333333333314" width="275" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
@@ -84,17 +84,17 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TBr-gc-gtC">
-                                                <rect key="frame" x="50" y="287" width="275" height="170"/>
+                                                <rect key="frame" x="49.666666666666657" y="286.33333333333331" width="275" height="170"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" text="Lorem ipsum dolor sit er elit " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kCU-YR-dwG" customClass="TPTextView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="275" height="33"/>
+                                                        <rect key="frame" x="0.33333333333334281" y="0.33333333333331439" width="275" height="33"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INGREDIENTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoj-fq-gi2">
-                                                        <rect key="frame" x="8" y="41" width="259" height="21"/>
+                                                        <rect key="frame" x="8.3333333333333428" y="41.333333333333314" width="259" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="3w8-jO-3gB"/>
                                                         </constraints>
@@ -103,7 +103,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dSr-fZ-LKH">
-                                                        <rect key="frame" x="0.0" y="70" width="275" height="100"/>
+                                                        <rect key="frame" x="0.33333333333334281" y="70.333333333333314" width="275" height="100"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="bQq-dU-zxS"/>
@@ -117,7 +117,7 @@
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EXK-YC-K3y" customClass="TPTextField">
-                                                                            <rect key="frame" x="0.0" y="6" width="237" height="30"/>
+                                                                            <rect key="frame" x="0.0" y="6" width="238" height="30"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
@@ -127,7 +127,7 @@
                                                                             </connections>
                                                                         </textField>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bue-Ow-hB6">
-                                                                            <rect key="frame" x="245" y="6" width="30" height="30"/>
+                                                                            <rect key="frame" x="246" y="6" width="30" height="30"/>
                                                                             <color key="backgroundColor" white="1" alpha="0.20268485920000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="30" id="6WO-YG-MJW"/>
@@ -177,7 +177,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0J6-Eb-DKh">
-                                                <rect key="frame" x="50" y="465" width="275" height="30"/>
+                                                <rect key="frame" x="49.666666666666657" y="464.33333333333337" width="275" height="30"/>
                                                 <color key="backgroundColor" red="0.41176470588235292" green="0.8784313725490196" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Tum-OG-TC9"/>
@@ -194,7 +194,6 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="99k-P9-OhM" secondAttribute="trailing" constant="50" id="3CJ-jh-5RE"/>
                                             <constraint firstAttribute="trailing" secondItem="0J6-Eb-DKh" secondAttribute="trailing" constant="50" id="DCz-JN-XbJ"/>
-                                            <constraint firstItem="99k-P9-OhM" firstAttribute="top" secondItem="HmN-dr-z3r" secondAttribute="bottom" constant="8" id="FgC-bW-2OI"/>
                                             <constraint firstAttribute="trailing" secondItem="HmN-dr-z3r" secondAttribute="trailing" constant="50" id="GS9-xy-vHz"/>
                                             <constraint firstItem="0J6-Eb-DKh" firstAttribute="top" secondItem="TBr-gc-gtC" secondAttribute="bottom" constant="8" id="IqM-AT-eOP"/>
                                             <constraint firstAttribute="bottom" secondItem="0J6-Eb-DKh" secondAttribute="bottom" constant="8" id="LRv-sp-851"/>
