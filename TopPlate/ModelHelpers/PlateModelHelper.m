@@ -114,6 +114,18 @@
     }];
 }
 
+-(void)likePlate:(NSString *)plateId
+      completion:(void(^)(BOOL result, NSString *errorString))completion {
+    
+    [[NetworkManager sharedManager] likePlateWithId:plateId withCompletion:^(id response, NSError *error) {
+        if (error) {
+            completion(nil, error.localizedDescription);
+        } else {
+            completion(response, nil);
+        }
+    }];
+}
+
 -(BOOL)isMyPlate:(PlateModel *)plate {
     
     if ([plate.plateAuthor.authorId isEqualToString:getCurrentUser.userId]) {

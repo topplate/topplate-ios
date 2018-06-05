@@ -36,7 +36,8 @@
              @"plateHasReceipt" : @"hasRecipe",
              @"relatedPlates" : @"relatedPlates",
              @"plateEnvironment" : @"environment",
-             @"plateCanLike" : @"canLike"
+             @"plateCanLike" : @"canLike",
+             @"plateIsLiked" : @"liked"
              };
 }
 

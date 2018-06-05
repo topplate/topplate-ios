@@ -56,6 +56,12 @@
     [self.likeView setHidden:NO];
     
     [self setupAuthorLabelGesture:self.plateAuthorName];
+    
+    if (self.plateModel.plateIsLiked) {
+        [self.plateLikeButton setImage:[UIImage imageNamed:@"likeIcon"] forState:UIControlStateNormal];
+    } else {
+        [self.plateLikeButton setImage:[UIImage imageNamed:@"unlike"] forState:UIControlStateNormal];
+    }
 }
 
 -(void)setupWinnersCellWithModel:(PlateModel *)model {
@@ -79,7 +85,21 @@
 - (IBAction)likePlateAction:(id)sender {
     
     if (getCurrentUser) {
-        NSLog(@"Plate liked");
+        
+        [MBProgressHUD showHUDAddedTo:self.plateLikeButton animated:YES];
+        PlateModelHelper *plateHelper = [modelsManager getModel:HelperTypePlates];
+        [plateHelper likePlate:self.plateModel.plateId completion:^(BOOL result, NSString *errorString) {
+            [MBProgressHUD hideHUDForView:self.plateLikeButton animated:YES];
+            if (errorString) {
+                [Helper showErrorMessage:errorString forViewController:self.parentViewController];
+            } else {
+                self.plateModel.plateIsLiked = YES;
+                self.plateModel.plateLikes++;
+                
+                self.plateLikes.text = [NSString stringWithFormat:@"%ld", (long)self.plateModel.plateLikes];
+                [self.plateLikeButton setImage:[UIImage imageNamed:@"likeIcon"] forState:UIControlStateNormal];
+            }
+        }];
     } else {
         [Helper showWelcomeScreenAsModal:YES];
     }

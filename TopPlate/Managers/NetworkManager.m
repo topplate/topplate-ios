@@ -170,6 +170,20 @@
                     }];
 }
 
+-(void)likePlateWithId:(NSString *)plateId
+        withCompletion:(NetworkCompletionBlock)completion {
+    
+    [self.sessionManager POST:@"like_plate"
+                   parameters:@{@"plate" : plateId}
+                     progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completion(responseObject,nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
+
 - (void)uploadPlateWithModel:(PlateModel *)platemodel
                withCompletion:(NetworkCompletionBlock)completion {
     
@@ -245,6 +259,8 @@
                         completion(nil, error);
                     }];
 }
+
+//winners
 
 -(void)getWinnersWithCompletion:(NetworkCompletionBlock)completion {
     

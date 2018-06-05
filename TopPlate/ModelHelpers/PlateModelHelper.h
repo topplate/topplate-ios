@@ -31,6 +31,9 @@ typedef void(^PlateCompletionBlock)(NSArray *plates, NSString *errorString);
 -(void)getPlateWithId:(NSString *)plateId
       completionBlock:(void(^)(PlateModel *plate, NSString *errorString))completion;
 
+-(void)likePlate:(NSString *)plateId
+      completion:(void(^)(BOOL result, NSString *errorString))completion;
+
 -(void)uploadPlateWithModel:(PlateModel *)model
                  completion:(void(^)(BOOL result, NSString *errorString))completion;
 

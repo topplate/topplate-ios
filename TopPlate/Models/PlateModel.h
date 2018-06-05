@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSString *plateEnvironment;
 @property (nonatomic) BOOL plateHasReceipt;
 @property (nonatomic) BOOL plateCanLike;
+@property (nonatomic) BOOL plateIsLiked;
 @property (nonatomic, strong) NSArray<PlateModel *> *relatedPlates; //used for detail plates
 
 // used for uploading plate
