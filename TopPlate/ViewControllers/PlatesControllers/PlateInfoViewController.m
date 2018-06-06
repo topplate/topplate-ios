@@ -84,7 +84,13 @@ typedef NS_ENUM(NSUInteger, SectionType)
         case SectionTypePlateImage: {
             
             PlateImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlateImageTableViewCell" forIndexPath:indexPath];
-            [cell setupCellWithModel:self.selectedPlate];
+            cell.fromWinners = self.fromWinners;
+            [cell setupCellWithModel:self.selectedPlate indexPath:indexPath];
+            cell.likeStatus = ^(BOOL likeStatus) {
+                if ([self.delegate respondsToSelector:@selector(plateUpdatedAtIndexPath:)]) {
+                    [self.delegate plateUpdatedAtIndexPath:self.indexPath];
+                }
+            };
             baseCell = cell;
         }
             break;
@@ -246,6 +252,5 @@ typedef NS_ENUM(NSUInteger, SectionType)
                           }
                       }];
 }
-
 
 @end

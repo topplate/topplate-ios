@@ -86,20 +86,25 @@
     
     if (getCurrentUser) {
         
-        [MBProgressHUD showHUDAddedTo:self.plateLikeButton animated:YES];
-        PlateModelHelper *plateHelper = [modelsManager getModel:HelperTypePlates];
-        [plateHelper likePlate:self.plateModel.plateId completion:^(BOOL result, NSString *errorString) {
-            [MBProgressHUD hideHUDForView:self.plateLikeButton animated:YES];
-            if (errorString) {
-                [Helper showErrorMessage:errorString forViewController:self.parentViewController];
-            } else {
-                self.plateModel.plateIsLiked = YES;
-                self.plateModel.plateLikes++;
+        if (!self.plateModel.plateIsLiked) {
+            PlateModelHelper *plateHelper = [modelsManager getModel:HelperTypePlates];
+            
+            [MBProgressHUD showHUDAddedTo:self.plateLikeButton animated:YES];
+            [plateHelper likePlate:self.plateModel.plateId completion:^(BOOL result, NSString *errorString) {
+                [MBProgressHUD hideHUDForView:self.plateLikeButton animated:YES];
                 
-                self.plateLikes.text = [NSString stringWithFormat:@"%ld", (long)self.plateModel.plateLikes];
-                [self.plateLikeButton setImage:[UIImage imageNamed:@"likeIcon"] forState:UIControlStateNormal];
-            }
-        }];
+                if (errorString) {
+                    [Helper showErrorMessage:errorString forViewController:self.parentViewController];
+                } else {
+                    self.plateModel.plateIsLiked = YES;
+                    self.plateModel.plateLikes++;
+                    
+                    self.plateLikes.text = [NSString stringWithFormat:@"%ld", (long)self.plateModel.plateLikes];
+                    [self.plateLikeButton setImage:[UIImage imageNamed:@"likeIcon"] forState:UIControlStateNormal];
+                }
+            }];
+        }
+        
     } else {
         [Helper showWelcomeScreenAsModal:YES];
     }
@@ -120,6 +125,5 @@
     
     [self.parentViewController.navigationController pushViewController:profileViewController animated:YES];
 }
-
 
 @end

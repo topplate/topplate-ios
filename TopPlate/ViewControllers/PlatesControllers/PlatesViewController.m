@@ -16,7 +16,7 @@
 
 static int kDefaultLoadLimit = 10;
 
-@interface PlatesViewController () <UITableViewDelegate, UITableViewDataSource, PlatesModelHelperDelegate>
+@interface PlatesViewController () <UITableViewDelegate, UITableViewDataSource, PlatesModelHelperDelegate, PlateInfoViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) PlateModelHelper *platesHelper;
@@ -99,7 +99,7 @@ static int kDefaultLoadLimit = 10;
                                }];
 }
 
--(void)loadPlateForId:(NSString *)plateId {
+-(void)loadPlateForId:(NSString *)plateId atIndexPath:(NSIndexPath *)indexPath {
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.platesHelper getPlateWithId:plateId
@@ -109,6 +109,8 @@ static int kDefaultLoadLimit = 10;
                           if (plate && !errorString) {
                               PlateInfoViewController *plateVc = [self.storyboard instantiateViewControllerWithIdentifier:@"PlateInfoViewController"];
                               plateVc.selectedPlate = plate;
+                              plateVc.indexPath = indexPath;
+                              plateVc.delegate = self;
                               [self.navigationController pushViewController:plateVc animated:YES];
                           }
                       }];
@@ -154,7 +156,7 @@ static int kDefaultLoadLimit = 10;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     PlateModel *selectedPlate = self.platesHelper.plates[indexPath.row];
-    [self loadPlateForId:selectedPlate.plateId];
+    [self loadPlateForId:selectedPlate.plateId atIndexPath:indexPath];
 }
 
 #pragma mark - PlatesModelHelperDelegate -
@@ -172,6 +174,20 @@ static int kDefaultLoadLimit = 10;
     
     CharityViewController *charity = [self.storyboard instantiateViewControllerWithIdentifier:@"CharityViewController"];
     [self.navigationController pushViewController:charity animated:YES];
+}
+
+#pragma mark - PlateInfoViewControllerDelegate -
+
+-(void)plateUpdatedAtIndexPath:(NSIndexPath *)indexPath {
+    
+    PlateModel *plate = self.platesHelper.plates[indexPath.row];
+    
+    plate.plateIsLiked = YES;
+    plate.plateLikes++;
+    
+    [self.tableView beginUpdates];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
 }
 
 @end

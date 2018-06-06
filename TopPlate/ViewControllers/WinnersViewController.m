@@ -99,6 +99,7 @@
                               UIStoryboard *platesStoryboard = [UIStoryboard storyboardWithName:@"Plates" bundle:nil];
                               PlateInfoViewController *plateVc = [platesStoryboard instantiateViewControllerWithIdentifier:@"PlateInfoViewController"];
                               plateVc.selectedPlate = plate;
+                              plateVc.fromWinners = YES;
                               [self.navigationController pushViewController:plateVc animated:YES];
                           }
                       }];

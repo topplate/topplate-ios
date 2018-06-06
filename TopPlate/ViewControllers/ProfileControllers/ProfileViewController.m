@@ -124,9 +124,20 @@ static int kDefaultLoadLimit = 10;
     [collectionLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     [collectionLayout setMinimumInteritemSpacing:0.0f];
     [collectionLayout setMinimumLineSpacing:0.0f];
-    collectionLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize;
     
     return collectionLayout;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    CGSize tempSize;
+    
+    CGFloat width = ([UIScreen mainScreen].bounds.size.width / 3);
+    
+    tempSize = CGSizeMake(width, width);
+    
+    return tempSize;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{

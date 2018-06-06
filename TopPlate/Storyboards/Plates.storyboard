@@ -342,6 +342,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="likeButtonWidth" destination="3WO-Dt-QuD" id="14V-6l-JTN"/>
                                             <outlet property="plateImageView" destination="6qa-gA-OKY" id="Aqp-oT-0g4"/>
                                             <outlet property="plateLikeButton" destination="rwf-zx-Q1s" id="TzO-6G-hEY"/>
                                             <outlet property="plateNumberOfLikes" destination="eyl-to-E6X" id="FRe-gM-PhU"/>
