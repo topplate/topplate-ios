@@ -35,22 +35,29 @@
     
     if (getCurrentUser) {
         
-        if (!self.plateModel.plateIsLiked) {
-            PlateModelHelper *plateHelper = [modelsManager getModel:HelperTypePlates];
+        PlateModelHelper *plateHelper = [modelsManager getModel:HelperTypePlates];
+        
+        if (self.plateModel.plateIsLiked) {
             
             [MBProgressHUD showHUDAddedTo:self.plateLikeButton animated:YES];
-            [plateHelper likePlate:self.plateModel.plateId completion:^(BOOL result, NSString *errorString) {
+            [plateHelper unlikePlate:self.plateModel.plateId completion:^(PlateModel *plate, NSString *errorString) {
                 [MBProgressHUD hideHUDForView:self.plateLikeButton animated:YES];
                 
                 if (errorString) {
                     [Helper showErrorMessage:errorString forViewController:nil];
                 } else {
-                    self.plateModel.plateIsLiked = YES;
-                    self.plateModel.plateLikes++;
-                    
-                    self.plateNumberOfLikes.text = [NSString stringWithFormat:@"%ld", (long)self.plateModel.plateLikes];
-                    [self.plateLikeButton setImage:[UIImage imageNamed:@"likeIcon"] forState:UIControlStateNormal];
-
+                    self.likeStatus(NO);
+                }
+            }];
+            
+        } else {
+            [MBProgressHUD showHUDAddedTo:self.plateLikeButton animated:YES];
+            [plateHelper likePlate:self.plateModel.plateId completion:^(PlateModel *plate, NSString *errorString) {
+                [MBProgressHUD hideHUDForView:self.plateLikeButton animated:YES];
+                
+                if (errorString) {
+                    [Helper showErrorMessage:errorString forViewController:nil];
+                } else {
                     self.likeStatus(YES);
                 }
             }];
@@ -70,7 +77,7 @@
     [self.plateReceiptAvaliable setHidden:(model.plateReceipt.length > 0 || model.plateIngredients.count > 0) ? NO : YES];
     self.plateNumberOfLikes.text = [NSString stringWithFormat:@"%ld", (long)model.plateLikes];
     
-    if (self.fromWinners) {
+    if (self.fromWinners || !model.plateCanLike) {
         self.likeButtonWidth.constant = 0;
     } else {
         if (self.plateModel.plateIsLiked) {

@@ -8,18 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol PlateInfoViewControllerDelegate <NSObject>
-
--(void)plateUpdatedAtIndexPath:(NSIndexPath *)indexPath;
-
-@end
-
 @interface PlateInfoViewController : UIViewController
 
 @property (nonatomic, strong) PlateModel *selectedPlate;
 @property (nonatomic) BOOL fromWinners;
-@property (nonatomic, strong) NSIndexPath *indexPath;
-
-@property (nonatomic, weak) id <PlateInfoViewControllerDelegate> delegate;
 
 @end

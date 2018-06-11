@@ -16,7 +16,7 @@
 
 static int kDefaultLoadLimit = 10;
 
-@interface PlatesViewController () <UITableViewDelegate, UITableViewDataSource, PlatesModelHelperDelegate, PlateInfoViewControllerDelegate>
+@interface PlatesViewController () <UITableViewDelegate, UITableViewDataSource, PlatesModelHelperDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) PlateModelHelper *platesHelper;
@@ -88,7 +88,7 @@ static int kDefaultLoadLimit = 10;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.platesHelper getPlatesForEnvironment:getCurrentEnvironment
                                      withLimit:@(self.limit)
-                               withLastPlateId:self.platesHelper.plates.count > 0 ? self.platesHelper.plates.lastObject.plateId : @""
+                               withLastPlateId:@""
                                completionBlock:^(NSArray *plates, NSString *errorString) {
                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
                                    
@@ -109,8 +109,6 @@ static int kDefaultLoadLimit = 10;
                           if (plate && !errorString) {
                               PlateInfoViewController *plateVc = [self.storyboard instantiateViewControllerWithIdentifier:@"PlateInfoViewController"];
                               plateVc.selectedPlate = plate;
-                              plateVc.indexPath = indexPath;
-                              plateVc.delegate = self;
                               [self.navigationController pushViewController:plateVc animated:YES];
                           }
                       }];
@@ -161,33 +159,26 @@ static int kDefaultLoadLimit = 10;
 
 #pragma mark - PlatesModelHelperDelegate -
 
--(void)modelIsUpdated {
+-(void)platesUpdated {
     
-    [self.tableView reloadData];
-    
-    if (self.tableView.contentSize.height > self.tableView.height) {
-        [self.tableView setContentSize:CGSizeMake(self.tableView.width, self.tableView.contentSize.height + 50)];
-    }
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
+
+-(void)plateAtIndexIsUpdated:(NSInteger)plateIndex {
+    
+    NSIndexPath *indexPath = [[NSIndexPath alloc] initWithIndex:plateIndex];
+    
+    [self.tableView beginUpdates];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+}
+
+#pragma mark - Actions -
 
 - (IBAction)showCharities:(id)sender {
     
     CharityViewController *charity = [self.storyboard instantiateViewControllerWithIdentifier:@"CharityViewController"];
     [self.navigationController pushViewController:charity animated:YES];
-}
-
-#pragma mark - PlateInfoViewControllerDelegate -
-
--(void)plateUpdatedAtIndexPath:(NSIndexPath *)indexPath {
-    
-    PlateModel *plate = self.platesHelper.plates[indexPath.row];
-    
-    plate.plateIsLiked = YES;
-    plate.plateLikes++;
-    
-    [self.tableView beginUpdates];
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    [self.tableView endUpdates];
 }
 
 @end

@@ -23,7 +23,7 @@
 -(void)getPlatesForEnvironment:(NSString *)environment
                      withLimit:(NSNumber *)limit
                 withLastPlateId:(NSString *)lastPlateId
-               completionBlock:(PlateCompletionBlock)completion {
+               completionBlock:(PlatesCompletionBlock)completion {
 
     NSDictionary *paramsDict = @{@"environment" : environment ?: @"",
                                  @"lim" : limit ?: 0,
@@ -50,8 +50,8 @@
                                                self.plates = plates;   
                                            }
                                            
-                                           if ([self.delegate respondsToSelector:@selector(modelIsUpdated)]) {
-                                               [self.delegate modelIsUpdated];
+                                           if ([self.delegate respondsToSelector:@selector(platesUpdated)]) {
+                                               [self.delegate platesUpdated];
                                            }
                                            
                                            completion(plates, nil);
@@ -101,7 +101,7 @@
     }];
 }
 
--(void)getWinnersWithCompletion:(PlateCompletionBlock)completion {
+-(void)getWinnersWithCompletion:(PlatesCompletionBlock)completion {
     
     [[NetworkManager sharedManager] getWinnersWithCompletion:^(id response, NSError *error) {
         if (!error) {
@@ -115,13 +115,54 @@
 }
 
 -(void)likePlate:(NSString *)plateId
-      completion:(void(^)(BOOL result, NSString *errorString))completion {
+      completion:(PlateCompletionBlock)completion {
     
     [[NetworkManager sharedManager] likePlateWithId:plateId withCompletion:^(id response, NSError *error) {
         if (error) {
             completion(nil, error.localizedDescription);
         } else {
-            completion(response, nil);
+            NSError *parseError;
+            PlateModel *updatedPlate = [MTLJSONAdapter modelOfClass:[PlateModel class] fromJSONDictionary:response error:&parseError];
+            
+            NSArray *filteredArray = [self.plates filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"plateId == %@", updatedPlate.plateId]];
+            
+            if (filteredArray.count > 0) {
+                
+                NSInteger plateIndex = [self.plates indexOfObject:filteredArray.firstObject];
+                [self.plates replaceObjectAtIndex:plateIndex withObject:updatedPlate];
+                
+                if ([self.delegate respondsToSelector:@selector(plateAtIndexIsUpdated:)]) {
+                    [self.delegate plateAtIndexIsUpdated:plateIndex];
+                }
+            }
+            
+            completion(updatedPlate, nil);
+        }
+    }];
+}
+
+-(void)unlikePlate:(NSString *)plateId
+      completion:(PlateCompletionBlock)completion {
+    
+    [[NetworkManager sharedManager] unlikePlateWithId:plateId withCompletion:^(id response, NSError *error) {
+        if (error) {
+            completion(nil, error.localizedDescription);
+        } else {
+            NSError *parseError;
+            PlateModel *updatedPlate = [MTLJSONAdapter modelOfClass:[PlateModel class] fromJSONDictionary:response error:&parseError];
+            
+            NSArray *filteredArray = [self.plates filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"plateId == %@", updatedPlate.plateId]];
+            
+            if (filteredArray.count > 0) {
+                NSInteger plateIndex = [self.plates indexOfObject:filteredArray.firstObject];
+                [self.plates replaceObjectAtIndex:plateIndex withObject:updatedPlate];
+                
+                if ([self.delegate respondsToSelector:@selector(plateAtIndexIsUpdated:)]) {
+                    [self.delegate plateAtIndexIsUpdated:plateIndex];
+                }
+            }
+            
+            completion(updatedPlate, nil);
         }
     }];
 }

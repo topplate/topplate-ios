@@ -45,6 +45,9 @@ typedef void (^NetworkCompletionBlock)(id response, NSError *error);
 -(void)likePlateWithId:(NSString *)plateId
         withCompletion:(NetworkCompletionBlock)completion;
 
+-(void)unlikePlateWithId:(NSString *)plateId
+          withCompletion:(NetworkCompletionBlock)completion;
+
 - (void)uploadPlateWithModel:(PlateModel *)platemodel
               withCompletion:(NetworkCompletionBlock)completion;
 

@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^PlateCompletionBlock)(NSArray *plates, NSString *errorString);
+typedef void(^PlatesCompletionBlock)(NSArray *plates, NSString *errorString);
+typedef void(^PlateCompletionBlock)(PlateModel *plate, NSString *errorString);
 
 
 @protocol PlatesModelHelperDelegate <NSObject>
 
--(void)modelIsUpdated;
+-(void)platesUpdated;
+
+-(void)plateAtIndexIsUpdated:(NSInteger)plateIndex;
 
 @end
 
@@ -26,13 +29,16 @@ typedef void(^PlateCompletionBlock)(NSArray *plates, NSString *errorString);
 -(void)getPlatesForEnvironment:(NSString *)environment
                      withLimit:(NSNumber *)limit
                       withLastPlateId:(NSString *)lastPlateId
-               completionBlock:(PlateCompletionBlock)completion;
+               completionBlock:(PlatesCompletionBlock)completion;
 
 -(void)getPlateWithId:(NSString *)plateId
       completionBlock:(void(^)(PlateModel *plate, NSString *errorString))completion;
 
 -(void)likePlate:(NSString *)plateId
-      completion:(void(^)(BOOL result, NSString *errorString))completion;
+      completion:(PlateCompletionBlock)completion;
+
+-(void)unlikePlate:(NSString *)plateId
+        completion:(PlateCompletionBlock)completion;
 
 -(void)uploadPlateWithModel:(PlateModel *)model
                  completion:(void(^)(BOOL result, NSString *errorString))completion;
@@ -40,7 +46,7 @@ typedef void(^PlateCompletionBlock)(NSArray *plates, NSString *errorString);
 -(void)searchPlatesWithSearchString:(NSString *)searchString
                          completion:(void(^)(NSArray *searchResults, NSString *errorString))completion;
 
--(void)getWinnersWithCompletion:(PlateCompletionBlock)completion;
+-(void)getWinnersWithCompletion:(PlatesCompletionBlock)completion;
 
 -(BOOL)isMyPlate:(PlateModel *)plate;
 

@@ -86,21 +86,24 @@
     
     if (getCurrentUser) {
         
-        if (!self.plateModel.plateIsLiked) {
-            PlateModelHelper *plateHelper = [modelsManager getModel:HelperTypePlates];
+        PlateModelHelper *plateHelper = [modelsManager getModel:HelperTypePlates];
+        
+        if (self.plateModel.plateIsLiked) {
             
             [MBProgressHUD showHUDAddedTo:self.plateLikeButton animated:YES];
-            [plateHelper likePlate:self.plateModel.plateId completion:^(BOOL result, NSString *errorString) {
+            [plateHelper unlikePlate:self.plateModel.plateId completion:^(PlateModel *plate, NSString *errorString) {
                 [MBProgressHUD hideHUDForView:self.plateLikeButton animated:YES];
-                
                 if (errorString) {
-                    [Helper showErrorMessage:errorString forViewController:self.parentViewController];
-                } else {
-                    self.plateModel.plateIsLiked = YES;
-                    self.plateModel.plateLikes++;
-                    
-                    self.plateLikes.text = [NSString stringWithFormat:@"%ld", (long)self.plateModel.plateLikes];
-                    [self.plateLikeButton setImage:[UIImage imageNamed:@"likeIcon"] forState:UIControlStateNormal];
+                    [Helper showErrorMessage:errorString forViewController:nil];
+                }
+            }];
+            
+        } else {
+            [MBProgressHUD showHUDAddedTo:self.plateLikeButton animated:YES];
+            [plateHelper likePlate:self.plateModel.plateId completion:^(PlateModel *plate, NSString *errorString) {
+                [MBProgressHUD hideHUDForView:self.plateLikeButton animated:YES];
+                if (errorString) {
+                    [Helper showErrorMessage:errorString forViewController:nil];
                 }
             }];
         }

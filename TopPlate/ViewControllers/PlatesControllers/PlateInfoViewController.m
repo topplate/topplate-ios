@@ -87,9 +87,17 @@ typedef NS_ENUM(NSUInteger, SectionType)
             cell.fromWinners = self.fromWinners;
             [cell setupCellWithModel:self.selectedPlate indexPath:indexPath];
             cell.likeStatus = ^(BOOL likeStatus) {
-                if ([self.delegate respondsToSelector:@selector(plateUpdatedAtIndexPath:)]) {
-                    [self.delegate plateUpdatedAtIndexPath:self.indexPath];
+                
+                if (likeStatus) {
+                    self.selectedPlate.plateLikes += 1;
+                } else {
+                    self.selectedPlate.plateLikes -= 1;
                 }
+                
+                self.selectedPlate.plateIsLiked = likeStatus;
+                
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                
             };
             baseCell = cell;
         }
@@ -242,15 +250,15 @@ typedef NS_ENUM(NSUInteger, SectionType)
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [helper getPlateWithId:plateModel.plateId
-                      completionBlock:^(PlateModel *plate, NSString *errorString) {
-                          [MBProgressHUD hideHUDForView:self.view animated:YES];
-                          
-                          if (plate && !errorString) {
-                              PlateInfoViewController *plateVc = [self.storyboard instantiateViewControllerWithIdentifier:@"PlateInfoViewController"];
-                              plateVc.selectedPlate = plate;
-                              [self.navigationController pushViewController:plateVc animated:YES];
-                          }
-                      }];
+           completionBlock:^(PlateModel *plate, NSString *errorString) {
+               [MBProgressHUD hideHUDForView:self.view animated:YES];
+               
+               if (plate && !errorString) {
+                   PlateInfoViewController *plateVc = [self.storyboard instantiateViewControllerWithIdentifier:@"PlateInfoViewController"];
+                   plateVc.selectedPlate = plate;
+                   [self.navigationController pushViewController:plateVc animated:YES];
+               }
+           }];
 }
 
 @end
