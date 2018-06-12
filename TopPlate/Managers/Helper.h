@@ -14,6 +14,13 @@
 #define isRestaurantEnv [getCurrentEnvironment isEqualToString:@"restaurant"]
 #define isHomeMadeEnv [getCurrentEnvironment isEqualToString:@"homemade"]
 
+#define getLoginStoryboard [Helper loginStoryboard]
+#define getPlatesStoryboard [Helper platesStoryboard]
+#define getSearchStoryboard [Helper searchStoryboard]
+#define getUploadPlateStoryboard [Helper uploadPlateStoryboard]
+#define getWinnersStoryboard [Helper winnersStoryboard]
+#define getProfileStoryboard [Helper profileStoryboard]
+
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 
 @interface Helper : NSObject
@@ -34,6 +41,19 @@
 +(User *)currentUser;
 
 +(NSString *)currentEnviroment;
+
+
++(UIStoryboard *)loginStoryboard;
+
++(UIStoryboard *)platesStoryboard;
+
++(UIStoryboard *)searchStoryboard;
+
++(UIStoryboard *)uploadPlateStoryboard;
+
++(UIStoryboard *)winnersStoryboard;
+
++(UIStoryboard *)profileStoryboard;
 
 //NSDate
 

@@ -148,7 +148,7 @@
                   moduleName = "TopPlate"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stiffmeister/Work/iOS/Work%20projects/TopPlateObjC/TopPlate/TopPlate/ModelHelpers/PlateModelHelper.m"
-                  timestampString = "550407753.052762"
+                  timestampString = "550527681.161376"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "120"
@@ -163,7 +163,7 @@
                   moduleName = "TopPlate"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stiffmeister/Work/iOS/Work%20projects/TopPlateObjC/TopPlate/TopPlate/ModelHelpers/PlateModelHelper.m"
-                  timestampString = "550407753.0553499"
+                  timestampString = "550527681.1633739"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "121"
@@ -178,7 +178,7 @@
                   moduleName = "TopPlate"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stiffmeister/Work/iOS/Work%20projects/TopPlateObjC/TopPlate/TopPlate/ModelHelpers/PlateModelHelper.m"
-                  timestampString = "550407753.058051"
+                  timestampString = "550527681.165418"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "120"
@@ -194,13 +194,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TopPlate/ModelHelpers/PlateModelHelper.m"
-            timestampString = "550407752.955883"
+            filePath = "TopPlate/ViewControllers/TabBarViewController.m"
+            timestampString = "550527681.018847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "-getPlatesForEnvironment:withLimit:withLastPlateId:completionBlock:"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -210,13 +210,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TopPlate/ModelHelpers/PlateModelHelper.m"
-            timestampString = "550407752.956014"
+            filePath = "TopPlate/ViewControllers/TabBarViewController.m"
+            timestampString = "550527681.018911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
             endingLineNumber = "53"
-            landmarkName = "-getPlatesForEnvironment:withLimit:withLastPlateId:completionBlock:"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TopPlate/Managers/Helper.m"
+            timestampString = "550527681.018962"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "+showPlatesScreen"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

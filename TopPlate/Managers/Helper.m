@@ -7,6 +7,7 @@
 //
 
 #import "Helper.h"
+#import "TabBarViewController.h"
 
 @interface Helper ()
 
@@ -36,10 +37,12 @@
 
 +(void)showPlatesScreen {
     
-    UIStoryboard *platesS = [UIStoryboard storyboardWithName:@"CustomTabBar" bundle:nil];
-    UINavigationController *platesNav = (UINavigationController *)[platesS instantiateViewControllerWithIdentifier:@"customTabBarNavigationController"];
+    TabBarViewController *tabBarViewController = [[TabBarViewController alloc] init];
+        
+//    UIStoryboard *platesS = [UIStoryboard storyboardWithName:@"CustomTabBar" bundle:nil];
+//    UINavigationController *platesNav = (UINavigationController *)[platesS instantiateViewControllerWithIdentifier:@"customTabBarNavigationController"];
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    window.rootViewController = platesNav;
+    window.rootViewController = tabBarViewController;
     [window makeKeyAndVisible];
 }
 
@@ -72,6 +75,38 @@
     
     NSString *enviroment = [[UserDefaultsManager standardUserDefaults] objectForKey:Default_SelectedEnvironment];
     return enviroment;
+}
+
+#pragma mark - Storyboards -
+
++(UIStoryboard *)loginStoryboard {
+    
+    return [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+}
+
++(UIStoryboard *)platesStoryboard {
+    
+    return [UIStoryboard storyboardWithName:@"Plates" bundle:nil];
+}
+
++(UIStoryboard *)searchStoryboard {
+    
+    return [UIStoryboard storyboardWithName:@"Search" bundle:nil];
+}
+
++(UIStoryboard *)uploadPlateStoryboard {
+    
+    return [UIStoryboard storyboardWithName:@"UploadPlate" bundle:nil];
+}
+
++(UIStoryboard *)winnersStoryboard {
+    
+    return [UIStoryboard storyboardWithName:@"Winners" bundle:nil];
+}
+
++(UIStoryboard *)profileStoryboard {
+    
+    return [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
 }
 
 #pragma mark - Date helpers -

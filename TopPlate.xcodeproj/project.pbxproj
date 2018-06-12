@@ -27,6 +27,7 @@
 		330079A720BDCBDD00F4A941 /* RefreshTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 330079A520BDCBDD00F4A941 /* RefreshTableViewCell.m */; };
 		330079A820BDCBDD00F4A941 /* RefreshTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330079A620BDCBDD00F4A941 /* RefreshTableViewCell.xib */; };
 		332D4E632099024700F535E2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 332D4E622099024700F535E2 /* User.m */; };
+		33418E5220D017C9001AA78E /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33418E5120D017C9001AA78E /* TabBarViewController.m */; };
 		33504A2F20A49CD500622F2E /* TPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A2E20A49CD500622F2E /* TPButton.m */; };
 		33504A3520A4B27900622F2E /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33504A3420A4B27900622F2E /* UIColor+Helper.m */; };
 		33504A3720A4DB7200622F2E /* Milkshake.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33504A3620A4DB6B00622F2E /* Milkshake.otf */; };
@@ -168,6 +169,8 @@
 		330079A620BDCBDD00F4A941 /* RefreshTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefreshTableViewCell.xib; sourceTree = "<group>"; };
 		332D4E612099024700F535E2 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		332D4E622099024700F535E2 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		33418E5020D017C9001AA78E /* TabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		33418E5120D017C9001AA78E /* TabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		33504A2D20A49CD500622F2E /* TPButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPButton.h; sourceTree = "<group>"; };
 		33504A2E20A49CD500622F2E /* TPButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPButton.m; sourceTree = "<group>"; };
 		33504A3320A4B27900622F2E /* UIColor+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helper.h"; sourceTree = "<group>"; };
@@ -464,6 +467,8 @@
 				33A3431520C2AC65009665C3 /* SplashScreenViewController.m */,
 				338A5794207F3746000FA8BD /* CustomTabBarViewController.h */,
 				338A5795207F3746000FA8BD /* CustomTabBarViewController.m */,
+				33418E5020D017C9001AA78E /* TabBarViewController.h */,
+				33418E5120D017C9001AA78E /* TabBarViewController.m */,
 				338A574F207F3498000FA8BD /* LoginControllers */,
 				338A575C207F3504000FA8BD /* PlatesControllers */,
 				338A5763207F3530000FA8BD /* SearchViewController.h */,
@@ -1021,6 +1026,7 @@
 				338A575B207F34FF000FA8BD /* PlatesViewController.m in Sources */,
 				33B615F8209F6F600096F8C5 /* UserInfoCollectionViewCell.m in Sources */,
 				3366C1892086829200D710A9 /* MacrosHelper.m in Sources */,
+				33418E5220D017C9001AA78E /* TabBarViewController.m in Sources */,
 				3300799B20ACE40700F4A941 /* ContactUsViewController.m in Sources */,
 				338A5791207F3693000FA8BD /* PlateModelHelper.m in Sources */,
 				338A5758207F34D8000FA8BD /* ForgotPasswordViewController.m in Sources */,

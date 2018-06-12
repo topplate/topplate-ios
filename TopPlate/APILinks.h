@@ -6,6 +6,6 @@
 //  Copyright © 2018 Enke. All rights reserved.
 //
 
-#define baseAPIUrl [NSURL URLWithString:@"http://ec2-user@ec2-52-14-133-74.us-east-2.compute.amazonaws.com/"]
+#define baseAPIUrl [NSURL URLWithString:@"http://ec2-18-188-53-33.us-east-2.compute.amazonaws.com/"]
 
 #define googleClientId [NSString stringWithFormat:@"363481561570-gggao274kguhm50le5hvd80t8jc968f0.apps.googleusercontent.com"]
