@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9rs-iY-lRU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9rs-iY-lRU">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -278,13 +278,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDU-8U-leI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414.33333333333331" height="319"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414.66666666666669" height="319"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dark_layer" translatesAutoresizingMaskIntoConstraints="NO" id="6qa-gA-OKY">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414.33333333333331" height="319"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="414.66666666666669" height="319"/>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dark_layer" translatesAutoresizingMaskIntoConstraints="NO" id="Zb6-j3-Dvz">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414.33333333333331" height="319"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="414.66666666666669" height="319"/>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="receipt" translatesAutoresizingMaskIntoConstraints="NO" id="GSq-1A-bRE">
                                                             <rect key="frame" x="0.0" y="35.666666666666657" width="128" height="79"/>
@@ -294,7 +294,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwf-zx-Q1s">
-                                                            <rect key="frame" x="362.33333333333331" y="241.33333333333337" width="52" height="52"/>
+                                                            <rect key="frame" x="362.66666666666669" y="241.66666666666663" width="52" height="52"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="52" id="3WO-Dt-QuD"/>
                                                                 <constraint firstAttribute="height" constant="52" id="oaX-sx-EeT"/>
@@ -305,7 +305,7 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14.8K" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyl-to-E6X">
-                                                            <rect key="frame" x="311.33333333333331" y="257.33333333333337" width="43" height="21"/>
+                                                            <rect key="frame" x="311.66666666666669" y="257.66666666666663" width="43" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>

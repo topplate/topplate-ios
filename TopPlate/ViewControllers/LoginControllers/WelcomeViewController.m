@@ -9,7 +9,6 @@
 #import "WelcomeViewController.h"
 #import "SignInViewController.h"
 #import "PlatesViewController.h"
-#import "CustomTabBarViewController.h"
 #import "ChooseEnvironmentViewController.h"
 #import "SocialLoginModelHelper.h"
 

@@ -55,6 +55,14 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [Helper showSplashScreenFor:self];
+    
+    if (!getCurrentUser) {
+        [Helper showWelcomeScreenAsModal:YES];
+    } else {
+        [Helper hideSplashScreen];
+    }
+    
     self.modelHelper = [modelsManager getModel:HelperTypePlates];
     
     self.ingredientsTableView.delegate = self;
@@ -86,8 +94,10 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addIngredientAnimated:) name:kNotificationAddNewIngredient object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addIngredientAnimated:) name:kNotificationAddNewIngredient object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideSplashScreen) name:kNotificationUserSignIn object:nil];
+
     [self registerForKeyboardNotifications];
 }
 
@@ -99,6 +109,10 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)hideSplashScreen {
+    [Helper hideSplashScreen];
 }
 
 #pragma mark - JSImagePickerViewControllerDelegate -

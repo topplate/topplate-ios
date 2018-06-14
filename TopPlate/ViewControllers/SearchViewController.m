@@ -43,7 +43,7 @@
     
     self.searchTextField.delegate = self;
     
-    [self.view setBackgroundColor:[UIColor clearColor]];
+    [self setNavigationTitleViewImage];
 
     // Do any additional setup after loading the view.
 }

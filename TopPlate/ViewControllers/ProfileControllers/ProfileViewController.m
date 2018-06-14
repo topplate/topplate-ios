@@ -9,6 +9,7 @@
 static int kDefaultLoadLimit = 10;
 
 #import "ProfileViewController.h"
+#import "SettingsViewController.h"
 #import "UserInfoCollectionViewCell.h"
 #import "PlateCollectionViewCell.h"
 #import "PlateInfoViewController.h"
@@ -61,20 +62,42 @@ static int kDefaultLoadLimit = 10;
     
     if (self.userId) {
         [self loadUserInfoForUserId:self.userId];
+    } else if (getCurrentUser) {
+        [self loadUserInfoForUserId:getCurrentUser.userId];
     } else {
-        if (getCurrentUser) {
-            [self loadUserInfoForUserId:getCurrentUser.userId];
-
-        }
+        [Helper showSplashScreenFor:self];
+        [Helper showWelcomeScreenAsModal:YES];
     }
+    
+    [self setupNavigationBar];
     
     [self.userImageView circleView];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadUserInfoForUserId:) name:kNotificationUserSignIn object:nil];
+}
+
+-(void)setupNavigationBar {
+    
+    [self setNavigationTitleViewImage];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"moreIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfileSettingsScreen)];
+}
+
+-(void)showProfileSettingsScreen {
+    SettingsViewController *settingsViewController = [getProfileStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+    [self.navigationController pushViewController:settingsViewController animated:YES];
+}
+
 -(void)loadUserInfoForUserId:(NSString *)userId {
     
+    [Helper hideSplashScreen];
+    
     [MBProgressHUD showHUDAddedTo:self.profileView animated:YES];
-    [self.authHelper getAuthorProfileInfoWithId:userId completionBlock:^(User *currentUserProfile, NSString *errorString) {
+    [self.authHelper getAuthorProfileInfoWithId:userId ?: getCurrentUser.userId completionBlock:^(User *currentUserProfile, NSString *errorString) {
         [MBProgressHUD hideHUDForView:self.profileView animated:YES];
         if (errorString) {
             [Helper showErrorMessage:errorString forViewController:self];

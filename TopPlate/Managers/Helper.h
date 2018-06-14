@@ -70,7 +70,7 @@
 
 +(void)showErrorMessage:(NSString *)message forViewController:(UIViewController *)viewController;
 
-+(void)showSplashScreen;
++(void)showSplashScreenFor:(UIViewController *)viewcontroller;
 +(void)hideSplashScreen;
 
 

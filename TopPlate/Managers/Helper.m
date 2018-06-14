@@ -179,7 +179,7 @@
     }
 }
 
-+(void)showSplashScreen {
++(void)showSplashScreenFor:(UIViewController *)viewcontroller {
     
     UIImage *fakeImage = [UIImage new];
     
@@ -199,7 +199,13 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:window.frame];
     imageView.tag = 777123;
     [imageView setImage:fakeImage];
-    [window addSubview:imageView];
+    
+    if (viewcontroller) {
+        [viewcontroller.view addSubview:imageView];
+    } else {
+        [window addSubview:imageView];
+    }
+    
     [UIView animateWithDuration:.55f animations:^{
         [imageView setAlpha:1.f];
     } completion:^(BOOL finished) {
@@ -208,6 +214,7 @@
 }
 
 +(void)hideSplashScreen {
+    
     UIImageView *view = [[UIApplication sharedApplication].delegate.window viewWithTag:777123];
     
     [UIView animateWithDuration:.55f animations:^{

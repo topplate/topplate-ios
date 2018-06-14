@@ -10,6 +10,8 @@
 
 NSString * const kNotificationEnvironmentChange = @"Environment is changed.";
 NSString * const kNotificationAddNewIngredient = @"Add new ingredient.";
+NSString * const kNotificationUserSignIn = @"User sign in.";
+
 
 NSString *appVersion() {
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];

@@ -26,11 +26,15 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if (errorString) {
+            //there is an error, while user sign in
             [Helper showWelcomeScreenAsModal:NO];
         } if (!errorString && !result) {
             //
         } else {
+            //user is signed in
             [Helper showPlatesScreen];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserSignIn object:nil];
         }
     }];
 

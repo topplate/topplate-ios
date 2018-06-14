@@ -19,6 +19,7 @@ typedef NS_ENUM(NSUInteger, LoginType)
 
 extern NSString * _Nonnull const kNotificationEnvironmentChange;
 extern NSString * _Nonnull const kNotificationAddNewIngredient;
+extern NSString * _Nonnull const kNotificationUserSignIn;
 
 #if (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
 

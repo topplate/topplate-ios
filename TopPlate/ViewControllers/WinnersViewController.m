@@ -27,8 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.view setBackgroundColor:[UIColor clearColor]];
+        
+    [self setNavigationTitleViewImage];
     
     self.platesHelper = [modelsManager getModel:HelperTypePlates];
     
