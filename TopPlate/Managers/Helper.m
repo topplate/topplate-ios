@@ -179,7 +179,7 @@
     }
 }
 
-+(void)showSplashScreenFor:(UIViewController *)viewcontroller {
++(void)showSplashScreenFor:(UIViewController *)viewController {
     
     UIImage *fakeImage = [UIImage new];
     
@@ -200,8 +200,8 @@
     imageView.tag = 777123;
     [imageView setImage:fakeImage];
     
-    if (viewcontroller) {
-        [viewcontroller.view addSubview:imageView];
+    if (viewController) {
+        [viewController.view addSubview:imageView];
     } else {
         [window addSubview:imageView];
     }
@@ -213,9 +213,15 @@
     }];
 }
 
-+(void)hideSplashScreen {
++(void)hideSplashScreenFor:(UIViewController *)viewController {
     
-    UIImageView *view = [[UIApplication sharedApplication].delegate.window viewWithTag:777123];
+    UIImageView *view;
+    
+    if (viewController) {
+        view = [viewController.view viewWithTag:777123];
+    } else {
+        view = [[UIApplication sharedApplication].delegate.window viewWithTag:777123];
+    }
     
     [UIView animateWithDuration:.55f animations:^{
         [view setAlpha:0.f];

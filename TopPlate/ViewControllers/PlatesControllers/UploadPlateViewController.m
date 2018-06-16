@@ -60,7 +60,7 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     if (!getCurrentUser) {
         [Helper showWelcomeScreenAsModal:YES];
     } else {
-        [Helper hideSplashScreen];
+        [Helper hideSplashScreenFor:self];
     }
     
     self.modelHelper = [modelsManager getModel:HelperTypePlates];
@@ -103,7 +103,7 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -112,7 +112,7 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 }
 
 -(void)hideSplashScreen {
-    [Helper hideSplashScreen];
+    [Helper hideSplashScreenFor:self];
 }
 
 #pragma mark - JSImagePickerViewControllerDelegate -

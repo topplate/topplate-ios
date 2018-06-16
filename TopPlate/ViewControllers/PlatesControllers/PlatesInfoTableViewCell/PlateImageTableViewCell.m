@@ -27,7 +27,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
@@ -77,16 +77,17 @@
     [self.plateReceiptAvaliable setHidden:(model.plateReceipt.length > 0 || model.plateIngredients.count > 0) ? NO : YES];
     self.plateNumberOfLikes.text = [NSString stringWithFormat:@"%ld", (long)model.plateLikes];
     
-    if (self.fromWinners || !model.plateCanLike) {
-        self.likeButtonWidth.constant = 0;
-    } else {
+    [self.plateLikeButton setUserInteractionEnabled:model.plateCanLike];
+    
+    if (model.plateCanLike) {
         if (self.plateModel.plateIsLiked) {
             [self.plateLikeButton setImage:[UIImage imageNamed:@"likeIcon"] forState:UIControlStateNormal];
         } else {
             [self.plateLikeButton setImage:[UIImage imageNamed:@"unlike"] forState:UIControlStateNormal];
         }
+    } else {
+        [self.plateLikeButton setImage:[UIImage imageNamed:@"nonlike"] forState:UIControlStateNormal];
     }
-    
 }
 
 @end

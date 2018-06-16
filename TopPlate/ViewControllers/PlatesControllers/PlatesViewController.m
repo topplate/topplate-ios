@@ -150,7 +150,7 @@ static int kDefaultLoadLimit = 10;
 
 -(void)plateAtIndexIsUpdated:(NSInteger)plateIndex {
     
-    NSIndexPath *indexPath = [[NSIndexPath alloc] initWithIndex:plateIndex];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:plateIndex inSection:0];
     
     [self.tableView beginUpdates];
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];

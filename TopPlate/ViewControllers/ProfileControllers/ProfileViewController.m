@@ -42,8 +42,6 @@ static int kDefaultLoadLimit = 10;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor clearColor]];
-    
     [self.scrollView setBounces:NO];
     
     self.collectionView.delegate = self;
@@ -94,7 +92,7 @@ static int kDefaultLoadLimit = 10;
 
 -(void)loadUserInfoForUserId:(NSString *)userId {
     
-    [Helper hideSplashScreen];
+    [Helper hideSplashScreenFor:self];
     
     [MBProgressHUD showHUDAddedTo:self.profileView animated:YES];
     [self.authHelper getAuthorProfileInfoWithId:userId ?: getCurrentUser.userId completionBlock:^(User *currentUserProfile, NSString *errorString) {

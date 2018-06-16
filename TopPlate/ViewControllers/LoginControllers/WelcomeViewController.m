@@ -76,6 +76,8 @@
         } else {
             [self setEnvironment];
             
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserSignIn object:nil];
+            
             if (self.presentedModaly) {
                 [self dismissViewControllerAnimated:YES completion:nil];
             } else {
@@ -92,6 +94,8 @@
             [Helper showErrorMessage:errorString forViewController:self];
         } else {
             [self setEnvironment];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserSignIn object:nil];
             
             if (self.presentedModaly) {
                 [self dismissViewControllerAnimated:YES completion:nil];

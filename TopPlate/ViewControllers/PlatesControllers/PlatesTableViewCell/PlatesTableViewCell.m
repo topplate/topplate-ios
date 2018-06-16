@@ -57,10 +57,16 @@
     
     [self setupAuthorLabelGesture:self.plateAuthorName];
     
-    if (self.plateModel.plateIsLiked) {
-        [self.plateLikeButton setImage:[UIImage imageNamed:@"likeIcon"] forState:UIControlStateNormal];
+    [self.plateLikeButton setUserInteractionEnabled:self.plateModel.plateCanLike];
+    
+    if (model.plateCanLike) {
+        if (self.plateModel.plateIsLiked) {
+            [self.plateLikeButton setImage:[UIImage imageNamed:@"likeIcon"] forState:UIControlStateNormal];
+        } else {
+            [self.plateLikeButton setImage:[UIImage imageNamed:@"unlike"] forState:UIControlStateNormal];
+        }
     } else {
-        [self.plateLikeButton setImage:[UIImage imageNamed:@"unlike"] forState:UIControlStateNormal];
+        [self.plateLikeButton setImage:[UIImage imageNamed:@"nonlike"] forState:UIControlStateNormal];
     }
 }
 
@@ -80,12 +86,14 @@
     [self.likeView setHidden:YES];
     
     [self setupAuthorLabelGesture:self.plateAuthorName];
+    
+    [self.plateLikeButton setUserInteractionEnabled:NO];
 }
 
 - (IBAction)likePlateAction:(id)sender {
     
     if (getCurrentUser) {
-        
+
         PlateModelHelper *plateHelper = [modelsManager getModel:HelperTypePlates];
         
         if (self.plateModel.plateIsLiked) {

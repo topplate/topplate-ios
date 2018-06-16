@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupImageView];
+    
     SocialLoginModelHelper *socialLoginModelHelper = [modelsManager getModel:HelperTypeSocialLogin];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
