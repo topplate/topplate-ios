@@ -93,6 +93,8 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     }
     
     [self setNavigationTitleViewImage];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideSplashScreen) name:kNotificationUserSignIn object:nil];
 
     // Do any additional setup after loading the view.
 }
@@ -107,7 +109,6 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     [super viewWillAppear:animated];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addIngredientAnimated:) name:kNotificationAddNewIngredient object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideSplashScreen) name:kNotificationUserSignIn object:nil];
     
     [self setupViews];
 
@@ -116,7 +117,7 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
 }
 
 - (void)didReceiveMemoryWarning {

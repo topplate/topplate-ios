@@ -73,6 +73,7 @@ static int kDefaultLoadLimit = 10;
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
 }
 
 -(void)registerForNotifications {
