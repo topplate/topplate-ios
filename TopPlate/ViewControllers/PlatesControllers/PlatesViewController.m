@@ -239,10 +239,24 @@ static int kDefaultLoadLimit = 10;
     [self loadPlates];
 }
 
+
+#warning TODO
+
 -(void)refreshPlates {
     self.limit = kDefaultLoadLimit;
     
-    [self loadPlates];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.platesHelper getPlatesForEnvironment:getCurrentEnvironment
+                                     withLimit:@(self.limit)
+                               withLastPlateId:@""
+                               completionBlock:^(NSArray *plates, NSString *errorString) {
+                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                   
+                                   [self.topRefreshControl endRefreshing];
+                                   if (!errorString && plates.count < kDefaultLoadLimit) {
+                                       self.limit = -1;
+                                   }
+                               }];
 }
 
 -(void)loadPlates {
@@ -250,7 +264,7 @@ static int kDefaultLoadLimit = 10;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.platesHelper getPlatesForEnvironment:getCurrentEnvironment
                                      withLimit:@(self.limit)
-                               withLastPlateId:@""
+                               withLastPlateId:self.platesHelper.plates.lastObject.plateId
                                completionBlock:^(NSArray *plates, NSString *errorString) {
                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
                                    

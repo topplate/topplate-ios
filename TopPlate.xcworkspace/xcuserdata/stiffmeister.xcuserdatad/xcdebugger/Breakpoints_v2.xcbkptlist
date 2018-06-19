@@ -84,7 +84,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/ProfileControllers/ProfileViewController.m"
-            timestampString = "551133776.558099"
+            timestampString = "551134200.617335"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "245"
@@ -100,7 +100,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/UploadPlateViewController/UploadPlateViewController.m"
-            timestampString = "551133776.558162"
+            timestampString = "551134200.617397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "577"
@@ -116,7 +116,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/UploadPlateViewController/UploadPlateViewController.m"
-            timestampString = "551133776.558549"
+            timestampString = "551134200.617456"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "599"
@@ -132,7 +132,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/UploadPlateViewController/UploadPlateViewController.m"
-            timestampString = "551133776.558924"
+            timestampString = "551134200.617509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "290"
@@ -148,7 +148,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/UploadPlateViewController/UploadPlateViewController.m"
-            timestampString = "551133776.55925"
+            timestampString = "551134200.617561"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "607"
@@ -164,7 +164,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/UploadPlateViewController/UploadPlateViewController.m"
-            timestampString = "551133776.559514"
+            timestampString = "551134200.617608"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "309"
@@ -180,7 +180,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/UploadPlateViewController/UploadPlateViewController.m"
-            timestampString = "551133776.559763"
+            timestampString = "551134200.617664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "307"
@@ -196,7 +196,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/PlatesControllers/PlatesViewController.m"
-            timestampString = "551133277.043653"
+            timestampString = "551134200.617713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "154"
@@ -212,7 +212,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ModelHelpers/PlateModelHelper.m"
-            timestampString = "551133406.6514831"
+            timestampString = "551134031.426523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "146"
@@ -228,12 +228,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopPlate/ViewControllers/UploadPlateViewController/UploadPlateViewController.m"
-            timestampString = "551133776.560286"
+            timestampString = "551134200.61807"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
             endingLineNumber = "129"
             landmarkName = "-hideSplashScreen"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TopPlate/ModelHelpers/PlateModelHelper.m"
+            timestampString = "551134031.426895"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "-getPlatesForEnvironment:withLimit:withLastPlateId:completionBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TopPlate/ModelHelpers/PlateModelHelper.m"
+            timestampString = "551134031.427111"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "-getPlatesForEnvironment:withLimit:withLastPlateId:completionBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
