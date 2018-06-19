@@ -61,13 +61,13 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     
     [self setBackgroundImage];
     
-    [Helper showSplashScreenFor:self];
-    
-    if (!getCurrentUser) {
-        [Helper showWelcomeScreenAsModal:YES];
-    } else {
-        [Helper hideSplashScreenFor:self];
-    }
+//    [Helper showSplashScreenFor:self];
+//    
+//    if (!getCurrentUser) {
+//        [Helper showWelcomeScreenAsModal:YES];
+//    } else {
+//        [Helper hideSplashScreenFor:self];
+//    }
     
     self.modelHelper = [modelsManager getModel:HelperTypePlates];
     
@@ -104,7 +104,7 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+    [super viewWillAppear:animated];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addIngredientAnimated:) name:kNotificationAddNewIngredient object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideSplashScreen) name:kNotificationUserSignIn object:nil];
@@ -299,12 +299,13 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     } else { maxValue = self.scrollView.height; }
     
     
-    CGFloat distToBottom = self.scrollView.height - currentResponderFinalPoint;
+    maxValue += self.tabBarController.tabBar.height;
     
+    CGFloat distToBottom = maxValue - currentResponderFinalPoint;
     
     if(distToBottom < keyboardRect.size.height) {
         
-        CGFloat diff = currentResponderFinalPoint - keyboardRect.origin.y + 10;
+        CGFloat diff = currentResponderFinalPoint - keyboardRect.size.height;
         
         [UIView animateWithDuration:.25 animations:^{
             [self.scrollView setContentOffset:CGPointMake(0, diff)];
@@ -614,9 +615,9 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     CGRect cellRect = [self.ingredientsTableView rectForRowAtIndexPath:indexPath];
     
     CGRect cellContentView = [self.ingredientsTableView convertRect:cellRect toView:self.scrollContentView];
-    CGFloat realY = [UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].keyWindow.safeAreaInsets.bottom - self.view.height;
+    CGFloat realY = [UIApplication sharedApplication].keyWindow.safeAreaInsets.bottom;
     
-    cellContentView.origin.y += realY;
+//    cellContentView.origin.y += realY;
     return cellContentView;
 }
 
@@ -625,9 +626,9 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     UIView *textFieldSuperView = [textField superview];
     
     CGRect textFieldFrame = [textFieldSuperView convertRect:textField.frame toView:self.scrollContentView];
-    CGFloat realY = [UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].keyWindow.safeAreaInsets.bottom - self.view.height;
+    CGFloat realY = [UIApplication sharedApplication].keyWindow.safeAreaInsets.bottom;
     
-    textFieldFrame.origin.y += realY;
+//    textFieldFrame.origin.y += realY;
     
     return textFieldFrame;
 }
