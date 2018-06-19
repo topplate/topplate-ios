@@ -61,13 +61,13 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     
     [self setBackgroundImage];
     
-//    [Helper showSplashScreenFor:self];
-//    
-//    if (!getCurrentUser) {
-//        [Helper showWelcomeScreenAsModal:YES];
-//    } else {
-//        [Helper hideSplashScreenFor:self];
-//    }
+    [Helper showSplashScreenFor:self];
+    
+    if (!getCurrentUser) {
+        [Helper showWelcomeScreenAsModal:YES];
+    } else {
+        [Helper hideSplashScreenFor:self];
+    }
     
     self.modelHelper = [modelsManager getModel:HelperTypePlates];
     
