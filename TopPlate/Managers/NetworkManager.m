@@ -28,22 +28,22 @@
 }
 
 - (AFHTTPSessionManager *)sessionManager {
-
+    
     @synchronized(self) {
         if ( ! _sessionManager) {
             AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseAPIUrl];
-
+            
             AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
             [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
             [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
             sessionManager.requestSerializer = requestSerializer;
-
+            
             AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializer];
             NSArray *acceptableTypes = @[@"application/json",
                                          @"text/json"];
             [responseSerializer setAcceptableContentTypes:[NSSet setWithArray:acceptableTypes]];
             sessionManager.responseSerializer = responseSerializer;
-
+            
             self.sessionManager = sessionManager;
         }
     }
@@ -51,7 +51,7 @@
     if (getCurrentUser.token) {
         [_sessionManager.requestSerializer setValue:getCurrentUser.token forHTTPHeaderField:@"Access-Token"];
     }
-
+    
     return _sessionManager;
 }
 
@@ -62,30 +62,30 @@
     [self.sessionManager POST:@"login_google"
                    parameters:[userInfo dictionaryRepresentation]
                      progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        completion(responseObject, nil);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, error);
-    }];
+                         
+                     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                         completion(responseObject, nil);
+                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                         completion(nil, error);
+                     }];
 }
 
 -(void)signInWithFacebook:(SocialLoginModel *)userInfo
            withCompletion:(NetworkCompletionBlock)completion {
-
+    
     [self.sessionManager POST:@"login_facebook"
                    parameters:[userInfo dictionaryRepresentation]
                      progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        completion(responseObject, nil);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, error);
-    }];
+                         
+                     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                         completion(responseObject, nil);
+                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                         completion(nil, error);
+                     }];
 }
 
 -(void)signInWithEmail:(LoginModel *)login
-           withCompletion:(NetworkCompletionBlock)completion {
+        withCompletion:(NetworkCompletionBlock)completion {
     
     [self.sessionManager POST:@"login_local"
                    parameters:[login signInRepresentation]
@@ -128,16 +128,16 @@
 
 
 -(void)getEnvironmentsWithCompletion:(NetworkCompletionBlock)completion {
-
+    
     [self.sessionManager GET:@"get_environments"
                   parameters:nil
                     progress:^(NSProgress * _Nonnull downloadProgress) {
-
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        completion(responseObject, nil);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, error);
-    }];
+                        
+                    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                        completion(responseObject, nil);
+                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                        completion(nil, error);
+                    }];
 }
 
 #pragma mark - Plates -
@@ -148,12 +148,12 @@
     [self.sessionManager GET:@"get_plates"
                   parameters:params
                     progress:^(NSProgress * _Nonnull downloadProgress) {
-        //
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        completion(responseObject, nil);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, error);
-    }];
+                        //
+                    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                        completion(responseObject, nil);
+                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                        completion(nil, error);
+                    }];
 }
 
 - (void)getPlateWithId:(NSString *)plateId
@@ -176,16 +176,16 @@
     [self.sessionManager POST:@"like_plate"
                    parameters:@{@"plate" : plateId}
                      progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        completion(responseObject,nil);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, error);
-    }];
+                         
+                     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                         completion(responseObject,nil);
+                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                         completion(nil, error);
+                     }];
 }
 
 -(void)unlikePlateWithId:(NSString *)plateId
-        withCompletion:(NetworkCompletionBlock)completion {
+          withCompletion:(NetworkCompletionBlock)completion {
     
     [self.sessionManager POST:@"dislike_plate"
                    parameters:@{@"plate" : plateId}
@@ -198,10 +198,8 @@
                      }];
 }
 
-
-
 - (void)uploadPlateWithModel:(PlateModel *)platemodel
-               withCompletion:(NetworkCompletionBlock)completion {
+              withCompletion:(NetworkCompletionBlock)completion {
     
     [self.sessionManager POST:@"add_plate_form"
                    parameters:[platemodel uploadPlateDictionaryRepresentation]
@@ -218,22 +216,36 @@
     }];
 }
 
+- (void)editPlateWithModel:(PlateModel *)platemodel
+            withCompletion:(NetworkCompletionBlock)completion {
+    
+    [self.sessionManager POST:@"edit_plate"
+                   parameters:[platemodel editPlateDictionaryRepresentation]
+                     progress:^(NSProgress * _Nonnull uploadProgress) {
+                         
+                     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                         completion(responseObject, nil);
+                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                         completion(nil, error);
+                     }];
+}
+
 -(void)getPlatesForUser:(NSDictionary *)params
          withCompletion:(NetworkCompletionBlock)completion {
     
     [self.sessionManager GET:@"get_plates_by_author"
                   parameters:params
                     progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        completion(responseObject, nil);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, error);
-    }];
+                        
+                    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                        completion(responseObject, nil);
+                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                        completion(nil, error);
+                    }];
 }
 
 - (void)searchPlates:(NSString *)searchString
-        withCompletion:(NetworkCompletionBlock)completion {
+      withCompletion:(NetworkCompletionBlock)completion {
     
     [self.sessionManager GET:@"search_plates"
                   parameters:@{@"searchString" : searchString,

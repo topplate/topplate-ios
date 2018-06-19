@@ -7,6 +7,7 @@
 //
 
 #import "PlateInfoViewController.h"
+#import "UploadPlateViewController.h"
 
 #import "PlateImageTableViewCell.h"
 #import "PlateNameTableViewCell.h"
@@ -15,8 +16,7 @@
 #import "PlateSocialShareTableViewCell.h"
 #import "PlateOtherReceiptsTableViewCell.h"
 
-typedef NS_ENUM(NSUInteger, SectionType)
-{
+typedef NS_ENUM(NSUInteger, SectionType) {
     SectionTypePlateImage = 0,
     SectionTypePlateName,
     SectionTypePlateReceipt,
@@ -36,6 +36,7 @@ typedef NS_ENUM(NSUInteger, SectionType)
 @implementation PlateInfoViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -48,7 +49,7 @@ typedef NS_ENUM(NSUInteger, SectionType)
     
     self.plateHelper = [modelsManager getModel:HelperTypePlates];
     
-    if ([self.plateHelper isMyPlate:self.selectedPlate]) {
+    if ([self.plateHelper isEditable:self.selectedPlate]) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"editIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(editPlate)];
     }
     
@@ -56,7 +57,10 @@ typedef NS_ENUM(NSUInteger, SectionType)
 }
 
 -(void)editPlate {
-    NSLog(@"");
+    
+    UploadPlateViewController *uploadPlateViewController = [getUploadPlateStoryboard instantiateViewControllerWithIdentifier:@"UploadPlateViewController"];
+    uploadPlateViewController.plateToEdit = self.selectedPlate;
+    [self.navigationController pushViewController:uploadPlateViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -97,7 +101,6 @@ typedef NS_ENUM(NSUInteger, SectionType)
                 self.selectedPlate.plateIsLiked = likeStatus;
                 
                 [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-                
             };
             baseCell = cell;
         }

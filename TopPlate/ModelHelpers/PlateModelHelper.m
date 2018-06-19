@@ -87,6 +87,18 @@
     }];
 }
 
+-(void)editPlateWithModel:(PlateModel *)model
+                 completion:(void(^)(BOOL result, NSString *errorString))completion {
+    
+    [[NetworkManager sharedManager] editPlateWithModel:model withCompletion:^(id response, NSError *error) {
+        if (error) {
+            completion(NO, error.localizedDescription);
+        } else {
+            completion(YES, nil);
+        }
+    }];
+}
+
 -(void)searchPlatesWithSearchString:(NSString *)searchString
                  completion:(void(^)(NSArray *searchResults, NSString *errorString))completion {
     
@@ -167,9 +179,9 @@
     }];
 }
 
--(BOOL)isMyPlate:(PlateModel *)plate {
+-(BOOL)isEditable:(PlateModel *)plate {
     
-    if ([plate.plateAuthor.authorId isEqualToString:getCurrentUser.userId]) {
+    if ([plate.plateAuthor.authorId isEqualToString:getCurrentUser.userId] && [plate.plateEnvironment isEqualToString:@"homemade"]) {
         return YES;
     }
     

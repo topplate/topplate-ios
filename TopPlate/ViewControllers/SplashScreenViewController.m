@@ -36,6 +36,7 @@
             //user is signed in
             [Helper showPlatesScreen];
             
+            //post notification to updated related datasources
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserSignIn object:nil];
         }
     }];

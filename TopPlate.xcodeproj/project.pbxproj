@@ -102,7 +102,6 @@
 		33A7AC1F2096649A00C397AB /* TPTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A7AC1E2096649A00C397AB /* TPTextView.m */; };
 		33A7AC2320970AEA00C397AB /* JSImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A7AC2220970AEA00C397AB /* JSImagePickerViewController.m */; };
 		33B615F5209EFDD10096F8C5 /* AuthorModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B615F4209EFDD10096F8C5 /* AuthorModelHelper.m */; };
-		33B615F8209F6F600096F8C5 /* UserInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B615F7209F6F600096F8C5 /* UserInfoCollectionViewCell.m */; };
 		33B615FC209F71780096F8C5 /* PlateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B615FA209F71780096F8C5 /* PlateCollectionViewCell.m */; };
 		33B615FD209F71780096F8C5 /* PlateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33B615FB209F71780096F8C5 /* PlateCollectionViewCell.xib */; };
 		33D6E08E207FE4BA0097DAC4 /* UIView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D6E08D207FE4BA0097DAC4 /* UIView+Helper.m */; };
@@ -314,8 +313,6 @@
 		33A7AC2220970AEA00C397AB /* JSImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSImagePickerViewController.m; sourceTree = "<group>"; };
 		33B615F3209EFDD10096F8C5 /* AuthorModelHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthorModelHelper.h; sourceTree = "<group>"; };
 		33B615F4209EFDD10096F8C5 /* AuthorModelHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthorModelHelper.m; sourceTree = "<group>"; };
-		33B615F6209F6F600096F8C5 /* UserInfoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoCollectionViewCell.h; sourceTree = "<group>"; };
-		33B615F7209F6F600096F8C5 /* UserInfoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoCollectionViewCell.m; sourceTree = "<group>"; };
 		33B615F9209F71780096F8C5 /* PlateCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateCollectionViewCell.h; sourceTree = "<group>"; };
 		33B615FA209F71780096F8C5 /* PlateCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlateCollectionViewCell.m; sourceTree = "<group>"; };
 		33B615FB209F71780096F8C5 /* PlateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlateCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -363,13 +360,77 @@
 		3300799020ACA7CC00F4A941 /* Profile cells */ = {
 			isa = PBXGroup;
 			children = (
-				33B615F6209F6F600096F8C5 /* UserInfoCollectionViewCell.h */,
-				33B615F7209F6F600096F8C5 /* UserInfoCollectionViewCell.m */,
 				33B615F9209F71780096F8C5 /* PlateCollectionViewCell.h */,
 				33B615FA209F71780096F8C5 /* PlateCollectionViewCell.m */,
 				33B615FB209F71780096F8C5 /* PlateCollectionViewCell.xib */,
 			);
 			path = "Profile cells";
+			sourceTree = "<group>";
+		};
+		33418E5320D67F04001AA78E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				338A5728207F30D0000FA8BD /* main.m */,
+				33504A3620A4DB6B00622F2E /* Milkshake.otf */,
+				3366C17F20863CD500D710A9 /* Oswald-Light.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		33418E5420D687D9001AA78E /* UploadPlateViewController */ = {
+			isa = PBXGroup;
+			children = (
+				338A5760207F3520000FA8BD /* UploadPlateViewController.h */,
+				338A5761207F3520000FA8BD /* UploadPlateViewController.m */,
+				33A7AC192096459D00C397AB /* UploadPlateCells */,
+			);
+			path = UploadPlateViewController;
+			sourceTree = "<group>";
+		};
+		33418E5520D68E7A001AA78E /* SearchTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3300798120AA12B800F4A941 /* SearchTableViewCell.h */,
+				3300798220AA12B800F4A941 /* SearchTableViewCell.m */,
+			);
+			path = SearchTableViewCell;
+			sourceTree = "<group>";
+		};
+		33418E5620D68E8A001AA78E /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				338A5763207F3530000FA8BD /* SearchViewController.h */,
+				338A5764207F3530000FA8BD /* SearchViewController.m */,
+				33418E5520D68E7A001AA78E /* SearchTableViewCell */,
+			);
+			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		33418E5720D68EE2001AA78E /* WinnersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				338A5766207F353E000FA8BD /* WinnersViewController.h */,
+				338A5767207F353E000FA8BD /* WinnersViewController.m */,
+			);
+			path = WinnersViewController;
+			sourceTree = "<group>";
+		};
+		33418E5820D69172001AA78E /* CharityTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3300798720AB0AFF00F4A941 /* CharityTableViewCell.h */,
+				3300798820AB0AFF00F4A941 /* CharityTableViewCell.m */,
+			);
+			path = CharityTableViewCell;
+			sourceTree = "<group>";
+		};
+		33418E5A20D69212001AA78E /* SettingsTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3300799420ACA9BB00F4A941 /* SettingsTableViewCell.h */,
+				3300799520ACA9BB00F4A941 /* SettingsTableViewCell.m */,
+			);
+			path = SettingsTableViewCell;
 			sourceTree = "<group>";
 		};
 		3366C17E20862D7F00D710A9 /* Custom elements */ = {
@@ -417,7 +478,6 @@
 			children = (
 				338A5719207F30CF000FA8BD /* AppDelegate.h */,
 				338A571A207F30CF000FA8BD /* AppDelegate.m */,
-				338A57B7207F7641000FA8BD /* TopPlatePrefixHeader.pch */,
 				3366C1682083C1F900D710A9 /* APILinks.h */,
 				3366C17E20862D7F00D710A9 /* Custom elements */,
 				338A57BB207FB047000FA8BD /* Managers */,
@@ -427,11 +487,9 @@
 				338A574E207F3487000FA8BD /* ViewControllers */,
 				338A576D207F358E000FA8BD /* Storyboards */,
 				338A5722207F30D0000FA8BD /* Assets.xcassets */,
-				338A5724207F30D0000FA8BD /* LaunchScreen.storyboard */,
+				338A57B7207F7641000FA8BD /* TopPlatePrefixHeader.pch */,
 				338A5727207F30D0000FA8BD /* Info.plist */,
-				33504A3620A4DB6B00622F2E /* Milkshake.otf */,
-				3366C17F20863CD500D710A9 /* Oswald-Light.ttf */,
-				338A5728207F30D0000FA8BD /* main.m */,
+				33418E5320D67F04001AA78E /* Resources */,
 				338A57F3207FB70D000FA8BD /* ThirdPartyLibraries */,
 			);
 			path = TopPlate;
@@ -460,20 +518,15 @@
 			children = (
 				33A3431420C2AC65009665C3 /* SplashScreenViewController.h */,
 				33A3431520C2AC65009665C3 /* SplashScreenViewController.m */,
+				338A574F207F3498000FA8BD /* LoginControllers */,
+				3366C1722084B7F500D710A9 /* ChooseEnvironmentViewController.h */,
+				3366C1732084B7F500D710A9 /* ChooseEnvironmentViewController.m */,
 				33418E5020D017C9001AA78E /* TabBarViewController.h */,
 				33418E5120D017C9001AA78E /* TabBarViewController.m */,
-				338A574F207F3498000FA8BD /* LoginControllers */,
 				338A575C207F3504000FA8BD /* PlatesControllers */,
-				338A5763207F3530000FA8BD /* SearchViewController.h */,
-				338A5764207F3530000FA8BD /* SearchViewController.m */,
-				3300798120AA12B800F4A941 /* SearchTableViewCell.h */,
-				3300798220AA12B800F4A941 /* SearchTableViewCell.m */,
-				338A5766207F353E000FA8BD /* WinnersViewController.h */,
-				338A5767207F353E000FA8BD /* WinnersViewController.m */,
-				3300798420AB0A9B00F4A941 /* CharityViewController.h */,
-				3300798520AB0A9B00F4A941 /* CharityViewController.m */,
-				3300798720AB0AFF00F4A941 /* CharityTableViewCell.h */,
-				3300798820AB0AFF00F4A941 /* CharityTableViewCell.m */,
+				33418E5620D68E8A001AA78E /* SearchViewController */,
+				33418E5420D687D9001AA78E /* UploadPlateViewController */,
+				33418E5720D68EE2001AA78E /* WinnersViewController */,
 				338A576C207F3575000FA8BD /* ProfileControllers */,
 			);
 			path = ViewControllers;
@@ -497,17 +550,15 @@
 		338A575C207F3504000FA8BD /* PlatesControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3366C1722084B7F500D710A9 /* ChooseEnvironmentViewController.h */,
-				3366C1732084B7F500D710A9 /* ChooseEnvironmentViewController.m */,
 				338A5759207F34FF000FA8BD /* PlatesViewController.h */,
 				338A575A207F34FF000FA8BD /* PlatesViewController.m */,
 				338A579F207F55E1000FA8BD /* PlatesTableViewCell */,
 				338A575D207F3517000FA8BD /* PlateInfoViewController.h */,
 				338A575E207F3517000FA8BD /* PlateInfoViewController.m */,
 				338A57A0207F55ED000FA8BD /* PlatesInfoTableViewCell */,
-				338A5760207F3520000FA8BD /* UploadPlateViewController.h */,
-				338A5761207F3520000FA8BD /* UploadPlateViewController.m */,
-				33A7AC192096459D00C397AB /* UploadPlateCells */,
+				3300798420AB0A9B00F4A941 /* CharityViewController.h */,
+				3300798520AB0A9B00F4A941 /* CharityViewController.m */,
+				33418E5820D69172001AA78E /* CharityTableViewCell */,
 			);
 			path = PlatesControllers;
 			sourceTree = "<group>";
@@ -521,8 +572,7 @@
 				3300799D20ACEA6F00F4A941 /* EditUserProfileViewController.m */,
 				3300799120ACA7E400F4A941 /* SettingsViewController.h */,
 				3300799220ACA7E400F4A941 /* SettingsViewController.m */,
-				3300799420ACA9BB00F4A941 /* SettingsTableViewCell.h */,
-				3300799520ACA9BB00F4A941 /* SettingsTableViewCell.m */,
+				33418E5A20D69212001AA78E /* SettingsTableViewCell */,
 				3300799920ACE40700F4A941 /* ContactUsViewController.h */,
 				3300799A20ACE40700F4A941 /* ContactUsViewController.m */,
 				3300799F20AE38B600F4A941 /* FeedbackViewController.h */,
@@ -535,6 +585,7 @@
 		338A576D207F358E000FA8BD /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				338A5724207F30D0000FA8BD /* LaunchScreen.storyboard */,
 				338A576E207F35A9000FA8BD /* Login.storyboard */,
 				338A5770207F35BB000FA8BD /* Plates.storyboard */,
 				338A5775207F35D3000FA8BD /* Search.storyboard */,
@@ -1015,7 +1066,6 @@
 				338A57E9207FB700000FA8BD /* MTLModel.m in Sources */,
 				338A57BA207FB042000FA8BD /* NetworkManager.m in Sources */,
 				338A575B207F34FF000FA8BD /* PlatesViewController.m in Sources */,
-				33B615F8209F6F600096F8C5 /* UserInfoCollectionViewCell.m in Sources */,
 				3366C1892086829200D710A9 /* MacrosHelper.m in Sources */,
 				33418E5220D017C9001AA78E /* TabBarViewController.m in Sources */,
 				3300799B20ACE40700F4A941 /* ContactUsViewController.m in Sources */,

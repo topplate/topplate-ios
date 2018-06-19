@@ -129,8 +129,6 @@ typedef NS_ENUM(NSInteger, CellType) {
         default:
             break;
     }
-    
 }
-
 
 @end

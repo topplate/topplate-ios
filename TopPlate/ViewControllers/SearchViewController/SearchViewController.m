@@ -42,6 +42,7 @@
     [searchTextFieldButton addTarget:self action:@selector(searchPlates) forControlEvents:UIControlEventTouchUpInside];
     
     self.searchTextField.delegate = self;
+    self.searchTextField.returnKeyType = UIReturnKeySearch;
     
     [self setNavigationTitleViewImage];
 
@@ -59,6 +60,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UITableViewDataSource -
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     return self.searchPlateResults.count;
@@ -75,11 +78,15 @@
     return searchTableViewCell;
 }
 
+#pragma mark - UITableViewDelegate -
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     PlateModel *model = self.searchPlateResults[indexPath.row];
     [self loadPlateWithId:model.plateId];
 }
+
+#pragma mark - UITextFieldDelegate -
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     
@@ -87,6 +94,8 @@
     
     return NO;
 }
+
+#pragma mark - API Requests -
 
 -(void)searchPlates {
     
@@ -165,7 +174,6 @@
     CGRect keyboardRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
     UIWindow *window = UIApplication.sharedApplication.keyWindow;
-
     
     self.tableViewButtomOffset.constant += (keyboardRect.size.height + window.safeAreaInsets.bottom / 2);
 }

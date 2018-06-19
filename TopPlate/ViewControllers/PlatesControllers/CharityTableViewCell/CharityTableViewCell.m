@@ -23,7 +23,6 @@
 
 - (IBAction)charityVoted:(id)sender {
     
-    
 }
 
 -(void)setupCellWithCharity:(Charity *)model {

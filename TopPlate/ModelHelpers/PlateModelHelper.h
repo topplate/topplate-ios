@@ -43,12 +43,14 @@ typedef void(^PlateCompletionBlock)(PlateModel *plate, NSString *errorString);
 -(void)uploadPlateWithModel:(PlateModel *)model
                  completion:(void(^)(BOOL result, NSString *errorString))completion;
 
+-(void)editPlateWithModel:(PlateModel *)model
+               completion:(void(^)(BOOL result, NSString *errorString))completion;
+
 -(void)searchPlatesWithSearchString:(NSString *)searchString
                          completion:(void(^)(NSArray *searchResults, NSString *errorString))completion;
 
 -(void)getWinnersWithCompletion:(PlatesCompletionBlock)completion;
 
--(BOOL)isMyPlate:(PlateModel *)plate;
-
+-(BOOL)isEditable:(PlateModel *)plate;
 
 @end

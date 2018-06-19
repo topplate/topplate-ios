@@ -48,9 +48,7 @@ static int kDefaultLoadLimit = 10;
     self.platesHelper = [modelsManager getModel:HelperTypePlates];
     self.platesHelper.delegate = self;
     
-    if (self.platesHelper.plates.count <= 0) {
-        [self loadPlates];
-    }
+    [self loadPlates];
     
     self.topRefreshControl = [[UIRefreshControl alloc] init];
     self.topRefreshControl.backgroundColor = [UIColor purpleColor];
@@ -172,6 +170,8 @@ static int kDefaultLoadLimit = 10;
     self.tabBarController.tabBar.items[0].selectedImage = [[UIImage imageNamed:@"restaurant"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.rightBarItem.title = @"Restaurant";
     [[UserDefaultsManager standardUserDefaults] setObject:@"restaurant" forKey:Default_SelectedEnvironment];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationEnvironmentChange object:nil];
 }
 
 -(void)homemadeEnvironmentSelected {
@@ -179,6 +179,8 @@ static int kDefaultLoadLimit = 10;
     self.tabBarController.tabBar.items[0].selectedImage = [[UIImage imageNamed:@"homemade"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.rightBarItem.title = @"Homemade";
     [[UserDefaultsManager standardUserDefaults] setObject:@"homemade" forKey:Default_SelectedEnvironment];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationEnvironmentChange object:nil];
 }
 
 -(void)environmentChangeSelected {
@@ -192,10 +194,7 @@ static int kDefaultLoadLimit = 10;
                                                              handler:^void (UIAlertAction *action) {
                                                                  NSLog(@"Selected restaurant environment");
                                                                  [self restaurantEnvironmentSelected];
-                                                                 
                                                                  [self reloadPlates];
-                                                                 
-//                                                                 [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationEnvironmentChange object:nil];
                                                              }];
     
     [restaurantAction setValue:[UIColor defaultDarkBackgroundColor] forKey:@"titleTextColor"];
@@ -205,12 +204,8 @@ static int kDefaultLoadLimit = 10;
                                                              style:UIAlertActionStyleDefault
                                                            handler:^void (UIAlertAction *action) {
                                                                NSLog(@"Selected homemade environment");
-                                                               
                                                                [self reloadPlates];
-                                                               
                                                                [self homemadeEnvironmentSelected];
-                                                               
-//                                                               [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationEnvironmentChange object:nil];
                                                            }];
     [homeMadeAction setValue:[UIColor defaultDarkBackgroundColor] forKey:@"titleTextColor"];
     
@@ -225,6 +220,7 @@ static int kDefaultLoadLimit = 10;
                                                          handler:^void (UIAlertAction *action) {
                                                              [self dismissViewControllerAnimated:alert completion:nil];
                                                          }];
+    
     [cancelAction setValue:[UIColor defaultDarkBackgroundColor] forKey:@"titleTextColor"];
     
     [alert addAction:restaurantAction];

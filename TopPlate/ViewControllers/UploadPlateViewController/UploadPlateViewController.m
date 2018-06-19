@@ -48,12 +48,18 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 @property (nonatomic) CGRect currentResponderFrame;
 @property (nonatomic, strong) KeyboardState *state;
 
+//user for representing current visible plate
+//weather it is editing or a creating a new one
+@property (nonatomic, strong) PlateModel *localPlate;
+
 @end
 
 @implementation UploadPlateViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setBackgroundImage];
     
     [Helper showSplashScreenFor:self];
     
@@ -68,15 +74,14 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     self.ingredientsTableView.delegate = self;
     self.ingredientsTableView.dataSource = self;
     
-    self.ingredientsTableView.estimatedRowHeight = 2.0;
+    self.ingredientsTableView.estimatedRowHeight = 15.0;
     self.ingredientsTableView.rowHeight = UITableViewAutomaticDimension;
     
-    [self.view setBackgroundColor:[UIColor clearColor]];
-    
-    [self setupViews];
-    
-    if (self.modelHelper.currentPlate) {
-        [self fillViewsWithInfo];
+    if (self.plateToEdit) {
+        [self fillViewsWithPlateInfo:self.plateToEdit];
+        [self prepareViewForEditMode];
+    } else if (self.modelHelper.currentPlate) {
+        [self fillViewsWithPlateInfo:self.modelHelper.currentPlate];
     } else {
         self.modelHelper.currentPlate = [PlateModel new];
     }
@@ -87,9 +92,15 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
         [self addIngredientAnimated:YES];
     }
     
-    NSLog(@"");
-    
+    [self setNavigationTitleViewImage];
+
     // Do any additional setup after loading the view.
+}
+
+-(void)prepareViewForEditMode {
+    
+    [self.plateNameTextView setUserInteractionEnabled:NO];
+    [self.plateImageView setUserInteractionEnabled:NO];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -97,13 +108,15 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addIngredientAnimated:) name:kNotificationAddNewIngredient object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideSplashScreen) name:kNotificationUserSignIn object:nil];
+    
+    [self setupViews];
 
     [self registerForKeyboardNotifications];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -163,25 +176,11 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 
 #pragma mark - UITableViewDelegate -
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44;
 }
 
 #pragma mark - Actions -
-
-- (IBAction)addIngredientAction:(id)sender {
-    //
-    //    if (self.modelHelper.currentPlate.plateIngredients.count == 0) {
-    //        [self addIngredient];
-    //    } else {
-    //        NSString *lastIngredient = self.modelHelper.currentPlate.plateIngredients.lastObject;
-    //
-    //        if ([lastIngredient trimWhiteSpaces].length > 0) {
-//    [self addIngredient];
-    //        }
-    //    }
-}
 
 -(void)addIngredientAnimated:(BOOL)animated {
     
@@ -205,16 +204,30 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 
     if ([self validateTextFields]) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [self.modelHelper uploadPlateWithModel:self.modelHelper.currentPlate completion:^(BOOL result, NSString *errorString) {
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if (self.plateToEdit) {
+            [self.modelHelper editPlateWithModel:self.localPlate completion:^(BOOL result, NSString *errorString) {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
 
-            if (errorString) {
-                [Helper showErrorMessage:errorString forViewController:self];
-            } else {
-                [self showSuccessAlert];
-                [self clearPlate];
-            }
-        }];
+                if (errorString) {
+                    [Helper showErrorMessage:errorString forViewController:self];
+                } else {
+                    [self showSuccessAlert];
+                }
+                
+            }];
+        } else {
+            [self.modelHelper uploadPlateWithModel:self.modelHelper.currentPlate completion:^(BOOL result, NSString *errorString) {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                
+                if (errorString) {
+                    [Helper showErrorMessage:errorString forViewController:self];
+                } else {
+                    [self showSuccessAlert];
+                    [self clearPlate];
+                }
+            }];
+        }
     }
 }
 
@@ -344,13 +357,16 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     [self.plateRestaurantLocation setType:TextFieldTypePlaceholder];
 
     if (isHomeMadeEnv) {
-        self.offsetToHomemadeView.priority = 1000;
-        self.offsetToRestaurantView.priority = 250;
+        self.offsetToHomemadeView.priority = 999;
+        self.offsetToRestaurantView.priority = 1;
         [self.plateRestaurantView setHidden:YES];
+        [self.plateHomeMadeView setHidden:NO];
     } else {
-        self.offsetToRestaurantView.priority = 1000;
-        self.offsetToHomemadeView.priority = 250;
+        self.offsetToRestaurantView.priority = 999;
+        self.offsetToHomemadeView.priority = 1;
         [self.plateHomeMadeView setHidden:YES];
+        [self.plateRestaurantView setHidden:NO];
+
         [self.plateRestaurantName roundFrame];
         [self.plateRestaurantLocation roundFrame];
     }
@@ -360,7 +376,6 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     [self.plateImageView addGestureRecognizer:imageTap];
     [self.plateImageView setUserInteractionEnabled:YES];
     [self.submitButton roundFrame];
-    
     
     UITapGestureRecognizer *keyboardTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     keyboardTap.numberOfTapsRequired = 1;
@@ -408,13 +423,13 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     self.plateImageView.image = image;
     self.modelHelper.currentPlate.plateImage = image;
     
-    float widthRatio = self.plateImageView.bounds.size.width / self.plateImageView.image.size.width;
-    float heightRatio = self.plateImageView.bounds.size.height / self.plateImageView.image.size.height;
-    float scale = MIN(widthRatio, heightRatio);
-    float imageWidth = scale * self.plateImageView.image.size.width;
-    float imageHeight = scale * self.plateImageView.image.size.height;
+//    float widthRatio = self.plateImageView.bounds.size.width / self.plateImageView.image.size.width;
+//    float heightRatio = self.plateImageView.bounds.size.height / self.plateImageView.image.size.height;
+//    float scale = MIN(widthRatio, heightRatio);
+//    float imageWidth = scale * self.plateImageView.image.size.width;
+//    float imageHeight = scale * self.plateImageView.image.size.height;
     
-    [self setPlateImgageViewWithRatio:imageHeight/imageWidth];
+//    [self setPlateImgageViewWithRatio:imageHeight/imageWidth];
 }
 
 -(void)fillModelsWithData {
@@ -429,36 +444,42 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
     self.modelHelper.currentPlate.plateEnvironment = getCurrentEnvironment;
 }
 
--(void)fillViewsWithInfo {
+-(void)fillViewsWithPlateInfo:(PlateModel *)model {
     
-    NSString *modelPlateName = [self.modelHelper.currentPlate.plateName trimWhiteSpaces];
+    NSString *modelPlateName = [model.plateName trimWhiteSpaces];
     
     if(modelPlateName.length > 0) {
         self.plateNameTextView.text = modelPlateName;
     }
     
-    UIImage *modelPlateImage = self.modelHelper.currentPlate.plateImage;
+    UIImage *modelPlateImage = model.plateImage;
     
     if (modelPlateImage) {
         [self setImage:modelPlateImage];
     }
     
+    if (model.plateImages.count > 0) {
+        [self.plateImageView sd_setImageWithURL:[model.plateImages.firstObject withBaseUrl] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            [self setImage:image];
+        }];
+    }
+    
     if(isRestaurantEnv) {
         
-        NSString *modelRestaurantName = [self.modelHelper.currentPlate.plateRestaurantName trimWhiteSpaces];
+        NSString *modelRestaurantName = [model.plateRestaurantName trimWhiteSpaces];
         
         if (modelRestaurantName.length > 0) {
             self.plateRestaurantName.text = modelRestaurantName;
         }
         
-        NSString *modelRestaurantLocation = [self.modelHelper.currentPlate.plateAuthorLocation trimWhiteSpaces];
+        NSString *modelRestaurantLocation = [model.plateAuthorLocation trimWhiteSpaces];
         
         if (modelRestaurantLocation.length > 0) {
             self.plateRestaurantLocation.text = modelRestaurantLocation;
         }
     } else {
         
-        NSString *modelPlateRecipe = [self.modelHelper.currentPlate.plateReceipt trimWhiteSpaces];
+        NSString *modelPlateRecipe = [model.plateReceipt trimWhiteSpaces];
         
         if (modelPlateRecipe.length > 0) {
             self.plateRecipeTextView.text = modelPlateRecipe;

@@ -10,4 +10,6 @@
 
 @interface UploadPlateViewController : UIViewController
 
+@property (nonatomic, strong) PlateModel *plateToEdit;
+
 @end

@@ -79,11 +79,23 @@
         [uploadDict setObject:self.plateIngredients forKey:@"ingredients"];
     }
 
-    [uploadDict setObject:@"stiffmeister.ua@gmail.com" forKey:@"email"];
+//    [uploadDict setObject:@"stiffmeister.ua@gmail.com" forKey:@"email"];
     
-//    [uploadDict setObject:UIImagePNGRepresentation(self.plateImage) forKey:@"image"];
     [uploadDict setObject:@"image/png" forKey:@"contentType"];
     
+    return uploadDict;
+}
+
+-(NSMutableDictionary *)editPlateDictionaryRepresentation {
+    
+    NSMutableDictionary *uploadDict = [NSMutableDictionary new];
+    
+    [uploadDict setObject:self.plateId forKey:@"id"];
+    
+    NSDictionary *fieldsDict = [NSDictionary new];
+    [fieldsDict setValue:self.plateReceipt forKey:@"recipe"];
+    [fieldsDict setValue:self.plateIngredients forKey:@"ingredients"];
+
     return uploadDict;
 }
 

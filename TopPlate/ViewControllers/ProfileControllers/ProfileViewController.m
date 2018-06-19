@@ -10,7 +10,6 @@ static int kDefaultLoadLimit = 10;
 
 #import "ProfileViewController.h"
 #import "SettingsViewController.h"
-#import "UserInfoCollectionViewCell.h"
 #import "PlateCollectionViewCell.h"
 #import "PlateInfoViewController.h"
 
@@ -46,7 +45,7 @@ static int kDefaultLoadLimit = 10;
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-    [self.collectionView setCollectionViewLayout:[self setSubCategoriesCollectionViewLayout]];
+    [self.collectionView setCollectionViewLayout:[self setCollectionViewLayout]];
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"PlateCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"PlateCollectionViewCell"];
     
@@ -58,10 +57,8 @@ static int kDefaultLoadLimit = 10;
     self.authHelper = [AuthorModelHelper new];
     self.plateHelper = [PlateModelHelper new];
     
-    if (self.userId) {
-        [self loadUserInfoForUserId:self.userId];
-    } else if (getCurrentUser) {
-        [self loadUserInfoForUserId:getCurrentUser.userId];
+    if (self.userId || getCurrentUser.userId) {
+        [self loadUserInfo];
     } else {
         [Helper showSplashScreenFor:self];
         [Helper showWelcomeScreenAsModal:YES];
@@ -70,53 +67,25 @@ static int kDefaultLoadLimit = 10;
     [self setupNavigationBar];
     
     [self.userImageView circleView];
+    
+    [self registerForNotifications];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadUserInfoForUserId:) name:kNotificationUserSignIn object:nil];
 }
 
--(void)setupNavigationBar {
+-(void)registerForNotifications {
     
-    [self setNavigationTitleViewImage];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadUserInfo)
+                                                 name:kNotificationUserSignIn
+                                               object:nil];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"moreIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfileSettingsScreen)];
-}
-
--(void)showProfileSettingsScreen {
-    SettingsViewController *settingsViewController = [getProfileStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
-    [self.navigationController pushViewController:settingsViewController animated:YES];
-}
-
--(void)loadUserInfoForUserId:(NSString *)userId {
-    
-    [Helper hideSplashScreenFor:self];
-    
-    [MBProgressHUD showHUDAddedTo:self.profileView animated:YES];
-    [self.authHelper getAuthorProfileInfoWithId:userId ?: getCurrentUser.userId completionBlock:^(User *currentUserProfile, NSString *errorString) {
-        [MBProgressHUD hideHUDForView:self.profileView animated:YES];
-        if (errorString) {
-            [Helper showErrorMessage:errorString forViewController:self];
-        } else {
-            [self.userImageView sd_setImageWithURL:currentUserProfile.userInfo.authorImageUrl];
-            self.userNameLabel.text = currentUserProfile.userInfo.authorName;
-            self.userBioLabel.text = @"Some bio text";
-        }
-    }];
-    
-    [MBProgressHUD showHUDAddedTo:self.collectionView animated:YES];
-    [self.authHelper getPlatesForAuthor:userId environment:getCurrentEnvironment withLimit:@(self.limit) withSkip:@(self.skip) completionBlock:^(NSArray *plates, NSString *errorString) {
-        [MBProgressHUD hideHUDForView:self.collectionView animated:YES];
-
-        if (errorString) {
-            [Helper showErrorMessage:errorString forViewController:self];
-        } else {
-            [self.collectionView reloadData];
-            [self recalculateCollectionViewHeight];
-        }
-    }];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reloadUserPlates)
+                                                 name:kNotificationEnvironmentChange
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -124,6 +93,7 @@ static int kDefaultLoadLimit = 10;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UICollectionViewDataSource -
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
@@ -139,15 +109,7 @@ static int kDefaultLoadLimit = 10;
     return plateCollectionViewCell;
 }
 
-- (UICollectionViewFlowLayout *)setSubCategoriesCollectionViewLayout {
-    
-    UICollectionViewFlowLayout *collectionLayout = [[UICollectionViewFlowLayout alloc]init];
-    [collectionLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    [collectionLayout setMinimumInteritemSpacing:0.0f];
-    [collectionLayout setMinimumLineSpacing:0.0f];
-    
-    return collectionLayout;
-}
+#pragma mark - UICollectionViewLayout -
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -167,9 +129,14 @@ static int kDefaultLoadLimit = 10;
     return tempInsets;
 }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    PlateModel *plate = self.authHelper.userPlates[indexPath.row];
-    [self loadPlateForId:plate.plateId];
+- (UICollectionViewFlowLayout *)setCollectionViewLayout {
+    
+    UICollectionViewFlowLayout *collectionLayout = [[UICollectionViewFlowLayout alloc]init];
+    [collectionLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    [collectionLayout setMinimumInteritemSpacing:0.0f];
+    [collectionLayout setMinimumLineSpacing:0.0f];
+    
+    return collectionLayout;
 }
 
 -(void)recalculateCollectionViewHeight {
@@ -181,6 +148,60 @@ static int kDefaultLoadLimit = 10;
     } else {
         self.collectionViewHeight.constant = 0;
     }
+}
+
+#pragma mark - UICollectionViewDelegate -
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    PlateModel *plate = self.authHelper.userPlates[indexPath.row];
+    [self loadPlateForId:plate.plateId];
+}
+
+#pragma mark - API Requests -
+
+-(void)loadUserInfo {
+    
+    [Helper hideSplashScreenFor:self];
+    //user profile can be loaded ONLY for current user or other user
+    //so if there is no other userId, then load data for current user
+    
+    [self loadUserProfileInfo:self.userId ?: getCurrentUser.userId];
+    [self loadUserPlates:self.userId ?: getCurrentUser.userId];
+}
+
+-(void)loadUserProfileInfo:(NSString *)userId {
+    
+    [MBProgressHUD showHUDAddedTo:self.profileView animated:YES];
+    [self.authHelper getAuthorProfileInfoWithId:userId
+                                completionBlock:^(User *currentUserProfile, NSString *errorString) {
+        [MBProgressHUD hideHUDForView:self.profileView animated:YES];
+        if (errorString) {
+            [Helper showErrorMessage:errorString forViewController:self];
+        } else {
+            [self.userImageView sd_setImageWithURL:currentUserProfile.userInfo.authorImageUrl];
+            self.userNameLabel.text = currentUserProfile.userInfo.authorName;
+            self.userBioLabel.text = @"Some bio text";
+        }
+    }];
+}
+
+-(void)loadUserPlates:(NSString *)userId {
+    
+    [MBProgressHUD showHUDAddedTo:self.collectionView animated:YES];
+    [self.authHelper getPlatesForAuthor:userId
+                            environment:getCurrentEnvironment
+                              withLimit:@(self.limit)
+                               withSkip:@(self.skip)
+                        completionBlock:^(NSArray *plates, NSString *errorString) {
+        [MBProgressHUD hideHUDForView:self.collectionView animated:YES];
+        
+        if (errorString) {
+            [Helper showErrorMessage:errorString forViewController:self];
+        } else {
+            [self.collectionView reloadData];
+            [self recalculateCollectionViewHeight];
+        }
+    }];
 }
 
 -(void)loadPlateForId:(NSString *)plateId {
@@ -197,6 +218,32 @@ static int kDefaultLoadLimit = 10;
                              [self.navigationController pushViewController:plateVc animated:YES];
                          }
                      }];
+}
+
+#pragma mark - View setup -
+
+-(void)setupNavigationBar {
+    
+    [self setNavigationTitleViewImage];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"moreIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfileSettingsScreen)];
+}
+
+-(void)showProfileSettingsScreen {
+    SettingsViewController *settingsViewController = [getProfileStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+    [self.navigationController pushViewController:settingsViewController animated:YES];
+}
+
+#pragma mark - Notifications -
+
+-(void)reloadUserPlates {
+    
+    self.limit = 10;
+    self.authHelper.userPlates = nil;
+    
+    if (self.userId || getCurrentUser.userId) {
+        [self loadUserInfo];
+    }
 }
 
 

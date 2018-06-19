@@ -121,6 +121,7 @@
 }
 
 -(void)prepareTextFieldForEdit:(UITextField *)textField {
+    
     [textField setBorderStyle:UITextBorderStyleRoundedRect];
     [textField setBackgroundColor:[UIColor whiteColor]];
     [textField setUserInteractionEnabled:YES];
@@ -128,6 +129,7 @@
 }
 
 -(void)finishTextField:(UITextField *)textField {
+    
     [textField setBorderStyle:UITextBorderStyleNone];
     [textField setBackgroundColor:[UIColor clearColor]];
     [textField setUserInteractionEnabled:NO];

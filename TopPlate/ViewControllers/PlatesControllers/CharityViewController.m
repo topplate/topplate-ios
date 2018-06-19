@@ -33,24 +33,12 @@
     // Do any additional setup after loading the view.
 }
 
--(void)loadBanners {
-    
-    CharityModelHelper *helper = [modelsManager getModel:HelperTypeCharity];
-    [helper loadCharitiesWithCompletion:^(NSArray *charities, NSString *errorString) {
-        if (errorString) {
-            [Helper showErrorMessage:errorString forViewController:self];
-        } else {
-            self.charityBanners = [NSArray arrayWithArray:charities];
-            [self.tableView reloadData];
-        }
-    }];
-    
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - UITableViewDataSource -
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
@@ -65,6 +53,21 @@
     [cell setupCellWithCharity:currentCharity];
     
     return  cell;
+}
+
+#pragma mark - API Requests -
+
+-(void)loadBanners {
+    
+    CharityModelHelper *helper = [modelsManager getModel:HelperTypeCharity];
+    [helper loadCharitiesWithCompletion:^(NSArray *charities, NSString *errorString) {
+        if (errorString) {
+            [Helper showErrorMessage:errorString forViewController:self];
+        } else {
+            self.charityBanners = [NSArray arrayWithArray:charities];
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 @end

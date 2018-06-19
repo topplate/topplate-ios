@@ -54,6 +54,40 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UITableViewDataSource -
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return self.winnersArray.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    PlateModel *winnerPlate = self.winnersArray[indexPath.row];
+    
+    PlatesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlatesTableViewCell" forIndexPath:indexPath];
+    [cell setupWinnersCellWithModel:winnerPlate];
+    cell.parentViewController = self;
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate -
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 315;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    PlateModel *selectedPlate = self.winnersArray[indexPath.row];
+    [self loadPlateForId:selectedPlate.plateId];
+}
+
+#pragma mark - API Requests -
+
 -(void)loadWinners {
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -107,33 +141,8 @@
                       }];
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return self.winnersArray.count;
-}
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    PlateModel *winnerPlate = self.winnersArray[indexPath.row];
-    
-    PlatesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlatesTableViewCell" forIndexPath:indexPath];
-    [cell setupWinnersCellWithModel:winnerPlate];
-    cell.parentViewController = self;
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    
-    return cell;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return 315;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    PlateModel *selectedPlate = self.winnersArray[indexPath.row];
-    [self loadPlateForId:selectedPlate.plateId];
-}
+#pragma mark - HTML Parser Helper -
 
 -(NSMutableAttributedString *)getAttributedHtmlString:(NSString *)string {
     
