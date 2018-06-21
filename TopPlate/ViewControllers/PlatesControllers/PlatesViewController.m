@@ -143,7 +143,9 @@ static int kDefaultLoadLimit = 10;
 
 -(void)platesUpdated {
     
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self.tableView reloadData];
+//    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 -(void)plateAtIndexIsUpdated:(NSInteger)plateIndex {
@@ -151,7 +153,7 @@ static int kDefaultLoadLimit = 10;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:plateIndex inSection:0];
     
     [self.tableView beginUpdates];
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
 }
 
@@ -204,8 +206,8 @@ static int kDefaultLoadLimit = 10;
                                                              style:UIAlertActionStyleDefault
                                                            handler:^void (UIAlertAction *action) {
                                                                NSLog(@"Selected homemade environment");
-                                                               [self reloadPlates];
                                                                [self homemadeEnvironmentSelected];
+                                                               [self reloadPlates];
                                                            }];
     [homeMadeAction setValue:[UIColor defaultDarkBackgroundColor] forKey:@"titleTextColor"];
     

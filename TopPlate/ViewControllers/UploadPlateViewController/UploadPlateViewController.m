@@ -234,7 +234,7 @@ static NSString *kPlateRestaurantLocationPlaceholderText = @"Restaurant location
 
 -(void)clearPlate {
     
-    self.modelHelper.currentPlate = nil;
+    self.modelHelper.currentPlate = [PlateModel new];
     
     [self.plateImageView setImage:[UIImage imageNamed:@"plateUploadImagePlaceholder"]];
     self.plateNameTextView.placeholderText = kPlateNamePlaceholderText;

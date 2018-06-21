@@ -106,11 +106,11 @@
 }
 
 - (IBAction)connectWithEmail:(id)sender {
-    
-    [self setEnvironment];
-    
+        
     UIStoryboard *storyboard =  [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     SignInViewController *signInViewController = [storyboard instantiateViewControllerWithIdentifier:@"SignInViewController"];
+    signInViewController.presentedModaly = self.presentedModaly;
+    signInViewController.selectedEnvironment = getCurrentEnvironment;
     [self.navigationController pushViewController:signInViewController animated:YES];
 }
 

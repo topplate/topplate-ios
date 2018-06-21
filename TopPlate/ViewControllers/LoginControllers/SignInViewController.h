@@ -10,4 +10,8 @@
 
 @interface SignInViewController : UIViewController
 
+@property (nonatomic) BOOL presentedModaly;
+
+@property (nonatomic, strong) NSString *selectedEnvironment;
+
 @end

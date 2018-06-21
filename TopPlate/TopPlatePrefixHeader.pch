@@ -28,6 +28,7 @@
 
 #import "PlateModelHelper.h"
 #import "SocialLoginModelHelper.h"
+#import "LoginModelHelper.h"
 #import "AuthorModelHelper.h"
 #import "CharityModelHelper.h"
 

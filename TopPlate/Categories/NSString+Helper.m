@@ -48,4 +48,11 @@
     return tempString;
 }
 
+- (BOOL)isValidEmailAddress {
+    // regex from http://www.regular-expressions.info/email.html
+    NSString *pattern = @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern];
+    return [predicate evaluateWithObject:[self lowercaseString]];
+}
+
 @end

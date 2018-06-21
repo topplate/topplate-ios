@@ -20,4 +20,6 @@
 
 -(NSString *)removeTexts:(NSArray<NSString *> *)texts;
 
+- (BOOL)isValidEmailAddress;
+
 @end

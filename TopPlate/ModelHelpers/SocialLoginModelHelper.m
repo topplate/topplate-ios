@@ -221,8 +221,19 @@
      }];
 }
 
--(void)getUserProfileData {
-#warning ToDo Autorization via email
+-(void)getUserProfileDataWithCompletion:(SocialCompletionBlock)completion {
+    
+    [[NetworkManager sharedManager] getUserProfileWithUserId:getCurrentUser.userId withCompletion:^(id response, NSError *error) {
+        if (error) {
+            completion(nil, error.localizedDescription);
+        } else {
+            NSError *parsingError = nil;
+            User *currentUser = [MTLJSONAdapter modelOfClass:[User class] fromJSONDictionary:response error:&parsingError];
+            [self finishSetupWithCurrentUser:currentUser];
+            
+            completion(response, nil);
+        }
+    }];
 }
 
 #pragma mark - Sign in helpers -
@@ -235,7 +246,7 @@
     if (loginType && currentUser) { //somebody is logged in
         switch ([loginType integerValue]) {
             case LoginTypeEmail: {
-                [self getUserProfileData];
+                [self getUserProfileDataWithCompletion:completion];
             }
                 break;
                 
@@ -295,6 +306,15 @@
     [[UserDefaultsManager standardUserDefaults] setObject:@(loginType) forKey:Default_LoginType];
     [[UserDefaultsManager standardUserDefaults] setObject:token forKey:Default_SocialAccessToken];
     [[UserDefaultsManager standardUserDefaults] setObject:tokenDate forKey:Default_SocialAccessTokenExpDate];
+}
+
+-(void)finishSetupWithCurrentUser:(User *)currentUser {
+    
+    NSLog(@"Current user - %@", currentUser);
+    
+    [UserDefaultsManager saveCustomObject:currentUser forKey:Default_CurrentUser];
+    [[UserDefaultsManager standardUserDefaults] setObject:@(LoginTypeEmail) forKey:Default_LoginType];
+    [[UserDefaultsManager standardUserDefaults] setObject:currentUser.token forKey:Default_SocialAccessToken];
 }
 
 -(void)logout {

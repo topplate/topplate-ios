@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSURL *authorImageUrl;
 @property (nonatomic, strong) NSString *authorName;
 @property (nonatomic, strong) NSString *authorEmail;
+@property (nonatomic, strong) NSString *authorGender;
 
 @end

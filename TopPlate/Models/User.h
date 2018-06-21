@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSMutableArray<NSString *> *likedPlates;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) AuthorModel *userInfo;
+@property (nonatomic) BOOL canVoteForCharity;
 
 @end

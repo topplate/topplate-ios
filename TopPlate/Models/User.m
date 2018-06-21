@@ -25,7 +25,8 @@
     return @{@"userId" : @"_id",
              @"likedPlates" : @"likedPlates",
              @"token" : @"token",
-             @"userInfo" : @"user"
+             @"userInfo" : @"user",
+             @"canVoteForCharity" : @"canVote"
              };
 }
 

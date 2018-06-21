@@ -14,7 +14,8 @@
     return @{@"authorId" : @"id",
              @"authorImageUrl" : @"image",
              @"authorName" : @"name",
-             @"authorEmail" : @"email"
+             @"authorEmail" : @"email",
+             @"authorGender" : @"gender"
              };
 }
 
